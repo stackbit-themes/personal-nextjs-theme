@@ -1,0 +1,92 @@
+{
+    "model": "MediaGallerySection",
+    "presets": [
+        {
+            "label": "3 columns light wide",
+            "thumbnail": "images/media-gallery-3-col.png",
+            "data": {
+                "colors": "colors-d",
+                "title": "Gallery",
+                "subtitle": "This is the subtitle",
+                "columns": 3,
+                "spacing": 16,
+                "aspectRatio": "16:9",
+                "showCaption": true,
+                "enableHover": false,
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-12", "pb-12", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "center"
+                    },
+                    "subtitle": {
+                        "textAlign": "center"
+                    }
+                }
+            }
+        },
+        {
+            "label": "4 columns light full",
+            "thumbnail": "images/media-gallery-4-col.png",
+            "data": {
+                "colors": "colors-d",
+                "title": "Gallery",
+                "subtitle": "This is the subtitle",
+                "columns": 4,
+                "spacing": 16,
+                "aspectRatio": "4:3",
+                "showCaption": false,
+                "enableHover": true,
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "full",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-12", "pb-12", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "center"
+                    },
+                    "subtitle": {
+                        "textAlign": "center"
+                    }
+                }
+            }
+        },
+        {
+            "label": "2 columns dark narrow",
+            "thumbnail": "images/media-gallery-2-col.png",
+            "data": {
+                "colors": "colors-c",
+                "title": "Gallery",
+                "subtitle": "This is the subtitle",
+                "columns": 2,
+                "spacing": 16,
+                "aspectRatio": "1:1",
+                "showCaption": false,
+                "enableHover": false,
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "narrow",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-12", "pb-12", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "center"
+                    },
+                    "subtitle": {
+                        "textAlign": "center"
+                    }
+                }
+            }
+        }
+    ]
+}

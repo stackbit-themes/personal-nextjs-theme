@@ -1,0 +1,187 @@
+{
+    "model": "FeaturedItemsSection",
+    "presets": [
+        {
+            "label": "Featured items secondary - 1 column",
+            "thumbnail": "images/feat-items-secondary-1-col.png",
+            "data": {
+                "colors": "colors-c",
+                "title": "Key value propositions",
+                "subtitle": "",
+                "actions": [],
+                "items": [
+                    {
+                        "type": "FeaturedItem",
+                        "title": "Faster",
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.",
+                        "actions": [
+                            {
+                                "type": "Button",
+                                "label": "Learn more",
+                                "showIcon": true,
+                                "icon": "arrowRight",
+                                "url": "/",
+                                "style": "primary"
+                            }
+                        ],
+                        "styles": {
+                            "self": {
+                                "textAlign": "left"
+                            }
+                        }
+                    },
+                    {
+                        "type": "FeaturedItem",
+                        "title": "Smarter",
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.",
+                        "actions": [
+                            {
+                                "type": "Button",
+                                "label": "Learn more",
+                                "showIcon": true,
+                                "icon": "arrowRight",
+                                "url": "/",
+                                "style": "primary"
+                            }
+                        ],
+                        "styles": {
+                            "self": {
+                                "textAlign": "left"
+                            }
+                        }
+                    },
+                    {
+                        "type": "FeaturedItem",
+                        "title": "Focused",
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.",
+                        "actions": [
+                            {
+                                "type": "Button",
+                                "label": "Learn more",
+                                "showIcon": true,
+                                "icon": "arrowRight",
+                                "url": "/",
+                                "style": "primary"
+                            }
+                        ],
+                        "styles": {
+                            "self": {
+                                "textAlign": "left"
+                            }
+                        }
+                    }
+                ],
+                "columns": 1,
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "narrow",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-28", "pb-36", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "flex-start"
+                    }
+                }
+            }
+        },
+       {
+            "label": "Featured items light - 3 columns",
+            "thumbnail": "images/feat-items-light-3-col.png",
+            "data": {
+                "colors": "colors-d",
+                "title": "Key value propositions",
+                "subtitle": "",
+                "actions": [],
+                "items": [
+                    {
+                        "type": "FeaturedItem",
+                        "title": "Faster",
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.",
+                        "actions": [
+                            {
+                                "type": "Button",
+                                "label": "Learn more",
+                                "showIcon": true,
+                                "icon": "arrowRight",
+                                "url": "/",
+                                "style": "secondary"
+                            }
+                        ],
+                        "styles": {
+                            "self": {
+                                "textAlign": "left"
+                            }
+                        }
+                    },
+                    {
+                        "type": "FeaturedItem",
+                        "title": "Smarter",
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.",
+                        "actions": [
+                            {
+                                "type": "Button",
+                                "label": "Learn more",
+                                "showIcon": true,
+                                "icon": "arrowRight",
+                                "url": "/",
+                                "style": "secondary"
+                            }
+                        ],
+                        "styles": {
+                            "self": {
+                                "textAlign": "left"
+                            }
+                        }
+                    },
+                    {
+                        "type": "FeaturedItem",
+                        "title": "Focused",
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.",
+                        "actions": [
+                            {
+                                "type": "Button",
+                                "label": "Learn more",
+                                "showIcon": true,
+                                "icon": "arrowRight",
+                                "url": "/",
+                                "style": "secondary"
+                            }
+                        ],
+                        "styles": {
+                            "self": {
+                                "textAlign": "left"
+                            }
+                        }
+                    }
+                ],
+                "columns": 3,
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-28", "pb-36", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "flex-start"
+                    }
+                }
+            }
+        }
+    ]
+}

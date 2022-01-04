@@ -1,0 +1,49 @@
+{
+    "model": "RecentPostsSection",
+    "presets": [
+        {
+            "label": "Latest posts light - mixed",
+            "thumbnail": "images/posts-light-mixed.png",
+            "data": {
+                "variant": "variant-c",
+                "colors": "colors-d",
+                "title": "Seasonal adventure",
+                "subtitle": "",
+                "actions": [
+                    {
+                        "type": "Link",
+                        "label": "See all adventures",
+                        "altText": "See all adventures",
+                        "url": "/blog",
+                        "showIcon": true,
+                        "icon": "arrowRight"
+                    }
+                ],
+                "showDate": true,
+                "showAuthor": false,
+                "showExcerpt": true,
+                "showReadMoreLink": true,
+                "readMoreLinkLabel": "Join adventure",
+                "recentCount": 5,
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-24", "pb-24", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "flex-start"
+                    }
+                }
+            }
+        }
+    ]
+}

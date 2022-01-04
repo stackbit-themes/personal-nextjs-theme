@@ -1,0 +1,155 @@
+{
+    "model": "HeroSection",
+    "presets": [
+        {
+            "label": "Hero light - image right",
+            "thumbnail": "images/hero-light-image-right.png",
+            "data": {
+                "colors": "colors-d",
+                "backgroundImage": null,
+                "title": "We do fishing differently",
+                "subtitle": "Fresh. Better. Faster.",
+                "text": "",
+                "actions": [
+                    {
+                        "type": "Button",
+                        "label": "Join adventure",
+                        "showIcon": true,
+                        "icon": "arrowRight",
+                        "style": "primary",
+                        "url": "/"
+                    }
+                ],
+                "media": {
+                    "type": "ImageBlock",
+                    "url": "/images/hero-2.png",
+                    "altText": "Hero image"
+                },
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-36", "pb-48", "pl-4", "pr-4"],
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "flexDirection": "row"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "text": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "flex-start"
+                    }
+                }
+            }
+        },
+        {
+            "label": "Hero light - image left",
+            "thumbnail": "images/hero-light-image-left.png",
+            "data": {
+                "colors": "colors-d",
+                "backgroundImage": null,
+                "title": "We do fishing differently",
+                "subtitle": "Fresh. Better. Faster.",
+                "text": "We’re local, seasonal fisherman, supporting fishing restrictions.",
+                "actions": [
+                    {
+                        "type": "Button",
+                        "label": "Join adventure",
+                        "showIcon": true,
+                        "icon": "arrowRight",
+                        "style": "primary",
+                        "url": "/"
+                    }
+                ],
+                "media": {
+                    "type": "ImageBlock",
+                    "url": "/images/hero-2.png",
+                    "altText": "Hero image"
+                },
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-36", "pb-48", "pl-4", "pr-4"],
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "flexDirection": "row-reverse"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "text": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "flex-start"
+                    }
+                }
+            }
+        },
+        {
+            "label": "Hero light - bg image",
+            "thumbnail": "images/hero-light-bg-image.png",
+            "data": {
+                "colors": "colors-d",
+                "backgroundSize": "inset",
+                "backgroundImage": {
+                    "type": "ImageBlock",
+                    "url": "/images/hero.webp",
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center",
+                    "opacity": 100
+                },
+                "title": "We do fishing differently",
+                "subtitle": "Fresh. Better. Faster.",
+                "text": "",
+                "actions": [
+                    {
+                        "type": "Button",
+                        "label": "Join adventure",
+                        "showIcon": true,
+                        "icon": "arrowRight",
+                        "style": "primary",
+                        "url": "/"
+                    }
+                ],
+                "media": null,
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-36", "pb-96", "pl-4", "pr-4"],
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "flexDirection": "row"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "text": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "flex-start"
+                    }
+                }
+            }
+        }
+    ]
+}

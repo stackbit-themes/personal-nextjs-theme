@@ -1,0 +1,112 @@
+{
+    "model": "TestimonialsSection",
+    "presets": [
+        {
+            "label": "Testimonials light - with big image, text left",
+            "thumbnail": "images/testimonials-light-image.png",
+            "data": {
+                "colors": "colors-d",
+                "variant": "variant-a",
+                "title": "",
+                "subtitle": "",
+                "testimonials": [
+                    {
+                        "quote": "\"It’s great to see someone taking action while still maintaining a sustainable fish supply to home cooks.\"",
+                        "name": "Oliver Mills",
+                        "title": "Head chef at Parks",
+                        "image": {
+                            "type": "ImageBlock",
+                            "url": "/images/gallery-2.jpg",
+                            "altText": "A man fishing"
+                        }
+                    }
+                ],
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0"],
+                        "padding": ["pt-28", "pb-28"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "center"
+                    },
+                    "subtitle": {
+                        "textAlign": "center"
+                    }
+                }
+            }
+        },
+        {
+            "label": "Testimonials dark - with small image, text left",
+            "thumbnail": "images/testimonials-dark-small-image.png",
+            "data": {
+                "colors": "colors-e",
+                "variant": "variant-b",
+                "title": "",
+                "subtitle": "",
+                "testimonials": [
+                    {
+                        "quote": "\"It’s great to see someone taking action while still maintaining a sustainable fish supply to home cooks.\"",
+                        "name": "John Doe",
+                        "title": "Head chef at Parks",
+                        "image": {
+                            "type": "ImageBlock",
+                            "url": "/images/fisherman.jpg",
+                            "altText": "John Doe"
+                        }
+                    }
+                ],
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0"],
+                        "padding": ["pt-28", "pb-28"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    }
+                }
+            }
+        },
+        {
+            "label": "Testimonials light - no image, text centered",
+            "thumbnail": "images/testimonials-light-text-centered.png",
+            "data": {
+                "colors": "colors-d",
+                "variant": "variant-c",
+                "title": "",
+                "subtitle": "",
+                "testimonials": [
+                    {
+                        "quote": "\"It’s great to see someone taking action while still maintaining a sustainable fish supply to home cooks.\"",
+                        "name": "Isabelle Parks",
+                        "title": "Head chef at Parks",
+                        "image": null
+                    }
+                ],
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0"],
+                        "padding": ["pt-28", "pb-28"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "center"
+                    },
+                    "subtitle": {
+                        "textAlign": "center"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,111 @@
+{
+    "type": "Config",
+    "favicon": "/images/favicon.svg",
+    "header": {
+        "headerVariant": "variant-c",
+        "isSticky": false,
+        "title": "Personal",
+        "isTitleVisible": true,
+        "primaryLinks": [
+            {
+                "altText": "",
+                "url": "/",
+                "showIcon": true,
+                "icon": "twitter",
+                "iconPosition": "right",
+                "elementId": "",
+                "type": "Link"
+            },
+            {
+                "altText": "",
+                "url": "/",
+                "showIcon": true,
+                "icon": "github",
+                "iconPosition": "right",
+                "elementId": "",
+                "type": "Link"
+            }
+        ],
+        "secondaryLinks": [
+            {
+                "type": "Link",
+                "label": "Info",
+                "url": "/about",
+                "altText": ""
+            },
+            {
+                "type": "Link",
+                "label": "Blog",
+                "url": "/blog",
+                "altText": ""
+            }
+        ],
+        "styles": {
+            "self": {
+                "width": "narrow",
+                "padding": ["pt-5", "pb-5", "pr-4", "pl-4"]
+            }
+        }
+    },
+    "footer": {
+        "variant": "variant-a",
+        "contacts": {
+            "title": "Contact details",
+            "phoneNumber": "850-123-5021",
+            "phoneAltText": "Our phone",
+            "email": "info@lorem.mail",
+            "emailAltText": "Our email",
+            "address": "312 Lovely Street, Brooklyn, NY, 123456",
+            "addressAltText": "Our address"
+        },
+        "copyrightText": "Powered by [Stackbit](https://www.stackbit.com/)",
+        "primaryLinks": [
+            {
+                "type": "Link",
+                "label": "Info",
+                "url": "/about",
+                "altText": ""
+            },
+            {
+                "type": "Link",
+                "label": "Blog",
+                "url": "/blog",
+                "altText": ""
+            }
+        ],
+        "socialLinks": [
+            {
+                "type": "Social",
+                "altText": "Twitter",
+                "label": "Twitter",
+                "url": "/",
+                "icon": "twitter"
+            },
+            {
+                "type": "Social",
+                "altText": "GitHub",
+                "label": "GitHub",
+                "url": "/",
+                "icon": "github"
+            }
+        ],
+        "legalLinks": [
+            {
+                "type": "Link",
+                "label": "Privacy Policy",
+                "url": "/"
+            },
+            {
+                "type": "Link",
+                "label": "Terms & Conditions",
+                "url": "/"
+            }
+        ],
+        "styles": {
+            "self": {
+                "width": "narrow",
+                "padding": ["pt-16", "pb-16", "pr-4", "pl-4"]
+            }
+        }
+    }
+}

@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply text-base;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply break-words;
+        line-height: 1.15;
+    }
+}
+
+@layer components {
+    .sb-markdown {
+        @apply leading-relaxed;
+        a {
+            @apply underline;
+        }
+        a:hover {
+            @apply no-underline;
+        }
+        b,
+        strong {
+            @apply font-medium;
+        }
+        em {
+            @apply italic;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 2.5rem 0 1.5rem;
+        }
+        p {
+            margin: 1.5rem 0;
+        }
+        ol {
+            @apply list-decimal;
+            margin: 1.5rem 0;
+            padding-left: 1.25em;
+        }
+        ul {
+            @apply list-disc;
+            margin: 1.5rem 0;
+            padding-left: 1.25em;
+        }
+        li > ul,
+        li > ol {
+            margin: 0;
+        }
+        blockquote {
+            @apply border-l-4 border-current;
+            font-size: 1.25em;
+            line-height: 1.4;
+            margin: 2.5rem 0;
+            padding-left: 1.25em;
+        }
+        pre {
+            @apply border border-current overflow-x-auto leading-normal;
+            font-size: 0.875em;
+            margin: 1.5rem 0;
+            padding: 1.25em;
+        }
+        hr {
+            @apply bg-current border-0 h-px;
+            margin: 2.5rem 0;
+        }
+        figure {
+            margin: 1.5rem 0;
+        }
+        figcaption {
+            @apply leading-normal;
+            font-size: 0.875em;
+            margin: 0.5rem 0 0;
+        }
+        table {
+            @apply border border-current border-collapse text-left w-full;
+            margin: 1.5rem 0;
+        }
+        caption {
+            @apply text-left;
+            font-size: 0.875em;
+            margin: 0 0 0.5rem;
+        }
+        th,
+        td {
+            @apply border-r border-b border-current;
+            padding: 0.5em;
+        }
+        th {
+            font-weight: medium;
+        }
+        h1:first-child,
+        h2:first-child,
+        h3:first-child,
+        h4:first-child,
+        h5:first-child,
+        h6:first-child,
+        p:first-child,
+        ul:first-child,
+        ol:first-child,
+        blockquote:first-child,
+        pre:first-child,
+        hr:first-child,
+        figure:first-child,
+        table:first-child {
+            margin-top: 0;
+        }
+        h1 + h2,
+        h2 + h3,
+        h3 + h4,
+        h4 + h5,
+        h5 + h6 {
+            margin-top: 1.5rem;
+        }
+    }
+
+    /* Buttons */
+    .sb-component-button {
+        @apply border-2 inline-flex items-center justify-center no-underline text-center transition duration-200 ease-in;
+    }
+    .sb-component-social {
+        @apply transition duration-200 ease-in;
+    }
+    .sb-component-social:not(.sb-component-social-primary),
+    .sb-component-social:not(.sb-component-social-secondary) {
+        @apply hover:opacity-70;
+    }
+    .sb-component-button-primary,
+    .sb-component-social-primary {
+        @apply bg-primary border-primary text-on-primary hover:bg-light hover:border-primary hover:text-primary;
+    }
+
+    /* Links */
+    .sb-component-link {
+        @apply inline-flex items-center justify-center no-underline relative;
+    }
+    .sb-component-link:after {
+        @apply bg-current absolute left-0 w-full;
+        bottom: -2px;
+        content: '';
+        height: 2px;
+        transform: scaleX(0);
+        transform-origin: 100% 50%;
+        transition: transform 0.25s ease-in-out;
+    }
+    .sb-component-link:hover:after {
+        transform: scaleX(1);
+        transform-origin: 0% 50%;
+    }
+
+    /* Socials */
+    .sb-component-social {
+        @apply inline-flex items-center justify-center no-underline transition duration-200 ease-in;
+    }
+
+    .sb-component-social-primary,
+    .sb-component-social-secondary {
+        @apply border-2 rounded-full p-2;
+    }
+
+    /* Dividers */
+    .sb-divider {
+        @apply flex items-center before:flex-grow before:h-px before:bg-current;
+    }
+
+    /* Featured items */
+    .sb-component-item-hover {
+        @apply transition duration-200 ease-in;
+    }
+
+    /* Form controls */
+    .sb-form-control {
+        @apply mb-4;
+    }
+    .sb-label {
+        @apply inline-block mb-1;
+    }
+    .sb-input,
+    .sb-select,
+    .sb-textarea {
+        @apply bg-transparent border-2 border-current p-3 w-full focus:outline-none;
+    }
+    option {
+        color: initial;
+    }
+    .sb-checkbox {
+        @apply appearance-none absolute select-none opacity-0;
+        height: 1.5em;
+        width: 1.5em;
+    }
+    .sb-checkbox + .sb-label {
+        @apply cursor-pointer pl-8 relative;
+    }
+    .sb-checkbox + .sb-label:before {
+        @apply absolute left-0 top-1/2 transform -translate-y-1/2 border-2 border-current cursor-pointer text-center font-sans;
+        content: '';
+        height: 1.5em;
+        width: 1.5em;
+        line-height: 1.25;
+    }
+    .sb-checkbox:checked + .sb-label:before {
+        content: '\2713';
+    }
+    .sb-select {
+        @apply appearance-none bg-no-repeat cursor-pointer pr-7;
+        background-image: linear-gradient(45deg, transparent 50%, currentColor 0), linear-gradient(135deg, currentColor 50%, transparent 0);
+        background-position: calc(100% - 18px) calc(1px + 50%), calc(100% - 12px) calc(1px + 50%);
+        background-size: 6px 6px, 6px 6px;
+        background-repeat: no-repeat;
+    }
+
+    .text-center + .sb-contact-section-form,
+    .sb-contact-section-form:only-child {
+        text-align: center;
+    }
+
+    /* Color palettes */
+    .colors-a {
+        @apply bg-light text-on-light;
+        .sb-input,
+        .sb-select,
+        .sb-textarea {
+            @apply text-on-light placeholder-on-light placeholder-opacity-75;
+        }
+        .sb-component-button-primary,
+        .sb-component-social-primary {
+            @apply bg-on-light border-on-light text-on-primary;
+        }
+        .sb-component-button-secondary,
+        .sb-component-social-secondary {
+            @apply border-dark text-dark;
+        }
+        .sb-component-item-hover {
+            @apply hover:bg-light hover:text-on-primary;
+        }
+    }
+    .colors-b {
+        @apply bg-dark text-on-dark;
+        .sb-input,
+        .sb-select,
+        .sb-textarea {
+            @apply text-on-dark placeholder-on-dark placeholder-opacity-75;
+        }
+        .sb-component-button-primary,
+        .sb-component-social-primary {
+            @apply bg-on-dark border-on-dark text-dark;
+        }
+        .sb-component-button-secondary,
+        .sb-component-social-secondary {
+            @apply border-light text-light;
+        }
+        .sb-component-item-hover {
+            @apply hover:bg-light hover:text-on-light;
+        }
+    }
+    .colors-c {
+        @apply bg-secondary text-on-secondary;
+        .sb-input,
+        .sb-select,
+        .sb-textarea {
+            @apply text-on-secondary placeholder-on-secondary placeholder-opacity-75;
+        }
+        .sb-component-button-primary,
+        .sb-component-social-primary {
+            @apply bg-on-light border-on-light text-on-primary;
+        }
+        .sb-component-button-secondary,
+        .sb-component-social-secondary {
+            @apply border-dark text-dark;
+        }
+        .sb-component-item-hover {
+            @apply hover:bg-dark hover:text-light;
+        }
+    }
+    .colors-d {
+        @apply bg-complementary text-on-complementary;
+        .sb-input,
+        .sb-select,
+        .sb-textarea {
+            @apply text-on-complementary placeholder-on-complementary placeholder-opacity-75;
+        }
+        .sb-component-button-primary,
+        .sb-component-social-primary {
+            @apply bg-on-dark border-on-dark text-dark;
+        }
+        .sb-component-button-secondary,
+        .sb-component-social-secondary {
+            @apply border-light text-light;
+        }
+        .sb-component-item-hover {
+            @apply hover:bg-dark hover:text-light;
+        }
+    }
+    .colors-e {
+        @apply bg-primary text-on-primary;
+        .sb-input,
+        .sb-select,
+        .sb-textarea {
+            @apply text-on-primary placeholder-on-primary placeholder-opacity-75;
+        }
+        .sb-component-button-primary,
+        .sb-component-social-primary {
+            @apply bg-dark border-dark text-on-dark;
+        }
+        .sb-component-button-secondary,
+        .sb-component-social-secondary {
+            @apply border-on-primary text-on-primary;
+        }
+        .sb-component-item-hover {
+            @apply hover:bg-light hover:text-on-light;
+        }
+    }
+}

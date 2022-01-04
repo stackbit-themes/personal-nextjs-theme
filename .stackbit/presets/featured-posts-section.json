@@ -1,0 +1,181 @@
+{
+    "model": "FeaturedPostsSection",
+    "presets": [
+        {
+            "label": "Featured posts light - 2 columns",
+            "thumbnail": "images/posts-light-2-col.png",
+            "data": {
+                "variant": "variant-a",
+                "colors": "colors-d",
+                "title": "Seasonal adventure",
+                "subtitle": "",
+                "actions": [
+                    {
+                        "type": "Link",
+                        "label": "See all adventures",
+                        "altText": "See all adventures",
+                        "url": "/blog",
+                        "showIcon": true,
+                        "icon": "arrowRight"
+                    }
+                ],
+                "posts": [
+                    "content/pages/blog/post-five.md",
+                    "content/pages/blog/post-four.md",
+                    "content/pages/blog/post-three.md",
+                    "content/pages/blog/post-two.md"
+                ],
+                "showDate": true,
+                "showAuthor": false,
+                "showExcerpt": true,
+                "showReadMoreLink": true,
+                "readMoreLinkLabel": "Join adventure",
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-24", "pb-24", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "flex-start"
+                    }
+                }
+            }
+        },
+        {
+            "label": "Featured posts dark - 3 columns",
+            "thumbnail": "images/posts-dark-3-col.png",
+            "data": {
+                "variant": "variant-b",
+                "colors": "colors-e",
+                "title": "Seasonal adventure",
+                "subtitle": "",
+                "actions": [],
+                "showDate": true,
+                "showAuthor": false,
+                "showExcerpt": false,
+                "showReadMoreLink": true,
+                "readMoreLinkLabel": "Join adventure",
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-24", "pb-24", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "center"
+                    },
+                    "subtitle": {
+                        "textAlign": "center"
+                    },
+                    "actions": {
+                        "justifyContent": "center"
+                    }
+                }
+            }
+        },
+        {
+            "label": "Featured posts light - mixed",
+            "thumbnail": "images/posts-light-mixed.png",
+            "data": {
+                "variant": "variant-c",
+                "colors": "colors-d",
+                "title": "Seasonal adventure",
+                "subtitle": "",
+                "actions": [
+                    {
+                        "type": "Link",
+                        "label": "See all adventures",
+                        "altText": "See all adventures",
+                        "url": "/blog",
+                        "showIcon": true,
+                        "icon": "arrowRight"
+                    }
+                ],
+                "posts": [
+                    "content/pages/blog/post-five.md",
+                    "content/pages/blog/post-four.md",
+                    "content/pages/blog/post-three.md",
+                    "content/pages/blog/post-two.md",
+                    "content/pages/blog/post-one.md"
+                ],
+                "showDate": true,
+                "showAuthor": false,
+                "showExcerpt": true,
+                "showReadMoreLink": true,
+                "readMoreLinkLabel": "Join adventure",
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-24", "pb-24", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "flex-start"
+                    }
+                }
+            }
+        },
+        {
+            "label": "Featured posts light - list",
+            "thumbnail": "images/posts-light-list.png",
+            "data": {
+                "variant": "variant-d",
+                "colors": "colors-d",
+                "title": "Seasonal adventure",
+                "subtitle": "",
+                "actions": [
+                    {
+                        "type": "Link",
+                        "label": "See all adventures",
+                        "altText": "See all adventures",
+                        "url": "/blog",
+                        "showIcon": true,
+                        "icon": "arrowRight"
+                    }
+                ],
+                "showDate": true,
+                "showAuthor": false,
+                "showExcerpt": false,
+                "showReadMoreLink": true,
+                "readMoreLinkLabel": "Join adventure",
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-24", "pb-24", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "flex-start"
+                    }
+                }
+            }
+        }
+    ]
+}
