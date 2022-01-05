@@ -16,11 +16,11 @@ fields:
     options:
       - label: Header with logo and primary links on the left
         value: variant-a
-      - label: Header with logo on the left and primary links centered
+      - label: Header with logo on the left and social links furthest to the right
         value: variant-b
-      - label: Header with logo on the left and primary links on the right
+      - label: Header with logo on the left and primary links furthest to the right
         value: variant-c
-    default: variant-a
+    default: variant-c
   - type: boolean
     name: isSticky
     group: styles
@@ -49,7 +49,6 @@ fields:
     items:
       type: model
       models:
-        - Button
         - Link
     default:
       - type: Link
@@ -61,19 +60,27 @@ fields:
         url: /
         altText: Blog
   - type: list
-    name: secondaryLinks
-    label: Secondary links
+    name: socialLinks
+    label: Social links
     items:
       type: model
       models:
-        - Button
-        - Link
+        - Social
     default:
-      - type: Button
-        label: Sign up
+      - type: Social
+        icon: twitter
+        label: ''
+        altText: Twitter
         url: /
-        altText: Sign up
-        style: primary
+        elementId: false
+        showIcon: true
+      - type: Social
+        icon: github
+        label: ''
+        altText: GitHub
+        url: /
+        elementId: false
+        showIcon: true
   - type: style
     name: styles
     styles:

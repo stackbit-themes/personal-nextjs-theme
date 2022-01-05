@@ -130,7 +130,7 @@ sections:
           isRequired: false
           width: full
           type: CheckboxFormControl
-      submitLabel: Submit form
+      submitLabel: Submit form 🚀
       styles:
         submitLabel:
           textAlign: center

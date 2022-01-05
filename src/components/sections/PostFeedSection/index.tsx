@@ -6,7 +6,7 @@ import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to
 import { getDataAttrs } from '../../../utils/get-data-attrs';
 import { Link, Action } from '../../atoms';
 import ImageBlock from '../../molecules/ImageBlock';
-import ArrowRightIcon from '../../svgs/arrow-right';
+import ArrowUpRightIcon from '../../svgs/arrow-up-right';
 import getPageUrlPath from '../../../utils/get-page-url-path';
 
 export default function PostFeedSection(props) {
@@ -145,7 +145,7 @@ function postsVariantA(props) {
                                                 className="sb-component sb-component-block sb-component-button sb-component-button-primary"
                                             >
                                                 {props.readMoreLinkLabel && <span className="mr-3">{props.readMoreLinkLabel}</span>}
-                                                <ArrowRightIcon className="fill-current h-5 w-5" />
+                                                <ArrowUpRightIcon className="fill-current h-5 w-5" />
                                             </Link>
                                         </div>
                                     )}
@@ -207,7 +207,7 @@ function postsVariantB(props) {
                                                 className="sb-component sb-component-block sb-component-button sb-component-button-primary"
                                             >
                                                 {props.readMoreLinkLabel && <span className="mr-3">{props.readMoreLinkLabel}</span>}
-                                                <ArrowRightIcon className="fill-current h-5 w-5" />
+                                                <ArrowUpRightIcon className="fill-current h-5 w-5" />
                                             </Link>
                                         </div>
                                     )}
@@ -273,7 +273,7 @@ function postsVariantC(props) {
                                                 className="sb-component sb-component-block sb-component-button sb-component-button-primary"
                                             >
                                                 {props.readMoreLinkLabel && <span className="mr-3">{props.readMoreLinkLabel}</span>}
-                                                <ArrowRightIcon className="fill-current h-5 w-5" />
+                                                <ArrowUpRightIcon className="fill-current h-5 w-5" />
                                             </Link>
                                         </div>
                                     )}
@@ -317,6 +317,7 @@ function postsVariantD(props) {
                             </div>
                         )}
                         <div className="px-4 pt-6 pb-10 sm:px-6 md:w-3/5 md:self-center md:pt-8">
+                            {props.showDate && <PostDate post={post} className="mb-2" />}
                             <h3 className="text-3xl">
                                 <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                                     {post.title}
@@ -328,22 +329,12 @@ function postsVariantD(props) {
                                     {post.excerpt}
                                 </p>
                             )}
-                            {(props.showDate || props.showReadMoreLink) && (
-                                <div className="mt-12 space-y-6">
-                                    {props.showDate && <PostDate post={post} className="mb-2" />}
-                                    {props.showReadMoreLink && (
-                                        <div>
-                                            <Link
-                                                href={getPageUrlPath(post)}
-                                                className="sb-component sb-component-block sb-component-button sb-component-button-primary"
-                                            >
-                                                {props.readMoreLinkLabel && <span className="mr-3">{props.readMoreLinkLabel}</span>}
-                                                <ArrowRightIcon className="fill-current h-5 w-5" />
-                                            </Link>
-                                        </div>
-                                    )}
-                                </div>
-                            )}
+                        </div>
+                        <div>
+                            <Link href={getPageUrlPath(post)} className="sb-component sb-component-block sb-component-button sb-component-button-primary">
+                                {props.readMoreLinkLabel && <span className="mr-3">{props.readMoreLinkLabel}</span>}
+                                <ArrowUpRightIcon className="fill-current h-5 w-5" />
+                            </Link>
                         </div>
                     </div>
                 </article>

@@ -8,26 +8,6 @@
         "isTitleVisible": true,
         "primaryLinks": [
             {
-                "altText": "",
-                "url": "/",
-                "showIcon": true,
-                "icon": "twitter",
-                "iconPosition": "right",
-                "elementId": "",
-                "type": "Link"
-            },
-            {
-                "altText": "",
-                "url": "/",
-                "showIcon": true,
-                "icon": "github",
-                "iconPosition": "right",
-                "elementId": "",
-                "type": "Link"
-            }
-        ],
-        "secondaryLinks": [
-            {
                 "type": "Link",
                 "label": "Info",
                 "url": "/about",
@@ -38,6 +18,22 @@
                 "label": "Blog",
                 "url": "/blog",
                 "altText": ""
+            }
+        ],
+        "socialLinks": [
+            {
+                "type": "Social",
+                "altText": "Twitter",
+                "label": "Twitter",
+                "url": "/",
+                "icon": "twitter"
+            },
+            {
+                "type": "Social",
+                "altText": "GitHub",
+                "label": "GitHub",
+                "url": "/",
+                "icon": "github"
             }
         ],
         "styles": {

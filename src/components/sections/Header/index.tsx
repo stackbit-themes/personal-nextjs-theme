@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
 
-import { Link, Action } from '../../atoms';
+import { Link, Action, Social } from '../../atoms';
 import ImageBlock from '../../molecules/ImageBlock';
 import CloseIcon from '../../svgs/close';
 import MenuIcon from '../../svgs/menu';
@@ -13,16 +13,19 @@ export default function Header(props) {
     const headerWidth = headerStyles.width || 'narrow';
     return (
         <header
-            className={classNames('sb-component', 'sb-component-header', props.isSticky ? 'sticky top-0 z-10' : 'relative')}
+            className={classNames('sb-component', 'sb-component-header', props.isSticky ? 'sticky top-0 z-10' : 'relative', 'border-b')}
             data-sb-field-path={`${props.annotationPrefix}:header`}
         >
-            <div className={classNames(headerStyles.padding || 'py-5 px-4')}>
-                <div className={classNames('mx-auto', mapMaxWidthStyles(headerWidth))}>
-                    <Link href="#main" className="sr-only">
-                        Skip to main content
-                    </Link>
-                    {headerVariants(props)}
-                </div>
+            <div
+                className={classNames('mx-auto', mapMaxWidthStyles(headerWidth), {
+                    'xl:border-l xl:border-r': headerWidth === 'narrow',
+                    '2xl:border-l 2xl:border-r': headerWidth === 'wide'
+                })}
+            >
+                <Link href="#main" className="sr-only">
+                    Skip to main content
+                </Link>
+                {headerVariants(props)}
             </div>
         </header>
     );
@@ -43,76 +46,73 @@ function headerVariants(props) {
 
 function headerVariantA(props) {
     const primaryLinks = props.primaryLinks || [];
-    const secondaryLinks = props.secondaryLinks || [];
+    const socialLinks = props.socialLinks || [];
     return (
-        <div className="flex items-center relative">
-            {(props.logo || (props.title && props.isTitleVisible)) && <div className="mr-8">{siteLogoLink(props)}</div>}
+        <div className="flex items-stretch relative">
+            {(props.logo || (props.title && props.isTitleVisible)) && <div className="border-r p-4">{siteLogoLink(props)}</div>}
             {primaryLinks.length > 0 && (
-                <ul className="hidden lg:flex lg:items-center mr-8 space-x-8" data-sb-field-path=".primaryLinks">
+                <ul className="hidden lg:flex divide-x divide-current border-r" data-sb-field-path=".primaryLinks">
                     {listOfLinks(primaryLinks)}
                 </ul>
             )}
-            {secondaryLinks.length > 0 && (
-                <ul className="hidden lg:flex lg:items-center ml-auto space-x-8" data-sb-field-path=".secondaryLinks">
-                    {listOfLinks(secondaryLinks)}
+            {socialLinks.length > 0 && (
+                <ul className="hidden lg:flex border-l ml-auto" data-sb-field-path=".socialLinks">
+                    {listOfSocialLinks(socialLinks)}
                 </ul>
             )}
-            {(primaryLinks.length > 0 || secondaryLinks.length > 0) && <MobileMenu {...props} />}
+            {(primaryLinks.length > 0 || socialLinks.length > 0) && <MobileMenu {...props} />}
         </div>
     );
 }
 
 function headerVariantB(props) {
     const primaryLinks = props.primaryLinks || [];
-    const secondaryLinks = props.secondaryLinks || [];
+    const socialLinks = props.socialLinks || [];
     return (
-        <div className="flex items-center relative">
-            {(props.logo || (props.title && props.isTitleVisible)) && <div className="mr-8">{siteLogoLink(props)}</div>}
+        <div className="flex items-stretch relative">
+            {(props.logo || (props.title && props.isTitleVisible)) && <div className="border-r p-4">{siteLogoLink(props)}</div>}
             {primaryLinks.length > 0 && (
-                <ul
-                    className="hidden lg:flex lg:items-center space-x-8 absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-auto"
-                    data-sb-field-path=".primaryLinks"
-                >
+                <ul className="hidden lg:flex border-l divide-x divide-current ml-auto" data-sb-field-path=".primaryLinks">
                     {listOfLinks(primaryLinks)}
                 </ul>
             )}
-            {secondaryLinks.length > 0 && (
-                <ul className="hidden lg:flex lg:items-center ml-auto space-x-8" data-sb-field-path=".secondaryLinks">
-                    {listOfLinks(secondaryLinks)}
+            {socialLinks.length > 0 && (
+                <ul className={classNames('hidden', 'lg:flex', 'border-l', { 'ml-auto': primaryLinks.length === 0 })} data-sb-field-path=".socialLinks">
+                    {listOfSocialLinks(socialLinks)}
                 </ul>
             )}
-            {(primaryLinks.length > 0 || secondaryLinks.length > 0) && <MobileMenu {...props} />}
+            {(primaryLinks.length > 0 || socialLinks.length > 0) && <MobileMenu {...props} />}
         </div>
     );
 }
 
 function headerVariantC(props) {
     const primaryLinks = props.primaryLinks || [];
-    const secondaryLinks = props.secondaryLinks || [];
+    const socialLinks = props.socialLinks || [];
     return (
-        <div className="flex items-center relative">
-            {(props.logo || (props.title && props.isTitleVisible)) && <div className="mr-8">{siteLogoLink(props)}</div>}
+        <div className="flex items-stretch relative">
+            {(props.logo || (props.title && props.isTitleVisible)) && <div className="border-r p-4">{siteLogoLink(props)}</div>}
+            {socialLinks.length > 0 && (
+                <ul className="hidden lg:flex border-l ml-auto" data-sb-field-path=".socialLinks">
+                    {listOfSocialLinks(socialLinks)}
+                </ul>
+            )}
             {primaryLinks.length > 0 && (
-                <ul className="hidden lg:flex lg:items-center ml-auto space-x-8" data-sb-field-path=".primaryLinks">
+                <ul
+                    className={classNames('hidden', 'lg:flex', 'border-l', 'divide-x', 'divide-current', { 'ml-auto': primaryLinks.length === 0 })}
+                    data-sb-field-path=".primaryLinks"
+                >
                     {listOfLinks(primaryLinks)}
                 </ul>
             )}
-            {secondaryLinks.length > 0 && (
-                <ul
-                    className={classNames('hidden', 'lg:flex', 'lg:items-center', 'space-x-8', primaryLinks.length > 0 ? 'ml-8' : 'ml-auto')}
-                    data-sb-field-path=".secondaryLinks"
-                >
-                    {listOfLinks(secondaryLinks)}
-                </ul>
-            )}
-            {(primaryLinks.length > 0 || secondaryLinks.length > 0) && <MobileMenu {...props} />}
+            {(primaryLinks.length > 0 || socialLinks.length > 0) && <MobileMenu {...props} />}
         </div>
     );
 }
 
 function MobileMenu(props) {
     const primaryLinks = props.primaryLinks || [];
-    const secondaryLinks = props.secondaryLinks || [];
+    const socialLinks = props.socialLinks || [];
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const router = useRouter();
 
@@ -146,9 +146,9 @@ function MobileMenu(props) {
                             {listOfLinks(primaryLinks, true)}
                         </ul>
                     )}
-                    {secondaryLinks.length > 0 && (
-                        <ul className="mb-10 space-y-5" data-sb-field-path=".secondaryLinks">
-                            {listOfLinks(secondaryLinks, true)}
+                    {socialLinks.length > 0 && (
+                        <ul className="mb-10 space-y-5" data-sb-field-path=".socialLinks">
+                            {listOfSocialLinks(socialLinks, true)}
                         </ul>
                     )}
                 </div>
@@ -172,8 +172,16 @@ function siteLogoLink(props) {
 
 function listOfLinks(links, inMobileMenu = false) {
     return links.map((link, index) => (
-        <li key={index}>
-            <Action {...link} className={classNames(inMobileMenu && link.type === 'Button' ? 'w-full' : '')} data-sb-field-path={`.${index}`} />
+        <li key={index} className={classNames(inMobileMenu ? 'w-full' : 'inline-flex items-stretch')}>
+            <Action {...link} className={classNames(inMobileMenu ? 'w-full' : 'p-4')} data-sb-field-path={`.${index}`} />
+        </li>
+    ));
+}
+
+function listOfSocialLinks(links, inMobileMenu = false) {
+    return links.map((link, index) => (
+        <li key={index} className={classNames(inMobileMenu ? '' : 'inline-flex items-stretch')}>
+            <Social {...link} className={classNames(inMobileMenu ? 'w-full' : 'p-4')} data-sb-field-path={`.${index}`} />
         </li>
     ));
 }

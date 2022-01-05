@@ -6,6 +6,8 @@ import ArrowLeft from '../../svgs/arrow-left';
 import ArrowLeftCircle from '../../svgs/arrow-left-circle';
 import ArrowRight from '../../svgs/arrow-right';
 import ArrowRightCircle from '../../svgs/arrow-right-circle';
+import ArrowUpLeft from '../../svgs/arrow-up-left';
+import ArrowUpRight from '../../svgs/arrow-up-right';
 import Cart from '../../svgs/cart';
 import ChevronLeft from '../../svgs/chevron-left';
 import ChevronRight from '../../svgs/chevron-right';
@@ -29,6 +31,8 @@ const iconMap = {
     arrowLeftCircle: ArrowLeftCircle,
     arrowRight: ArrowRight,
     arrowRightCircle: ArrowRightCircle,
+    arrowUpLeft: ArrowUpLeft,
+    arrowUpRight: ArrowUpRight,
     cart: Cart,
     chevronLeft: ChevronLeft,
     chevronRight: ChevronRight,
