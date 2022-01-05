@@ -19,5 +19,5 @@ postFeed:
         - pb-12
 styles:
   title:
-    textAlign: center
+    textAlign: left
 ---

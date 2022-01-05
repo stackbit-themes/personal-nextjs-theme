@@ -46,6 +46,7 @@ const components = {
     'RecentPostsSection': dynamic(() => import('./sections/RecentPostsSection')),
     'QuoteSection': dynamic(() => import('./sections/QuoteSection')),
     'SelectFormControl': dynamic(() => import('./molecules/FormBlock/SelectFormControl')),
+    'SkillsSection': dynamic(() => import('./sections/SkillsSection')),
     'TestimonialsSection': dynamic(() => import('./sections/TestimonialsSection')),
     'TextareaFormControl': dynamic(() => import('./molecules/FormBlock/TextareaFormControl')),
     'TextFormControl': dynamic(() => import('./molecules/FormBlock/TextFormControl')),

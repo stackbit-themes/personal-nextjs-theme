@@ -13,13 +13,13 @@ export default function Header(props) {
     const headerWidth = headerStyles.width || 'narrow';
     return (
         <header
-            className={classNames('sb-component', 'sb-component-header', props.isSticky ? 'sticky top-0 z-10' : 'relative', 'border-b')}
+            className={classNames('sb-component', 'sb-component-header', props.isSticky ? 'sticky top-0 z-10' : 'relative', 'border-b', 'border-current')}
             data-sb-field-path={`${props.annotationPrefix}:header`}
         >
             <div
                 className={classNames('mx-auto', mapMaxWidthStyles(headerWidth), {
-                    'xl:border-l xl:border-r': headerWidth === 'narrow',
-                    '2xl:border-l 2xl:border-r': headerWidth === 'wide'
+                    'xl:border-l xl:border-r border-current': headerWidth === 'narrow',
+                    '2xl:border-l 2xl:border-r border-current': headerWidth === 'wide'
                 })}
             >
                 <Link href="#main" className="sr-only">
@@ -49,14 +49,14 @@ function headerVariantA(props) {
     const socialLinks = props.socialLinks || [];
     return (
         <div className="flex items-stretch relative">
-            {(props.logo || (props.title && props.isTitleVisible)) && <div className="border-r p-4">{siteLogoLink(props)}</div>}
+            {(props.logo || (props.title && props.isTitleVisible)) && <div className="border-r border-current p-4">{siteLogoLink(props)}</div>}
             {primaryLinks.length > 0 && (
-                <ul className="hidden lg:flex divide-x divide-current border-r" data-sb-field-path=".primaryLinks">
+                <ul className="hidden lg:flex divide-x divide-current border-r border-current" data-sb-field-path=".primaryLinks">
                     {listOfLinks(primaryLinks)}
                 </ul>
             )}
             {socialLinks.length > 0 && (
-                <ul className="hidden lg:flex border-l ml-auto" data-sb-field-path=".socialLinks">
+                <ul className="hidden lg:flex border-l border-current ml-auto" data-sb-field-path=".socialLinks">
                     {listOfSocialLinks(socialLinks)}
                 </ul>
             )}
@@ -70,14 +70,17 @@ function headerVariantB(props) {
     const socialLinks = props.socialLinks || [];
     return (
         <div className="flex items-stretch relative">
-            {(props.logo || (props.title && props.isTitleVisible)) && <div className="border-r p-4">{siteLogoLink(props)}</div>}
+            {(props.logo || (props.title && props.isTitleVisible)) && <div className="border-r border-current p-4">{siteLogoLink(props)}</div>}
             {primaryLinks.length > 0 && (
-                <ul className="hidden lg:flex border-l divide-x divide-current ml-auto" data-sb-field-path=".primaryLinks">
+                <ul className="hidden lg:flex border-l border-current divide-x divide-current ml-auto" data-sb-field-path=".primaryLinks">
                     {listOfLinks(primaryLinks)}
                 </ul>
             )}
             {socialLinks.length > 0 && (
-                <ul className={classNames('hidden', 'lg:flex', 'border-l', { 'ml-auto': primaryLinks.length === 0 })} data-sb-field-path=".socialLinks">
+                <ul
+                    className={classNames('hidden', 'lg:flex', 'border-l', 'border-current', { 'ml-auto': primaryLinks.length === 0 })}
+                    data-sb-field-path=".socialLinks"
+                >
                     {listOfSocialLinks(socialLinks)}
                 </ul>
             )}
@@ -91,15 +94,17 @@ function headerVariantC(props) {
     const socialLinks = props.socialLinks || [];
     return (
         <div className="flex items-stretch relative">
-            {(props.logo || (props.title && props.isTitleVisible)) && <div className="border-r p-4">{siteLogoLink(props)}</div>}
+            {(props.logo || (props.title && props.isTitleVisible)) && <div className="border-r border-current p-4">{siteLogoLink(props)}</div>}
             {socialLinks.length > 0 && (
-                <ul className="hidden lg:flex border-l ml-auto" data-sb-field-path=".socialLinks">
+                <ul className="hidden lg:flex border-l border-current ml-auto" data-sb-field-path=".socialLinks">
                     {listOfSocialLinks(socialLinks)}
                 </ul>
             )}
             {primaryLinks.length > 0 && (
                 <ul
-                    className={classNames('hidden', 'lg:flex', 'border-l', 'divide-x', 'divide-current', { 'ml-auto': primaryLinks.length === 0 })}
+                    className={classNames('hidden', 'lg:flex', 'border-l', 'border-current', 'divide-x', 'divide-current', {
+                        'ml-auto': primaryLinks.length === 0
+                    })}
                     data-sb-field-path=".primaryLinks"
                 >
                     {listOfLinks(primaryLinks)}

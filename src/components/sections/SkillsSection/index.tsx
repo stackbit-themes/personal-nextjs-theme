@@ -1,20 +1,17 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
+import { Link } from '../../atoms';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import { getDataAttrs } from '../../../utils/get-data-attrs';
-import Action from '../../atoms/Action';
-import FeaturedItem from './FeaturedItem';
 
-export default function FeaturedItemsSection(props) {
+export default function SkillsSection(props) {
     const cssId = props.elementId || null;
     const styles = props.styles || {};
     const sectionWidth = styles.self?.width || 'wide';
     const sectionHeight = styles.self?.height || 'auto';
     const sectionJustifyContent = styles.self?.justifyContent || 'center';
-    const featuredItems = props.items || [];
-    const spacingX = props.spacingX || props.spacingX === 0 ? props.spacingX : 16;
-    const spacingY = props.spacingY || props.spacingY === 0 ? props.spacingY : 16;
+    const items = props.items || [];
     return (
         <div
             id={cssId}
@@ -22,7 +19,7 @@ export default function FeaturedItemsSection(props) {
             className={classNames(
                 'sb-component',
                 'sb-component-section',
-                'sb-component-featured-items-section',
+                'sb-component-skills-section',
                 'flex',
                 'flex-col',
                 'justify-center',
@@ -54,20 +51,15 @@ export default function FeaturedItemsSection(props) {
                             {props.subtitle}
                         </p>
                     )}
-                    {featuredItemActions(props)}
-                    {featuredItems.length > 0 && (
+                    {items.length > 0 && (
                         <div
-                            className={classNames('grid', mapColStyles(props?.columns || 3), {
-                                'mt-12 lg:mt-16': props.title || props.subtitle || (props.actions || []).length > 0
+                            className={classNames('flex', 'flex-wrap', mapColStyles(props?.columns || 3), {
+                                'mt-12 lg:mt-16': props.title || props.subtitle
                             })}
-                            style={{
-                                columnGap: spacingX ? `${spacingX}px` : undefined,
-                                rowGap: spacingY ? `${spacingY}px` : undefined
-                            }}
                             data-sb-field-path=".items"
                         >
                             {props.items.map((item, index) => (
-                                <FeaturedItem key={index} {...item} enableHover={props.enableHover} data-sb-field-path={`.${index}`} />
+                                <SkillItem key={index} {...item} data-sb-field-path={`.${index}`} />
                             ))}
                         </div>
                     )}
@@ -77,24 +69,19 @@ export default function FeaturedItemsSection(props) {
     );
 }
 
-function featuredItemActions(props) {
-    const actions = props.actions || [];
-    if (actions.length === 0) {
+function SkillItem(props) {
+    if (!props.label) {
         return null;
     }
-    const styles = props.styles || {};
-    return (
-        <div className={classNames('overflow-x-hidden', { 'mt-8': props.title || props.subtitle })}>
-            <div
-                className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', styles.actions ? mapStyles(styles.actions) : null)}
-                data-sb-field-path=".actions"
-            >
-                {actions.map((action, index) => (
-                    <Action key={index} {...action} className="mb-3 mx-2 lg:whitespace-nowrap" data-sb-field-path={`.${index}`} />
-                ))}
-            </div>
-        </div>
-    );
+    if (props.url) {
+        return (
+            <Link href={props.url} className="sb-component sb-component-block sb-component-button sb-component-button-primary mr-6 mb-6">
+                {props.label}
+            </Link>
+        );
+    } else {
+        return <div className="sb-component sb-component-block sb-component-button sb-component-button-primary mr-6 mb-6">{props.label}</div>;
+    }
 }
 
 function mapColStyles(columns) {

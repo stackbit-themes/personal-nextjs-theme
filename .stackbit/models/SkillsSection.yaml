@@ -1,6 +1,6 @@
 type: object
-name: FeaturedItemsSection
-label: Featured items
+name: SkillsSection
+label: Skills
 labelField: title
 thumbnail: https://assets.stackbit.com/components/models/thumbnails/default.png
 extends:
@@ -16,7 +16,7 @@ fields:
   - type: string
     name: title
     label: Title
-    default: Featured Items
+    default: Skills
   - type: string
     name: subtitle
     label: Subtitle
@@ -27,76 +27,10 @@ fields:
     items:
       type: model
       models:
-        - FeaturedItem
+        - Skill
     default:
-      - type: FeaturedItem
-        title: Item Title
-        text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. explicabo.'
-        featuredImage:
-          type: ImageBlock
-          url: 'https://assets.stackbit.com/components/images/default/default-image.png'
-          altText: Item image
-        styles:
-          title:
-            textAlign: left
-          subtitle:
-            fontWeight: 400
-            fontStyle: normal
-            textAlign: left
-          text:
-            textAlign: left
-          actions:
-            justifyContent: flex-start
-  - type: list
-    name: actions
-    label: Actions
-    items:
-      type: model
-      models:
-        - Button
-        - Link
-    default:
-      - type: Button
-        label: Apply Now
-        url: '#'
-        style: primary
-      - type: Button
-        label: Learn More
-        url: '#'
-        style: secondary
-  - type: number
-    name: columns
-    label: Items per row
-    group: styles
-    controlType: 'slider'
-    min: 1
-    max: 4
-    step: 1
-    default: 3
-  - type: boolean
-    name: enableHover
-    label: Enable hover
-    default: false
-  - type: number
-    name: spacingX
-    label: Horizontal spacing between items
-    group: styles
-    controlType: 'slider'
-    min: 0
-    max: 160
-    step: 1
-    unit: 'px'
-    default: 16
-  - type: number
-    name: spacingY
-    label: Vertical spacing between items
-    group: styles
-    controlType: 'slider'
-    min: 0
-    max: 160
-    step: 1
-    unit: 'px'
-    default: 16
+      - type: Skill
+        label: Skill title
   - type: style
     name: styles
     styles:
@@ -130,8 +64,6 @@ fields:
         fontWeight: ['400', '500']
         fontStyle: ['normal', 'italic']
         textAlign: ['left', 'center', 'right']
-      actions:
-        justifyContent: ['flex-start', 'flex-end', 'center']
     default:
       self:
         height: auto
@@ -149,5 +81,3 @@ fields:
         fontWeight: 400
         fontStyle: normal
         textAlign: center
-      actions:
-        justifyContent: center
