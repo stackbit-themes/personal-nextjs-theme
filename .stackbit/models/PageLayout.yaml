@@ -46,7 +46,7 @@ fields:
         borderColor: '#ececec'
     default: colors-d
   - type: model
-    name: BackgroundImage
+    name: backgroundImage
     group: styles
     label: Site background image
     models:
