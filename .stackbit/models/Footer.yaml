@@ -1,55 +1,9 @@
 type: object
 name: Footer
 label: Footer
-labelField: title
+labelField: copyrightText
 readOnly: true
-fieldGroups:
-  - name: styles
-    label: Styles
-  - name: settings
-    label: Settings
 fields:
-  - type: enum
-    name: variant
-    group: styles
-    label: Footer arrangement
-    options:
-      - label: Two columns
-        value: variant-a
-      - label: One column, centered
-        value: variant-b
-    default: variant-a
-  - type: model
-    name: logo
-    label: Logo
-    models: [ImageBlock]
-    default:
-      default:
-      type: ImageBlock
-      url: 'https://assets.stackbit.com/components/images/default/default-image.png'
-      altText: 'Your logo image'
-      caption: ''
-  - type: string
-    name: title
-    label: Title
-    default: Your Brand
-  - type: markdown
-    name: text
-    label: Text
-    default: A description of your brand
-  - type: model
-    name: contacts
-    label: Contacts
-    models: [ContactBlock]
-    default:
-      phoneNumber: '850-123-5021'
-      phoneAltText: 'Call us'
-      email: 'john@doe.com'
-      emailAltText: 'Email us'
-  - type: markdown
-    name: copyrightText
-    label: Copyright text
-    default: Copyright text
   - type: list
     name: primaryLinks
     label: Primary navigation links
@@ -64,48 +18,22 @@ fields:
         url: /
         altText: Projects
       - type: Link
-        label: Documentation
+        label: Info
         url: /
-        altText: Documentation
-  - type: list
-    name: socialLinks
-    label: Social links
-    items:
-      type: model
-      models:
-        - Social
+        altText: Info
+  - type: model
+    name: contacts
+    label: Contacts
+    models: [ContactBlock]
     default:
-      - type: Social
-        icon: facebook
-        label: ''
-        altText: facebook
-        url: /
-        elementId: false
-        showIcon: true
-      - type: Social
-        icon: twitter
-        label: ''
-        altText: twitter
-        url: /
-        elementId: false
-        showIcon: true
-  - type: list
-    name: legalLinks
-    label: Legal navigation links
-    items:
-      type: model
-      models:
-        - Button
-        - Link
-    default:
-      - type: Link
-        label: Privacy Policy
-        url: /
-        altText: Privacy Policy
-      - type: Link
-        label: Terms & Conditions
-        url: /
-        altText: Terms & Conditions
+      phoneNumber: '850-123-5021'
+      phoneAltText: 'Call us'
+      email: 'john@doe.com'
+      emailAltText: 'Email us'
+  - type: markdown
+    name: copyrightText
+    label: Copyright text
+    default: Copyright text
   - type: style
     name: styles
     styles:

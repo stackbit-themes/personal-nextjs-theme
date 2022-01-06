@@ -44,7 +44,32 @@
         }
     },
     "footer": {
-        "variant": "variant-a",
+        "primaryLinks": [
+            {
+                "type": "Link",
+                "label": "Info",
+                "url": "/info",
+                "altText": ""
+            },
+            {
+                "type": "Link",
+                "label": "Contact",
+                "url": "/contact",
+                "altText": ""
+            },
+            {
+                "type": "Link",
+                "label": "Blog",
+                "url": "/blog",
+                "altText": ""
+            },
+            {
+                "type": "Link",
+                "label": "GitHub",
+                "url": "https://github.com/",
+                "altText": ""
+            }
+        ],
         "contacts": {
             "title": "Contact details",
             "phoneNumber": "850-123-5021",
@@ -55,48 +80,6 @@
             "addressAltText": "Our address"
         },
         "copyrightText": "Powered by [Stackbit](https://www.stackbit.com/)",
-        "primaryLinks": [
-            {
-                "type": "Link",
-                "label": "Info",
-                "url": "/info",
-                "altText": ""
-            },
-            {
-                "type": "Link",
-                "label": "Blog",
-                "url": "/blog",
-                "altText": ""
-            }
-        ],
-        "socialLinks": [
-            {
-                "type": "Social",
-                "altText": "Twitter",
-                "label": "Twitter",
-                "url": "/",
-                "icon": "twitter"
-            },
-            {
-                "type": "Social",
-                "altText": "GitHub",
-                "label": "GitHub",
-                "url": "/",
-                "icon": "github"
-            }
-        ],
-        "legalLinks": [
-            {
-                "type": "Link",
-                "label": "Privacy Policy",
-                "url": "/"
-            },
-            {
-                "type": "Link",
-                "label": "Terms & Conditions",
-                "url": "/"
-            }
-        ],
         "styles": {
             "self": {
                 "width": "narrow",

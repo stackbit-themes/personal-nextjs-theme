@@ -49,7 +49,7 @@ function headerVariantA(props) {
     const socialLinks = props.socialLinks || [];
     return (
         <div className="flex items-stretch relative">
-            {(props.logo || (props.title && props.isTitleVisible)) && <div className="border-r border-current p-4">{siteLogoLink(props)}</div>}
+            {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
             {primaryLinks.length > 0 && (
                 <ul className="hidden lg:flex divide-x divide-current border-r border-current" data-sb-field-path=".primaryLinks">
                     {listOfLinks(primaryLinks)}
@@ -70,7 +70,7 @@ function headerVariantB(props) {
     const socialLinks = props.socialLinks || [];
     return (
         <div className="flex items-stretch relative">
-            {(props.logo || (props.title && props.isTitleVisible)) && <div className="border-r border-current p-4">{siteLogoLink(props)}</div>}
+            {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
             {primaryLinks.length > 0 && (
                 <ul className="hidden lg:flex border-l border-current divide-x divide-current ml-auto" data-sb-field-path=".primaryLinks">
                     {listOfLinks(primaryLinks)}
@@ -94,7 +94,7 @@ function headerVariantC(props) {
     const socialLinks = props.socialLinks || [];
     return (
         <div className="flex items-stretch relative">
-            {(props.logo || (props.title && props.isTitleVisible)) && <div className="border-r border-current p-4">{siteLogoLink(props)}</div>}
+            {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
             {socialLinks.length > 0 && (
                 <ul className="hidden lg:flex border-l border-current ml-auto" data-sb-field-path=".socialLinks">
                     {listOfSocialLinks(socialLinks)}
@@ -134,25 +134,39 @@ function MobileMenu(props) {
 
     return (
         <div className="ml-auto lg:hidden">
-            <button aria-label="Open Menu" title="Open Menu" className="p-2 -mr-1 focus:outline-none" onClick={() => setIsMenuOpen(true)}>
+            <button
+                aria-label="Open Menu"
+                title="Open Menu"
+                className="border-l border-current h-10 min-h-full p-4 focus:outline-none"
+                onClick={() => setIsMenuOpen(true)}
+            >
                 <span className="sr-only">Open Menu</span>
                 <MenuIcon className="fill-current h-6 w-6" />
             </button>
-            <div className={classNames('fixed', 'inset-0', 'px-4', 'sm:px-8', 'py-5', 'overflow-y-auto', 'z-20', isMenuOpen ? 'block' : 'hidden')}>
+            <div className={classNames('bg-black', 'fixed', 'inset-0', 'overflow-y-auto', 'z-20', isMenuOpen ? 'block' : 'hidden')}>
                 <div className="flex flex-col min-h-full">
-                    <div className="flex items-center justify-between mb-10">
+                    <div className="border-b border-current flex items-stretch justify-between">
                         {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
-                        <button aria-label="Close Menu" title="Close Menu" className="p-2 -mr-1 focus:outline-none" onClick={() => setIsMenuOpen(false)}>
-                            <CloseIcon className="fill-current h-6 w-6" />
-                        </button>
+                        <div className="border-l border-current">
+                            <button
+                                aria-label="Close Menu"
+                                title="Close Menu"
+                                className="h-10 min-h-full p-4 focus:outline-none"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                <CloseIcon className="fill-current h-6 w-6" />
+                            </button>
+                        </div>
                     </div>
                     {primaryLinks.length > 0 && (
-                        <ul className="flex-grow mb-10 space-y-6" data-sb-field-path=".primaryLinks">
-                            {listOfLinks(primaryLinks, true)}
-                        </ul>
+                        <div className="flex flex-col justify-center flex-grow px-4 py-12">
+                            <ul className="space-y-6" data-sb-field-path=".primaryLinks">
+                                {listOfLinks(primaryLinks, true)}
+                            </ul>
+                        </div>
                     )}
                     {socialLinks.length > 0 && (
-                        <ul className="mb-10 space-y-5" data-sb-field-path=".socialLinks">
+                        <ul className="flex flex-wrap justify-center px-4 py-8" data-sb-field-path=".socialLinks">
                             {listOfSocialLinks(socialLinks, true)}
                         </ul>
                     )}
@@ -164,14 +178,16 @@ function MobileMenu(props) {
 
 function siteLogoLink(props) {
     return (
-        <Link href="/" aria-label={props.title} className="sb-header-logo flex items-center">
-            {props.logo && <ImageBlock {...props.logo} className={classNames('max-h-12', { 'mr-2': props.isTitleVisible })} data-sb-field-path=".logo" />}
-            {props.title && props.isTitleVisible && (
-                <span className="text-2xl uppercase font-medium" data-sb-field-path=".title">
-                    {props.title}
-                </span>
-            )}
-        </Link>
+        <div className="border-r border-current flex items-center p-4">
+            <Link href="/" aria-label={props.title} className="sb-header-logo flex items-center">
+                {props.logo && <ImageBlock {...props.logo} className={classNames('max-h-12', { 'mr-2': props.isTitleVisible })} data-sb-field-path=".logo" />}
+                {props.title && props.isTitleVisible && (
+                    <span className="text-2xl uppercase" data-sb-field-path=".title">
+                        {props.title}
+                    </span>
+                )}
+            </Link>
+        </div>
     );
 }
 
