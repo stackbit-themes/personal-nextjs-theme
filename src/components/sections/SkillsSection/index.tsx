@@ -78,7 +78,7 @@ function SkillItem(props) {
         return (
             <Link
                 href={props.url}
-                className="sb-skills-section-item mr-6 mb-6"
+                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon mr-6 mb-6"
                 data-sb-field-path={`${annotationPrefix} ${annotationPrefix}.url#@href ${annotationPrefix}.label#span[1]`}
             >
                 <span>{props.label}</span>
@@ -86,7 +86,10 @@ function SkillItem(props) {
         );
     } else {
         return (
-            <div className="sb-skills-section-item mr-6 mb-6" data-sb-field-path={`${annotationPrefix} ${annotationPrefix}.label#span[1]`}>
+            <div
+                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon mr-6 mb-6"
+                data-sb-field-path={`${annotationPrefix} ${annotationPrefix}.label#span[1]`}
+            >
                 <span>{props.label}</span>
             </div>
         );

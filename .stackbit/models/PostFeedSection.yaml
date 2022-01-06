@@ -34,10 +34,6 @@ fields:
     name: showReadMoreLink
     label: Show keep reading link
     default: false
-  - type: string
-    name: readMoreLinkLabel
-    label: Keep reading link label
-    default: ''
   - type: enum
     name: variant
     group: styles

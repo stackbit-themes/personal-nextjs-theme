@@ -29,7 +29,6 @@
                 "showAuthor": false,
                 "showExcerpt": true,
                 "showReadMoreLink": true,
-                "readMoreLinkLabel": "Join adventure",
                 "styles": {
                     "self": {
                         "height": "auto",
@@ -63,7 +62,6 @@
                 "showAuthor": false,
                 "showExcerpt": false,
                 "showReadMoreLink": true,
-                "readMoreLinkLabel": "Join adventure",
                 "styles": {
                     "self": {
                         "height": "auto",
@@ -113,7 +111,6 @@
                 "showAuthor": false,
                 "showExcerpt": true,
                 "showReadMoreLink": true,
-                "readMoreLinkLabel": "Join adventure",
                 "styles": {
                     "self": {
                         "height": "auto",
@@ -156,7 +153,6 @@
                 "showAuthor": false,
                 "showExcerpt": false,
                 "showReadMoreLink": true,
-                "readMoreLinkLabel": "Join adventure",
                 "styles": {
                     "self": {
                         "height": "auto",

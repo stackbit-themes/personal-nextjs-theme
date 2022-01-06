@@ -99,14 +99,20 @@ module.exports = {
                     padding: `${themeStyle.buttonPrimary.verticalPadding}px ${themeStyle.buttonPrimary.horizontalPadding}px`,
                     textTransform: themeStyle.buttonPrimary.case
                 },
+                '.sb-component-button-primary.sb-component-button-icon': {
+                    padding: `${themeStyle.buttonPrimary.verticalPadding}px`
+                },
                 '.sb-component-button-secondary': {
-                    borderRadius: theme(`borderRadius.${themeStyle.buttonSecondary.borderRadius}`),
+                    borderRadius: theme('borderRadius.full'),
                     borderStyle: theme(`borderStyle.${themeStyle.buttonSecondary.borderStyle}`),
                     boxShadow: theme(`boxShadow.${themeStyle.buttonSecondary.shadow}`),
                     fontWeight: themeStyle.buttonSecondary.weight,
                     letterSpacing: theme(`letterSpacing.${themeStyle.buttonSecondary.letterSpacing}`),
                     padding: `${themeStyle.buttonSecondary.verticalPadding}px ${themeStyle.buttonSecondary.horizontalPadding}px`,
                     textTransform: themeStyle.buttonSecondary.case
+                },
+                '.sb-component-button-secondary.sb-component-button-icon': {
+                    padding: `${themeStyle.buttonSecondary.verticalPadding}px`
                 },
                 '.sb-component-link': {
                     fontWeight: themeStyle.link.weight,

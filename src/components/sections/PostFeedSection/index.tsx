@@ -142,9 +142,9 @@ function postsVariantA(props) {
                                         <div>
                                             <Link
                                                 href={getPageUrlPath(post)}
-                                                className="sb-component sb-component-block sb-component-button sb-component-button-primary"
+                                                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"
                                             >
-                                                {props.readMoreLinkLabel && <span className="mr-3">{props.readMoreLinkLabel}</span>}
+                                                <span className="sr-only">Read more</span>
                                                 <ArrowUpRightIcon className="fill-current h-5 w-5" />
                                             </Link>
                                         </div>
@@ -204,9 +204,9 @@ function postsVariantB(props) {
                                         <div>
                                             <Link
                                                 href={getPageUrlPath(post)}
-                                                className="sb-component sb-component-block sb-component-button sb-component-button-primary"
+                                                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"
                                             >
-                                                {props.readMoreLinkLabel && <span className="mr-3">{props.readMoreLinkLabel}</span>}
+                                                <span className="sr-only">Read more</span>
                                                 <ArrowUpRightIcon className="fill-current h-5 w-5" />
                                             </Link>
                                         </div>
@@ -270,9 +270,9 @@ function postsVariantC(props) {
                                         <div>
                                             <Link
                                                 href={getPageUrlPath(post)}
-                                                className="sb-component sb-component-block sb-component-button sb-component-button-primary"
+                                                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"
                                             >
-                                                {props.readMoreLinkLabel && <span className="mr-3">{props.readMoreLinkLabel}</span>}
+                                                <span className="sr-only">Read more</span>
                                                 <ArrowUpRightIcon className="fill-current h-5 w-5" />
                                             </Link>
                                         </div>
@@ -301,7 +301,7 @@ function postsVariantD(props) {
         >
             {posts.map((post, index) => (
                 <article key={index} data-sb-object-id={post.__metadata?.id} className="sb-card overflow-hidden">
-                    <div className="md:flex">
+                    <div className="md:flex md:items-center">
                         {post.featuredImage && (
                             <div className="md:w-2/5">
                                 <Link
@@ -331,9 +331,12 @@ function postsVariantD(props) {
                             )}
                         </div>
                         <div>
-                            <Link href={getPageUrlPath(post)} className="sb-component sb-component-block sb-component-button sb-component-button-primary">
-                                {props.readMoreLinkLabel && <span className="mr-3">{props.readMoreLinkLabel}</span>}
-                                <ArrowUpRightIcon className="fill-current h-5 w-5" />
+                            <Link
+                                href={getPageUrlPath(post)}
+                                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"
+                            >
+                                <span className="sr-only">Read more</span>
+                                <ArrowUpRightIcon className="fill-current h-7 w-7" />
                             </Link>
                         </div>
                     </div>
@@ -349,7 +352,7 @@ function PostDate({ post, className = '' }) {
     }
     const date = post.date;
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
-    const formattedDate = dayjs(date).format('MM/DD/YYYY');
+    const formattedDate = dayjs(date).format('MM-DD-YYYY');
     return (
         <div className={className ? className : null}>
             <time dateTime={dateTimeAttr} data-sb-field-path="date">

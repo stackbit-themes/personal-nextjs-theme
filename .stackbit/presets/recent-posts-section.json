@@ -23,7 +23,6 @@
                 "showAuthor": false,
                 "showExcerpt": true,
                 "showReadMoreLink": true,
-                "readMoreLinkLabel": "Join adventure",
                 "recentCount": 5,
                 "styles": {
                     "self": {
