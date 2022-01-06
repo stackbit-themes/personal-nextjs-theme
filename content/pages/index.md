@@ -137,7 +137,7 @@ sections:
     styles:
       self:
         height: auto
-        width: narrow
+        width: wide
         margin:
           - mt-0
           - mb-0
@@ -152,7 +152,7 @@ sections:
         justifyContent: center
         flexDirection: row
       title:
-        textAlign: center
+        textAlign: left
       text:
-        textAlign: center
+        textAlign: left
 ---
