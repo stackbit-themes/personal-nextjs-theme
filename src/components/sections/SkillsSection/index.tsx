@@ -73,14 +73,23 @@ function SkillItem(props) {
     if (!props.label) {
         return null;
     }
+    const annotationPrefix = props['data-sb-field-path'] || '';
     if (props.url) {
         return (
-            <Link href={props.url} className="sb-component sb-component-block sb-component-button sb-component-button-primary mr-6 mb-6">
-                {props.label}
+            <Link
+                href={props.url}
+                className="sb-skills-section-item mr-6 mb-6"
+                data-sb-field-path={`${annotationPrefix} ${annotationPrefix}.url#@href ${annotationPrefix}.label#span[1]`}
+            >
+                <span>{props.label}</span>
             </Link>
         );
     } else {
-        return <div className="sb-component sb-component-block sb-component-button sb-component-button-primary mr-6 mb-6">{props.label}</div>;
+        return (
+            <div className="sb-skills-section-item mr-6 mb-6" data-sb-field-path={`${annotationPrefix} ${annotationPrefix}.label#span[1]`}>
+                <span>{props.label}</span>
+            </div>
+        );
     }
 }
 
