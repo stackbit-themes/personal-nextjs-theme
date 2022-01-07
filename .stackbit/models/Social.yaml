@@ -44,19 +44,6 @@ fields:
       - label: YouTube
         value: youtube
     default: facebook
-  - type: enum
-    name: style
-    group: styles
-    controlType: button-group
-    label: Style
-    options:
-      - label: Link
-        value: link
-      - label: Primary
-        value: primary
-      - label: Secondary
-        value: secondary
-    default: link
   - type: string
     name: elementId
     group: settings

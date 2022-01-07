@@ -73,10 +73,6 @@ fields:
     max: 4
     step: 1
     default: 3
-  - type: boolean
-    name: enableHover
-    label: Enable hover
-    default: false
   - type: number
     name: spacingX
     label: Horizontal spacing between items

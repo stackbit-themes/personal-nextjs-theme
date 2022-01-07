@@ -92,8 +92,6 @@ module.exports = {
             });
             addComponents({
                 '.sb-component-button-primary': {
-                    borderRadius: theme(`borderRadius.${themeStyle.buttonPrimary.borderRadius}`),
-                    boxShadow: theme(`boxShadow.${themeStyle.buttonPrimary.shadow}`),
                     fontWeight: themeStyle.buttonPrimary.weight,
                     letterSpacing: theme(`letterSpacing.${themeStyle.buttonPrimary.letterSpacing}`),
                     padding: `${themeStyle.buttonPrimary.verticalPadding}px ${themeStyle.buttonPrimary.horizontalPadding}px`,
@@ -103,9 +101,6 @@ module.exports = {
                     padding: `${themeStyle.buttonPrimary.verticalPadding}px`
                 },
                 '.sb-component-button-secondary': {
-                    borderRadius: theme('borderRadius.full'),
-                    borderStyle: theme(`borderStyle.${themeStyle.buttonSecondary.borderStyle}`),
-                    boxShadow: theme(`boxShadow.${themeStyle.buttonSecondary.shadow}`),
                     fontWeight: themeStyle.buttonSecondary.weight,
                     letterSpacing: theme(`letterSpacing.${themeStyle.buttonSecondary.letterSpacing}`),
                     padding: `${themeStyle.buttonSecondary.verticalPadding}px ${themeStyle.buttonSecondary.horizontalPadding}px`,

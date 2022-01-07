@@ -34,7 +34,6 @@ export default function Social(props) {
         `${annotationPrefix}.label#span[1]`,
         `${annotationPrefix}.icon#svg[1]`
     ];
-    const style = props.style || 'link';
     const cssClasses = props.className || null;
     const cssId = props.elementId || null;
 
@@ -43,10 +42,7 @@ export default function Social(props) {
             href={url}
             aria-label={altText}
             id={cssId}
-            className={classNames('sb-component', 'sb-component-block', 'sb-component-social', cssClasses, {
-                'sb-component-social-primary': style === 'primary',
-                'sb-component-social-secondary': style === 'secondary'
-            })}
+            className={classNames('sb-component', 'sb-component-block', 'sb-component-social', cssClasses)}
             data-sb-field-path={annotations.join(' ').trim()}
         >
             {label && <span className="sr-only">{label}</span>}

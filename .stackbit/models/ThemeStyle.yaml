@@ -651,18 +651,6 @@ fields:
           - label: Wider
             value: wider
         default: normal
-      - type: enum
-        name: borderRadius
-        label: Corner radius
-        controlType: button-group
-        options:
-          - label: None
-            value: none
-          - label: Small
-            value: md
-          - label: Large
-            value: full
-        default: none
       - type: number
         name: horizontalPadding
         label: Horizontal padding
@@ -681,18 +669,6 @@ fields:
         step: 1
         unit: 'px'
         default: 12
-      - type: enum
-        name: shadow
-        label: Shadow
-        controlType: button-group
-        options:
-          - label: None
-            value: none
-          - label: Mild
-            value: md
-          - label: Float
-            value: xl
-        default: none
   - type: object
     name: buttonSecondary
     label: Secondary button
@@ -739,34 +715,6 @@ fields:
           - label: Wider
             value: wider
         default: normal
-      - type: enum
-        name: borderRadius
-        label: Corner radius
-        controlType: button-group
-        options:
-          - label: None
-            value: none
-          - label: Small
-            value: md
-          - label: Large
-            value: full
-        default: none
-      - type: enum
-        name: borderStyle
-        label: Border style
-        controlType: button-group
-        options:
-          - label: None
-            value: none
-          - label: Solid
-            value: solid
-          - label: Dashed
-            value: dashed
-          - label: Dotted
-            value: dotted
-          - label: Double
-            value: double
-        default: solid
       - type: number
         name: horizontalPadding
         label: Horizontal padding
@@ -785,18 +733,6 @@ fields:
         step: 1
         unit: 'px'
         default: 12
-      - type: enum
-        name: shadow
-        label: Shadow
-        controlType: button-group
-        options:
-          - label: None
-            value: none
-          - label: Mild
-            value: md
-          - label: Float
-            value: xl
-        default: none
   - type: object
     name: link
     label: Link

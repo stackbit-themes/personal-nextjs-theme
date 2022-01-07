@@ -48,12 +48,12 @@ export default function Footer(props) {
 
 function Contacts(props) {
     const cssClasses = props.className || null;
-    const cssClassesItem = props.classNameItem || null;
     return (
         <div className={cssClasses} data-sb-field-path=".contacts">
             {props.phoneNumber && (
-                <p className={cssClassesItem}>
+                <p>
                     <a
+                        className="underline hover:no-underline"
                         href={`tel:${props.phoneNumber}`}
                         aria-label={props.phoneAltText}
                         data-sb-field-path=".phoneNumber .phoneNumber#@href .phoneAltText#@title"
@@ -63,16 +63,22 @@ function Contacts(props) {
                 </p>
             )}
             {props.email && (
-                <p className={cssClassesItem}>
-                    <a href={`mailto:${props.email}`} aria-label={props.emailAltText} data-sb-field-path=".email .email#@href .emailAltText#@title">
+                <p>
+                    <a
+                        className="underline hover:no-underline"
+                        href={`mailto:${props.email}`}
+                        aria-label={props.emailAltText}
+                        data-sb-field-path=".email .email#@href .emailAltText#@title"
+                    >
                         {props.email}
                     </a>
                 </p>
             )}
             {props.address && (
-                <p className={cssClassesItem}>
+                <p>
                     <a
-                        href={`https://www.google.com/maps/search/${props.address}`}
+                        className="underline hover:no-underline"
+                        href={`https://www.google.com/maps/search/${encodeURIComponent(props.address)}`}
                         aria-label={props.addressAltText}
                         target="_blank"
                         rel="noopener noreferrer"

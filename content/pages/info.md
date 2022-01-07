@@ -171,7 +171,6 @@ sections:
               - pb-0
               - pr-0
     columns: 3
-    enableHover: false
     spacingX: 120
     spacingY: 0
     styles:
@@ -275,7 +274,6 @@ sections:
               - pb-0
               - pr-0
     columns: 2
-    enableHover: false
     spacingX: 60
     spacingY: 60
     styles:

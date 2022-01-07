@@ -53,13 +53,21 @@ sections:
       actions:
         justifyContent: flex-start
     type: HeroSection
-  - elementId: ''
+  - type: FeaturedPostsSection
+    elementId: ''
     variant: variant-d
     title: Posts
+    actions:
+      - type: Link
+        label: See all posts
+        url: /blog
     posts:
       - content/pages/blog/post-five.md
       - content/pages/blog/post-four.md
       - content/pages/blog/post-one.md
+    showDate: true
+    showExcerpt: true
+    showReadMoreLink: true
     styles:
       self:
         height: auto
@@ -84,11 +92,7 @@ sections:
       subtitle:
         textAlign: left
       actions:
-        justifyContent: flex-start
-    type: FeaturedPostsSection
-    showDate: true
-    showExcerpt: true
-    showReadMoreLink: true
+        justifyContent: flex-end
   - type: ContactSection
     title: Got an interesting project? Tell me more...💬
     form:

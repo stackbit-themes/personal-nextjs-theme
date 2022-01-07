@@ -53,8 +53,8 @@ export default function PostFeedSection(props) {
                             {props.subtitle}
                         </p>
                     )}
-                    {postFeedActions(props)}
                     {postFeedVariants(props)}
+                    {postFeedActions(props)}
                     {props.pageLinks}
                 </div>
             </div>
@@ -69,7 +69,7 @@ function postFeedActions(props) {
     }
     const styles = props.styles || {};
     return (
-        <div className={classNames('overflow-x-hidden', { 'mt-8': props.title || props.subtitle })}>
+        <div className="mt-12 overflow-x-hidden">
             <div
                 className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', styles.actions ? mapStyles(styles.actions) : null)}
                 data-sb-field-path=".actions"
@@ -300,14 +300,11 @@ function postsVariantD(props) {
             {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
-                <article key={index} data-sb-object-id={post.__metadata?.id} className="sb-card overflow-hidden">
+                <article key={index} data-sb-object-id={post.__metadata?.id} className="border-b border-current pb-12">
                     <div className="md:flex md:items-center">
                         {post.featuredImage && (
-                            <div className="md:w-2/5">
-                                <Link
-                                    href={getPageUrlPath(post)}
-                                    className="block h-0 w-full pt-2/3 relative overflow-hidden md:h-60 md:min-h-full md:pt-0 lg:h-72"
-                                >
+                            <div className="md:flex-shrink-0 md:self-stretch md:w-1/5 md:mr-8">
+                                <Link href={getPageUrlPath(post)} className="block h-0 w-full pt-2/3 relative overflow-hidden md:h-24 md:min-h-full md:pt-0">
                                     <ImageBlock
                                         {...post.featuredImage}
                                         className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
@@ -316,29 +313,31 @@ function postsVariantD(props) {
                                 </Link>
                             </div>
                         )}
-                        <div className="px-4 pt-6 pb-10 sm:px-6 md:w-3/5 md:self-center md:pt-8">
-                            {props.showDate && <PostDate post={post} className="mb-2" />}
+                        <div className={classNames('md:flex-grow', {})}>
+                            {props.showDate && <PostDate post={post} className="mb-3" />}
                             <h3 className="text-3xl">
                                 <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                                     {post.title}
                                 </Link>
                             </h3>
-                            <PostAttribution showAuthor={props.showAuthor} post={post} className="mt-2" />
+                            <PostAttribution showAuthor={props.showAuthor} post={post} className="mt-3" />
                             {props.showExcerpt && post.excerpt && (
-                                <p className="mt-4" data-sb-field-path="excerpt">
+                                <p className="mt-5  " data-sb-field-path="excerpt">
                                     {post.excerpt}
                                 </p>
                             )}
                         </div>
-                        <div>
-                            <Link
-                                href={getPageUrlPath(post)}
-                                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"
-                            >
-                                <span className="sr-only">Read more</span>
-                                <ArrowUpRightIcon className="fill-current h-7 w-7" />
-                            </Link>
-                        </div>
+                        {props.showReadMoreLink && (
+                            <div className="mt-8 md:mt-0 md:ml-12">
+                                <Link
+                                    href={getPageUrlPath(post)}
+                                    className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"
+                                >
+                                    <span className="sr-only">Read more</span>
+                                    <ArrowUpRightIcon className="fill-current h-5 w-5 md:h-8 md:w-8" />
+                                </Link>
+                            </div>
+                        )}
                     </div>
                 </article>
             ))}

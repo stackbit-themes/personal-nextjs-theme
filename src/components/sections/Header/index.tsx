@@ -143,7 +143,7 @@ function MobileMenu(props) {
                 <span className="sr-only">Open Menu</span>
                 <MenuIcon className="fill-current h-6 w-6" />
             </button>
-            <div className={classNames('bg-black', 'fixed', 'inset-0', 'overflow-y-auto', 'z-20', isMenuOpen ? 'block' : 'hidden')}>
+            <div className={classNames('sb-component-mobile-nav', 'fixed', 'inset-0', 'overflow-y-auto', 'z-20', isMenuOpen ? 'block' : 'hidden')}>
                 <div className="flex flex-col min-h-full">
                     <div className="border-b border-current flex items-stretch justify-between">
                         {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
@@ -158,17 +158,19 @@ function MobileMenu(props) {
                             </button>
                         </div>
                     </div>
-                    {primaryLinks.length > 0 && (
-                        <div className="flex flex-col justify-center flex-grow px-4 py-12">
-                            <ul className="space-y-6" data-sb-field-path=".primaryLinks">
-                                {listOfLinks(primaryLinks, true)}
-                            </ul>
+                    {(primaryLinks.length > 0 || socialLinks.length > 0) && (
+                        <div className="flex flex-col justify-center flex-grow px-4 py-20 space-y-12">
+                            {primaryLinks.length > 0 && (
+                                <ul className="space-y-6" data-sb-field-path=".primaryLinks">
+                                    {listOfLinks(primaryLinks, true)}
+                                </ul>
+                            )}
+                            {socialLinks.length > 0 && (
+                                <ul className="flex flex-wrap justify-center" data-sb-field-path=".socialLinks">
+                                    {listOfSocialLinks(socialLinks, true)}
+                                </ul>
+                            )}
                         </div>
-                    )}
-                    {socialLinks.length > 0 && (
-                        <ul className="flex flex-wrap justify-center px-4 py-8" data-sb-field-path=".socialLinks">
-                            {listOfSocialLinks(socialLinks, true)}
-                        </ul>
                     )}
                 </div>
             </div>
@@ -193,16 +195,16 @@ function siteLogoLink(props) {
 
 function listOfLinks(links, inMobileMenu = false) {
     return links.map((link, index) => (
-        <li key={index} className={classNames(inMobileMenu ? 'w-full' : 'inline-flex items-stretch')}>
-            <Action {...link} className={classNames(inMobileMenu ? 'w-full' : 'p-4')} data-sb-field-path={`.${index}`} />
+        <li key={index} className={classNames(inMobileMenu ? 'text-center w-full' : 'inline-flex items-stretch')}>
+            <Action {...link} className={classNames(inMobileMenu ? 'text-3xl' : 'p-4')} data-sb-field-path={`.${index}`} />
         </li>
     ));
 }
 
 function listOfSocialLinks(links, inMobileMenu = false) {
     return links.map((link, index) => (
-        <li key={index} className={classNames(inMobileMenu ? '' : 'inline-flex items-stretch')}>
-            <Social {...link} className={classNames(inMobileMenu ? 'w-full' : 'p-4')} data-sb-field-path={`.${index}`} />
+        <li key={index} className={classNames(inMobileMenu ? 'border border-current -ml-px -mt-px' : 'inline-flex items-stretch')}>
+            <Social {...link} className={classNames(inMobileMenu ? 'p-5' : 'p-4')} data-sb-field-path={`.${index}`} />
         </li>
     ));
 }

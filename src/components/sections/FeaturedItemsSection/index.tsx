@@ -67,7 +67,7 @@ export default function FeaturedItemsSection(props) {
                             data-sb-field-path=".items"
                         >
                             {props.items.map((item, index) => (
-                                <FeaturedItem key={index} {...item} enableHover={props.enableHover} data-sb-field-path={`.${index}`} />
+                                <FeaturedItem key={index} {...item} data-sb-field-path={`.${index}`} />
                             ))}
                         </div>
                     )}

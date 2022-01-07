@@ -5,7 +5,10 @@ layout: PostLayout
 date: '2021-12-02'
 author: content/data/authors/doris-soto.json
 excerpt: >-
-  More context that may or may not be helpful
+  More context that may or may not be helpful. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Curabitur at auctor sapien. Etiam at cursus enim. Suspendisse sed augue tortor.
+featuredImage:
+  type: ImageBlock
+  url: /images/about.jpg
 bottomSections:
   - elementId: ''
     variant: variant-d
