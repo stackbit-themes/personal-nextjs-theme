@@ -1,6 +1,6 @@
 ---
 title: Is the JAM stack the future of web development?
-colors: colors-b
+colors: colors-a
 layout: PostLayout
 date: '2021-11-04'
 author: content/data/authors/doris-soto.json
@@ -8,6 +8,7 @@ excerpt: >-
   More context that may or may not be helpful
 bottomSections:
   - elementId: ''
+    colors: colors-f
     variant: variant-d
     title: Read next
     showDate: true

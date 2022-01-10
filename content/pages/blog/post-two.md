@@ -1,6 +1,6 @@
 ---
 title: The Great Unbundling
-colors: colors-b
+colors: colors-a
 layout: PostLayout
 date: '2021-11-03'
 author: content/data/authors/doris-soto.json
@@ -9,6 +9,7 @@ excerpt: >-
 bottomSections:
   - elementId: ''
     variant: variant-d
+    colors: colors-f
     title: Read next
     showDate: true
     showAuthor: false

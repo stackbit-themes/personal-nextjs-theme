@@ -1,7 +1,7 @@
 ---
 title: Home
 layout: PageLayout
-colors: colors-c
+colors: colors-a
 backgroundImage:
   url: /images/bg2.jpg
   backgroundSize: cover
@@ -10,7 +10,7 @@ backgroundImage:
   opacity: 80
 sections:
   - elementId: ''
-    colors: colors-a
+    colors: colors-f
     backgroundSize: full
     title: >-
       I’m a developer, digital artist, consultant and a bunch of other
@@ -45,7 +45,7 @@ sections:
       actions:
         justifyContent: flex-start
     type: HeroSection
-  - colors: colors-a
+  - colors: colors-f
     elementId: ''
     showDate: false
     showAuthor: false
@@ -81,7 +81,7 @@ sections:
     type: FeaturedPostsSection
   - type: FeaturedPostsSection
     elementId: ''
-    colors: colors-a
+    colors: colors-f
     variant: variant-d
     title: Posts
     actions:
@@ -121,6 +121,7 @@ sections:
       actions:
         justifyContent: flex-end
   - type: ContactSection
+    colors: colors-f
     title: "Got an interesting project? Tell me more...\U0001F4AC"
     form:
       type: FormBlock

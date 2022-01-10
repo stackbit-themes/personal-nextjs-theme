@@ -208,11 +208,14 @@
 
     /* Color palettes */
     .colors-a {
-        @apply bg-transparent text-on-dark;
+        @apply bg-dark text-on-dark;
         .sb-input,
         .sb-select,
         .sb-textarea {
-            @apply text-on-light placeholder-on-light placeholder-opacity-75;
+            @apply text-on-dark placeholder-on-dark placeholder-opacity-75;
+        }
+        .sb-component-mobile-nav {
+            @apply bg-dark;
         }
     }
     .colors-b {
@@ -225,19 +228,11 @@
         .sb-component-mobile-nav {
             @apply bg-light;
         }
+        .sb-card {
+            @apply border-current;
+        }
     }
     .colors-c {
-        @apply bg-dark text-on-dark;
-        .sb-input,
-        .sb-select,
-        .sb-textarea {
-            @apply text-on-dark placeholder-on-dark placeholder-opacity-75;
-        }
-        .sb-component-mobile-nav {
-            @apply bg-dark;
-        }
-    }
-    .colors-d {
         @apply bg-primary text-on-primary;
         .sb-input,
         .sb-select,
@@ -248,7 +243,7 @@
             @apply bg-primary;
         }
     }
-    .colors-e {
+    .colors-d {
         @apply bg-secondary text-on-secondary;
         .sb-input,
         .sb-select,
@@ -258,8 +253,11 @@
         .sb-component-mobile-nav {
             @apply bg-secondary;
         }
+        .sb-card {
+            @apply border-current;
+        }
     }
-    .colors-f {
+    .colors-e {
         @apply bg-complementary text-on-complementary;
         .sb-input,
         .sb-select,
@@ -269,5 +267,8 @@
         .sb-component-mobile-nav {
             @apply bg-complementary;
         }
+    }
+    .colors-f {
+        @apply bg-transparent;
     }
 }

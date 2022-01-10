@@ -19,10 +19,10 @@ fields:
     group: styles
     controlType: palette
     options:
-      - label: Colors a
+      - label: Colors A
         value: colors-a
-        textColor: '$onLight'
-        backgroundColor: 'transparent'
+        textColor: '$onDark'
+        backgroundColor: '$dark'
         borderColor: '#ececec'
       - label: Colors B
         value: colors-b
@@ -31,25 +31,20 @@ fields:
         borderColor: '#ececec'
       - label: Colors C
         value: colors-c
-        textColor: '$onDark'
-        backgroundColor: '$dark'
-        borderColor: '#ececec'
-      - label: Colors D
-        value: colors-d
         textColor: '$onPrimary'
         backgroundColor: '$primary'
         borderColor: '#ececec'
-      - label: Colors E
-        value: colors-e
+      - label: Colors D
+        value: colors-d
         textColor: '$onSecondary'
         backgroundColor: '$secondary'
         borderColor: '#ececec'
-      - label: Colors F
-        value: colors-f
+      - label: Colors E
+        value: colors-e
         textColor: '$onComplementary'
         backgroundColor: '$complementary'
         borderColor: '#ececec'
-    default: colors-d
+    default: colors-a
   - type: model
     name: backgroundImage
     group: styles

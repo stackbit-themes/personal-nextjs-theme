@@ -1,9 +1,10 @@
 ---
 title: About
 layout: PageLayout
-colors: colors-f
+colors: colors-a
 sections:
   - elementId: ''
+    colors: colors-f
     backgroundSize: full
     text: >-
       ## Hey I’m a developer. I’ve been born and raised in the world, and that’s
@@ -39,6 +40,7 @@ sections:
         justifyContent: flex-start
     type: FeatureHighlightSection
   - type: MediaGallerySection
+    colors: colors-f
     images:
       - type: ImageBlock
         url: /images/logo1.svg
@@ -88,6 +90,7 @@ sections:
         textAlign: left
     subtitle: 'I worked with these folks:'
   - type: FeaturedItemsSection
+    colors: colors-f
     items:
       - type: FeaturedItem
         actions:
@@ -195,6 +198,7 @@ sections:
         textAlign: left
     subtitle: 'You can find me here:'
   - type: SkillsSection
+    colors: colors-f
     title: 'Skills:'
     items:
       - type: Skill
@@ -215,9 +219,11 @@ sections:
         label: Swift
   - type: TextSection
     title: 'Contact:'
+    colors: colors-f
     text: |
       [thisismyemail.@myemail.me](mailto:thisismyemail.@myemail.me)
   - type: FeaturedItemsSection
+    colors: colors-f
     items:
       - type: FeaturedItem
         title: 'Experience:'
@@ -299,6 +305,7 @@ sections:
         textAlign: left
   - type: ContactSection
     title: "Let’s talk \U0001F4AC"
+    colors: colors-f
     form:
       type: FormBlock
       elementId: sign-up-form

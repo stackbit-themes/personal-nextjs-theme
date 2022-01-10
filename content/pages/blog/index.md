@@ -1,10 +1,10 @@
 ---
 layout: PostFeedLayout
 title: Blog
-colors: colors-c
+colors: colors-a
 numOfPostsPerPage: 10
 postFeed:
-  colors: colors-c
+  colors: colors-f
   showDate: true
   showAuthor: false
   showExcerpt: true
