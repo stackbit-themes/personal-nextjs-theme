@@ -52,11 +52,21 @@ fields:
         label: Get Started
         url: '/'
         style: primary
-        elementId: hero-main-button
       - type: Button
         label: Learn More
         url: '/'
         style: secondary
+  - type: model
+    name: media
+    label: Media
+    models:
+      - FormBlock
+      - ImageBlock
+      - VideoBlock
+    default:
+      type: ImageBlock
+      url: /images/hero.webp
+      altText: Feature highlight section image
   - type: style
     name: styles
     styles:

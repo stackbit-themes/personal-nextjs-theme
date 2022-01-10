@@ -40,7 +40,7 @@ fields:
         backgroundColor: '$primary'
         borderColor: '#ececec'
       - label: Colors E
-        value: colors-d
+        value: colors-e
         textColor: '$onSecondary'
         backgroundColor: '$secondary'
         borderColor: '#ececec'
