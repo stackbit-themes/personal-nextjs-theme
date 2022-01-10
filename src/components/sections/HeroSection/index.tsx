@@ -9,6 +9,7 @@ import { Action } from '../../atoms';
 
 export default function HeroSection(props) {
     const cssId = props.elementId || null;
+    const colors = props.colors || 'colors-a';
     const bgSize = props.backgroundSize || 'full';
     const sectionStyles = props.styles?.self || {};
     const sectionWidth = sectionStyles.width || 'wide';
@@ -31,6 +32,7 @@ export default function HeroSection(props) {
         >
             <div
                 className={classNames(
+                    colors,
                     'flex',
                     'flex-col',
                     'justify-center',

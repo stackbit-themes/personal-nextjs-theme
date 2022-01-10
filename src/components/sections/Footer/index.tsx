@@ -5,12 +5,13 @@ import classNames from 'classnames';
 import { Social, Action, Link } from '../../atoms';
 
 export default function Footer(props) {
+    const colors = props.colors || 'colors-a';
     const footerStyles = props.styles?.self || {};
     const footerWidth = footerStyles.width || 'narrow';
     const primaryLinks = props.primaryLinks || [];
     return (
         <footer
-            className={classNames('sb-component', 'sb-component-footer', footerStyles.padding || 'py-16 px-4')}
+            className={classNames('sb-component', 'sb-component-footer', colors, footerStyles.padding || 'py-16 px-4')}
             data-sb-field-path={`${props.annotationPrefix}:footer`}
         >
             <div className={classNames('border-t-2', 'border-current', 'mx-auto', 'pt-8', mapMaxWidthStyles(footerWidth))}>

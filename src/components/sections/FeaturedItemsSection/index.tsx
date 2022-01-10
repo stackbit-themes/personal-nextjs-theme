@@ -8,6 +8,7 @@ import FeaturedItem from './FeaturedItem';
 
 export default function FeaturedItemsSection(props) {
     const cssId = props.elementId || null;
+    const colors = props.colors || 'colors-a';
     const styles = props.styles || {};
     const sectionWidth = styles.self?.width || 'wide';
     const sectionHeight = styles.self?.height || 'auto';
@@ -23,6 +24,7 @@ export default function FeaturedItemsSection(props) {
                 'sb-component',
                 'sb-component-section',
                 'sb-component-featured-items-section',
+                colors,
                 'flex',
                 'flex-col',
                 'justify-center',

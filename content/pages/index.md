@@ -1,9 +1,10 @@
 ---
 title: Home
 layout: PageLayout
-colors: colors-b
+colors: colors-c
 sections:
   - elementId: ''
+    colors: colors-a
     backgroundSize: full
     title: >-
       I’m a developer, digital artist, consultant and a bunch of other

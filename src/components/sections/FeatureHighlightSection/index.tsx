@@ -8,6 +8,7 @@ import { Action } from '../../atoms';
 
 export default function FeatureHighlightSection(props) {
     const cssId = props.elementId || null;
+    const colors = props.colors || 'colors-a';
     const bgSize = props.backgroundSize || 'full';
     const sectionStyles = props.styles?.self || {};
     const sectionWidth = sectionStyles.width || 'wide';
@@ -27,6 +28,7 @@ export default function FeatureHighlightSection(props) {
         >
             <div
                 className={classNames(
+                    colors,
                     'flex',
                     'flex-col',
                     'items-center',

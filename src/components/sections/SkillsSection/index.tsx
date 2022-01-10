@@ -7,6 +7,7 @@ import { getDataAttrs } from '../../../utils/get-data-attrs';
 
 export default function SkillsSection(props) {
     const cssId = props.elementId || null;
+    const colors = props.colors || 'colors-a';
     const styles = props.styles || {};
     const sectionWidth = styles.self?.width || 'wide';
     const sectionHeight = styles.self?.height || 'auto';
@@ -20,6 +21,7 @@ export default function SkillsSection(props) {
                 'sb-component',
                 'sb-component-section',
                 'sb-component-skills-section',
+                colors,
                 'flex',
                 'flex-col',
                 'justify-center',
