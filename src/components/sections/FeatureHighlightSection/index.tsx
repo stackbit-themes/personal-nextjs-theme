@@ -2,6 +2,7 @@ import * as React from 'react';
 import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
 
+import { getComponent } from '../../components-registry';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import { getDataAttrs } from '../../../utils/get-data-attrs';
 import { Action } from '../../atoms';
@@ -14,6 +15,8 @@ export default function FeatureHighlightSection(props) {
     const sectionWidth = sectionStyles.width || 'wide';
     const sectionHeight = sectionStyles.height || 'auto';
     const sectionJustifyContent = sectionStyles.justifyContent || 'center';
+    const sectionFlexDirection = sectionStyles.flexDirection || 'row';
+    const sectionAlignItems = sectionStyles.alignItems || 'center';
     return (
         <div
             id={cssId}
@@ -22,7 +25,8 @@ export default function FeatureHighlightSection(props) {
                 'sb-component',
                 'sb-component-section',
                 'sb-component-feature-highlight-section',
-                bgSize === 'inset' ? 'flex justify-center' : null,
+                bgSize === 'inset' ? 'flex' : null,
+                bgSize === 'inset' ? mapStyles({ justifyContent: sectionJustifyContent }) : null,
                 sectionStyles.margin
             )}
         >
@@ -31,7 +35,6 @@ export default function FeatureHighlightSection(props) {
                     colors,
                     'flex',
                     'flex-col',
-                    'items-center',
                     'justify-center',
                     'relative',
                     bgSize === 'inset' ? 'w-full' : null,
@@ -47,17 +50,51 @@ export default function FeatureHighlightSection(props) {
                     borderWidth: sectionStyles.borderWidth ? `${sectionStyles.borderWidth}px` : null
                 }}
             >
-                <div className={classNames('relative', 'w-full', bgSize === 'full' ? mapMaxWidthStyles(sectionWidth) : null)}>
-                    <div className={classNames('w-full', 'flex', mapStyles({ justifyContent: sectionJustifyContent }))}>
-                        <div className={classNames('sb-card', 'max-w-2xl', 'px-6', 'py-10', 'sm:px-12', 'sm:py-14')}>
-                            {featureHighlightBody(props)}
-                            {featureHighlightActions(props)}
+                <div
+                    className={classNames(
+                        'relative',
+                        'w-full',
+                        bgSize === 'full' ? 'flex' : null,
+                        bgSize === 'full' ? mapStyles({ justifyContent: sectionJustifyContent }) : null
+                    )}
+                >
+                    <div className={classNames('w-full', bgSize === 'full' ? mapMaxWidthStyles(sectionWidth) : null)}>
+                        <div
+                            className={classNames(
+                                'flex',
+                                mapFlexDirectionStyles(sectionFlexDirection),
+                                mapStyles({ alignItems: sectionAlignItems }),
+                                'space-y-8',
+                                {
+                                    'lg:space-y-0 lg:space-x-8': sectionFlexDirection === 'row',
+                                    'space-y-reverse lg:space-y-0 lg:space-x-8 lg:space-x-reverse': sectionFlexDirection === 'row-reverse',
+                                    'space-y-reverse': sectionFlexDirection === 'col-reverse'
+                                }
+                            )}
+                        >
+                            <div className="flex-1 w-full">
+                                {featureHighlightBody(props)}
+                                {featureHighlightActions(props)}
+                            </div>
+                            {props.media && <div className="flex-1 w-full">{featureHighlightMedia(props.media)}</div>}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     );
+}
+
+function featureHighlightMedia(media) {
+    const mediaType = media.type;
+    if (!mediaType) {
+        throw new Error(`hero section media does not have the 'type' property`);
+    }
+    const Media = getComponent(mediaType);
+    if (!Media) {
+        throw new Error(`no component matching the hero section media type: ${mediaType}`);
+    }
+    return <Media {...media} data-sb-field-path=".media" />;
 }
 
 function featureHighlightBody(props) {
@@ -128,6 +165,20 @@ function mapMaxWidthStyles(width) {
             return 'max-w-7xl';
         case 'full':
             return 'max-w-full';
+    }
+    return null;
+}
+
+function mapFlexDirectionStyles(flexDirection) {
+    switch (flexDirection) {
+        case 'row':
+            return ['flex-col', 'lg:flex-row'];
+        case 'row-reverse':
+            return ['flex-col-reverse', 'lg:flex-row-reverse'];
+        case 'col':
+            return ['flex-col'];
+        case 'col-reverse':
+            return ['flex-col-reverse'];
     }
     return null;
 }

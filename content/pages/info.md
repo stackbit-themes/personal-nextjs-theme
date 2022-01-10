@@ -5,11 +5,8 @@ colors: colors-c
 sections:
   - elementId: ''
     backgroundSize: full
-    title: >-
-      Hey I’m a developer. I’ve been born and raised in the world, and that’s
-      also where I’m based. I’m currently a free agent, ex-this, ex-that,
-      ex-super big name. When I’m not coding, writing or creating, I eat
-      cereals. I have a dog, check her out @mygod.
+    text: >-
+      ## Hey I’m a developer. I’ve been born and raised in the world, and that’s also where I’m based. I’m currently a free agent, ex-this, ex-that, ex-super big name. When I’m not coding, writing or creating, I eat cereals. I have a dog, check her out [@mygod](https://www.stackbit.com/).
     media:
       type: ImageBlock
       url: /images/about.jpg
@@ -28,7 +25,7 @@ sections:
           - pb-48
           - pl-4
           - pr-4
-        alignItems: center
+        alignItems: flex-start
         justifyContent: center
         flexDirection: row-reverse
       title:
@@ -39,7 +36,7 @@ sections:
         textAlign: left
       actions:
         justifyContent: flex-start
-    type: HeroSection
+    type: FeatureHighlightSection
   - type: MediaGallerySection
     title: 'I worked with these folks:'
     images:

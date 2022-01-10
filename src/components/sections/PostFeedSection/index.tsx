@@ -305,7 +305,7 @@ function postsVariantD(props) {
                 <article key={index} data-sb-object-id={post.__metadata?.id} className="border-b border-current pb-12">
                     <div className="md:flex md:items-center">
                         {post.featuredImage && (
-                            <div className="md:flex-shrink-0 md:self-stretch md:w-1/5 md:mr-8">
+                            <div className="mb-8 md:flex-shrink-0 md:self-stretch md:w-1/5 md:mb-0 md:mr-8">
                                 <Link href={getPageUrlPath(post)} className="block h-0 w-full pt-2/3 relative overflow-hidden md:h-24 md:min-h-full md:pt-0">
                                     <ImageBlock
                                         {...post.featuredImage}
