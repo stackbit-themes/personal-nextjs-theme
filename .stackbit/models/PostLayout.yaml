@@ -18,11 +18,6 @@ fields:
     group: styles
     controlType: palette
     options:
-      - label: Colors a
-        value: colors-a
-        textColor: '$onLight'
-        backgroundColor: 'transparent'
-        borderColor: '#ececec'
       - label: Colors B
         value: colors-b
         textColor: '$onLight'
@@ -48,7 +43,7 @@ fields:
         textColor: '$onComplementary'
         backgroundColor: '$complementary'
         borderColor: '#ececec'
-    default: colors-d
+    default: colors-c
   - type: model
     name: backgroundImage
     group: styles

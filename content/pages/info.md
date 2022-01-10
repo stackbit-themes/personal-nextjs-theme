@@ -1,12 +1,15 @@
 ---
 title: About
 layout: PageLayout
-colors: colors-c
+colors: colors-f
 sections:
   - elementId: ''
     backgroundSize: full
     text: >-
-      ## Hey I’m a developer. I’ve been born and raised in the world, and that’s also where I’m based. I’m currently a free agent, ex-this, ex-that, ex-super big name. When I’m not coding, writing or creating, I eat cereals. I have a dog, check her out [@mygod](https://www.stackbit.com/).
+      ## Hey I’m a developer. I’ve been born and raised in the world, and that’s
+      also where I’m based. I’m currently a free agent, ex-this, ex-that,
+      ex-super big name. When I’m not coding, writing or creating, I eat
+      cereals. I have a dog, check her out [@mygod](https://www.stackbit.com/).
     media:
       type: ImageBlock
       url: /images/about.jpg
@@ -25,9 +28,7 @@ sections:
           - pb-48
           - pl-4
           - pr-4
-        alignItems: flex-start
         justifyContent: center
-        flexDirection: row-reverse
       title:
         textAlign: left
       subtitle:
@@ -38,31 +39,30 @@ sections:
         justifyContent: flex-start
     type: FeatureHighlightSection
   - type: MediaGallerySection
-    title: 'I worked with these folks:'
     images:
       - type: ImageBlock
-        url: /images/apple.svg
-        altText: Apple
-        caption: Apple
+        url: /images/logo1.svg
+        altText: Logo one
+        caption: Logo one
       - type: ImageBlock
-        url: /images/google-play.svg
-        altText: Google Play
-        caption: Google Play
+        url: /images/logo2.svg
+        altText: Logo two
+        caption: Logo two
       - type: ImageBlock
-        url: /images/playstation.svg
-        altText: PlayStation
-        caption: PlayStation
+        url: /images/logo3.svg
+        altText: Logo three
+        caption: Logo three
       - type: ImageBlock
-        url: /images/gatsby.svg
-        altText: Gatsby
-        caption: Gatsby
+        url: /images/logo4.svg
+        altText: Logo four
+        caption: Logo four
       - type: ImageBlock
-        url: /images/xbox.svg
-        altText: Xbox
-        caption: Xbox
+        url: /images/logo5.svg
+        altText: Logo five
+        caption: Logo five
     spacing: 3
     columns: 5
-    aspectRatio: 'auto'
+    aspectRatio: auto
     showCaption: false
     enableHover: false
     styles:
@@ -86,14 +86,14 @@ sections:
         textAlign: left
       subtitle:
         textAlign: left
+    subtitle: 'I worked with these folks:'
   - type: FeaturedItemsSection
-    title: 'You can find me here:'
     items:
       - type: FeaturedItem
         actions:
           - type: Link
             label: GitHub
-            url: https://github.com/
+            url: 'https://github.com/'
         styles:
           self:
             textAlign: left
@@ -106,7 +106,7 @@ sections:
         actions:
           - type: Link
             label: Twitter
-            url: https://twitter.com/
+            url: 'https://twitter.com/'
         styles:
           self:
             textAlign: left
@@ -119,7 +119,7 @@ sections:
         actions:
           - type: Link
             label: LinkedIn
-            url: https://www.linkedin.com/
+            url: 'https://www.linkedin.com/'
         styles:
           self:
             textAlign: left
@@ -132,7 +132,7 @@ sections:
         actions:
           - type: Link
             label: CodePen
-            url: https://codepen.io/
+            url: 'https://codepen.io/'
         styles:
           self:
             textAlign: left
@@ -145,7 +145,7 @@ sections:
         actions:
           - type: Link
             label: Discord
-            url: https://discord.com/
+            url: 'https://discord.com/'
         styles:
           self:
             textAlign: left
@@ -158,7 +158,7 @@ sections:
         actions:
           - type: Link
             label: Instagram
-            url: https://www.instagram.com/
+            url: 'https://www.instagram.com/'
         styles:
           self:
             textAlign: left
@@ -193,11 +193,12 @@ sections:
         textAlign: left
       subtitle:
         textAlign: left
+    subtitle: 'You can find me here:'
   - type: SkillsSection
     title: 'Skills:'
     items:
       - type: Skill
-        label: WEB 1, 2, 3
+        label: 'WEB 1, 2, 3'
       - type: Skill
         label: React
       - type: Skill
@@ -214,7 +215,7 @@ sections:
         label: Swift
   - type: TextSection
     title: 'Contact:'
-    text: >
+    text: |
       [thisismyemail.@myemail.me](mailto:thisismyemail.@myemail.me)
   - type: FeaturedItemsSection
     items:
@@ -337,7 +338,7 @@ sections:
           isRequired: false
           width: full
           type: CheckboxFormControl
-      submitLabel: Submit 🚀
+      submitLabel: "Submit \U0001F680"
       styles:
         submitLabel:
           textAlign: center

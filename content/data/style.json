@@ -2,28 +2,28 @@
     "type": "ThemeStyle",
     "fontBody": "fontPrimary",
     "h1": {
-        "size": "5xl",
+        "size": "6xl",
         "weight": "medium",
         "decoration": "none",
         "case": "uppercase",
         "letterSpacing": "normal"
     },
     "h2": {
-        "size": "4xl",
+        "size": "5xl",
         "weight": "normal",
         "decoration": "none",
         "case": "uppercase",
         "letterSpacing": "normal"
     },
     "h3": {
-        "size": "3xl",
+        "size": "4xl",
         "weight": "normal",
         "decoration": "none",
         "case": "none",
         "letterSpacing": "normal"
     },
     "h4": {
-        "size": "2xl",
+        "size": "3xl",
         "weight": "medium",
         "decoration": "none",
         "case": "none",

@@ -22,8 +22,7 @@ export default function PostLayout(props) {
                     <div className="max-w-7xl mx-auto">
                         {page.media && <div className="w-full mb-8 sm:mb-12">{postMedia(page.media)}</div>}
                         <header className="max-w-5xl mx-auto mb-12 text-left">
-                            {page.title && <h1 data-sb-field-path="title">{page.title}</h1>}
-                            <div className="text-lg mt-6">
+                            <div className="text-lg mb-6">
                                 <span>
                                     <time dateTime={dateTimeAttr} data-sb-field-path="date">
                                         {formattedDate}
@@ -31,6 +30,7 @@ export default function PostLayout(props) {
                                 </span>
                                 <PostAttribution post={page} />
                             </div>
+                            {page.title && <h1 data-sb-field-path="title">{page.title}</h1>}
                         </header>
                         {page.markdown_content && (
                             <Markdown options={{ forceBlock: true }} className="sb-markdown max-w-screen-md mx-auto" data-sb-field-path="markdown_content">

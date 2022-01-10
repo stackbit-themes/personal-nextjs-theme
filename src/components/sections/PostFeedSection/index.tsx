@@ -11,7 +11,7 @@ import getPageUrlPath from '../../../utils/get-page-url-path';
 
 export default function PostFeedSection(props) {
     const cssId = props.elementId || null;
-    const colors = props.colors || 'colors-a';
+    const colors = props.colors || 'colors-b';
     const styles = props.styles || {};
     const sectionWidth = styles.self?.width || 'wide';
     const sectionHeight = styles.self?.height || 'auto';
@@ -112,7 +112,7 @@ function postsVariantA(props) {
             {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
-                <article key={index} className="sb-card overflow-hidden" data-sb-object-id={post.__metadata?.id}>
+                <article key={index} className="sb-card overflow-hidden border-b" data-sb-object-id={post.__metadata?.id}>
                     <div className="flex flex-col min-h-full">
                         {post.featuredImage && (
                             <Link href={getPageUrlPath(post)} className="block h-0 w-full pt-2/3 relative overflow-hidden">
@@ -125,7 +125,7 @@ function postsVariantA(props) {
                         )}
                         <div className="flex flex-col flex-grow px-4 pt-6 pb-10 sm:px-6">
                             <div className="flex-grow">
-                                <h3 className="text-3xl">
+                                <h3 className="text-4xl uppercase">
                                     <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                                         {post.title}
                                     </Link>
@@ -174,7 +174,7 @@ function postsVariantB(props) {
             {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
-                <article key={index} className="sb-card overflow-hidden" data-sb-object-id={post.__metadata?.id}>
+                <article key={index} className="sb-card overflow-hidden border-b" data-sb-object-id={post.__metadata?.id}>
                     <div className="flex flex-col min-h-full">
                         {post.featuredImage && (
                             <Link href={getPageUrlPath(post)} className="block h-0 w-full pt-2/3 relative overflow-hidden">
@@ -187,7 +187,7 @@ function postsVariantB(props) {
                         )}
                         <div className="flex flex-col flex-grow px-4 pt-6 pb-10 sm:px-6">
                             <div className="flex-grow">
-                                <h3 className="text-2xl">
+                                <h3 className="text-4xl uppercase">
                                     <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                                         {post.title}
                                     </Link>
@@ -238,7 +238,7 @@ function postsVariantC(props) {
             {posts.map((post, index) => (
                 <article
                     key={index}
-                    className={classNames('sb-card', 'overflow-hidden', index % 5 === 0 || index % 5 === 1 ? 'md:col-span-3' : 'md:col-span-2')}
+                    className={classNames('sb-card', 'overflow-hidden', 'border-b', index % 5 === 0 || index % 5 === 1 ? 'md:col-span-3' : 'md:col-span-2')}
                     data-sb-object-id={post.__metadata?.id}
                 >
                     <div className="flex flex-col min-h-full">
@@ -253,7 +253,7 @@ function postsVariantC(props) {
                         )}
                         <div className="flex flex-col flex-grow px-4 pt-6 pb-10 sm:px-6">
                             <div className="flex-grow">
-                                <h3 className="text-3xl">
+                                <h3 className="text-4xl uppercase">
                                     <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                                         {post.title}
                                     </Link>
@@ -317,7 +317,7 @@ function postsVariantD(props) {
                         )}
                         <div className={classNames('md:flex-grow', {})}>
                             {props.showDate && <PostDate post={post} className="mb-3" />}
-                            <h3 className="text-3xl">
+                            <h3 className="text-4xl uppercase">
                                 <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                                     {post.title}
                                 </Link>
