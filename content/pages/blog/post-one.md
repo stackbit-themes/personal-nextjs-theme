@@ -6,6 +6,12 @@ date: '2021-06-28'
 author: content/data/authors/doris-soto.json
 excerpt: >-
   More context that may or may not be helpful
+media:
+  url: /images/post-1.jpg
+  altText: altText of the image
+  caption: Caption of the image
+  elementId: ''
+  type: ImageBlock
 bottomSections:
   - elementId: ''
     colors: colors-f

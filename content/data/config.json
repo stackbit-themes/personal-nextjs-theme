@@ -38,7 +38,7 @@
         ],
         "styles": {
             "self": {
-                "width": "narrow",
+                "width": "full",
                 "padding": ["pt-5", "pb-5", "pr-4", "pl-4"]
             }
         }

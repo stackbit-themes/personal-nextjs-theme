@@ -2,22 +2,22 @@
     "model": "FeaturedItemsSection",
     "presets": [
         {
-            "label": "Featured items secondary - 1 column",
-            "thumbnail": "images/feat-items-secondary-1-col.png",
+            "label": "Featured items transparent - 1 column",
+            "thumbnail": "images/feat-items-transparent-1-col.png",
             "data": {
-                "colors": "colors-c",
-                "title": "Key value propositions",
+                "colors": "colors-f",
+                "title": "Value propositions",
                 "subtitle": "",
                 "actions": [],
                 "items": [
                     {
                         "type": "FeaturedItem",
-                        "title": "Faster",
+                        "title": "I'm Fast",
                         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.",
                         "actions": [
                             {
                                 "type": "Button",
-                                "label": "Learn more",
+                                "label": "",
                                 "showIcon": true,
                                 "icon": "arrowRight",
                                 "url": "/",
@@ -32,12 +32,12 @@
                     },
                     {
                         "type": "FeaturedItem",
-                        "title": "Smarter",
+                        "title": "I'm Smart",
                         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.",
                         "actions": [
                             {
                                 "type": "Button",
-                                "label": "Learn more",
+                                "label": "",
                                 "showIcon": true,
                                 "icon": "arrowRight",
                                 "url": "/",
@@ -52,12 +52,12 @@
                     },
                     {
                         "type": "FeaturedItem",
-                        "title": "Focused",
+                        "title": "I'm Focused",
                         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.",
                         "actions": [
                             {
                                 "type": "Button",
-                                "label": "Learn more",
+                                "label": "",
                                 "showIcon": true,
                                 "icon": "arrowRight",
                                 "url": "/",
@@ -93,22 +93,22 @@
             }
         },
        {
-            "label": "Featured items light - 3 columns",
-            "thumbnail": "images/feat-items-light-3-col.png",
+            "label": "Featured items secondary - 2 columns",
+            "thumbnail": "images/feat-items-secondary-2-col.png",
             "data": {
                 "colors": "colors-d",
-                "title": "Key value propositions",
+                "title": "Value propositions",
                 "subtitle": "",
                 "actions": [],
                 "items": [
                     {
                         "type": "FeaturedItem",
-                        "title": "Faster",
+                        "title": "I'm Fast",
                         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.",
                         "actions": [
                             {
                                 "type": "Button",
-                                "label": "Learn more",
+                                "label": "",
                                 "showIcon": true,
                                 "icon": "arrowRight",
                                 "url": "/",
@@ -123,12 +123,12 @@
                     },
                     {
                         "type": "FeaturedItem",
-                        "title": "Smarter",
+                        "title": "I'm Smart",
                         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.",
                         "actions": [
                             {
                                 "type": "Button",
-                                "label": "Learn more",
+                                "label": "",
                                 "showIcon": true,
                                 "icon": "arrowRight",
                                 "url": "/",
@@ -143,12 +143,12 @@
                     },
                     {
                         "type": "FeaturedItem",
-                        "title": "Focused",
+                        "title": "I'm Focused",
                         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Maecenas pharetra ipsum dolor, et iaculis elit ornare ac.",
                         "actions": [
                             {
                                 "type": "Button",
-                                "label": "Learn more",
+                                "label": "",
                                 "showIcon": true,
                                 "icon": "arrowRight",
                                 "url": "/",
@@ -162,7 +162,7 @@
                         }
                     }
                 ],
-                "columns": 3,
+                "columns": 2,
                 "styles": {
                     "self": {
                         "height": "auto",

@@ -2,10 +2,10 @@
     "model": "TextSection",
     "presets": [
         {
-            "label": "Text light left",
-            "thumbnail": "images/text-light-left.png",
+            "label": "Text transparent left",
+            "thumbnail": "images/text-transparent-left.png",
             "data": {
-                "colors": "colors-d",
+                "colors": "colors-f",
                 "title": "The Section Title",
                 "subtitle": "",
                 "styles": {
@@ -29,10 +29,10 @@
             }
         },
         {
-            "label": "Text dark center",
-            "thumbnail": "images/text-dark-center.png",
+            "label": "Text transparent center",
+            "thumbnail": "images/text-transparent-center.png",
             "data": {
-                "colors": "colors-e",
+                "colors": "colors-f",
                 "title": "The Section Title",
                 "subtitle": "The section subtitle",
                 "styles": {
@@ -56,8 +56,8 @@
             }
         },
         {
-            "label": "Text light left",
-            "thumbnail": "images/text-light-left-b.png",
+            "label": "Text secondary left",
+            "thumbnail": "images/text-secondary-left.png",
             "data": {
                 "colors": "colors-d",
                 "variant": "variant-b",

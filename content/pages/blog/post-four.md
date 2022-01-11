@@ -4,9 +4,6 @@ colors: colors-a
 layout: PostLayout
 date: '2021-12-01'
 author: content/data/authors/doris-soto.json
-featuredImage:
-  type: ImageBlock
-  url: /images/about.jpg
 excerpt: >-
   More context that may or may not be helpful
 bottomSections:
