@@ -44,9 +44,9 @@ fields:
         value: variant-a
       - label: Three columns grid
         value: variant-b
-      - label: Mixed grid
-        value: variant-c
       - label: List
+        value: variant-c
+      - label: List alt
         value: variant-d
   - type: list
     name: actions

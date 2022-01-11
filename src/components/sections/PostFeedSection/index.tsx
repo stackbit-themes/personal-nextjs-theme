@@ -374,11 +374,10 @@ function postAuthor(post) {
 }
 
 function postCategory(post) {
-    /*if (!post.category) {
+    if (!post.category) {
         return null;
     }
-    const category = post.category;*/
-    const category = { title: 'Category' };
+    const category = post.category;
     return (
         <Link data-sb-field-path="category" href={getPageUrlPath(category)}>
             {category.title}
