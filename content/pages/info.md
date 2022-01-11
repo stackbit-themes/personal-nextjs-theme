@@ -316,7 +316,7 @@ sections:
       subtitle:
         textAlign: left
   - type: ContactSection
-    title: "Let’s talk \U0001F4AC"
+    title: "Let’s talk... \U0001F4AC"
     colors: colors-f
     form:
       type: FormBlock
@@ -345,15 +345,15 @@ sections:
           isRequired: true
           width: full
           type: EmailFormControl
-        - name: address
-          label: Address
+        - name: message
+          label: Message
           hideLabel: true
-          placeholder: Address
+          placeholder: Tell me about your project
           isRequired: true
           width: full
-          type: TextFormControl
+          type: TextareaFormControl
         - name: updatesConsent
-          label: Sign me up to recieve updates
+          label: Sign me up to recieve my words
           isRequired: false
           width: full
           type: CheckboxFormControl
