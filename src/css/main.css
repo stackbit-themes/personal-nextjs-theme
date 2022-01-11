@@ -6,7 +6,7 @@
 
 @layer base {
     body {
-        @apply text-lg;
+        @apply text-lg antialiased;
     }
     h1,
     h2,
@@ -148,15 +148,34 @@
     .sb-component-link:hover {
         box-shadow: 0 5px 0 0 currentColor;
     }
-    .sb-component-header .sb-component-link {
-        box-shadow: none;
-    }
 
     /* Socials */
     .sb-component-social {
-        @apply inline-flex items-center justify-center no-underline transition duration-200 ease-in;
+        @apply inline-flex items-center justify-center no-underline transition duration-200 ease-in hover:opacity-80;
     }
-    .sb-component-social:hover {
+
+    /* Header menu items */
+    .sb-header-links-primary .sb-component-link,
+    .sb-component-header .sb-component-social {
+        @apply relative shadow-none overflow-hidden opacity-100;
+        transition: color 0.25s ease-in-out;
+        transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+        z-index: 1;
+    }
+    .sb-header-links-primary .sb-component-link:before,
+    .sb-component-header .sb-component-social:before {
+        @apply absolute w-full h-full left-0 top-0;
+        content: '';
+        z-index: -1;
+        transform: translate3d(0, -100%, 0);
+        transform-origin: 0% 100%;
+        transition: transform 0.25s, opacity 0.25s;
+    }
+    .sb-header-links-primary .sb-component-link:hover:before,
+    .sb-component-header .sb-component-social:hover:before {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     }
 
     /* Form controls */
@@ -214,7 +233,15 @@
         .sb-textarea {
             @apply text-on-dark placeholder-on-dark placeholder-opacity-75;
         }
-        .sb-component-mobile-nav {
+        .sb-header-links-primary .sb-component-link:before,
+        .sb-component-header .sb-component-social:before {
+            @apply bg-on-dark;
+        }
+        .sb-header-links-primary .sb-component-link:hover,
+        .sb-component-header .sb-component-social:hover {
+            @apply text-dark;
+        }
+        .sb-header-overlay {
             @apply bg-dark;
         }
     }
@@ -225,11 +252,16 @@
         .sb-textarea {
             @apply text-on-light placeholder-on-light placeholder-opacity-75;
         }
-        .sb-component-mobile-nav {
-            @apply bg-light;
+        .sb-header-links-primary .sb-component-link:before,
+        .sb-component-header .sb-component-social:before {
+            @apply bg-on-light;
         }
-        .sb-card {
-            @apply border-current;
+        .sb-header-links-primary .sb-component-link:hover,
+        .sb-component-header .sb-component-social:hover {
+            @apply text-light;
+        }
+        .sb-header-overlay {
+            @apply bg-light;
         }
     }
     .colors-c {
@@ -239,7 +271,15 @@
         .sb-textarea {
             @apply text-on-primary placeholder-on-primary placeholder-opacity-75;
         }
-        .sb-component-mobile-nav {
+        .sb-header-links-primary .sb-component-link:before,
+        .sb-component-header .sb-component-social:before {
+            @apply bg-on-primary;
+        }
+        .sb-header-links-primary .sb-component-link:hover,
+        .sb-component-header .sb-component-social:hover {
+            @apply text-primary;
+        }
+        .sb-header-overlay {
             @apply bg-primary;
         }
     }
@@ -250,11 +290,16 @@
         .sb-textarea {
             @apply text-on-secondary placeholder-on-secondary placeholder-opacity-75;
         }
-        .sb-component-mobile-nav {
-            @apply bg-secondary;
+        .sb-header-links-primary .sb-component-link:before,
+        .sb-component-header .sb-component-social:before {
+            @apply bg-on-secondary;
         }
-        .sb-card {
-            @apply border-current;
+        .sb-header-links-primary .sb-component-link:hover,
+        .sb-component-header .sb-component-social:hover {
+            @apply text-secondary;
+        }
+        .sb-header-overlay {
+            @apply bg-secondary;
         }
     }
     .colors-e {
@@ -264,7 +309,15 @@
         .sb-textarea {
             @apply text-on-complementary placeholder-on-complementary placeholder-opacity-75;
         }
-        .sb-component-mobile-nav {
+        .sb-header-links-primary .sb-component-link:before,
+        .sb-component-header .sb-component-social:before {
+            @apply bg-on-complementary;
+        }
+        .sb-header-links-primary .sb-component-link:hover,
+        .sb-component-header .sb-component-social:hover {
+            @apply text-complementary;
+        }
+        .sb-header-overlay {
             @apply bg-complementary;
         }
     }

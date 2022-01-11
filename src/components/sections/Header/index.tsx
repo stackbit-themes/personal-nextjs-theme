@@ -51,12 +51,12 @@ function headerVariantA(props) {
         <div className="flex items-stretch relative">
             {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
             {primaryLinks.length > 0 && (
-                <ul className="hidden lg:flex divide-x divide-current border-r border-current" data-sb-field-path=".primaryLinks">
+                <ul className="sb-header-links-primary hidden lg:flex divide-x divide-current border-r border-current" data-sb-field-path=".primaryLinks">
                     {listOfLinks(primaryLinks)}
                 </ul>
             )}
             {socialLinks.length > 0 && (
-                <ul className="hidden lg:flex border-l border-current ml-auto" data-sb-field-path=".socialLinks">
+                <ul className="sb-header-links-social hidden lg:flex border-l border-current ml-auto" data-sb-field-path=".socialLinks">
                     {listOfSocialLinks(socialLinks)}
                 </ul>
             )}
@@ -72,13 +72,18 @@ function headerVariantB(props) {
         <div className="flex items-stretch relative">
             {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
             {primaryLinks.length > 0 && (
-                <ul className="hidden lg:flex border-l border-current divide-x divide-current ml-auto" data-sb-field-path=".primaryLinks">
+                <ul
+                    className="sb-header-links-primary hidden lg:flex border-l border-current divide-x divide-current ml-auto"
+                    data-sb-field-path=".primaryLinks"
+                >
                     {listOfLinks(primaryLinks)}
                 </ul>
             )}
             {socialLinks.length > 0 && (
                 <ul
-                    className={classNames('hidden', 'lg:flex', 'border-l', 'border-current', { 'ml-auto': primaryLinks.length === 0 })}
+                    className={classNames('sb-header-links-social', 'hidden', 'lg:flex', 'border-l', 'border-current', {
+                        'ml-auto': primaryLinks.length === 0
+                    })}
                     data-sb-field-path=".socialLinks"
                 >
                     {listOfSocialLinks(socialLinks)}
@@ -96,13 +101,13 @@ function headerVariantC(props) {
         <div className="flex items-stretch relative">
             {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
             {socialLinks.length > 0 && (
-                <ul className="hidden lg:flex border-l border-current ml-auto" data-sb-field-path=".socialLinks">
+                <ul className="sb-header-links-social hidden lg:flex border-l border-current ml-auto" data-sb-field-path=".socialLinks">
                     {listOfSocialLinks(socialLinks)}
                 </ul>
             )}
             {primaryLinks.length > 0 && (
                 <ul
-                    className={classNames('hidden', 'lg:flex', 'border-l', 'border-current', 'divide-x', 'divide-current', {
+                    className={classNames('sb-header-links-primary', 'hidden', 'lg:flex', 'border-l', 'border-current', 'divide-x', 'divide-current', {
                         'ml-auto': primaryLinks.length === 0
                     })}
                     data-sb-field-path=".primaryLinks"
@@ -143,7 +148,7 @@ function MobileMenu(props) {
                 <span className="sr-only">Open Menu</span>
                 <MenuIcon className="fill-current h-6 w-6" />
             </button>
-            <div className={classNames('sb-component-mobile-nav', 'fixed', 'inset-0', 'overflow-y-auto', 'z-20', isMenuOpen ? 'block' : 'hidden')}>
+            <div className={classNames('sb-header-overlay', 'fixed', 'inset-0', 'overflow-y-auto', 'z-20', isMenuOpen ? 'block' : 'hidden')}>
                 <div className="flex flex-col min-h-full">
                     <div className="border-b border-current flex items-stretch justify-between">
                         {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
