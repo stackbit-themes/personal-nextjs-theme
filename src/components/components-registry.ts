@@ -33,6 +33,7 @@ const components = {
     'CheckboxFormControl': dynamic(() => import('./molecules/FormBlock/CheckboxFormControl')),
     'ContactSection': dynamic(() => import('./sections/ContactSection')),
     'CtaSection': dynamic(() => import('./sections/CtaSection')),
+    'DividerSection': dynamic(() => import('./sections/DividerSection')),
     'EmailFormControl': dynamic(() => import('./molecules/FormBlock/EmailFormControl')),
     'FeatureHighlightSection': dynamic(() => import('./sections/FeatureHighlightSection')),
     'FeaturedItem': dynamic(() => import('./sections/FeaturedItemsSection/FeaturedItem')),

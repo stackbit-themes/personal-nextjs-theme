@@ -1,0 +1,38 @@
+type: object
+name: DividerSection
+label: Divider
+labelField: title
+thumbnail: https://assets.stackbit.com/components/models/thumbnails/default.png
+groups:
+  - sectionComponent
+fieldGroups:
+  - name: settings
+    label: Settings
+fields:
+  - type: string
+    name: title
+    description: The value of the field is used for presentation purposes in Stackbit
+    default: Divider
+  - type: string
+    name: elementId
+    group: settings
+    label: Element ID
+    description: The unique ID for an HTML element, must not contain whitespace
+    default: ''
+  - type: style
+    name: styles
+    styles:
+      self:
+        width: ['narrow', 'wide', 'full']
+        margin: ['tw0:96']
+        padding: ['tw0:96']
+        justifyContent: ['flex-start', 'flex-end', 'center']
+        borderWidth: ['1:8']
+        borderStyle: '*'
+    default:
+      self:
+        width: wide
+        padding: ['pt-0', 'pb-0', 'pl-0', 'pr-0']
+        justifyContent: center
+        borderWidth: 1
+        borderStyle: solid

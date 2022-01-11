@@ -13,7 +13,7 @@ export default function PostLayout(props) {
     const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
     const sections = page.bottomSections || [];
     const dateTimeAttr = dayjs(page.date).format('YYYY-MM-DD HH:mm:ss');
-    const formattedDate = dayjs(page.date).format('MMMM D, YYYY');
+    const formattedDate = dayjs(page.date).format('MM-DD-YYYY');
 
     return (
         <BaseLayout page={page} site={site}>
@@ -77,13 +77,13 @@ function PostAttribution({ post }) {
         <span>
             {author && (
                 <>
-                    {', by '}
+                    {' | '}
                     {author}
                 </>
             )}
             {category && (
                 <>
-                    {author ? ' in ' : 'In '}
+                    {' | '}
                     {category}
                 </>
             )}
