@@ -46,6 +46,7 @@ sections:
         justifyContent: flex-start
     type: HeroSection
   - colors: colors-f
+    type: FeaturedPostsSection
     elementId: ''
     showDate: false
     showAuthor: false
@@ -75,10 +76,9 @@ sections:
         justifyContent: center
     subtitle: 'Recent projects:'
     posts:
+      - content/pages/blog/post-four.md
       - content/pages/blog/post-three.md
       - content/pages/blog/post-two.md
-      - content/pages/blog/post-one.md
-    type: FeaturedPostsSection
   - type: FeaturedPostsSection
     elementId: ''
     colors: colors-f

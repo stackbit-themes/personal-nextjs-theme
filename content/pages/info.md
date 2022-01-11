@@ -2,6 +2,12 @@
 title: About
 layout: PageLayout
 colors: colors-a
+backgroundImage:
+  url: /images/bg2.jpg
+  backgroundSize: cover
+  backgroundPosition: center
+  backgroundRepeat: no-repeat
+  opacity: 50
 sections:
   - elementId: ''
     colors: colors-f

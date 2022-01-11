@@ -19,28 +19,28 @@
         "size": "4xl",
         "weight": "normal",
         "decoration": "none",
-        "case": "none",
+        "case": "uppercase",
         "letterSpacing": "normal"
     },
     "h4": {
         "size": "3xl",
         "weight": "medium",
         "decoration": "none",
-        "case": "none",
+        "case": "uppercase",
         "letterSpacing": "normal"
     },
     "h5": {
         "size": "xl",
         "weight": "medium",
         "decoration": "none",
-        "case": "none",
+        "case": "uppercase",
         "letterSpacing": "normal"
     },
     "h6": {
         "size": "lg",
         "weight": "medium",
         "decoration": "none",
-        "case": "none",
+        "case": "uppercase",
         "letterSpacing": "normal"
     },
     "light": "#ffffff",

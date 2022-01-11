@@ -1,5 +1,5 @@
 ---
-title: Sharing my wisdom
+title: Sharing my wisdom with the world
 colors: colors-a
 layout: PostLayout
 date: '2021-12-01'
@@ -10,11 +10,11 @@ bottomSections:
   - elementId: ''
     colors: colors-f
     variant: variant-d
-    title: Read next
+    subtitle: Recent posts
     showDate: true
     showAuthor: false
     showExcerpt: true
-    recentCount: 3
+    recentCount: 2
     styles:
       self:
         height: auto
@@ -23,12 +23,72 @@ bottomSections:
         padding: ['pt-12', 'pb-56', 'pr-4', 'pl-4']
         justifyContent: center
       title:
-        textAlign: center
+        textAlign: left
       subtitle:
-        textAlign: center
+        textAlign: left
       actions:
         justifyContent: center
     type: RecentPostsSection
+  - type: ContactSection
+    title: 'Stay up-to-date with my words ✍️'
+    colors: colors-f
+    form:
+      type: FormBlock
+      elementId: sign-up-form
+      destination: ''
+      action: /.netlify/functions/submission_created
+      fields:
+        - name: firstName
+          label: First Name
+          hideLabel: true
+          placeholder: First Name
+          isRequired: true
+          width: 1/2
+          type: TextFormControl
+        - name: lastName
+          label: Last Name
+          hideLabel: true
+          placeholder: Last Name
+          isRequired: false
+          width: 1/2
+          type: TextFormControl
+        - name: email
+          label: Email
+          hideLabel: true
+          placeholder: Email
+          isRequired: true
+          width: full
+          type: EmailFormControl
+        - name: updatesConsent
+          label: Sign me up to recieve my words
+          isRequired: false
+          width: full
+          type: CheckboxFormControl
+      submitLabel: "Submit \U0001F680"
+      styles:
+        submitLabel:
+          textAlign: center
+    styles:
+      self:
+        height: auto
+        width: wide
+        margin:
+          - mt-0
+          - mb-0
+          - ml-4
+          - mr-4
+        padding:
+          - pt-24
+          - pb-24
+          - pr-4
+          - pl-4
+        alignItems: center
+        justifyContent: center
+        flexDirection: row
+      title:
+        textAlign: left
+      text:
+        textAlign: left
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem, tincidunt ac leo efficitur, feugiat tempor odio. Curabitur at auctor sapien. Etiam at cursus enim. Suspendisse sed augue tortor. Nunc eu magna vitae lorem pellentesque fermentum. Sed in facilisis dui. Nulla molestie risus in mi dapibus, eget porta lorem semper. Donec sed facilisis nibh. Curabitur eget dui in libero euismod commodo nec sit amet est. Etiam id ipsum aliquam, vehicula erat sit amet, consequat tortor.

@@ -124,7 +124,7 @@ function postsVariantA(props) {
                     )}
 
                     {props.showDate && <PostDate post={post} className="mb-3" />}
-                    <h3 className="text-4xl uppercase">
+                    <h3 className="text-4xl">
                         <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                             {post.title}
                         </Link>
@@ -177,7 +177,7 @@ function postsVariantB(props) {
                     )}
 
                     {props.showDate && <PostDate post={post} className="mb-3" />}
-                    <h3 className="text-4xl uppercase">
+                    <h3 className="text-4xl">
                         <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                             {post.title}
                         </Link>
@@ -230,7 +230,7 @@ function postsVariantC(props) {
                     )}
 
                     {props.showDate && <PostDate post={post} className="mb-3" />}
-                    <h3 className="text-4xl uppercase">
+                    <h3 className="text-4xl">
                         <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                             {post.title}
                         </Link>
@@ -286,7 +286,7 @@ function postsVariantD(props) {
                         )}
                         <div className={classNames('md:flex-grow', {})}>
                             {props.showDate && <PostDate post={post} className="mb-3" />}
-                            <h3 className="text-4xl uppercase">
+                            <h3 className="text-4xl">
                                 <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                                     {post.title}
                                 </Link>
