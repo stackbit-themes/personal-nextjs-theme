@@ -50,6 +50,9 @@ fields:
     label: Site background image
     models:
       - BackgroundImage
+    default:
+      type: BackgroundImage
+      url: /images/bg2.jpg
   - type: date
     name: date
     label: Date
