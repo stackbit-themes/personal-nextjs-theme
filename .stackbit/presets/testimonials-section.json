@@ -2,21 +2,21 @@
     "model": "TestimonialsSection",
     "presets": [
         {
-            "label": "Testimonials light - with big image, text left",
-            "thumbnail": "images/testimonials-light-image.png",
+            "label": "Testimonials transparent - with image, text left",
+            "thumbnail": "images/testimonials-transparent-image.png",
             "data": {
-                "colors": "colors-d",
+                "colors": "colors-f",
                 "variant": "variant-a",
                 "title": "",
                 "subtitle": "",
                 "testimonials": [
                     {
-                        "quote": "\"It’s great to see someone taking action while still maintaining a sustainable fish supply to home cooks.\"",
+                        "quote": "\"Our website is the core of our sales strategy. Doris helped us establish an easy-to-maintain Stackbit site with outstanding visuals!\"",
                         "name": "Oliver Mills",
-                        "title": "Head chef at Parks",
+                        "title": "CEO at Parks",
                         "image": {
                             "type": "ImageBlock",
-                            "url": "/images/gallery-2.jpg",
+                            "url": "/images/person-1.jpg",
                             "altText": "A man fishing"
                         }
                     }
@@ -48,12 +48,12 @@
                 "subtitle": "",
                 "testimonials": [
                     {
-                        "quote": "\"It’s great to see someone taking action while still maintaining a sustainable fish supply to home cooks.\"",
+                        "quote": "\"Our website is the core of our sales strategy. Doris helped us establish an easy-to-maintain Stackbit site with outstanding visuals!\"",
                         "name": "John Doe",
-                        "title": "Head chef at Parks",
+                        "title": "CEO at Parks",
                         "image": {
                             "type": "ImageBlock",
-                            "url": "/images/fisherman.jpg",
+                            "url": "/images/person-2.jpg",
                             "altText": "John Doe"
                         }
                     }
@@ -76,8 +76,8 @@
             }
         },
         {
-            "label": "Testimonials light - no image, text centered",
-            "thumbnail": "images/testimonials-light-text-centered.png",
+            "label": "Testimonials secondary - no image, text centered",
+            "thumbnail": "images/testimonials-secondary-text-centered.png",
             "data": {
                 "colors": "colors-d",
                 "variant": "variant-c",
@@ -85,9 +85,9 @@
                 "subtitle": "",
                 "testimonials": [
                     {
-                        "quote": "\"It’s great to see someone taking action while still maintaining a sustainable fish supply to home cooks.\"",
+                        "quote": "\"Our website is the core of our sales strategy. Doris helped us establish an easy-to-maintain Stackbit site with outstanding visuals!\"",
                         "name": "Isabelle Parks",
-                        "title": "Head chef at Parks",
+                        "title": "CTO at Parks",
                         "image": null
                     }
                 ],
