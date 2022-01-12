@@ -73,10 +73,26 @@ fields:
     max: 4
     step: 1
     default: 3
-  - type: boolean
-    name: enableHover
-    label: Enable hover
-    default: false
+  - type: number
+    name: spacingX
+    label: Horizontal spacing between items
+    group: styles
+    controlType: 'slider'
+    min: 0
+    max: 160
+    step: 1
+    unit: 'px'
+    default: 16
+  - type: number
+    name: spacingY
+    label: Vertical spacing between items
+    group: styles
+    controlType: 'slider'
+    min: 0
+    max: 160
+    step: 1
+    unit: 'px'
+    default: 16
   - type: style
     name: styles
     styles:

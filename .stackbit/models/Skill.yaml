@@ -1,0 +1,15 @@
+type: object
+name: Skill
+label: Skill
+labelField: label
+thumbnail: https://assets.stackbit.com/components/models/thumbnails/default.png
+fields:
+  - type: string
+    name: label
+    label: Label
+    default: Skill title
+    required: true
+  - type: string
+    name: url
+    label: URL
+    default: ''

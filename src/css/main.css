@@ -6,7 +6,15 @@
 
 @layer base {
     body {
-        @apply text-base;
+        @apply text-lg antialiased flex flex-col min-h-screen;
+    }
+    body > div,
+    .sb-page,
+    .sb-base {
+        @apply flex flex-col flex-grow;
+    }
+    .sb-layout {
+        @apply flex-grow;
     }
     h1,
     h2,
@@ -129,56 +137,53 @@
 
     /* Buttons */
     .sb-component-button {
-        @apply border-2 inline-flex items-center justify-center no-underline text-center transition duration-200 ease-in;
+        @apply border-2 border-current inline-flex items-center justify-center no-underline relative text-center transition duration-200 ease-in;
+        box-shadow: none;
     }
-    .sb-component-social {
-        @apply transition duration-200 ease-in;
+    .sb-component-button:hover {
+        box-shadow: 0 6px 0 0 currentColor;
     }
-    .sb-component-social:not(.sb-component-social-primary),
-    .sb-component-social:not(.sb-component-social-secondary) {
-        @apply hover:opacity-70;
-    }
-    .sb-component-button-primary,
-    .sb-component-social-primary {
-        @apply bg-primary border-primary text-on-primary hover:bg-light hover:border-primary hover:text-primary;
+    .sb-component-button-secondary {
+        @apply rounded-full;
     }
 
     /* Links */
     .sb-component-link {
         @apply inline-flex items-center justify-center no-underline relative;
+        box-shadow: 0 1px 0 0 currentColor;
+        transition: box-shadow 0.25s ease-in-out;
     }
-    .sb-component-link:after {
-        @apply bg-current absolute left-0 w-full;
-        bottom: -2px;
-        content: '';
-        height: 2px;
-        transform: scaleX(0);
-        transform-origin: 100% 50%;
-        transition: transform 0.25s ease-in-out;
-    }
-    .sb-component-link:hover:after {
-        transform: scaleX(1);
-        transform-origin: 0% 50%;
+    .sb-component-link:hover {
+        box-shadow: 0 5px 0 0 currentColor;
     }
 
     /* Socials */
     .sb-component-social {
-        @apply inline-flex items-center justify-center no-underline transition duration-200 ease-in;
+        @apply inline-flex items-center justify-center no-underline transition duration-200 ease-in hover:opacity-80;
     }
 
-    .sb-component-social-primary,
-    .sb-component-social-secondary {
-        @apply border-2 rounded-full p-2;
+    /* Header menu items */
+    .sb-header-links-primary .sb-component-link,
+    .sb-component-header .sb-component-social {
+        @apply relative shadow-none overflow-hidden opacity-100;
+        transition: color 0.25s ease-in-out;
+        transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+        z-index: 1;
     }
-
-    /* Dividers */
-    .sb-divider {
-        @apply flex items-center before:flex-grow before:h-px before:bg-current;
+    .sb-header-links-primary .sb-component-link:before,
+    .sb-component-header .sb-component-social:before {
+        @apply absolute w-full h-full left-0 top-0;
+        content: '';
+        z-index: -1;
+        transform: translate3d(0, -100%, 0);
+        transform-origin: 0% 100%;
+        transition: transform 0.25s, opacity 0.25s;
     }
-
-    /* Featured items */
-    .sb-component-item-hover {
-        @apply transition duration-200 ease-in;
+    .sb-header-links-primary .sb-component-link:hover:before,
+    .sb-component-header .sb-component-social:hover:before {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     }
 
     /* Form controls */
@@ -191,7 +196,7 @@
     .sb-input,
     .sb-select,
     .sb-textarea {
-        @apply bg-transparent border-2 border-current p-3 w-full focus:outline-none;
+        @apply bg-transparent border border-current p-3 w-full focus:outline-none;
     }
     option {
         color: initial;
@@ -202,10 +207,11 @@
         width: 1.5em;
     }
     .sb-checkbox + .sb-label {
-        @apply cursor-pointer pl-8 relative;
+        @apply cursor-pointer relative;
+        padding-left: 2.5em;
     }
     .sb-checkbox + .sb-label:before {
-        @apply absolute left-0 top-1/2 transform -translate-y-1/2 border-2 border-current cursor-pointer text-center font-sans;
+        @apply absolute left-0 top-1/2 transform -translate-y-1/2 border border-current cursor-pointer text-center font-sans;
         content: '';
         height: 1.5em;
         width: 1.5em;
@@ -229,98 +235,101 @@
 
     /* Color palettes */
     .colors-a {
-        @apply bg-light text-on-light;
-        .sb-input,
-        .sb-select,
-        .sb-textarea {
-            @apply text-on-light placeholder-on-light placeholder-opacity-75;
-        }
-        .sb-component-button-primary,
-        .sb-component-social-primary {
-            @apply bg-on-light border-on-light text-on-primary;
-        }
-        .sb-component-button-secondary,
-        .sb-component-social-secondary {
-            @apply border-dark text-dark;
-        }
-        .sb-component-item-hover {
-            @apply hover:bg-light hover:text-on-primary;
-        }
-    }
-    .colors-b {
         @apply bg-dark text-on-dark;
         .sb-input,
         .sb-select,
         .sb-textarea {
             @apply text-on-dark placeholder-on-dark placeholder-opacity-75;
         }
-        .sb-component-button-primary,
-        .sb-component-social-primary {
-            @apply bg-on-dark border-on-dark text-dark;
+        .sb-header-links-primary .sb-component-link:before,
+        .sb-component-header .sb-component-social:before {
+            @apply bg-on-dark;
         }
-        .sb-component-button-secondary,
-        .sb-component-social-secondary {
-            @apply border-light text-light;
+        .sb-header-links-primary .sb-component-link:hover,
+        .sb-component-header .sb-component-social:hover {
+            @apply text-dark;
         }
-        .sb-component-item-hover {
-            @apply hover:bg-light hover:text-on-light;
+        .sb-header-overlay {
+            @apply bg-dark;
+        }
+    }
+    .colors-b {
+        @apply bg-light text-on-light;
+        .sb-input,
+        .sb-select,
+        .sb-textarea {
+            @apply text-on-light placeholder-on-light placeholder-opacity-75;
+        }
+        .sb-header-links-primary .sb-component-link:before,
+        .sb-component-header .sb-component-social:before {
+            @apply bg-on-light;
+        }
+        .sb-header-links-primary .sb-component-link:hover,
+        .sb-component-header .sb-component-social:hover {
+            @apply text-light;
+        }
+        .sb-header-overlay {
+            @apply bg-light;
         }
     }
     .colors-c {
-        @apply bg-secondary text-on-secondary;
-        .sb-input,
-        .sb-select,
-        .sb-textarea {
-            @apply text-on-secondary placeholder-on-secondary placeholder-opacity-75;
-        }
-        .sb-component-button-primary,
-        .sb-component-social-primary {
-            @apply bg-on-light border-on-light text-on-primary;
-        }
-        .sb-component-button-secondary,
-        .sb-component-social-secondary {
-            @apply border-dark text-dark;
-        }
-        .sb-component-item-hover {
-            @apply hover:bg-dark hover:text-light;
-        }
-    }
-    .colors-d {
-        @apply bg-complementary text-on-complementary;
-        .sb-input,
-        .sb-select,
-        .sb-textarea {
-            @apply text-on-complementary placeholder-on-complementary placeholder-opacity-75;
-        }
-        .sb-component-button-primary,
-        .sb-component-social-primary {
-            @apply bg-on-dark border-on-dark text-dark;
-        }
-        .sb-component-button-secondary,
-        .sb-component-social-secondary {
-            @apply border-light text-light;
-        }
-        .sb-component-item-hover {
-            @apply hover:bg-dark hover:text-light;
-        }
-    }
-    .colors-e {
         @apply bg-primary text-on-primary;
         .sb-input,
         .sb-select,
         .sb-textarea {
             @apply text-on-primary placeholder-on-primary placeholder-opacity-75;
         }
-        .sb-component-button-primary,
-        .sb-component-social-primary {
-            @apply bg-dark border-dark text-on-dark;
+        .sb-header-links-primary .sb-component-link:before,
+        .sb-component-header .sb-component-social:before {
+            @apply bg-on-primary;
         }
-        .sb-component-button-secondary,
-        .sb-component-social-secondary {
-            @apply border-on-primary text-on-primary;
+        .sb-header-links-primary .sb-component-link:hover,
+        .sb-component-header .sb-component-social:hover {
+            @apply text-primary;
         }
-        .sb-component-item-hover {
-            @apply hover:bg-light hover:text-on-light;
+        .sb-header-overlay {
+            @apply bg-primary;
         }
+    }
+    .colors-d {
+        @apply bg-secondary text-on-secondary;
+        .sb-input,
+        .sb-select,
+        .sb-textarea {
+            @apply text-on-secondary placeholder-on-secondary placeholder-opacity-75;
+        }
+        .sb-header-links-primary .sb-component-link:before,
+        .sb-component-header .sb-component-social:before {
+            @apply bg-on-secondary;
+        }
+        .sb-header-links-primary .sb-component-link:hover,
+        .sb-component-header .sb-component-social:hover {
+            @apply text-secondary;
+        }
+        .sb-header-overlay {
+            @apply bg-secondary;
+        }
+    }
+    .colors-e {
+        @apply bg-complementary text-on-complementary;
+        .sb-input,
+        .sb-select,
+        .sb-textarea {
+            @apply text-on-complementary placeholder-on-complementary placeholder-opacity-75;
+        }
+        .sb-header-links-primary .sb-component-link:before,
+        .sb-component-header .sb-component-social:before {
+            @apply bg-on-complementary;
+        }
+        .sb-header-links-primary .sb-component-link:hover,
+        .sb-component-header .sb-component-social:hover {
+            @apply text-complementary;
+        }
+        .sb-header-overlay {
+            @apply bg-complementary;
+        }
+    }
+    .colors-f {
+        @apply bg-transparent;
     }
 }

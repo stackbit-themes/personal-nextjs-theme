@@ -8,11 +8,14 @@ import FeaturedItem from './FeaturedItem';
 
 export default function FeaturedItemsSection(props) {
     const cssId = props.elementId || null;
+    const colors = props.colors || 'colors-a';
     const styles = props.styles || {};
     const sectionWidth = styles.self?.width || 'wide';
     const sectionHeight = styles.self?.height || 'auto';
     const sectionJustifyContent = styles.self?.justifyContent || 'center';
     const featuredItems = props.items || [];
+    const spacingX = props.spacingX || props.spacingX === 0 ? props.spacingX : 16;
+    const spacingY = props.spacingY || props.spacingY === 0 ? props.spacingY : 16;
     return (
         <div
             id={cssId}
@@ -21,6 +24,7 @@ export default function FeaturedItemsSection(props) {
                 'sb-component',
                 'sb-component-section',
                 'sb-component-featured-items-section',
+                colors,
                 'flex',
                 'flex-col',
                 'justify-center',
@@ -55,13 +59,17 @@ export default function FeaturedItemsSection(props) {
                     {featuredItemActions(props)}
                     {featuredItems.length > 0 && (
                         <div
-                            className={classNames('grid', 'gap-6', 'lg:gap-8', mapColStyles(props?.columns || 3), {
+                            className={classNames('grid', mapColStyles(props?.columns || 3), {
                                 'mt-12 lg:mt-16': props.title || props.subtitle || (props.actions || []).length > 0
                             })}
+                            style={{
+                                columnGap: spacingX ? `${spacingX}px` : undefined,
+                                rowGap: spacingY ? `${spacingY}px` : undefined
+                            }}
                             data-sb-field-path=".items"
                         >
                             {props.items.map((item, index) => (
-                                <FeaturedItem key={index} {...item} enableHover={props.enableHover} data-sb-field-path={`.${index}`} />
+                                <FeaturedItem key={index} {...item} data-sb-field-path={`.${index}`} />
                             ))}
                         </div>
                     )}

@@ -2,45 +2,45 @@
     "type": "ThemeStyle",
     "fontBody": "fontPrimary",
     "h1": {
-        "size": "5xl",
+        "size": "6xl",
         "weight": "medium",
         "decoration": "none",
         "case": "uppercase",
         "letterSpacing": "normal"
     },
     "h2": {
-        "size": "4xl",
+        "size": "5xl",
         "weight": "normal",
         "decoration": "none",
         "case": "uppercase",
         "letterSpacing": "normal"
     },
     "h3": {
-        "size": "3xl",
+        "size": "4xl",
         "weight": "normal",
         "decoration": "none",
-        "case": "none",
+        "case": "uppercase",
         "letterSpacing": "normal"
     },
     "h4": {
-        "size": "2xl",
+        "size": "3xl",
         "weight": "medium",
         "decoration": "none",
-        "case": "none",
+        "case": "uppercase",
         "letterSpacing": "normal"
     },
     "h5": {
         "size": "xl",
         "weight": "medium",
         "decoration": "none",
-        "case": "none",
+        "case": "uppercase",
         "letterSpacing": "normal"
     },
     "h6": {
         "size": "lg",
         "weight": "medium",
         "decoration": "none",
-        "case": "none",
+        "case": "uppercase",
         "letterSpacing": "normal"
     },
     "light": "#ffffff",
@@ -57,24 +57,19 @@
         "weight": "normal",
         "case": "none",
         "letterSpacing": "normal",
-        "borderRadius": "none",
         "horizontalPadding": 20,
-        "verticalPadding": 10,
-        "shadow": "none"
+        "verticalPadding": 15
     },
     "buttonSecondary": {
         "weight": "normal",
         "case": "none",
         "letterSpacing": "normal",
-        "borderRadius": "none",
-        "borderStyle": "solid",
         "horizontalPadding": 20,
-        "verticalPadding": 10,
-        "shadow": "none"
+        "verticalPadding": 15
     },
     "link": {
         "weight": "normal",
-        "case": "none",
+        "case": "uppercase",
         "letterSpacing": "normal"
     }
 }

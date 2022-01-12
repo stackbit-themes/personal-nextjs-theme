@@ -1,12 +1,19 @@
 ---
 layout: PostFeedLayout
 title: Blog
-colors: colors-b
+colors: colors-a
+backgroundImage:
+  url: /images/bg2.jpg
+  backgroundSize: cover
+  backgroundPosition: center
+  backgroundRepeat: no-repeat
+  opacity: 50
 numOfPostsPerPage: 10
 postFeed:
+  colors: colors-f
   showDate: true
   showAuthor: false
-  showExcerpt: false
+  showExcerpt: true
   showReadMoreLink: true
   variant: variant-d
   styles:
@@ -19,5 +26,5 @@ postFeed:
         - pb-12
 styles:
   title:
-    textAlign: center
+    textAlign: left
 ---

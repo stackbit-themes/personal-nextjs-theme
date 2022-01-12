@@ -1,0 +1,173 @@
+{
+    "model": "SkillsSection",
+    "presets": [
+        {
+            "label": "Skills transparent, text left",
+            "thumbnail": "images/skills-transparent-left.png",
+            "data": {
+                "colors": "colors-f",
+                "items": [
+                    {
+                        "type": "Skill",
+                        "label": "WEB 1, 2, 3"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "React"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Microsoft Office"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Next.js"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Stackbit"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Pancakes"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "C++"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Swift"
+                    }
+                ],
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-36", "pb-36", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    }
+                }
+            }
+        },
+        {
+            "label": "Skills transparent, text centered",
+            "thumbnail": "images/skills-transparent-centered.png",
+            "data": {
+                "colors": "colors-f",
+                "items": [
+                    {
+                        "type": "Skill",
+                        "label": "WEB 1, 2, 3"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "React"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Microsoft Office"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Next.js"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Stackbit"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Pancakes"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "C++"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Swift"
+                    }
+                ],
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-36", "pb-36", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "center"
+                    },
+                    "subtitle": {
+                        "textAlign": "center"
+                    }
+                }
+            }
+        },
+        {
+            "label": "Skills secondary, text left",
+            "thumbnail": "images/skills-secondary-left.png",
+            "data": {
+                "colors": "colors-d",
+                "items": [
+                    {
+                        "type": "Skill",
+                        "label": "WEB 1, 2, 3"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "React"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Microsoft Office"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Next.js"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Stackbit"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Pancakes"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "C++"
+                    },
+                    {
+                        "type": "Skill",
+                        "label": "Swift"
+                    }
+                ],
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-36", "pb-36", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    }
+                }
+            }
+        }
+    ]
+}

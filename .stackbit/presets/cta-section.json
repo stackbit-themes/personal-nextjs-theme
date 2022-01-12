@@ -2,10 +2,10 @@
     "model": "CtaSection",
     "presets": [
         {
-            "label": "CTA light - button bottom",
-            "thumbnail": "images/cta-light-btn-bottom.png",
+            "label": "CTA transparent - button bottom",
+            "thumbnail": "images/cta-transparent-btn-bottom.png",
             "data": {
-                "colors": "colors-d",
+                "colors": "colors-f",
                 "backgroundImage": null,
                 "actions": [
                     {
@@ -40,8 +40,8 @@
             }
         },
         {
-            "label": "CTA secondary - button bottom",
-            "thumbnail": "images/cta-secondary-btn-bottom.png",
+            "label": "CTA primary - button bottom",
+            "thumbnail": "images/cta-primary-btn-bottom.png",
             "data": {
                 "colors": "colors-c",
                 "backgroundImage": null,
@@ -78,10 +78,10 @@
             }
         },
         {
-            "label": "CTA dark - button right",
-            "thumbnail": "images/cta-dark-btn-right.png",
+            "label": "CTA primary - button right",
+            "thumbnail": "images/cta-transparent-btn-right.png",
             "data": {
-                "colors": "colors-e",
+                "colors": "colors-f",
                 "backgroundImage": null,
                 "actions": [
                     {

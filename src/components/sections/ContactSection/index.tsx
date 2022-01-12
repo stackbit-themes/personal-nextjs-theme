@@ -9,6 +9,7 @@ import FormBlock from '../../molecules/FormBlock';
 
 export default function ContactSection(props) {
     const cssId = props.elementId || null;
+    const colors = props.colors || 'colors-a';
     const bgSize = props.backgroundSize || 'full';
     const sectionStyles = props.styles?.self || {};
     const sectionWidth = sectionStyles.width || 'wide';
@@ -31,6 +32,7 @@ export default function ContactSection(props) {
         >
             <div
                 className={classNames(
+                    colors,
                     'flex',
                     'flex-col',
                     'justify-center',
@@ -72,7 +74,7 @@ export default function ContactSection(props) {
                                 {contactBody(props)}
                                 {props.form && (
                                     <div className={classNames('sb-contact-section-form', { 'mt-12': props.title || props.text })}>
-                                        <FormBlock {...props.form} className="inline-block w-full max-w-2xl" data-sb-field-path=".form" />
+                                        <FormBlock {...props.form} className="inline-block w-full" data-sb-field-path=".form" />
                                     </div>
                                 )}
                             </div>

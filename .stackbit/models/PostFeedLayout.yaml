@@ -20,30 +20,30 @@ fields:
     options:
       - label: Colors A
         value: colors-a
-        textColor: '$onLight'
-        backgroundColor: '$light'
-        borderColor: '#ececec'
-      - label: Colors B
-        value: colors-b
         textColor: '$onDark'
         backgroundColor: '$dark'
         borderColor: '#ececec'
+      - label: Colors B
+        value: colors-b
+        textColor: '$onLight'
+        backgroundColor: '$light'
+        borderColor: '#ececec'
       - label: Colors C
         value: colors-c
-        textColor: '$onSecondary'
-        backgroundColor: '$secondary'
+        textColor: '$onPrimary'
+        backgroundColor: '$primary'
         borderColor: '#ececec'
       - label: Colors D
         value: colors-d
-        textColor: '$onComplementary'
-        backgroundColor: '$complementary'
+        textColor: '$onSecondary'
+        backgroundColor: '$secondary'
         borderColor: '#ececec'
       - label: Colors E
         value: colors-e
-        textColor: '$onComplementaryAlt'
-        backgroundColor: '$complementaryAlt'
+        textColor: '$onComplementary'
+        backgroundColor: '$complementary'
         borderColor: '#ececec'
-    default: colors-d
+    default: colors-a
   - type: model
     name: backgroundImage
     group: styles
@@ -66,7 +66,6 @@ fields:
       showDate: true
       showAuthor: true
       variant: variant-a
-      actions: []
   - type: list
     name: topSections
     label: Top Sections

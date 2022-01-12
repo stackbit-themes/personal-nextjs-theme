@@ -8,62 +8,9 @@
         "isTitleVisible": true,
         "primaryLinks": [
             {
-                "altText": "",
-                "url": "/",
-                "showIcon": true,
-                "icon": "twitter",
-                "iconPosition": "right",
-                "elementId": "",
-                "type": "Link"
-            },
-            {
-                "altText": "",
-                "url": "/",
-                "showIcon": true,
-                "icon": "github",
-                "iconPosition": "right",
-                "elementId": "",
-                "type": "Link"
-            }
-        ],
-        "secondaryLinks": [
-            {
                 "type": "Link",
                 "label": "Info",
-                "url": "/about",
-                "altText": ""
-            },
-            {
-                "type": "Link",
-                "label": "Blog",
-                "url": "/blog",
-                "altText": ""
-            }
-        ],
-        "styles": {
-            "self": {
-                "width": "narrow",
-                "padding": ["pt-5", "pb-5", "pr-4", "pl-4"]
-            }
-        }
-    },
-    "footer": {
-        "variant": "variant-a",
-        "contacts": {
-            "title": "Contact details",
-            "phoneNumber": "850-123-5021",
-            "phoneAltText": "Our phone",
-            "email": "info@lorem.mail",
-            "emailAltText": "Our email",
-            "address": "312 Lovely Street, Brooklyn, NY, 123456",
-            "addressAltText": "Our address"
-        },
-        "copyrightText": "Powered by [Stackbit](https://www.stackbit.com/)",
-        "primaryLinks": [
-            {
-                "type": "Link",
-                "label": "Info",
-                "url": "/about",
+                "url": "/info",
                 "altText": ""
             },
             {
@@ -89,18 +36,50 @@
                 "icon": "github"
             }
         ],
-        "legalLinks": [
+        "styles": {
+            "self": {
+                "width": "full",
+                "padding": ["pt-5", "pb-5", "pr-4", "pl-4"]
+            }
+        }
+    },
+    "footer": {
+        "primaryLinks": [
             {
                 "type": "Link",
-                "label": "Privacy Policy",
-                "url": "/"
+                "label": "Info",
+                "url": "/info",
+                "altText": ""
             },
             {
                 "type": "Link",
-                "label": "Terms & Conditions",
-                "url": "/"
+                "label": "Contact",
+                "url": "/contact",
+                "altText": ""
+            },
+            {
+                "type": "Link",
+                "label": "Blog",
+                "url": "/blog",
+                "altText": ""
+            },
+            {
+                "type": "Link",
+                "label": "GitHub",
+                "url": "https://github.com/",
+                "altText": ""
             }
         ],
+        "contacts": {
+            "title": "Contact details",
+            "phoneNumber": "850-123-5021",
+            "phoneAltText": "Our phone",
+            "email": "info@lorem.mail",
+            "emailAltText": "Our email",
+            "address": "312 Lovely Street, Brooklyn, NY, 123456",
+            "addressAltText": "Our address"
+        },
+        "copyrightText": "Powered by [Stackbit](https://www.stackbit.com/)",
         "styles": {
             "self": {
                 "width": "narrow",

@@ -1,9 +1,16 @@
 ---
 title: Home
 layout: PageLayout
-colors: colors-b
+colors: colors-a
+backgroundImage:
+  url: /images/bg2.jpg
+  backgroundSize: cover
+  backgroundPosition: center
+  backgroundRepeat: no-repeat
+  opacity: 80
 sections:
   - elementId: ''
+    colors: colors-f
     backgroundSize: full
     title: >-
       I’m a developer, digital artist, consultant and a bunch of other
@@ -12,21 +19,6 @@ sections:
       This is my info—I’m sharing it all this with ya’ll to impress you with all
       the hard work I’ve done in the past few years. Once you’re impressed, you
       can continue to scroll down to see more details and credentials about me.
-    actions:
-      - type: Button
-        label: Get Started
-        url: 'https://www.stackbit.com/'
-        style: primary
-        iconPosition: right
-        icon: arrowRight
-        showIcon: true
-      - type: Button
-        label: Get Started
-        url: 'https://www.stackbit.com/'
-        style: secondary
-        iconPosition: right
-        icon: arrowRight
-        showIcon: true
     styles:
       self:
         height: auto
@@ -53,13 +45,56 @@ sections:
       actions:
         justifyContent: flex-start
     type: HeroSection
-  - elementId: ''
+  - colors: colors-f
+    type: FeaturedPostsSection
+    elementId: ''
+    showDate: false
+    showAuthor: false
+    showExcerpt: true
+    showReadMoreLink: true
+    variant: variant-b
+    styles:
+      self:
+        height: auto
+        width: wide
+        margin:
+          - mt-0
+          - mb-0
+          - ml-0
+          - mr-0
+        padding:
+          - pt-24
+          - pb-24
+          - pl-4
+          - pr-4
+        justifyContent: center
+      title:
+        textAlign: left
+      subtitle:
+        textAlign: left
+      actions:
+        justifyContent: center
+    subtitle: 'Recent projects:'
+    posts:
+      - content/pages/blog/post-four.md
+      - content/pages/blog/post-three.md
+      - content/pages/blog/post-two.md
+  - type: FeaturedPostsSection
+    elementId: ''
+    colors: colors-f
     variant: variant-d
     title: Posts
+    actions:
+      - type: Link
+        label: See all posts
+        url: /blog
     posts:
-      - content/pages/blog/post-five.md
-      - content/pages/blog/post-four.md
+      - content/pages/blog/post-seven.md
+      - content/pages/blog/post-six.md
       - content/pages/blog/post-one.md
+    showDate: true
+    showExcerpt: true
+    showReadMoreLink: true
     styles:
       self:
         height: auto
@@ -84,13 +119,10 @@ sections:
       subtitle:
         textAlign: left
       actions:
-        justifyContent: flex-start
-    type: FeaturedPostsSection
-    showDate: true
-    showExcerpt: true
-    showReadMoreLink: true
+        justifyContent: flex-end
   - type: ContactSection
-    title: Got an interesting project? Tell me more...💬
+    colors: colors-f
+    title: "Got an interesting project? Tell me more...\U0001F4AC"
     form:
       type: FormBlock
       elementId: sign-up-form
@@ -130,14 +162,14 @@ sections:
           isRequired: false
           width: full
           type: CheckboxFormControl
-      submitLabel: Submit form
+      submitLabel: "Submit \U0001F680"
       styles:
         submitLabel:
           textAlign: center
     styles:
       self:
         height: auto
-        width: narrow
+        width: wide
         margin:
           - mt-0
           - mb-0
@@ -152,7 +184,7 @@ sections:
         justifyContent: center
         flexDirection: row
       title:
-        textAlign: center
+        textAlign: left
       text:
-        textAlign: center
+        textAlign: left
 ---

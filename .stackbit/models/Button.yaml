@@ -40,8 +40,12 @@ fields:
         value: arrowLeftCircle
       - label: Arrow right
         value: arrowRight
-      - label: Arrow right
+      - label: Arrow right circle
         value: arrowRightCircle
+      - label: Arrow up left
+        value: arrowUpLeft
+      - label: Arrow up right
+        value: arrowUpRight
       - label: Cart
         value: cart
       - label: Chevron left
