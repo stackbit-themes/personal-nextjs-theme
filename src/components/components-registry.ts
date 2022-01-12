@@ -35,7 +35,6 @@ const components = {
     'CtaSection': dynamic(() => import('./sections/CtaSection')),
     'DividerSection': dynamic(() => import('./sections/DividerSection')),
     'EmailFormControl': dynamic(() => import('./molecules/FormBlock/EmailFormControl')),
-    'FeatureHighlightSection': dynamic(() => import('./sections/FeatureHighlightSection')),
     'FeaturedItem': dynamic(() => import('./sections/FeaturedItemsSection/FeaturedItem')),
     'FeaturedItemsSection': dynamic(() => import('./sections/FeaturedItemsSection')),
     'FormBlock': dynamic(() => import('./molecules/FormBlock')),

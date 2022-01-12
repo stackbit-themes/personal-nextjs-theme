@@ -32,7 +32,7 @@ sections:
           - mr-0
         padding:
           - pt-36
-          - pb-48
+          - pb-36
           - pl-4
           - pr-4
         justifyContent: center
@@ -44,7 +44,7 @@ sections:
         textAlign: left
       actions:
         justifyContent: flex-start
-    type: FeatureHighlightSection
+    type: HeroSection
   - type: DividerSection
     styles:
       self:
