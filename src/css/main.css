@@ -6,7 +6,15 @@
 
 @layer base {
     body {
-        @apply text-lg antialiased;
+        @apply text-lg antialiased flex flex-col min-h-screen;
+    }
+    body > div,
+    .sb-page,
+    .sb-base {
+        @apply flex flex-col flex-grow;
+    }
+    .sb-layout {
+        @apply flex-grow;
     }
     h1,
     h2,

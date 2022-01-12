@@ -271,10 +271,10 @@ function postsVariantD(props) {
             {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
-                <article key={index} data-sb-object-id={post.__metadata?.id} className="border-b border-current pb-12">
+                <article key={index} data-sb-object-id={post.__metadata?.id} className="border-b border-current pb-10 md:pb-12 md:px-4">
                     <div className="md:flex md:items-center">
                         {post.featuredImage && (
-                            <div className="mb-8 md:flex-shrink-0 md:self-stretch md:w-1/5 md:mb-0 md:mr-8">
+                            <div className="mb-8 md:flex-shrink-0 md:self-stretch md:w-48 md:mb-0 md:mr-8">
                                 <Link href={getPageUrlPath(post)} className="block h-0 w-full pt-2/3 relative overflow-hidden md:h-24 md:min-h-full md:pt-0">
                                     <ImageBlock
                                         {...post.featuredImage}
@@ -284,7 +284,7 @@ function postsVariantD(props) {
                                 </Link>
                             </div>
                         )}
-                        <div className={classNames('md:flex-grow', {})}>
+                        <div className={classNames('md:flex-grow', post.featuredImage ? null : 'md:ml-12')}>
                             {props.showDate && <PostDate post={post} className="mb-3" />}
                             <h3 className="text-4xl">
                                 <Link href={getPageUrlPath(post)} data-sb-field-path="title">
@@ -299,7 +299,7 @@ function postsVariantD(props) {
                             )}
                         </div>
                         {props.showReadMoreLink && (
-                            <div className="mt-8 md:mt-0 md:ml-12">
+                            <div className="mt-8 md:mt-0 md:mx-8">
                                 <Link
                                     href={getPageUrlPath(post)}
                                     className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
 
-import { Social, Action, Link } from '../../atoms';
+import { Action } from '../../atoms';
 
 export default function Footer(props) {
     const footerStyles = props.styles?.self || {};
