@@ -2,12 +2,12 @@
     "model": "ContactSection",
     "presets": [
         {
-            "label": "Contact light - no media",
-            "thumbnail": "images/contact-light-no-media.png",
+            "label": "Contact transparent - no media",
+            "thumbnail": "images/contact-transparent-no-media.png",
             "data": {
-                "colors": "colors-d",
-                "title": "Contact us",
-                "text": "We look forward to hearing from you.",
+                "colors": "colors-f",
+                "title": "Contact Me",
+                "text": "I'm look forward to hearing from you.",
                 "form": {
                     "type": "FormBlock",
                     "elementId": "contact-form",
@@ -29,10 +29,12 @@
                             "width": "1/2"
                         },
                         {
-                            "type": "TextFormControl",
-                            "name": "address",
-                            "placeholder": "Your home address",
-                            "isRequired": "false",
+                            "type": "TextareaFormControl",
+                            "name": "message",
+                            "label": "Tell me about your project",
+                            "hideLabel": true,
+                            "placeholder": "Tell me about your project",
+                            "isRequired": true,
                             "width": "full"
                         },
                         {
@@ -66,12 +68,12 @@
             }
         },
         {
-            "label": "Contact light - image right",
-            "thumbnail": "images/contact-light-image-right.png",
+            "label": "Contact secondary - image right",
+            "thumbnail": "images/contact-secondary-image-right.png",
             "data": {
                 "colors": "colors-d",
-                "title": "Contact us",
-                "text": "We look forward to hearing from you.",
+                "title": "Contact Me",
+                "text": "I'm look forward to hearing from you.",
                 "form": {
                     "type": "FormBlock",
                     "elementId": "contact-form",
@@ -95,11 +97,12 @@
                             "width": "1/2"
                         },
                         {
-                            "type": "TextFormControl",
-                            "name": "address",
-                            "label": "Home address",
-                            "placeholder": "Your home address",
-                            "isRequired": "false",
+                            "type": "TextareaFormControl",
+                            "name": "message",
+                            "label": "Tell me about your project",
+                            "hideLabel": true,
+                            "placeholder": "Tell me about your project",
+                            "isRequired": true,
                             "width": "full"
                         },
                         {
@@ -114,7 +117,7 @@
                 },
                 "media": {
                     "type": "ImageBlock",
-                    "url": "/images/hero-2.png",
+                    "url": "/images/contact.jpg",
                     "altText": "Contact form image"
                 },
                 "styles": {
@@ -137,12 +140,12 @@
             }
         },
         {
-            "label": "Contact dark - no media",
-            "thumbnail": "images/contact-secondary-no-media.png",
+            "label": "Contact primary - no media",
+            "thumbnail": "images/contact-primary-no-media.png",
             "data": {
                 "colors": "colors-c",
-                "title": "Get early access",
-                "text": "Sign up your team today to be the first to try out our new product to increase your team's productivity.",
+                "title": "Subscribe",
+                "text": "Join my newsletter to stay up-to-date",
                 "form": {
                     "type": "FormBlock",
                     "elementId": "sign-up-form",
