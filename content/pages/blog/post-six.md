@@ -1,17 +1,11 @@
 ---
-title: JAMstack the future of web
-colors: colors-b
+title: How to Structure and Organize a Next.js Project 🗂️
+colors: colors-a
 layout: PostLayout
-date: '2021-11-04'
+date: '2022-01-03'
 author: content/data/team/doris-soto.json
 excerpt: >-
   More context that may or may not be helpful
-backgroundImage:
-  url: /images/gallery-2.jpg
-  backgroundSize: cover
-  backgroundPosition: center
-  backgroundRepeat: no-repeat
-  opacity: 10
 bottomSections:
   - elementId: ''
     colors: colors-f

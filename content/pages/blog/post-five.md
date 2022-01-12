@@ -3,7 +3,7 @@ title: NFTs are so hot right now
 colors: colors-a
 layout: PostLayout
 date: '2021-12-02'
-author: content/data/authors/doris-soto.json
+author: content/data/team/doris-soto.json
 excerpt: >-
   More context that may or may not be helpful
 bottomSections:

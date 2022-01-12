@@ -89,8 +89,8 @@ sections:
         label: See all posts
         url: /blog
     posts:
-      - content/pages/blog/post-five.md
-      - content/pages/blog/post-four.md
+      - content/pages/blog/post-seven.md
+      - content/pages/blog/post-six.md
       - content/pages/blog/post-one.md
     showDate: true
     showExcerpt: true
