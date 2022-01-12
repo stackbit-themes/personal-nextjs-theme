@@ -597,14 +597,6 @@ fields:
     name: onComplementary
     label: Foreground over complementary
     group: color-palettes
-  - type: color
-    name: complementaryAlt
-    label: Complementary alt
-    group: color-palettes
-  - type: color
-    name: onComplementaryAlt
-    label: Foreground over complementary alt
-    group: color-palettes
   - type: object
     name: buttonPrimary
     label: Primary button
