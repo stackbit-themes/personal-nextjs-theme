@@ -17,8 +17,7 @@ fields:
     name: quote
     label: Quote
     default: |-
-      “It’s great to see someone taking action while still maintaining a
-      sustainable fish supply to home cooks.”
+      “We think coding should be required in every school because it's as important as any kind of second language.”
     required: true
   - type: string
     name: name
