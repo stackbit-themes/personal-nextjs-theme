@@ -2,29 +2,22 @@
     "model": "FeaturedPostsSection",
     "presets": [
         {
-            "label": "Featured posts light - 2 columns",
-            "thumbnail": "images/posts-light-2-col.png",
+            "label": "Featured posts transparent - 2 columns",
+            "thumbnail": "images/posts-transparent-2-col.png",
             "data": {
                 "variant": "variant-a",
-                "colors": "colors-d",
-                "title": "Seasonal adventure",
+                "colors": "colors-f",
+                "title": "Posts:",
                 "subtitle": "",
                 "actions": [
                     {
                         "type": "Link",
-                        "label": "See all adventures",
-                        "altText": "See all adventures",
-                        "url": "/blog",
-                        "showIcon": true,
-                        "icon": "arrowRight"
+                        "label": "See all posts",
+                        "altText": "See all posts",
+                        "url": "/blog"
                     }
                 ],
-                "posts": [
-                    "content/pages/blog/post-five.md",
-                    "content/pages/blog/post-four.md",
-                    "content/pages/blog/post-three.md",
-                    "content/pages/blog/post-two.md"
-                ],
+                "posts": ["content/pages/blog/post-five.md", "content/pages/blog/post-four.md"],
                 "showDate": true,
                 "showAuthor": false,
                 "showExcerpt": true,
@@ -44,69 +37,28 @@
                         "textAlign": "left"
                     },
                     "actions": {
-                        "justifyContent": "flex-start"
+                        "justifyContent": "center"
                     }
                 }
             }
         },
         {
-            "label": "Featured posts dark - 3 columns",
-            "thumbnail": "images/posts-dark-3-col.png",
+            "label": "Featured posts transparent - 3 columns",
+            "thumbnail": "images/posts-transparent-3-col.png",
             "data": {
                 "variant": "variant-b",
-                "colors": "colors-e",
-                "title": "Seasonal adventure",
-                "subtitle": "",
-                "actions": [],
-                "showDate": true,
-                "showAuthor": false,
-                "showExcerpt": false,
-                "showReadMoreLink": true,
-                "styles": {
-                    "self": {
-                        "height": "auto",
-                        "width": "wide",
-                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
-                        "padding": ["pt-24", "pb-24", "pl-4", "pr-4"],
-                        "justifyContent": "center"
-                    },
-                    "title": {
-                        "textAlign": "center"
-                    },
-                    "subtitle": {
-                        "textAlign": "center"
-                    },
-                    "actions": {
-                        "justifyContent": "center"
-                    }
-                }
-            }
-        },
-        {
-            "label": "Featured posts light - mixed",
-            "thumbnail": "images/posts-light-mixed.png",
-            "data": {
-                "variant": "variant-c",
-                "colors": "colors-d",
-                "title": "Seasonal adventure",
+                "colors": "colors-f",
+                "title": "Posts:",
                 "subtitle": "",
                 "actions": [
                     {
                         "type": "Link",
-                        "label": "See all adventures",
-                        "altText": "See all adventures",
-                        "url": "/blog",
-                        "showIcon": true,
-                        "icon": "arrowRight"
+                        "label": "See all posts",
+                        "altText": "See all posts",
+                        "url": "/blog"
                     }
                 ],
-                "posts": [
-                    "content/pages/blog/post-five.md",
-                    "content/pages/blog/post-four.md",
-                    "content/pages/blog/post-three.md",
-                    "content/pages/blog/post-two.md",
-                    "content/pages/blog/post-one.md"
-                ],
+                "posts": ["content/pages/blog/post-five.md", "content/pages/blog/post-four.md", "content/pages/blog/post-three.md"],
                 "showDate": true,
                 "showAuthor": false,
                 "showExcerpt": true,
@@ -126,32 +78,106 @@
                         "textAlign": "left"
                     },
                     "actions": {
-                        "justifyContent": "flex-start"
+                        "justifyContent": "center"
                     }
                 }
             }
         },
         {
-            "label": "Featured posts light - list",
-            "thumbnail": "images/posts-light-list.png",
+            "label": "Featured posts transparent - list",
+            "thumbnail": "images/posts-transparent-list.png",
+            "data": {
+                "variant": "variant-c",
+                "colors": "colors-f",
+                "title": "",
+                "subtitle": "",
+                "actions": [],
+                "posts": ["content/pages/blog/post-five.md"],
+                "showDate": true,
+                "showAuthor": false,
+                "showExcerpt": true,
+                "showReadMoreLink": true,
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-24", "pb-24", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "center"
+                    }
+                }
+            }
+        },
+        {
+            "label": "Featured posts transparent - list alt",
+            "thumbnail": "images/posts-transparent-list-alt.png",
+            "data": {
+                "variant": "variant-d",
+                "colors": "colors-f",
+                "title": "Posts:",
+                "subtitle": "",
+                "actions": [
+                    {
+                        "type": "Link",
+                        "label": "See all posts",
+                        "altText": "See all posts",
+                        "url": "/blog"
+                    }
+                ],
+                "posts": ["content/pages/blog/post-five.md", "content/pages/blog/post-four.md", "content/pages/blog/post-three.md"],
+                "showDate": true,
+                "showAuthor": false,
+                "showExcerpt": true,
+                "showReadMoreLink": true,
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-24", "pb-24", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "flex-end"
+                    }
+                }
+            }
+        },
+        {
+            "label": "Featured posts secondary - list alt",
+            "thumbnail": "images/posts-secondary-list-alt.png",
             "data": {
                 "variant": "variant-d",
                 "colors": "colors-d",
-                "title": "Seasonal adventure",
+                "title": "Posts:",
                 "subtitle": "",
                 "actions": [
                     {
                         "type": "Link",
-                        "label": "See all adventures",
-                        "altText": "See all adventures",
-                        "url": "/blog",
-                        "showIcon": true,
-                        "icon": "arrowRight"
+                        "label": "See all posts",
+                        "altText": "See all posts",
+                        "url": "/blog"
                     }
                 ],
+                "posts": ["content/pages/blog/post-five.md", "content/pages/blog/post-four.md", "content/pages/blog/post-three.md"],
                 "showDate": true,
                 "showAuthor": false,
-                "showExcerpt": false,
+                "showExcerpt": true,
                 "showReadMoreLink": true,
                 "styles": {
                     "self": {
@@ -168,7 +194,7 @@
                         "textAlign": "left"
                     },
                     "actions": {
-                        "justifyContent": "flex-start"
+                        "justifyContent": "flex-end"
                     }
                 }
             }

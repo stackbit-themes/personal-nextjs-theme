@@ -24,7 +24,6 @@ fields:
     styles:
       self:
         width: ['narrow', 'wide', 'full']
-        margin: ['tw0:96']
         padding: ['tw0:96']
         justifyContent: ['flex-start', 'flex-end', 'center']
         borderWidth: ['1:8']
@@ -32,7 +31,7 @@ fields:
     default:
       self:
         width: wide
-        padding: ['pt-0', 'pb-0', 'pl-0', 'pr-0']
+        padding: ['pt-12', 'pb-12', 'pl-4', 'pr-4']
         justifyContent: center
         borderWidth: 1
         borderStyle: solid

@@ -20,7 +20,6 @@ export default function DividerSection(props) {
                 'w-full',
                 'flex',
                 mapStyles({ justifyContent: sectionJustifyContent }),
-                styles.self?.margin,
                 styles.self?.padding || 'py-12 px-4'
             )}
         >
@@ -31,8 +30,7 @@ export default function DividerSection(props) {
                     mapMaxWidthStyles(sectionWidth),
                     'border-t',
                     'border-current',
-                    styles.self?.borderStyle ? mapStyles({ borderStyle: styles.self?.borderStyle }) : 'border-solid',
-                    styles.self?.borderRadius ? mapStyles({ borderRadius: styles.self?.borderRadius }) : null
+                    styles.self?.borderStyle ? mapStyles({ borderStyle: styles.self?.borderStyle }) : null
                 )}
                 style={{
                     borderTopWidth: styles.self?.borderWidth ? `${styles.self?.borderWidth}px` : '1px'
