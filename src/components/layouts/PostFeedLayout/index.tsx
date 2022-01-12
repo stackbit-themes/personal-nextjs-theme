@@ -71,9 +71,9 @@ function PageLinks({ pageIndex, baseUrlPath, numOfPages }) {
 
     // renders prev "←" button, if the current page is the first page, the button is disabled
     if (pageIndex > 0) {
-        pageLinks.push(<PageLink key="prev" pageIndex={pageIndex - 1} buttonLabel="←" baseUrlPath={baseUrlPath} />);
+        pageLinks.push(<PageLink key="prev" pageIndex={pageIndex - 1} buttonLabel="Previous" baseUrlPath={baseUrlPath} />);
     } else {
-        pageLinks.push(<PageLinkDisabled key="prev" buttonLabel="←" />);
+        pageLinks.push(<PageLinkDisabled key="prev" buttonLabel="Previous" />);
     }
 
     // if startIndex is not 0, then render the first page followed by ellipsis, if needed.
@@ -103,17 +103,17 @@ function PageLinks({ pageIndex, baseUrlPath, numOfPages }) {
 
     // renders next "→" button, if the current page is the last page, the button is disabled
     if (pageIndex < numOfPages - 1) {
-        pageLinks.push(<PageLink key="next" pageIndex={pageIndex + 1} buttonLabel="→" baseUrlPath={baseUrlPath} />);
+        pageLinks.push(<PageLink key="next" pageIndex={pageIndex + 1} buttonLabel="Next" baseUrlPath={baseUrlPath} />);
     } else {
-        pageLinks.push(<PageLinkDisabled key="next" buttonLabel="→" />);
+        pageLinks.push(<PageLinkDisabled key="next" buttonLabel="Next" />);
     }
 
-    return <div className={classNames('flex flex-row items-center justify-center mt-12 sm:mt-20')}>{pageLinks}</div>;
+    return <div className={classNames('flex flex-row flex-wrap items-center justify-center mt-12 sm:mt-20')}>{pageLinks}</div>;
 }
 
 function PageLink({ pageIndex, buttonLabel, baseUrlPath }) {
     return (
-        <Link href={urlPathForPageAtIndex(pageIndex, baseUrlPath)} className="sb-component-button sb-component-button-secondary px-4 py-2 mx-2">
+        <Link href={urlPathForPageAtIndex(pageIndex, baseUrlPath)} className="sb-component-button sb-component-button-secondary px-4 py-2 m-2">
             {buttonLabel}
         </Link>
     );
@@ -121,7 +121,7 @@ function PageLink({ pageIndex, buttonLabel, baseUrlPath }) {
 
 function PageLinkDisabled({ buttonLabel }) {
     return (
-        <span key="next" className="sb-component-button sb-component-button-secondary opacity-25 px-4 py-2 mx-2">
+        <span key="next" className="sb-component-button sb-component-button-secondary opacity-25 px-4 py-2 m-2">
             {buttonLabel}
         </span>
     );
