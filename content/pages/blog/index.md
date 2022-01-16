@@ -3,11 +3,11 @@ layout: PostFeedLayout
 title: Blog
 colors: colors-a
 backgroundImage:
-  url: /images/bg2.jpg
+  url: /images/bg.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 50
+  opacity: 75
 numOfPostsPerPage: 10
 postFeed:
   colors: colors-f
