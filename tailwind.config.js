@@ -33,7 +33,7 @@ module.exports = {
             },
             fontFamily: {
                 fontPrimary: ['DM Mono', 'monospace'],
-                fontSecondary: ['Roboto Mono', 'monospace']
+                fontSecondary: ['Azeret Mono', 'monospace']
             }
         }
     },
