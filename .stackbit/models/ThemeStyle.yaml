@@ -15,8 +15,10 @@ fields:
     label: Font
     group: text-styles
     options:
-      - label: DM Mono
+      - label: Font primary
         value: fontPrimary
+      - label: Font secondary
+        value: fontSecondary
   - type: object
     name: h1
     label: H1

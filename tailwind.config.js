@@ -32,7 +32,8 @@ module.exports = {
                 '9/16': '56.25%'
             },
             fontFamily: {
-                fontPrimary: ['DM Mono', 'monospace']
+                fontPrimary: ['DM Mono', 'monospace'],
+                fontSecondary: ['Roboto Mono', 'monospace']
             }
         }
     },
