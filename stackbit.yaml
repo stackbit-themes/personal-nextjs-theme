@@ -29,6 +29,10 @@ contentModels:
     urlPath: '/blog'
     file: 'blog/index.md'
     newFilePath: 'blog/index.md'
+  ProjectLayout:
+    isPage: true
+    urlPath: '/projects/{slug}'
+    newFilePath: 'projects/{slug}.md'
 modelsSource:
   type: files
   modelDirs:

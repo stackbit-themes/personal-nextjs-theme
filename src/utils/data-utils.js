@@ -23,6 +23,19 @@ export function sortPosts(posts) {
     return posts.sort((postA, postB) => new Date(postB.date).getTime() - new Date(postA.date).getTime());
 }
 
+export function getAllProjectsSorted(objects) {
+    const allProjects = getAllProjects(objects);
+    return sortProjects(allProjects);
+}
+
+export function getAllProjects(objects) {
+    return objects.filter((object) => object.layout === 'ProjectLayout');
+}
+
+export function sortProjects(projects) {
+    return projects.sort((projectA, projectB) => new Date(projectB.date).getTime() - new Date(projectA.date).getTime());
+}
+
 export function resolveReferences(object, fieldPaths, objects, debugContext = { keyPath: [], stack: [] }) {
     const _resolveDeep = (value, fieldNames, debugContext) => {
         if (typeof value === 'string') {
