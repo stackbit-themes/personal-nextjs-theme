@@ -16,7 +16,7 @@ fields:
   - type: string
     name: title
     label: Title
-    default: Labels
+    default: Skills
   - type: string
     name: subtitle
     label: Subtitle
