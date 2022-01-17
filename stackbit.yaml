@@ -33,6 +33,12 @@ contentModels:
     isPage: true
     urlPath: '/projects/{slug}'
     newFilePath: 'projects/{slug}.md'
+  ProjectFeedLayout:
+    isPage: true
+    singleInstance: true
+    urlPath: '/projects'
+    file: 'projects/index.md'
+    newFilePath: 'projects/index.md'
 modelsSource:
   type: files
   modelDirs:

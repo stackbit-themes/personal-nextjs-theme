@@ -1,4 +1,4 @@
-import { getAllPosts, getAllCategoryPostsSorted, getAllAuthorPostsSorted, generatePagedPathsForPage } from './data-utils';
+import { getAllPosts, getAllCategoryPostsSorted, getAllAuthorPostsSorted, getAllProjects, generatePagedPathsForPage } from './data-utils';
 
 export function resolveStaticPaths({ pages, objects }) {
     return pages.reduce((paths, page) => {
@@ -28,5 +28,10 @@ const StaticPathsResolvers = {
         const categoryId = page.__metadata?.id;
         const categoryPosts = getAllAuthorPostsSorted(objects, categoryId);
         return generatePagedPathsForPage(page, categoryPosts, 10);
+    },
+    ProjectFeedLayout: (page, objects) => {
+        const projects = getAllProjects(objects);
+        const numOfProjectsPerPage = page.numOfProjectsPerPage ?? 10;
+        return generatePagedPathsForPage(page, projects, numOfProjectsPerPage);
     }
 };

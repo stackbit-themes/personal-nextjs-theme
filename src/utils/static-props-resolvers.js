@@ -108,6 +108,28 @@ const StaticPropsResolvers = {
             nextProject
         };
     },
+    ProjectFeedLayout: (props, data) => {
+        const numOfProjectsPerPage = props.numOfProjectsPerPage ?? 10;
+        const allProjects = getAllProjectsSorted(data.objects);
+        const paginationData = getPagedItemsForPage(props, allProjects, numOfProjectsPerPage);
+        const items = paginationData.items;
+        return {
+            ...props,
+            ...paginationData,
+            items
+        };
+    },
+    RecentProjectsSection: (props, data) => {
+        const recentProjects = getAllProjectsSorted(data.objects).slice(0, props.recentCount || 6);
+        return {
+            ...props,
+            projects: recentProjects
+        };
+    },
+    /*
+    FeaturedProjectsSection: (props, data, debugContext) => {
+    },
+    */
     FormBlock: async (props) => {
         if (!props.destination) {
             return props;

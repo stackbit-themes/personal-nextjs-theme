@@ -46,12 +46,12 @@ sections:
         justifyContent: flex-start
     type: HeroSection
   - colors: colors-f
-    type: FeaturedPostsSection
+    type: RecentProjectsSection
     elementId: ''
     showDate: false
-    showAuthor: false
-    showExcerpt: true
+    showDescription: true
     showReadMoreLink: true
+    recentCount: 3
     variant: variant-b
     styles:
       self:
@@ -75,10 +75,6 @@ sections:
       actions:
         justifyContent: center
     subtitle: 'Recent projects:'
-    posts:
-      - content/pages/blog/post-four.md
-      - content/pages/blog/post-three.md
-      - content/pages/blog/post-two.md
   - type: FeaturedPostsSection
     elementId: ''
     colors: colors-f
