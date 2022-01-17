@@ -239,25 +239,25 @@ sections:
         justifyContent: center
         borderWidth: 1
         borderStyle: solid
-  - type: SkillsSection
+  - type: LabelsSection
     colors: colors-f
     title: 'Skills:'
     items:
-      - type: Skill
+      - type: Label
         label: 'WEB 1, 2, 3'
-      - type: Skill
+      - type: Label
         label: React
-      - type: Skill
+      - type: Label
         label: Microsoft Office
-      - type: Skill
+      - type: Label
         label: Next.js
-      - type: Skill
+      - type: Label
         label: Stackbit
-      - type: Skill
+      - type: Label
         label: Pancakes
-      - type: Skill
+      - type: Label
         label: C++
-      - type: Skill
+      - type: Label
         label: Swift
   - type: DividerSection
     styles:
