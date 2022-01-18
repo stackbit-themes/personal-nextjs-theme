@@ -1,42 +1,42 @@
 {
-    "model": "SkillsSection",
+    "model": "LabelsSection",
     "presets": [
         {
-            "label": "Skills transparent, text left",
+            "label": "Labels transparent, text left",
             "thumbnail": "images/skills-transparent-left.png",
             "data": {
                 "colors": "colors-f",
                 "items": [
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "WEB 1, 2, 3"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "React"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Microsoft Office"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Next.js"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Stackbit"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Pancakes"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "C++"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Swift"
                     }
                 ],
@@ -58,41 +58,41 @@
             }
         },
         {
-            "label": "Skills transparent, text centered",
+            "label": "Labels transparent, text centered",
             "thumbnail": "images/skills-transparent-centered.png",
             "data": {
                 "colors": "colors-f",
                 "items": [
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "WEB 1, 2, 3"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "React"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Microsoft Office"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Next.js"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Stackbit"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Pancakes"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "C++"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Swift"
                     }
                 ],
@@ -120,35 +120,35 @@
                 "colors": "colors-d",
                 "items": [
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "WEB 1, 2, 3"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "React"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Microsoft Office"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Next.js"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Stackbit"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Pancakes"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "C++"
                     },
                     {
-                        "type": "Skill",
+                        "type": "Label",
                         "label": "Swift"
                     }
                 ],

@@ -5,7 +5,7 @@ import { Link } from '../../atoms';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import { getDataAttrs } from '../../../utils/get-data-attrs';
 
-export default function SkillsSection(props) {
+export default function LabelsSection(props) {
     const cssId = props.elementId || null;
     const colors = props.colors || 'colors-a';
     const styles = props.styles || {};
@@ -20,7 +20,7 @@ export default function SkillsSection(props) {
             className={classNames(
                 'sb-component',
                 'sb-component-section',
-                'sb-component-skills-section',
+                'sb-component-labels-section',
                 colors,
                 'flex',
                 'flex-col',
@@ -61,7 +61,7 @@ export default function SkillsSection(props) {
                             data-sb-field-path=".items"
                         >
                             {props.items.map((item, index) => (
-                                <SkillItem key={index} {...item} data-sb-field-path={`.${index}`} />
+                                <LabelItem key={index} {...item} data-sb-field-path={`.${index}`} />
                             ))}
                         </div>
                     )}
@@ -71,7 +71,7 @@ export default function SkillsSection(props) {
     );
 }
 
-function SkillItem(props) {
+function LabelItem(props) {
     if (!props.label) {
         return null;
     }

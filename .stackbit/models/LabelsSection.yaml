@@ -1,6 +1,6 @@
 type: object
-name: SkillsSection
-label: Skills
+name: LabelsSection
+label: Labels
 labelField: title
 thumbnail: https://assets.stackbit.com/components/models/thumbnails/default.png
 extends:
@@ -27,10 +27,10 @@ fields:
     items:
       type: model
       models:
-        - Skill
+        - Label
     default:
-      - type: Skill
-        label: Skill title
+      - type: Label
+        label: Label title
   - type: style
     name: styles
     styles:

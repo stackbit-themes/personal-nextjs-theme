@@ -3,11 +3,11 @@ title: Home
 layout: PageLayout
 colors: colors-a
 backgroundImage:
-  url: /images/bg2.jpg
+  url: /images/bg.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 80
+  opacity: 75
 sections:
   - elementId: ''
     colors: colors-f
@@ -169,7 +169,7 @@ sections:
     styles:
       self:
         height: auto
-        width: wide
+        width: narrow
         margin:
           - mt-0
           - mb-0

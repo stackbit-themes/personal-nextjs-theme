@@ -3,11 +3,11 @@ title: About
 layout: PageLayout
 colors: colors-a
 backgroundImage:
-  url: /images/bg2.jpg
+  url: /images/bg.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
-  opacity: 50
+  opacity: 75
 sections:
   - elementId: ''
     colors: colors-f
@@ -239,25 +239,25 @@ sections:
         justifyContent: center
         borderWidth: 1
         borderStyle: solid
-  - type: SkillsSection
+  - type: LabelsSection
     colors: colors-f
     title: 'Skills:'
     items:
-      - type: Skill
+      - type: Label
         label: 'WEB 1, 2, 3'
-      - type: Skill
+      - type: Label
         label: React
-      - type: Skill
+      - type: Label
         label: Microsoft Office
-      - type: Skill
+      - type: Label
         label: Next.js
-      - type: Skill
+      - type: Label
         label: Stackbit
-      - type: Skill
+      - type: Label
         label: Pancakes
-      - type: Skill
+      - type: Label
         label: C++
-      - type: Skill
+      - type: Label
         label: Swift
   - type: DividerSection
     styles:
@@ -430,7 +430,7 @@ sections:
     styles:
       self:
         height: auto
-        width: wide
+        width: narrow
         margin:
           - mt-0
           - mb-0

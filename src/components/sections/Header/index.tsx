@@ -185,8 +185,8 @@ function MobileMenu(props) {
 
 function siteLogoLink(props) {
     return (
-        <div className="border-r border-current flex items-center p-4">
-            <Link href="/" aria-label={props.title} className="sb-header-logo flex items-center">
+        <div className="border-r border-current flex items-center">
+            <Link href="/" aria-label={props.title} className={classNames(props.logo ? 'sb-header-logo' : 'sb-header-title', 'flex', 'items-center', 'p-4')}>
                 {props.logo && <ImageBlock {...props.logo} className={classNames('max-h-12', { 'mr-2': props.isTitleVisible })} data-sb-field-path=".logo" />}
                 {props.title && props.isTitleVisible && (
                     <span className="text-2xl uppercase" data-sb-field-path=".title">
