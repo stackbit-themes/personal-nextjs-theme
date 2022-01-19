@@ -28,26 +28,26 @@ export default function ProjectFeedLayout(props) {
                         </h1>
                     </div>
                 )}
-                {renderSections(topSections, 'topSections')}
+                <Sections sections={topSections} data-sb-field-path="topSections" />
                 <ProjectFeedSection {...projectFeed} projects={items} pageLinks={pageLinks} data-sb-field-path="projectFeed" />
-                {renderSections(bottomSections, 'bottomSections')}
+                <Sections sections={bottomSections} data-sb-field-path="bottomSections" />
             </main>
         </BaseLayout>
     );
 }
 
-function renderSections(sections: any[], fieldName: string) {
+function Sections({ sections, 'data-sb-field-path': annotation }) {
     if (sections.length === 0) {
         return null;
     }
     return (
-        <div data-sb-field-path={fieldName}>
+        <div data-sb-field-path={annotation}>
             {sections.map((section, index) => {
                 const Component = getComponent(section.type);
                 if (!Component) {
                     throw new Error(`no component matching the page section's type: ${section.type}`);
                 }
-                return <Component key={index} {...section} data-sb-field-path={`${fieldName}.${index}`} />;
+                return <Component key={index} {...section} data-sb-field-path={`${annotation}.${index}`} />;
             })}
         </div>
     );

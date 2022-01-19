@@ -7,6 +7,12 @@ extends:
 fields:
   - name: variant
     default: variant-a
+  - name: title
+    hidden: true
+    default: null
+  - name: subtitle
+    hidden: true
+    default: null
   - name: actions
     hidden: true
     default: []

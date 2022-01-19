@@ -43,7 +43,11 @@ export default function ProjectLayout(props) {
                                 {page.description}
                             </div>
                         )}
-                        {page.media && <div className="w-full mb-12 md:mb-20">{projectMedia(page.media)}</div>}
+                        {page.media && (
+                            <div className="w-full mb-12 md:mb-20">
+                                <ProjectMedia media={page.media} />
+                            </div>
+                        )}
                         {page.markdown_content && (
                             <Markdown options={{ forceBlock: true }} className="sb-markdown max-w-screen-md mx-auto" data-sb-field-path="markdown_content">
                                 {page.markdown_content}
@@ -51,45 +55,13 @@ export default function ProjectLayout(props) {
                         )}
                     </div>
                 </article>
-                {(page.nextProject || page.prevProject) && (
-                    <div className="max-w-5xl mx-auto grid gap-x-6 gap-y-12 md:grid-cols-2 lg:gap-x-8 mt-12 mb-20">
-                        {page.prevProject && (
-                            <article data-sb-object-id={page.prevProject?.__metadata?.id}>
-                                {page.prevProject?.featuredImage && (
-                                    <Link href={getPageUrlPath(page.prevProject)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
-                                        <ImageBlock
-                                            {...page.prevProject?.featuredImage}
-                                            className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                                            data-sb-field-path="featuredImage"
-                                        />
-                                    </Link>
-                                )}
-                                <h3 className="text-base">
-                                    <Link className="sb-component sb-component-block sb-component-link" href={getPageUrlPath(page.prevProject)}>
-                                        Previous project
-                                    </Link>
-                                </h3>
-                            </article>
-                        )}
-                        {page.nextProject && (
-                            <article className={classNames(page.prevProject ? 'md:text-right' : null)} data-sb-object-id={page.nextProject?.__metadata?.id}>
-                                {page.nextProject?.featuredImage && (
-                                    <Link href={getPageUrlPath(page.nextProject)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
-                                        <ImageBlock
-                                            {...page.nextProject?.featuredImage}
-                                            className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                                            data-sb-field-path="featuredImage"
-                                        />
-                                    </Link>
-                                )}
-                                <h3 className="text-base">
-                                    <Link className="sb-component sb-component-block sb-component-link" href={getPageUrlPath(page.nextProject)}>
-                                        Next project
-                                    </Link>
-                                </h3>
-                            </article>
-                        )}
-                    </div>
+                {(page.prevProject || page.nextProject) && (
+                    <nav className="sb-project-nav px-4 sm:px-8 mt-12 mb-20">
+                        <div className="max-w-5xl mx-auto grid gap-x-6 gap-y-12 md:grid-cols-2 lg:gap-x-8">
+                            {page.prevProject && <ProjectNavItem project={page.prevProject} label="Previous project" />}
+                            {page.nextProject && <ProjectNavItem project={page.nextProject} label="Next project" />}
+                        </div>
+                    </nav>
                 )}
                 {sections.length > 0 && (
                     <div data-sb-field-path="bottomSections">
@@ -107,7 +79,7 @@ export default function ProjectLayout(props) {
     );
 }
 
-function projectMedia(media) {
+function ProjectMedia({ media }) {
     const mediaType = media.type;
     if (!mediaType) {
         throw new Error(`project media does not have the 'type' property`);
@@ -117,4 +89,25 @@ function projectMedia(media) {
         throw new Error(`no component matching the project media type: ${mediaType}`);
     }
     return <Media {...media} className={classNames({ 'w-full': mediaType === 'ImageBlock' })} data-sb-field-path="media" />;
+}
+
+function ProjectNavItem({ project, label }) {
+    return (
+        <article className="sb-project-nav-item" data-sb-object-id={project.__metadata?.id}>
+            {project.featuredImage && (
+                <Link href={getPageUrlPath(project)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
+                    <ImageBlock
+                        {...project.featuredImage}
+                        className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                        data-sb-field-path="featuredImage"
+                    />
+                </Link>
+            )}
+            <h3 className="text-base">
+                <Link className="sb-component sb-component-block sb-component-link" href={getPageUrlPath(project)}>
+                    {label}
+                </Link>
+            </h3>
+        </article>
+    );
 }

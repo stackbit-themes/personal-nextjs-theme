@@ -48,6 +48,10 @@ sections:
   - colors: colors-f
     type: FeaturedProjectsSection
     elementId: ''
+    actions:
+      - type: Link
+        label: See all projects
+        url: /projects
     showDate: false
     showDescription: true
     showReadMoreLink: true
@@ -76,7 +80,7 @@ sections:
       subtitle:
         textAlign: left
       actions:
-        justifyContent: center
+        justifyContent: flex-end
     subtitle: 'Projects:'
   - type: FeaturedPostsSection
     elementId: ''

@@ -55,8 +55,16 @@ export default function ProjectFeedSection(props) {
                             {props.subtitle}
                         </p>
                     )}
-                    {projectFeedVariants(props)}
-                    {projectFeedActions(props)}
+                    <ProjectFeedVariants
+                        variant={props.variant}
+                        projects={props.projects}
+                        showDate={props.showDate}
+                        showDescription={props.showDescription}
+                        showReadMoreLink={props.showReadMoreLink}
+                        hasHeader={props.title || props.subtitle}
+                        annotateProjects={props.annotateProjects}
+                    />
+                    <ProjectFeedActions actions={props.actions} styles={styles.actions} />
                     {props.pageLinks}
                 </div>
             </div>
@@ -64,16 +72,15 @@ export default function ProjectFeedSection(props) {
     );
 }
 
-function projectFeedActions(props) {
-    const actions = props.actions || [];
+function ProjectFeedActions(props) {
+    const actions = props.actions ?? [];
     if (actions.length === 0) {
         return null;
     }
-    const styles = props.styles || {};
     return (
         <div className="mt-12 overflow-x-hidden">
             <div
-                className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', styles.actions ? mapStyles(styles.actions) : null)}
+                className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', props.styles ? mapStyles(props.styles) : null)}
                 data-sb-field-path=".actions"
             >
                 {props.actions.map((action, index) => (
@@ -84,22 +91,23 @@ function projectFeedActions(props) {
     );
 }
 
-function projectFeedVariants(props) {
+function ProjectFeedVariants(props) {
     const variant = props.variant || 'variant-a';
     switch (variant) {
         case 'variant-a':
-            return projectsVariantA(props);
+            return <ProjectsVariantA {...props} />;
         case 'variant-b':
-            return projectsVariantB(props);
+            return <ProjectsVariantB {...props} />;
         case 'variant-c':
-            return projectsVariantC(props);
+            return <ProjectsVariantC {...props} />;
         case 'variant-d':
-            return projectsVariantD(props);
+            return <ProjectsVariantD {...props} />;
+        default:
+            return null;
     }
-    return null;
 }
 
-function projectsVariantA(props) {
+function ProjectsVariantA(props) {
     const projects = props.projects || [];
     if (projects.length === 0) {
         return null;
@@ -107,7 +115,7 @@ function projectsVariantA(props) {
     return (
         <div
             className={classNames('grid', 'gap-x-6', 'gap-y-12', 'md:grid-cols-2', 'lg:gap-x-8', {
-                'mt-12': props.title || props.subtitle
+                'mt-12': props.hasHeader
             })}
             {...(props.annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
@@ -122,7 +130,6 @@ function projectsVariantA(props) {
                             />
                         </Link>
                     )}
-
                     {props.showDate && <ProjectDate project={project} className="mb-3" />}
                     <h3 className="text-4xl">
                         <Link href={getPageUrlPath(project)} data-sb-field-path="title">
@@ -151,7 +158,7 @@ function projectsVariantA(props) {
     );
 }
 
-function projectsVariantB(props) {
+function ProjectsVariantB(props) {
     const projects = props.projects || [];
     if (projects.length === 0) {
         return null;
@@ -159,7 +166,7 @@ function projectsVariantB(props) {
     return (
         <div
             className={classNames('grid', 'gap-x-6', 'gap-y-12', 'md:grid-cols-3', 'lg:gap-x-8', {
-                'mt-12': props.title || props.subtitle
+                'mt-12': props.hasHeader
             })}
             {...(props.annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
@@ -174,7 +181,6 @@ function projectsVariantB(props) {
                             />
                         </Link>
                     )}
-
                     {props.showDate && <ProjectDate project={project} className="mb-3" />}
                     <h3 className="text-4xl">
                         <Link href={getPageUrlPath(project)} data-sb-field-path="title">
@@ -203,7 +209,7 @@ function projectsVariantB(props) {
     );
 }
 
-function projectsVariantC(props) {
+function ProjectsVariantC(props) {
     const projects = props.projects || [];
     if (projects.length === 0) {
         return null;
@@ -211,7 +217,7 @@ function projectsVariantC(props) {
     return (
         <div
             className={classNames('grid', 'gap-y-12', 'justify-center', {
-                'mt-12': props.title || props.subtitle
+                'mt-12': props.hasHeader
             })}
             {...(props.annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
@@ -226,7 +232,6 @@ function projectsVariantC(props) {
                             />
                         </Link>
                     )}
-
                     {props.showDate && <ProjectDate project={project} className="mb-3" />}
                     <h3 className="text-4xl">
                         <Link href={getPageUrlPath(project)} data-sb-field-path="title">
@@ -255,7 +260,7 @@ function projectsVariantC(props) {
     );
 }
 
-function projectsVariantD(props) {
+function ProjectsVariantD(props) {
     const projects = props.projects || [];
     if (projects.length === 0) {
         return null;
@@ -263,7 +268,7 @@ function projectsVariantD(props) {
     return (
         <div
             className={classNames('grid', 'gap-y-12', {
-                'mt-12': props.title || props.subtitle
+                'mt-12': props.hasHeader
             })}
             {...(props.annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
