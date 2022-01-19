@@ -46,13 +46,16 @@ sections:
         justifyContent: flex-start
     type: HeroSection
   - colors: colors-f
-    type: RecentProjectsSection
+    type: FeaturedProjectsSection
     elementId: ''
     showDate: false
     showDescription: true
     showReadMoreLink: true
-    recentCount: 3
     variant: variant-b
+    projects:
+      - content/pages/projects/project-two.md
+      - content/pages/projects/project-three.md
+      - content/pages/projects/project-one.md
     styles:
       self:
         height: auto
@@ -74,7 +77,7 @@ sections:
         textAlign: left
       actions:
         justifyContent: center
-    subtitle: 'Recent projects:'
+    subtitle: 'Projects:'
   - type: FeaturedPostsSection
     elementId: ''
     colors: colors-f

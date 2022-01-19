@@ -126,10 +126,9 @@ const StaticPropsResolvers = {
             projects: recentProjects
         };
     },
-    /*
     FeaturedProjectsSection: (props, data, debugContext) => {
+        return resolveReferences(props, ['projects'], data.objects, debugContext);
     },
-    */
     FormBlock: async (props) => {
         if (!props.destination) {
             return props;
