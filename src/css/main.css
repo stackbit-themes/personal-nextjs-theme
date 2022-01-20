@@ -236,6 +236,11 @@
         text-align: center;
     }
 
+    /* Project navigation */
+    .sb-project-nav-item:not(:first-child) {
+        @apply md:text-right;
+    }
+
     /* Color palettes */
     .colors-a {
         @apply bg-dark text-on-dark;
