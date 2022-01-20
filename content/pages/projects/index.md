@@ -3,7 +3,7 @@ layout: ProjectFeedLayout
 title: Projects
 colors: colors-a
 backgroundImage:
-  url: /images/bg2.jpg
+  url: /images/bg1.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
@@ -11,10 +11,10 @@ backgroundImage:
 numOfProjectsPerPage: 10
 projectFeed:
   colors: colors-f
-  showDate: true
+  showDate: false
   showDescription: true
   showReadMoreLink: true
-  variant: variant-d
+  variant: variant-a
   styles:
     self:
       width: narrow
@@ -76,7 +76,7 @@ bottomSections:
     styles:
       self:
         height: auto
-        width: wide
+        width: narrow
         margin:
           - mt-0
           - mb-0

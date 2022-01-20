@@ -3,7 +3,7 @@ layout: PostFeedLayout
 title: Blog
 colors: colors-a
 backgroundImage:
-  url: /images/bg.jpg
+  url: /images/bg2.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat

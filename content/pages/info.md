@@ -3,7 +3,7 @@ title: About
 layout: PageLayout
 colors: colors-a
 backgroundImage:
-  url: /images/bg.jpg
+  url: /images/bg4.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
@@ -31,8 +31,8 @@ sections:
           - ml-0
           - mr-0
         padding:
-          - pt-36
-          - pb-36
+          - pt-16
+          - pb-12
           - pl-4
           - pr-4
         justifyContent: center
@@ -50,8 +50,8 @@ sections:
       self:
         width: wide
         padding:
-          - pt-12
-          - pb-12
+          - pt-8
+          - pb-8
           - pl-4
           - pr-4
         justifyContent: center
@@ -93,8 +93,8 @@ sections:
           - mt-0
           - mb-0
         padding:
-          - pt-12
-          - pb-24
+          - pt-8
+          - pb-8
           - pl-4
           - pr-4
         justifyContent: center
@@ -112,8 +112,8 @@ sections:
       self:
         width: wide
         padding:
-          - pt-12
-          - pb-12
+          - pt-8
+          - pb-8
           - pl-4
           - pr-4
         justifyContent: center
@@ -213,8 +213,8 @@ sections:
           - ml-0
           - mr-0
         padding:
-          - pt-28
-          - pb-28
+          - pt-8
+          - pb-8
           - pl-4
           - pr-4
         justifyContent: center
@@ -241,7 +241,7 @@ sections:
         borderStyle: solid
   - type: LabelsSection
     colors: colors-f
-    title: 'Skills:'
+    subtitle: 'Skills:'
     items:
       - type: Label
         label: 'WEB 1, 2, 3'
@@ -272,7 +272,7 @@ sections:
         borderWidth: 1
         borderStyle: solid
   - type: TextSection
-    title: 'Contact:'
+    subtitle: 'Contact:'
     colors: colors-f
     text: |
       [thisismyemail.@myemail.me](mailto:thisismyemail.@myemail.me)
@@ -281,8 +281,8 @@ sections:
       self:
         width: wide
         padding:
-          - pt-12
-          - pb-12
+          - pt-8
+          - pb-8
           - pl-4
           - pr-4
         justifyContent: center
@@ -292,25 +292,25 @@ sections:
     colors: colors-f
     items:
       - type: FeaturedItem
-        title: 'Experience:'
+        subtitle: 'Experience:'
         text: |-
-          Current
+          **Current**
 
           * freelance @freelance.me
 
-          2018-2021
+          **2018-2021**
 
           * fullstack at this startup
 
-          2015
+          **2015**
 
           * senior front-end at this place
 
-          2013
+          **2013**
 
           * intern developer at a big company
 
-          2011
+          **2011**
 
           * flipping burgers
         styles:
@@ -322,17 +322,17 @@ sections:
               - pb-0
               - pr-0
       - type: FeaturedItem
-        title: 'Education:'
+        subtitle: 'Education:'
         text: |-
-          2015-2018
+          **2015-2018**
 
           * ba computer sciense at a semi fancy school
 
-          2014
+          **2014**
 
           * react certificate somewhere
 
-          2011
+          **2011**
 
           * my highschool
         styles:
@@ -356,8 +356,8 @@ sections:
           - ml-0
           - mr-0
         padding:
-          - pt-28
-          - pb-28
+          - pt-8
+          - pb-8
           - pl-4
           - pr-4
         justifyContent: center
@@ -437,8 +437,8 @@ sections:
           - ml-4
           - mr-4
         padding:
-          - pt-24
-          - pb-24
+          - pt-12
+          - pb-12
           - pr-4
           - pl-4
         alignItems: center

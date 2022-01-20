@@ -9,14 +9,20 @@
         "primaryLinks": [
             {
                 "type": "Link",
-                "label": "Blog",
-                "url": "/blog",
+                "label": "Info",
+                "url": "/info",
                 "altText": ""
             },
             {
                 "type": "Link",
-                "label": "Info",
-                "url": "/info",
+                "label": "Projects",
+                "url": "/projects",
+                "altText": ""
+            },
+            {
+                "type": "Link",
+                "label": "Blog",
+                "url": "/blog",
                 "altText": ""
             }
         ],
