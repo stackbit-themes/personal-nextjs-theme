@@ -6,6 +6,10 @@ date: '2022-01-03'
 author: content/data/team/doris-soto.json
 excerpt: >-
   More context that may or may not be helpful
+featuredImage:
+  type: ImageBlock
+  url: /images/bg1.jpg
+  altText: Post thumbnail image
 bottomSections:
   - elementId: ''
     colors: colors-f

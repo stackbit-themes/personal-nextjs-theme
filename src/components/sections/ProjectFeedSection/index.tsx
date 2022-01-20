@@ -60,6 +60,7 @@ export default function ProjectFeedSection(props) {
                         projects={props.projects}
                         showDate={props.showDate}
                         showDescription={props.showDescription}
+                        showFeaturedImage={props.showFeaturedImage}
                         showReadMoreLink={props.showReadMoreLink}
                         hasHeader={props.title || props.subtitle}
                         annotateProjects={props.annotateProjects}
@@ -83,7 +84,7 @@ function ProjectFeedActions(props) {
                 className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', props.styles ? mapStyles(props.styles) : null)}
                 data-sb-field-path=".actions"
             >
-                {props.actions.map((action, index) => (
+                {actions.map((action, index) => (
                     <Action key={index} {...action} className="mb-3 mx-2 lg:whitespace-nowrap" data-sb-field-path={`.${index}`} />
                 ))}
             </div>
@@ -121,7 +122,7 @@ function ProjectsVariantA(props) {
         >
             {projects.map((project, index) => (
                 <article key={index} className="border-b border-current pb-10" data-sb-object-id={project.__metadata?.id}>
-                    {project.featuredImage && (
+                    {props.showFeaturedImage && project.featuredImage && (
                         <Link href={getPageUrlPath(project)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                             <ImageBlock
                                 {...project.featuredImage}
@@ -137,7 +138,7 @@ function ProjectsVariantA(props) {
                         </Link>
                     </h3>
                     {props.showDescription && project.description && (
-                        <p className="mt-5" data-sb-field-path="description">
+                        <p className="text-lg mt-5" data-sb-field-path="description">
                             {project.description}
                         </p>
                     )}
@@ -172,7 +173,7 @@ function ProjectsVariantB(props) {
         >
             {projects.map((project, index) => (
                 <article key={index} className="border-b border-current pb-10" data-sb-object-id={project.__metadata?.id}>
-                    {project.featuredImage && (
+                    {props.showFeaturedImage && project.featuredImage && (
                         <Link href={getPageUrlPath(project)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                             <ImageBlock
                                 {...project.featuredImage}
@@ -188,7 +189,7 @@ function ProjectsVariantB(props) {
                         </Link>
                     </h3>
                     {props.showDescription && project.description && (
-                        <p className="mt-5" data-sb-field-path="description">
+                        <p className="text-lg mt-5" data-sb-field-path="description">
                             {project.description}
                         </p>
                     )}
@@ -223,7 +224,7 @@ function ProjectsVariantC(props) {
         >
             {projects.map((project, index) => (
                 <article key={index} className="border-b border-current pb-10 max-w-3xl" data-sb-object-id={project.__metadata?.id}>
-                    {project.featuredImage && (
+                    {props.showFeaturedImage && project.featuredImage && (
                         <Link href={getPageUrlPath(project)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                             <ImageBlock
                                 {...project.featuredImage}
@@ -239,7 +240,7 @@ function ProjectsVariantC(props) {
                         </Link>
                     </h3>
                     {props.showDescription && project.description && (
-                        <p className="mt-5" data-sb-field-path="description">
+                        <p className="text-lg mt-5" data-sb-field-path="description">
                             {project.description}
                         </p>
                     )}
@@ -275,7 +276,7 @@ function ProjectsVariantD(props) {
             {projects.map((project, index) => (
                 <article key={index} data-sb-object-id={project.__metadata?.id} className="border-b border-current pb-10 md:pb-12 md:px-4">
                     <div className="md:flex md:items-center">
-                        {project.featuredImage && (
+                        {props.showFeaturedImage && project.featuredImage && (
                             <div className="mb-8 md:flex-shrink-0 md:self-stretch md:w-48 md:mb-0 md:mr-8">
                                 <Link href={getPageUrlPath(project)} className="block h-0 w-full pt-2/3 relative overflow-hidden md:h-24 md:min-h-full md:pt-0">
                                     <ImageBlock
@@ -286,7 +287,7 @@ function ProjectsVariantD(props) {
                                 </Link>
                             </div>
                         )}
-                        <div className={classNames('md:flex-grow', project.featuredImage ? null : 'md:ml-12')}>
+                        <div className={classNames('md:flex-grow', props.showFeaturedImage && project.featuredImage ? null : 'md:ml-12')}>
                             {props.showDate && <ProjectDate project={project} className="mb-3" />}
                             <h3 className="text-4xl">
                                 <Link href={getPageUrlPath(project)} data-sb-field-path="title">
@@ -294,7 +295,7 @@ function ProjectsVariantD(props) {
                                 </Link>
                             </h3>
                             {props.showDescription && project.description && (
-                                <p className="mt-5" data-sb-field-path="description">
+                                <p className="text-lg mt-5" data-sb-field-path="description">
                                     {project.description}
                                 </p>
                             )}

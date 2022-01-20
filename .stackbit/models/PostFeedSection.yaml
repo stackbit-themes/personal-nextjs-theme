@@ -31,6 +31,10 @@ fields:
     label: Show post excerpt
     default: false
   - type: boolean
+    name: showFeaturedImage
+    label: Show featured image
+    default: false
+  - type: boolean
     name: showReadMoreLink
     label: Show keep reading link
     default: false

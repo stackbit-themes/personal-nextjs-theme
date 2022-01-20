@@ -55,8 +55,18 @@ export default function PostFeedSection(props) {
                             {props.subtitle}
                         </p>
                     )}
-                    {postFeedVariants(props)}
-                    {postFeedActions(props)}
+                    <PostFeedVariants
+                        variant={props.variant}
+                        posts={props.posts}
+                        showDate={props.showDate}
+                        showAuthor={props.showAuthor}
+                        showExcerpt={props.showExcerpt}
+                        showFeaturedImage={props.showFeaturedImage}
+                        showReadMoreLink={props.showReadMoreLink}
+                        hasHeader={props.title || props.subtitle}
+                        annotatePosts={props.annotatePosts}
+                    />
+                    <PostFeedActions actions={props.actions} styles={styles.actions} />
                     {props.pageLinks}
                 </div>
             </div>
@@ -64,19 +74,18 @@ export default function PostFeedSection(props) {
     );
 }
 
-function postFeedActions(props) {
+function PostFeedActions(props) {
     const actions = props.actions || [];
     if (actions.length === 0) {
         return null;
     }
-    const styles = props.styles || {};
     return (
         <div className="mt-12 overflow-x-hidden">
             <div
-                className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', styles.actions ? mapStyles(styles.actions) : null)}
+                className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', props.styles ? mapStyles(props.styles) : null)}
                 data-sb-field-path=".actions"
             >
-                {props.actions.map((action, index) => (
+                {actions.map((action, index) => (
                     <Action key={index} {...action} className="mb-3 mx-2 lg:whitespace-nowrap" data-sb-field-path={`.${index}`} />
                 ))}
             </div>
@@ -84,22 +93,23 @@ function postFeedActions(props) {
     );
 }
 
-function postFeedVariants(props) {
+function PostFeedVariants(props) {
     const variant = props.variant || 'variant-a';
     switch (variant) {
         case 'variant-a':
-            return postsVariantA(props);
+            return <PostsVariantA {...props} />;
         case 'variant-b':
-            return postsVariantB(props);
+            return <PostsVariantB {...props} />;
         case 'variant-c':
-            return postsVariantC(props);
+            return <PostsVariantC {...props} />;
         case 'variant-d':
-            return postsVariantD(props);
+            return <PostsVariantD {...props} />;
+        default:
+            return null;
     }
-    return null;
 }
 
-function postsVariantA(props) {
+function PostsVariantA(props) {
     const posts = props.posts || [];
     if (posts.length === 0) {
         return null;
@@ -107,13 +117,13 @@ function postsVariantA(props) {
     return (
         <div
             className={classNames('grid', 'gap-x-6', 'gap-y-12', 'md:grid-cols-2', 'lg:gap-x-8', {
-                'mt-12': props.title || props.subtitle
+                'mt-12': props.hasHeader
             })}
             {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
                 <article key={index} className="border-b border-current pb-10" data-sb-object-id={post.__metadata?.id}>
-                    {post.featuredImage && (
+                    {props.showFeaturedImage && post.featuredImage && (
                         <Link href={getPageUrlPath(post)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                             <ImageBlock
                                 {...post.featuredImage}
@@ -122,16 +132,14 @@ function postsVariantA(props) {
                             />
                         </Link>
                     )}
-
-                    {props.showDate && <PostDate post={post} className="mb-3" />}
+                    <PostAttribution showDate={props.showDate} showAuthor={props.showAuthor} post={post} className="mb-3" />
                     <h3 className="text-4xl">
                         <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                             {post.title}
                         </Link>
                     </h3>
-                    <PostAttribution showAuthor={props.showAuthor} post={post} className="mt-3" />
                     {props.showExcerpt && post.excerpt && (
-                        <p className="mt-5" data-sb-field-path="excerpt">
+                        <p className="text-lg mt-5" data-sb-field-path="excerpt">
                             {post.excerpt}
                         </p>
                     )}
@@ -152,7 +160,7 @@ function postsVariantA(props) {
     );
 }
 
-function postsVariantB(props) {
+function PostsVariantB(props) {
     const posts = props.posts || [];
     if (posts.length === 0) {
         return null;
@@ -160,13 +168,13 @@ function postsVariantB(props) {
     return (
         <div
             className={classNames('grid', 'gap-x-6', 'gap-y-12', 'md:grid-cols-3', 'lg:gap-x-8', {
-                'mt-12': props.title || props.subtitle
+                'mt-12': props.hasHeader
             })}
             {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
                 <article key={index} className="border-b border-current pb-10" data-sb-object-id={post.__metadata?.id}>
-                    {post.featuredImage && (
+                    {props.showFeaturedImage && post.featuredImage && (
                         <Link href={getPageUrlPath(post)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                             <ImageBlock
                                 {...post.featuredImage}
@@ -175,14 +183,12 @@ function postsVariantB(props) {
                             />
                         </Link>
                     )}
-
-                    {props.showDate && <PostDate post={post} className="mb-3" />}
+                    <PostAttribution showDate={props.showDate} showAuthor={props.showAuthor} post={post} className="mb-3" />
                     <h3 className="text-4xl">
                         <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                             {post.title}
                         </Link>
                     </h3>
-                    <PostAttribution showAuthor={props.showAuthor} post={post} className="mt-3" />
                     {props.showExcerpt && post.excerpt && (
                         <p className="mt-5" data-sb-field-path="excerpt">
                             {post.excerpt}
@@ -205,7 +211,7 @@ function postsVariantB(props) {
     );
 }
 
-function postsVariantC(props) {
+function PostsVariantC(props) {
     const posts = props.posts || [];
     if (posts.length === 0) {
         return null;
@@ -213,13 +219,13 @@ function postsVariantC(props) {
     return (
         <div
             className={classNames('grid', 'gap-y-12', 'justify-center', {
-                'mt-12': props.title || props.subtitle
+                'mt-12': props.hasHeader
             })}
             {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
                 <article key={index} className="border-b border-current pb-10 max-w-3xl" data-sb-object-id={post.__metadata?.id}>
-                    {post.featuredImage && (
+                    {props.showFeaturedImage && post.featuredImage && (
                         <Link href={getPageUrlPath(post)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                             <ImageBlock
                                 {...post.featuredImage}
@@ -228,14 +234,12 @@ function postsVariantC(props) {
                             />
                         </Link>
                     )}
-
-                    {props.showDate && <PostDate post={post} className="mb-3" />}
+                    <PostAttribution showDate={props.showDate} showAuthor={props.showAuthor} post={post} className="mb-3" />
                     <h3 className="text-4xl">
                         <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                             {post.title}
                         </Link>
                     </h3>
-                    <PostAttribution showAuthor={props.showAuthor} post={post} className="mt-3" />
                     {props.showExcerpt && post.excerpt && (
                         <p className="mt-5" data-sb-field-path="excerpt">
                             {post.excerpt}
@@ -258,7 +262,7 @@ function postsVariantC(props) {
     );
 }
 
-function postsVariantD(props) {
+function PostsVariantD(props) {
     const posts = props.posts || [];
     if (posts.length === 0) {
         return null;
@@ -266,14 +270,14 @@ function postsVariantD(props) {
     return (
         <div
             className={classNames('grid', 'gap-y-12', {
-                'mt-12': props.title || props.subtitle
+                'mt-12': props.hasHeader
             })}
             {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
                 <article key={index} data-sb-object-id={post.__metadata?.id} className="border-b border-current pb-10 md:pb-12 md:px-4">
                     <div className="md:flex md:items-center">
-                        {post.featuredImage && (
+                        {props.showFeaturedImage && post.featuredImage && (
                             <div className="mb-8 md:flex-shrink-0 md:self-stretch md:w-48 md:mb-0 md:mr-8">
                                 <Link href={getPageUrlPath(post)} className="block h-0 w-full pt-2/3 relative overflow-hidden md:h-24 md:min-h-full md:pt-0">
                                     <ImageBlock
@@ -284,16 +288,16 @@ function postsVariantD(props) {
                                 </Link>
                             </div>
                         )}
-                        <div className={classNames('md:flex-grow', post.featuredImage ? null : 'md:ml-12')}>
-                            {props.showDate && <PostDate post={post} className="mb-3" />}
+                        <div className={classNames('md:flex-grow', props.showFeaturedImage && post.featuredImage ? null : 'md:ml-12')}>
+                            <PostAttribution showDate={props.showDate} showAuthor={props.showAuthor} post={post} className="mb-3" />
                             <h3 className="text-4xl">
                                 <Link href={getPageUrlPath(post)} data-sb-field-path="title">
                                     {post.title}
                                 </Link>
                             </h3>
-                            <PostAttribution showAuthor={props.showAuthor} post={post} className="mt-3" />
+
                             {props.showExcerpt && post.excerpt && (
-                                <p className="mt-5" data-sb-field-path="excerpt">
+                                <p className="text-lg mt-5" data-sb-field-path="excerpt">
                                     {post.excerpt}
                                 </p>
                             )}
@@ -316,7 +320,33 @@ function postsVariantD(props) {
     );
 }
 
-function PostDate({ post, className = '' }) {
+function PostAttribution({ showDate, showAuthor, post, className = '' }) {
+    const date = showDate ? postDate(post) : null;
+    const author = showAuthor ? postAuthor(post) : null;
+    const category = postCategory(post);
+    if (!date && !author && !category) {
+        return null;
+    }
+    return (
+        <div className={className ? className : null}>
+            {date && <>{date}</>}
+            {author && (
+                <>
+                    {date && ' | '}
+                    {author}
+                </>
+            )}
+            {category && (
+                <>
+                    {(date || author) && ' | '}
+                    {category}
+                </>
+            )}
+        </div>
+    );
+}
+
+function postDate(post) {
     if (!post.date) {
         return null;
     }
@@ -324,30 +354,9 @@ function PostDate({ post, className = '' }) {
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('MM-DD-YYYY');
     return (
-        <div className={className ? className : null}>
-            <time dateTime={dateTimeAttr} data-sb-field-path="date">
-                {formattedDate}
-            </time>
-        </div>
-    );
-}
-
-function PostAttribution({ showAuthor, post, className = '' }) {
-    const author = showAuthor ? postAuthor(post) : null;
-    const category = postCategory(post);
-    if (!author && !category) {
-        return null;
-    }
-    return (
-        <div className={className ? className : null}>
-            {author && <>{author}</>}
-            {category && (
-                <>
-                    {author && ' | '}
-                    {category}
-                </>
-            )}
-        </div>
+        <time dateTime={dateTimeAttr} data-sb-field-path="date">
+            {formattedDate}
+        </time>
     );
 }
 
