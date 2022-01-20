@@ -32,7 +32,7 @@ export default function Footer(props) {
                             <div className="mb-12 md:text-right md:ml-12">
                                 <Markdown
                                     options={{ forceInline: true, forceWrapper: true, wrapper: 'p' }}
-                                    className="sb-markdown"
+                                    className="sb-markdown text-sm tracking-widest uppercase"
                                     data-sb-field-path=".copyrightText"
                                 >
                                     {props.copyrightText}

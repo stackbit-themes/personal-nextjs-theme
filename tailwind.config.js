@@ -34,6 +34,11 @@ module.exports = {
             fontFamily: {
                 fontPrimary: ['DM Mono', 'monospace'],
                 fontSecondary: ['Azeret Mono', 'monospace']
+            },
+            letterSpacing: {
+                wide: '.05em',
+                wider: '.1em',
+                widest: '.25em'
             }
         }
     },

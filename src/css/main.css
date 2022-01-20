@@ -6,7 +6,7 @@
 
 @layer base {
     body {
-        @apply text-lg antialiased flex flex-col min-h-screen;
+        @apply antialiased flex flex-col min-h-screen;
     }
     body > div,
     .sb-page,
@@ -29,7 +29,7 @@
 
 @layer components {
     .sb-markdown {
-        @apply leading-relaxed;
+        @apply text-lg leading-relaxed;
         a {
             @apply underline;
         }
@@ -137,7 +137,7 @@
 
     /* Buttons */
     .sb-component-button {
-        @apply border-2 border-current inline-flex items-center justify-center no-underline relative text-center transition duration-200 ease-in;
+        @apply text-lg border-2 border-current inline-flex items-center justify-center no-underline relative text-center transition duration-200 ease-in;
         box-shadow: none;
     }
     .sb-component-button:hover {
@@ -147,59 +147,62 @@
         @apply rounded-full;
     }
 
-    /* Links */
-    .sb-component-link {
-        @apply inline-flex items-center justify-center no-underline relative;
+    /* Links, socials */
+    .sb-component-link,
+    .sb-component-social {
+        @apply text-lg inline-flex items-center justify-center no-underline relative;
+    }
+    .sb-component-link:not(.sb-component-link-fill) {
         box-shadow: 0 1px 0 0 currentColor;
         transition: box-shadow 0.25s ease-in-out;
     }
-    .sb-component-link:hover {
+    .sb-component-link:not(.sb-component-link-fill):hover {
         box-shadow: 0 5px 0 0 currentColor;
     }
-
-    /* Socials */
-    .sb-component-social {
-        @apply inline-flex items-center justify-center no-underline transition duration-200 ease-in hover:opacity-80;
+    .sb-component-social:not(.sb-component-social-fill) {
+        @apply opacity-100 hover:opacity-80;
+        transition: opacity 0.25s ease-in-out;
     }
 
     /* Header links hover */
-    .sb-header-links-primary .sb-component-link,
-    .sb-component-header .sb-component-social,
+    .sb-component-link-fill,
+    .sb-component-social-fill,
     .sb-header-logo {
-        @apply relative shadow-none overflow-hidden opacity-100;
+        @apply relative overflow-hidden;
         transition: color 0.25s ease-in-out;
         transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
         z-index: 1;
     }
-    .sb-header-links-primary .sb-component-link:before,
-    .sb-component-header .sb-component-social:before,
+    .sb-component-link-fill:before,
+    .sb-component-social-fill:before,
     .sb-header-logo:before {
-        @apply absolute w-full h-full left-0 top-0;
+        @apply absolute h-full left-0 top-0 opacity-0;
         content: '';
         z-index: -1;
         transform: translate3d(0, -100%, 0);
         transform-origin: 0% 100%;
         transition: transform 0.25s, opacity 0.25s;
+        width: 101%;
     }
-    .sb-header-links-primary .sb-component-link:hover:before,
-    .sb-component-header .sb-component-social:hover:before,
+    .sb-component-link-fill:hover:before,
+    .sb-component-social-fill:hover:before,
     .sb-header-logo:hover:before {
-        opacity: 1;
+        @apply opacity-100;
         transform: translate3d(0, 0, 0);
         transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     }
 
     /* Form controls */
     .sb-form-control {
-        @apply mb-4;
+        @apply mb-6;
     }
     .sb-label {
-        @apply inline-block mb-1;
+        @apply inline-block mb-1 sm:text-xl;
     }
     .sb-input,
     .sb-select,
     .sb-textarea {
-        @apply bg-transparent border border-current p-3 w-full focus:outline-none;
+        @apply bg-transparent border border-current p-3 w-full focus:outline-none sm:text-xl;
     }
     option {
         color: initial;
@@ -210,7 +213,7 @@
         width: 1.5em;
     }
     .sb-checkbox + .sb-label {
-        @apply cursor-pointer relative;
+        @apply cursor-pointer relative sm:text-xl;
         padding-left: 2.5em;
     }
     .sb-checkbox + .sb-label:before {
@@ -249,13 +252,13 @@
         .sb-textarea {
             @apply text-on-dark placeholder-on-dark placeholder-opacity-75;
         }
-        .sb-header-links-primary .sb-component-link:before,
-        .sb-component-header .sb-component-social:before,
+        .sb-component-link-fill:before,
+        .sb-component-social-fill:before,
         .sb-header-logo:before {
             @apply bg-on-dark;
         }
-        .sb-header-links-primary .sb-component-link:hover,
-        .sb-component-header .sb-component-social:hover,
+        .sb-component-link-fill:hover,
+        .sb-component-social-fill:hover,
         .sb-header-logo:hover {
             @apply text-dark;
         }
@@ -270,13 +273,13 @@
         .sb-textarea {
             @apply text-on-light placeholder-on-light placeholder-opacity-75;
         }
-        .sb-header-links-primary .sb-component-link:before,
-        .sb-component-header .sb-component-social:before,
+        .sb-component-link-fill:before,
+        .sb-component-social-fill:before,
         .sb-header-logo:before {
             @apply bg-on-light;
         }
-        .sb-header-links-primary .sb-component-link:hover,
-        .sb-component-header .sb-component-social:hover,
+        .sb-component-link-fill:hover,
+        .sb-component-social-fill:hover,
         .sb-header-logo:hover {
             @apply text-light;
         }
@@ -291,13 +294,13 @@
         .sb-textarea {
             @apply text-on-primary placeholder-on-primary placeholder-opacity-75;
         }
-        .sb-header-links-primary .sb-component-link:before,
-        .sb-component-header .sb-component-social:before,
+        .sb-component-link-fill:before,
+        .sb-component-social-fill:before,
         .sb-header-logo:before {
             @apply bg-on-primary;
         }
-        .sb-header-links-primary .sb-component-link:hover,
-        .sb-component-header .sb-component-social:hover,
+        .sb-component-link-fill:hover,
+        .sb-component-social-fill:hover,
         .sb-header-logo:hover {
             @apply text-primary;
         }
@@ -312,13 +315,13 @@
         .sb-textarea {
             @apply text-on-secondary placeholder-on-secondary placeholder-opacity-75;
         }
-        .sb-header-links-primary .sb-component-link:before,
-        .sb-component-header .sb-component-social:before,
+        .sb-component-link-fill:before,
+        .sb-component-social-fill:before,
         .sb-header-logo:before {
             @apply bg-on-secondary;
         }
-        .sb-header-links-primary .sb-component-link:hover,
-        .sb-component-header .sb-component-social:hover,
+        .sb-component-link-fill:hover,
+        .sb-component-social-fill:hover,
         .sb-header-logo:hover {
             @apply text-secondary;
         }
@@ -333,13 +336,13 @@
         .sb-textarea {
             @apply text-on-complementary placeholder-on-complementary placeholder-opacity-75;
         }
-        .sb-header-links-primary .sb-component-link:before,
-        .sb-component-header .sb-component-social:before,
+        .sb-component-link-fill:before,
+        .sb-component-social-fill:before,
         .sb-header-logo:before {
             @apply bg-on-complementary;
         }
-        .sb-header-links-primary .sb-component-link:hover,
-        .sb-component-header .sb-component-social:hover,
+        .sb-component-link-fill:hover,
+        .sb-component-social-fill:hover,
         .sb-header-logo:hover {
             @apply text-complementary;
         }

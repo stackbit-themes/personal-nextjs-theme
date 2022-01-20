@@ -19,6 +19,7 @@ fields:
         value: fontPrimary
       - label: Font secondary
         value: fontSecondary
+    default: fontPrimary
   - type: object
     name: h1
     label: H1
