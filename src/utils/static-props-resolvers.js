@@ -7,6 +7,7 @@ import {
     getAllPostsSorted,
     getAllCategoryPostsSorted,
     getAllAuthorPostsSorted,
+    getAllProjectsSorted,
     getPagedItemsForPage,
     mapDeepAsync
 } from './data-utils';
@@ -94,6 +95,39 @@ const StaticPropsResolvers = {
     },
     FeaturedPostsSection: (props, data, debugContext) => {
         return resolveReferences(props, ['posts.author', 'posts.category'], data.objects, debugContext);
+    },
+    ProjectLayout: (props, data) => {
+        const allProjects = getAllProjectsSorted(data.objects);
+        const currentProjectId = props.__metadata?.id;
+        const currentProjectIndex = allProjects.findIndex((project) => project.__metadata?.id === currentProjectId);
+        const nextProject = currentProjectIndex > 0 ? allProjects[currentProjectIndex - 1] : null;
+        const prevProject = currentProjectIndex < allProjects.length - 1 ? allProjects[currentProjectIndex + 1] : null;
+        return {
+            ...props,
+            prevProject,
+            nextProject
+        };
+    },
+    ProjectFeedLayout: (props, data) => {
+        const numOfProjectsPerPage = props.numOfProjectsPerPage ?? 10;
+        const allProjects = getAllProjectsSorted(data.objects);
+        const paginationData = getPagedItemsForPage(props, allProjects, numOfProjectsPerPage);
+        const items = paginationData.items;
+        return {
+            ...props,
+            ...paginationData,
+            items
+        };
+    },
+    RecentProjectsSection: (props, data) => {
+        const recentProjects = getAllProjectsSorted(data.objects).slice(0, props.recentCount || 6);
+        return {
+            ...props,
+            projects: recentProjects
+        };
+    },
+    FeaturedProjectsSection: (props, data, debugContext) => {
+        return resolveReferences(props, ['projects'], data.objects, debugContext);
     },
     FormBlock: async (props) => {
         if (!props.destination) {

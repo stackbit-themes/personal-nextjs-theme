@@ -46,13 +46,20 @@ sections:
         justifyContent: flex-start
     type: HeroSection
   - colors: colors-f
-    type: FeaturedPostsSection
+    type: FeaturedProjectsSection
     elementId: ''
+    actions:
+      - type: Link
+        label: See all projects
+        url: /projects
     showDate: false
-    showAuthor: false
-    showExcerpt: true
+    showDescription: true
     showReadMoreLink: true
     variant: variant-b
+    projects:
+      - content/pages/projects/project-two.md
+      - content/pages/projects/project-three.md
+      - content/pages/projects/project-one.md
     styles:
       self:
         height: auto
@@ -73,12 +80,8 @@ sections:
       subtitle:
         textAlign: left
       actions:
-        justifyContent: center
-    subtitle: 'Recent projects:'
-    posts:
-      - content/pages/blog/post-four.md
-      - content/pages/blog/post-three.md
-      - content/pages/blog/post-two.md
+        justifyContent: flex-end
+    subtitle: 'Projects:'
   - type: FeaturedPostsSection
     elementId: ''
     colors: colors-f
