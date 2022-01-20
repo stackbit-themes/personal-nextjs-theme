@@ -165,7 +165,7 @@
     /* Header links hover */
     .sb-header-links-primary .sb-component-link,
     .sb-component-header .sb-component-social,
-    .sb-header-title {
+    .sb-header-logo {
         @apply relative shadow-none overflow-hidden opacity-100;
         transition: color 0.25s ease-in-out;
         transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
@@ -173,7 +173,7 @@
     }
     .sb-header-links-primary .sb-component-link:before,
     .sb-component-header .sb-component-social:before,
-    .sb-header-title:before {
+    .sb-header-logo:before {
         @apply absolute w-full h-full left-0 top-0;
         content: '';
         z-index: -1;
@@ -183,7 +183,7 @@
     }
     .sb-header-links-primary .sb-component-link:hover:before,
     .sb-component-header .sb-component-social:hover:before,
-    .sb-header-title:hover:before {
+    .sb-header-logo:hover:before {
         opacity: 1;
         transform: translate3d(0, 0, 0);
         transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
@@ -251,12 +251,12 @@
         }
         .sb-header-links-primary .sb-component-link:before,
         .sb-component-header .sb-component-social:before,
-        .sb-header-title:before {
+        .sb-header-logo:before {
             @apply bg-on-dark;
         }
         .sb-header-links-primary .sb-component-link:hover,
         .sb-component-header .sb-component-social:hover,
-        .sb-header-title:hover {
+        .sb-header-logo:hover {
             @apply text-dark;
         }
         .sb-header-overlay {
@@ -272,12 +272,12 @@
         }
         .sb-header-links-primary .sb-component-link:before,
         .sb-component-header .sb-component-social:before,
-        .sb-header-title:before {
+        .sb-header-logo:before {
             @apply bg-on-light;
         }
         .sb-header-links-primary .sb-component-link:hover,
         .sb-component-header .sb-component-social:hover,
-        .sb-header-title:hover {
+        .sb-header-logo:hover {
             @apply text-light;
         }
         .sb-header-overlay {
@@ -293,12 +293,12 @@
         }
         .sb-header-links-primary .sb-component-link:before,
         .sb-component-header .sb-component-social:before,
-        .sb-header-title:before {
+        .sb-header-logo:before {
             @apply bg-on-primary;
         }
         .sb-header-links-primary .sb-component-link:hover,
         .sb-component-header .sb-component-social:hover,
-        .sb-header-title:hover {
+        .sb-header-logo:hover {
             @apply text-primary;
         }
         .sb-header-overlay {
@@ -314,12 +314,12 @@
         }
         .sb-header-links-primary .sb-component-link:before,
         .sb-component-header .sb-component-social:before,
-        .sb-header-title:before {
+        .sb-header-logo:before {
             @apply bg-on-secondary;
         }
         .sb-header-links-primary .sb-component-link:hover,
         .sb-component-header .sb-component-social:hover,
-        .sb-header-title:hover {
+        .sb-header-logo:hover {
             @apply text-secondary;
         }
         .sb-header-overlay {
@@ -335,12 +335,12 @@
         }
         .sb-header-links-primary .sb-component-link:before,
         .sb-component-header .sb-component-social:before,
-        .sb-header-title:before {
+        .sb-header-logo:before {
             @apply bg-on-complementary;
         }
         .sb-header-links-primary .sb-component-link:hover,
         .sb-component-header .sb-component-social:hover,
-        .sb-header-title:hover {
+        .sb-header-logo:hover {
             @apply text-complementary;
         }
         .sb-header-overlay {
