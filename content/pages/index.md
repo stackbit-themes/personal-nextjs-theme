@@ -88,6 +88,7 @@ sections:
     colors: colors-f
     variant: variant-d
     title: Posts
+    showFeaturedImage: false
     actions:
       - type: Link
         label: See all posts

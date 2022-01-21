@@ -12,6 +12,10 @@ date: '2021-11-03'
 author: content/data/team/doris-soto.json
 excerpt: >-
   More context that may or may not be helpful
+featuredImage:
+  type: ImageBlock
+  url: /images/featured-Image2.jpg
+  altText: Post thumbnail image
 media:
   url: /images/post-4.png
   altText: altText of the image

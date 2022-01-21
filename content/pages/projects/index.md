@@ -14,6 +14,7 @@ projectFeed:
   showDate: false
   showDescription: true
   showReadMoreLink: true
+  showFeaturedImage: true
   variant: variant-a
   styles:
     self:
