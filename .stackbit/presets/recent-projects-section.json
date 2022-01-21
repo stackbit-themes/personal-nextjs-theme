@@ -1,0 +1,87 @@
+{
+    "model": "RecentProjectsSection",
+    "presets": [
+        {
+            "label": "Recent projects transparent - 2 columns",
+            "thumbnail": "images/projects-transparent-2-col.png",
+            "data": {
+                "variant": "variant-a",
+                "colors": "colors-f",
+                "title": "",
+                "subtitle": "Projects:",
+                "actions": [
+                    {
+                        "type": "Link",
+                        "label": "See all projects",
+                        "altText": "See all projects",
+                        "url": "/projects"
+                    }
+                ],
+                "showDate": false,
+                "showAuthor": false,
+                "showDescription": true,
+                "showReadMoreLink": true,
+                "showFeaturedImage": true,
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-24", "pb-24", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "center"
+                    }
+                }
+            }
+        },
+                {
+            "label": "Recent projects secondary - 3 columns",
+            "thumbnail": "images/projects-secondary-3-col.png",
+            "data": {
+                "variant": "variant-b",
+                "colors": "colors-d",
+                "title": "",
+                "subtitle": "Projects:",
+                "actions": [
+                    {
+                        "type": "Link",
+                        "label": "See all projects",
+                        "altText": "See all projects",
+                        "url": "/projects"
+                    }
+                ],
+                "showDate": false,
+                "showAuthor": false,
+                "showDescription": true,
+                "showReadMoreLink": true,
+                "showFeaturedImage": true,
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0", "ml-0", "mr-0"],
+                        "padding": ["pt-24", "pb-24", "pl-4", "pr-4"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    },
+                    "actions": {
+                        "justifyContent": "center"
+                    }
+                }
+            }
+        }
+    ]
+}
