@@ -19,32 +19,32 @@ export default function ProjectLayout(props) {
     return (
         <BaseLayout page={page} site={site}>
             <main id="main" className="sb-layout sb-project-layout">
-                <article className="px-4 sm:px-8 py-14 lg:py-20">
+                <article className="px-4 py-14 lg:py-20">
                     <div className="max-w-5xl mx-auto">
-                        <header className="mb-12 md:mb-20">
+                        <header className="mb-10 sm:mb-16">
                             {page.client && (
-                                <div className="text-lg mb-2 md:mb-6" data-sb-field-path="client">
+                                <div className="text-lg uppercase mb-2 md:mb-6" data-sb-field-path="client">
                                     {page.client}
                                 </div>
                             )}
                             <div className="md:flex md:justify-between">
-                                <div className="mb-6 md:mb-0 md:order-last">
+                                <div className="text-lg mb-6 md:mb-0 md:ml-12 md:order-last">
                                     <time dateTime={dateTimeAttr} data-sb-field-path="date">
                                         {formattedDate}
                                     </time>
                                 </div>
-                                <h1 className="md:max-w-2xl md:flex-grow md:mr-16" data-sb-field-path="title">
+                                <h1 className="md:max-w-2xl md:flex-grow" data-sb-field-path="title">
                                     {page.title}
                                 </h1>
                             </div>
                         </header>
                         {page.description && (
-                            <div className="max-w-screen-md mx-auto mb-12 md:mb-20" data-sb-field-path="description">
+                            <div className="text-xl leading-normal uppercase max-w-screen-md mx-auto mb-10 sm:mb-16" data-sb-field-path="description">
                                 {page.description}
                             </div>
                         )}
                         {page.media && (
-                            <div className="w-full mb-12 md:mb-20">
+                            <div className="mb-10 sm:mb-16">
                                 <ProjectMedia media={page.media} />
                             </div>
                         )}
@@ -93,21 +93,17 @@ function ProjectMedia({ media }) {
 
 function ProjectNavItem({ project, label }) {
     return (
-        <article className="sb-project-nav-item" data-sb-object-id={project.__metadata?.id}>
+        <Link className="sb-project-nav-item group" href={getPageUrlPath(project)} data-sb-object-id={project.__metadata?.id}>
             {project.featuredImage && (
-                <Link href={getPageUrlPath(project)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
+                <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                     <ImageBlock
                         {...project.featuredImage}
-                        className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                        className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         data-sb-field-path="featuredImage"
                     />
-                </Link>
+                </div>
             )}
-            <h3 className="text-base">
-                <Link className="sb-component sb-component-block sb-component-link" href={getPageUrlPath(project)}>
-                    {label}
-                </Link>
-            </h3>
-        </article>
+            <span className="sb-component sb-component-block sb-component-link">{label}</span>
+        </Link>
     );
 }

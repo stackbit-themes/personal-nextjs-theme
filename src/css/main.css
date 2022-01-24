@@ -140,7 +140,8 @@
         @apply text-lg border-2 border-current inline-flex items-center justify-center no-underline relative text-center transition duration-200 ease-in;
         box-shadow: none;
     }
-    .sb-component-button:not(.sb-component-button-no-hover):hover {
+    .sb-component-button:not(.sb-component-button-no-hover):hover,
+    .group:hover .sb-component-button:not(.sb-component-button-no-hover) {
         box-shadow: 0 6px 0 0 currentColor;
         transform: translate(0, -6px);
     }
@@ -148,17 +149,22 @@
         @apply rounded-full;
     }
 
-    /* Links, socials */
-    .sb-component-link,
-    .sb-component-social {
+    /* Links */
+    .sb-component-link {
         @apply text-lg inline-flex items-center justify-center no-underline relative;
     }
     .sb-component-link:not(.sb-component-link-fill) {
         box-shadow: 0 1px 0 0 currentColor;
         transition: box-shadow 0.25s ease-in-out;
     }
-    .sb-component-link:not(.sb-component-link-fill):hover {
+    .sb-component-link:not(.sb-component-link-fill):hover,
+    .group:hover .sb-component-link:not(.sb-component-link-fill) {
         box-shadow: 0 5px 0 0 currentColor;
+    }
+
+    /* Socials */
+    .sb-component-social {
+        @apply text-lg inline-flex items-center justify-center no-underline relative;
     }
     .sb-component-social:not(.sb-component-social-fill) {
         @apply opacity-100 hover:opacity-80;
