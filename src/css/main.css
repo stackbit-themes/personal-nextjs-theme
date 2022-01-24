@@ -361,3 +361,33 @@
         @apply bg-transparent;
     }
 }
+
+/* Posts, projects hover ???? */
+.sb-project-feed-item,
+.sb-post-feed-item {
+    @apply relative overflow-hidden;
+    transition: color 0.25s ease-in-out;
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.sb-project-feed-item:before,
+.sb-post-feed-item:before {
+    @apply absolute h-full left-0 top-0 opacity-0;
+    background-color: rgba(255, 255, 255, 0.1);
+    content: '';
+    z-index: 1;
+    transform: translate3d(0, -100%, 0);
+    transform-origin: 0% 100%;
+    transition: transform 0.25s, opacity 0.25s;
+    width: 100%;
+}
+.sb-project-feed-item:hover:before,
+.sb-post-feed-item:hover:before {
+    @apply opacity-100;
+    transform: translate3d(0, 0, 0);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.sb-project-feed-item.group:hover .sb-component-button-icon:not(.sb-component-button-no-hover),
+.sb-post-feed-item.group:hover .sb-component-button-icon:not(.sb-component-button-no-hover) {
+    transform: translate(6px, -6px);
+}
