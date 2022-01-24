@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
 
+import HighlightedPreBlock from './../../../utils/highlighted-markdown';
 import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import { getComponent } from '../../components-registry';
 import getPageUrlPath from '../../../utils/get-page-url-path';
@@ -49,7 +50,7 @@ export default function ProjectLayout(props) {
                             </div>
                         )}
                         {page.markdown_content && (
-                            <Markdown options={{ forceBlock: true }} className="sb-markdown max-w-screen-md mx-auto" data-sb-field-path="markdown_content">
+                            <Markdown options={{ forceBlock: true, overrides: { pre: HighlightedPreBlock } }} className="sb-markdown max-w-screen-md mx-auto" data-sb-field-path="markdown_content">
                                 {page.markdown_content}
                             </Markdown>
                         )}
