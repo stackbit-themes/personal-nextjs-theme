@@ -272,6 +272,7 @@ sections:
         borderWidth: 1
         borderStyle: solid
   - type: TextSection
+    variant: variant-a
     subtitle: 'Contact:'
     colors: colors-f
     text: |
@@ -382,6 +383,7 @@ sections:
         borderWidth: 1
         borderStyle: solid
   - type: ContactSection
+    backgroundSize: full
     title: "Let’s talk... \U0001F4AC"
     colors: colors-f
     form:

@@ -97,11 +97,9 @@ function PostFeedVariants(props) {
     const variant = props.variant || 'variant-a';
     switch (variant) {
         case 'variant-a':
-            return <PostsVariantA {...props} />;
         case 'variant-b':
-            return <PostsVariantB {...props} />;
         case 'variant-c':
-            return <PostsVariantC {...props} />;
+            return <PostsVariantABC {...props} />;
         case 'variant-d':
             return <PostsVariantD {...props} />;
         default:
@@ -109,154 +107,52 @@ function PostFeedVariants(props) {
     }
 }
 
-function PostsVariantA(props) {
+function PostsVariantABC(props) {
+    const variant = props.variant || 'variant-a';
     const posts = props.posts || [];
     if (posts.length === 0) {
         return null;
     }
     return (
         <div
-            className={classNames('grid', 'gap-x-6', 'gap-y-12', 'md:grid-cols-2', 'lg:gap-x-8', {
+            className={classNames('grid', 'gap-y-12', {
+                'md:grid-cols-2': variant === 'variant-a',
+                'md:grid-cols-3': variant === 'variant-b',
+                'justify-center': variant === 'variant-c',
+                'gap-x-6 lg:gap-x-8': variant === 'variant-a' || 'variant-b',
                 'mt-12': props.hasHeader
             })}
             {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
-                <article key={index} className="border-b border-current pb-10" data-sb-object-id={post.__metadata?.id}>
-                    {props.showFeaturedImage && post.featuredImage && (
-                        <Link href={getPageUrlPath(post)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
-                            <ImageBlock
-                                {...post.featuredImage}
-                                className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                                data-sb-field-path="featuredImage"
-                            />
-                        </Link>
-                    )}
-                    <PostAttribution showDate={props.showDate} showAuthor={props.showAuthor} post={post} className="mb-3" />
-                    <h3 className="text-4xl">
-                        <Link href={getPageUrlPath(post)} data-sb-field-path="title">
-                            {post.title}
-                        </Link>
-                    </h3>
-                    {props.showExcerpt && post.excerpt && (
-                        <p className="text-lg mt-5" data-sb-field-path="excerpt">
-                            {post.excerpt}
-                        </p>
-                    )}
-                    {props.showReadMoreLink && (
-                        <div className="mt-10">
-                            <Link
-                                href={getPageUrlPath(post)}
-                                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"
-                            >
-                                <span className="sr-only">Read more</span>
-                                <ArrowUpRightIcon className="fill-current h-5 w-5" />
-                            </Link>
-                        </div>
-                    )}
-                </article>
-            ))}
-        </div>
-    );
-}
-
-function PostsVariantB(props) {
-    const posts = props.posts || [];
-    if (posts.length === 0) {
-        return null;
-    }
-    return (
-        <div
-            className={classNames('grid', 'gap-x-6', 'gap-y-12', 'md:grid-cols-3', 'lg:gap-x-8', {
-                'mt-12': props.hasHeader
-            })}
-            {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
-        >
-            {posts.map((post, index) => (
-                <article key={index} className="border-b border-current pb-10" data-sb-object-id={post.__metadata?.id}>
-                    {props.showFeaturedImage && post.featuredImage && (
-                        <Link href={getPageUrlPath(post)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
-                            <ImageBlock
-                                {...post.featuredImage}
-                                className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                                data-sb-field-path="featuredImage"
-                            />
-                        </Link>
-                    )}
-                    <PostAttribution showDate={props.showDate} showAuthor={props.showAuthor} post={post} className="mb-3" />
-                    <h3 className="text-4xl">
-                        <Link href={getPageUrlPath(post)} data-sb-field-path="title">
-                            {post.title}
-                        </Link>
-                    </h3>
-                    {props.showExcerpt && post.excerpt && (
-                        <p className="mt-5" data-sb-field-path="excerpt">
-                            {post.excerpt}
-                        </p>
-                    )}
-                    {props.showReadMoreLink && (
-                        <div className="mt-10">
-                            <Link
-                                href={getPageUrlPath(post)}
-                                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"
-                            >
-                                <span className="sr-only">Read more</span>
-                                <ArrowUpRightIcon className="fill-current h-5 w-5" />
-                            </Link>
-                        </div>
-                    )}
-                </article>
-            ))}
-        </div>
-    );
-}
-
-function PostsVariantC(props) {
-    const posts = props.posts || [];
-    if (posts.length === 0) {
-        return null;
-    }
-    return (
-        <div
-            className={classNames('grid', 'gap-y-12', 'justify-center', {
-                'mt-12': props.hasHeader
-            })}
-            {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
-        >
-            {posts.map((post, index) => (
-                <article key={index} className="border-b border-current pb-10 max-w-3xl" data-sb-object-id={post.__metadata?.id}>
-                    {props.showFeaturedImage && post.featuredImage && (
-                        <Link href={getPageUrlPath(post)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
-                            <ImageBlock
-                                {...post.featuredImage}
-                                className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                                data-sb-field-path="featuredImage"
-                            />
-                        </Link>
-                    )}
-                    <PostAttribution showDate={props.showDate} showAuthor={props.showAuthor} post={post} className="mb-3" />
-                    <h3 className="text-4xl">
-                        <Link href={getPageUrlPath(post)} data-sb-field-path="title">
-                            {post.title}
-                        </Link>
-                    </h3>
-                    {props.showExcerpt && post.excerpt && (
-                        <p className="mt-5" data-sb-field-path="excerpt">
-                            {post.excerpt}
-                        </p>
-                    )}
-                    {props.showReadMoreLink && (
-                        <div className="mt-10">
-                            <Link
-                                href={getPageUrlPath(post)}
-                                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"
-                            >
-                                <span className="sr-only">Read more</span>
-                                <ArrowUpRightIcon className="fill-current h-5 w-5" />
-                            </Link>
-                        </div>
-                    )}
-                </article>
+                <Link key={index} data-sb-object-id={post.__metadata?.id} href={getPageUrlPath(post)} className="sb-post-feed-item block group">
+                    <article className="border-b border-current pb-10 max-w-3xl">
+                        {props.showFeaturedImage && post.featuredImage && (
+                            <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
+                                <ImageBlock
+                                    {...post.featuredImage}
+                                    className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    data-sb-field-path="featuredImage"
+                                />
+                            </div>
+                        )}
+                        <PostAttribution showDate={props.showDate} showAuthor={props.showAuthor} post={post} className="mb-3" />
+                        <h3 data-sb-field-path="title">{post.title}</h3>
+                        {props.showExcerpt && post.excerpt && (
+                            <p className="text-lg mt-5" data-sb-field-path="excerpt">
+                                {post.excerpt}
+                            </p>
+                        )}
+                        {props.showReadMoreLink && (
+                            <div className="mt-8">
+                                <span className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon">
+                                    <span className="sr-only">Read more</span>
+                                    <ArrowUpRightIcon className="fill-current h-5 w-5" />
+                                </span>
+                            </div>
+                        )}
+                    </article>
+                </Link>
             ))}
         </div>
     );
@@ -269,14 +165,14 @@ function PostsVariantD(props) {
     }
     return (
         <div
-            className={classNames('grid', 'gap-y-8', {
+            className={classNames('grid', 'gap-y-12', {
                 'mt-12': props.hasHeader
             })}
             {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
                 <Link key={index} data-sb-object-id={post.__metadata?.id} href={getPageUrlPath(post)} className="sb-post-feed-item block group">
-                    <article className="border-b border-current pt-4 md:pt-6 pb-10 md:pb-12 md:px-4">
+                    <article className="border-b border-current pb-10 md:pb-12 md:px-4">
                         <div className="md:flex md:items-center">
                             {props.showFeaturedImage && post.featuredImage && (
                                 <div className="mb-8 md:flex-shrink-0 md:self-stretch md:w-48 md:mb-0 md:mr-8">
@@ -291,10 +187,7 @@ function PostsVariantD(props) {
                             )}
                             <div className={classNames('md:flex-grow', props.showFeaturedImage && post.featuredImage ? null : 'md:ml-12')}>
                                 <PostAttribution showDate={props.showDate} showAuthor={props.showAuthor} post={post} className="mb-3" />
-                                <h3 className="text-4xl" data-sb-field-path="title">
-                                    {post.title}
-                                </h3>
-
+                                <h3 data-sb-field-path="title">{post.title}</h3>
                                 {props.showExcerpt && post.excerpt && (
                                     <p className="text-lg mt-5" data-sb-field-path="excerpt">
                                         {post.excerpt}
@@ -397,8 +290,9 @@ function mapMinHeightStyles(height) {
             return 'min-h-0';
         case 'screen':
             return 'min-h-screen';
+        default:
+            return null;
     }
-    return null;
 }
 
 function mapMaxWidthStyles(width) {
@@ -409,6 +303,7 @@ function mapMaxWidthStyles(width) {
             return 'max-w-7xl';
         case 'full':
             return 'max-w-full';
+        default:
+            return null;
     }
-    return null;
 }

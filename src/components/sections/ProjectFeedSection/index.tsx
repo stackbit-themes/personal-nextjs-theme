@@ -96,11 +96,9 @@ function ProjectFeedVariants(props) {
     const variant = props.variant || 'variant-a';
     switch (variant) {
         case 'variant-a':
-            return <ProjectsVariantA {...props} />;
         case 'variant-b':
-            return <ProjectsVariantB {...props} />;
         case 'variant-c':
-            return <ProjectsVariantC {...props} />;
+            return <ProjectsVariantABC {...props} />;
         case 'variant-d':
             return <ProjectsVariantD {...props} />;
         default:
@@ -108,154 +106,52 @@ function ProjectFeedVariants(props) {
     }
 }
 
-function ProjectsVariantA(props) {
+function ProjectsVariantABC(props) {
+    const variant = props.variant || 'variant-a';
     const projects = props.projects || [];
     if (projects.length === 0) {
         return null;
     }
     return (
         <div
-            className={classNames('grid', 'gap-x-6', 'gap-y-12', 'md:grid-cols-2', 'lg:gap-x-8', {
+            className={classNames('grid', 'gap-y-12', {
+                'md:grid-cols-2': variant === 'variant-a',
+                'md:grid-cols-3': variant === 'variant-b',
+                'justify-center': variant === 'variant-c',
+                'gap-x-6 lg:gap-x-8': variant === 'variant-a' || 'variant-b',
                 'mt-12': props.hasHeader
             })}
             {...(props.annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
             {projects.map((project, index) => (
-                <article key={index} className="border-b border-current pb-10" data-sb-object-id={project.__metadata?.id}>
-                    {props.showFeaturedImage && project.featuredImage && (
-                        <Link href={getPageUrlPath(project)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
-                            <ImageBlock
-                                {...project.featuredImage}
-                                className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                                data-sb-field-path="featuredImage"
-                            />
-                        </Link>
-                    )}
-                    {props.showDate && <ProjectDate project={project} className="mb-3" />}
-                    <h3 className="text-4xl">
-                        <Link href={getPageUrlPath(project)} data-sb-field-path="title">
-                            {project.title}
-                        </Link>
-                    </h3>
-                    {props.showDescription && project.description && (
-                        <p className="text-lg mt-5" data-sb-field-path="description">
-                            {project.description}
-                        </p>
-                    )}
-                    {props.showReadMoreLink && (
-                        <div className="mt-10">
-                            <Link
-                                href={getPageUrlPath(project)}
-                                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"
-                            >
-                                <span className="sr-only">Read more</span>
-                                <ArrowUpRightIcon className="fill-current h-5 w-5" />
-                            </Link>
-                        </div>
-                    )}
-                </article>
-            ))}
-        </div>
-    );
-}
-
-function ProjectsVariantB(props) {
-    const projects = props.projects || [];
-    if (projects.length === 0) {
-        return null;
-    }
-    return (
-        <div
-            className={classNames('grid', 'gap-x-6', 'gap-y-12', 'md:grid-cols-3', 'lg:gap-x-8', {
-                'mt-12': props.hasHeader
-            })}
-            {...(props.annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
-        >
-            {projects.map((project, index) => (
-                <article key={index} className="border-b border-current pb-10" data-sb-object-id={project.__metadata?.id}>
-                    {props.showFeaturedImage && project.featuredImage && (
-                        <Link href={getPageUrlPath(project)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
-                            <ImageBlock
-                                {...project.featuredImage}
-                                className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                                data-sb-field-path="featuredImage"
-                            />
-                        </Link>
-                    )}
-                    {props.showDate && <ProjectDate project={project} className="mb-3" />}
-                    <h3 className="text-4xl">
-                        <Link href={getPageUrlPath(project)} data-sb-field-path="title">
-                            {project.title}
-                        </Link>
-                    </h3>
-                    {props.showDescription && project.description && (
-                        <p className="text-lg mt-5" data-sb-field-path="description">
-                            {project.description}
-                        </p>
-                    )}
-                    {props.showReadMoreLink && (
-                        <div className="mt-10">
-                            <Link
-                                href={getPageUrlPath(project)}
-                                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"
-                            >
-                                <span className="sr-only">Read more</span>
-                                <ArrowUpRightIcon className="fill-current h-5 w-5" />
-                            </Link>
-                        </div>
-                    )}
-                </article>
-            ))}
-        </div>
-    );
-}
-
-function ProjectsVariantC(props) {
-    const projects = props.projects || [];
-    if (projects.length === 0) {
-        return null;
-    }
-    return (
-        <div
-            className={classNames('grid', 'gap-y-12', 'justify-center', {
-                'mt-12': props.hasHeader
-            })}
-            {...(props.annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
-        >
-            {projects.map((project, index) => (
-                <article key={index} className="border-b border-current pb-10 max-w-3xl" data-sb-object-id={project.__metadata?.id}>
-                    {props.showFeaturedImage && project.featuredImage && (
-                        <Link href={getPageUrlPath(project)} className="block h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
-                            <ImageBlock
-                                {...project.featuredImage}
-                                className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                                data-sb-field-path="featuredImage"
-                            />
-                        </Link>
-                    )}
-                    {props.showDate && <ProjectDate project={project} className="mb-3" />}
-                    <h3 className="text-4xl">
-                        <Link href={getPageUrlPath(project)} data-sb-field-path="title">
-                            {project.title}
-                        </Link>
-                    </h3>
-                    {props.showDescription && project.description && (
-                        <p className="text-lg mt-5" data-sb-field-path="description">
-                            {project.description}
-                        </p>
-                    )}
-                    {props.showReadMoreLink && (
-                        <div className="mt-10">
-                            <Link
-                                href={getPageUrlPath(project)}
-                                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon"
-                            >
-                                <span className="sr-only">Read more</span>
-                                <ArrowUpRightIcon className="fill-current h-5 w-5" />
-                            </Link>
-                        </div>
-                    )}
-                </article>
+                <Link key={index} data-sb-object-id={project.__metadata?.id} href={getPageUrlPath(project)} className="sb-project-feed-item block group">
+                    <article className="border-b border-current pb-10 max-w-3xl">
+                        {props.showFeaturedImage && project.featuredImage && (
+                            <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
+                                <ImageBlock
+                                    {...project.featuredImage}
+                                    className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    data-sb-field-path="featuredImage"
+                                />
+                            </div>
+                        )}
+                        {props.showDate && <ProjectDate project={project} className="mb-3" />}
+                        <h3 data-sb-field-path="title">{project.title}</h3>
+                        {props.showDescription && project.description && (
+                            <p className="text-lg mt-5" data-sb-field-path="description">
+                                {project.description}
+                            </p>
+                        )}
+                        {props.showReadMoreLink && (
+                            <div className="mt-8">
+                                <span className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon">
+                                    <span className="sr-only">Read more</span>
+                                    <ArrowUpRightIcon className="fill-current h-5 w-5" />
+                                </span>
+                            </div>
+                        )}
+                    </article>
+                </Link>
             ))}
         </div>
     );
@@ -275,7 +171,7 @@ function ProjectsVariantD(props) {
         >
             {projects.map((project, index) => (
                 <Link key={index} data-sb-object-id={project.__metadata?.id} href={getPageUrlPath(project)} className="sb-project-feed-item block group">
-                    <article className="border-b border-current pt-4 md:pt-6 pb-10 md:pb-12 md:px-4">
+                    <article className="border-b border-current pb-10 md:pb-12 md:px-4">
                         <div className="md:flex md:items-center">
                             {props.showFeaturedImage && project.featuredImage && (
                                 <div className="mb-8 md:flex-shrink-0 md:self-stretch md:w-48 md:mb-0 md:mr-8">
@@ -290,9 +186,7 @@ function ProjectsVariantD(props) {
                             )}
                             <div className={classNames('md:flex-grow', props.showFeaturedImage && project.featuredImage ? null : 'md:ml-12')}>
                                 {props.showDate && <ProjectDate project={project} className="mb-3" />}
-                                <h3 className="text-4xl" data-sb-field-path="title">
-                                    {project.title}
-                                </h3>
+                                <h3 data-sb-field-path="title">{project.title}</h3>
                                 {props.showDescription && project.description && (
                                     <p className="text-lg mt-5" data-sb-field-path="description">
                                         {project.description}
@@ -337,8 +231,9 @@ function mapMinHeightStyles(height) {
             return 'min-h-0';
         case 'screen':
             return 'min-h-screen';
+        default:
+            return null;
     }
-    return null;
 }
 
 function mapMaxWidthStyles(width) {
@@ -349,6 +244,7 @@ function mapMaxWidthStyles(width) {
             return 'max-w-7xl';
         case 'full':
             return 'max-w-full';
+        default:
+            return null;
     }
-    return null;
 }

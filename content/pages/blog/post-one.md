@@ -40,6 +40,7 @@ bottomSections:
         justifyContent: center
     type: RecentPostsSection
   - type: ContactSection
+    backgroundSize: full
     title: 'Stay up-to-date with my words ✍️'
     colors: colors-f
     form:

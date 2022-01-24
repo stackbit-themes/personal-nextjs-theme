@@ -101,6 +101,7 @@ fields:
       - label: Secondary
         value: secondary
     default: primary
+    required: true
   - type: string
     name: elementId
     group: settings

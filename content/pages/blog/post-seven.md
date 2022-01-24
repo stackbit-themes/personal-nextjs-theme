@@ -40,6 +40,7 @@ bottomSections:
       actions:
         justifyContent: center
   - type: ContactSection
+    backgroundSize: full
     title: 'Stay up-to-date with my words ✍️'
     colors: colors-f
     form:

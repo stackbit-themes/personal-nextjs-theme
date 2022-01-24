@@ -42,7 +42,6 @@ fields:
     name: variant
     group: styles
     label: Arrangement
-    default: variant-a
     options:
       - label: Two columns grid
         value: variant-a
@@ -52,6 +51,8 @@ fields:
         value: variant-c
       - label: List alt
         value: variant-d
+    default: variant-a
+    required: true
   - type: list
     name: actions
     label: Actions

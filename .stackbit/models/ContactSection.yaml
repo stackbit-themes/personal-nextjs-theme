@@ -23,6 +23,7 @@ fields:
       - label: Inset
         value: inset
     default: full
+    required: true
   - type: string
     name: title
     label: Title

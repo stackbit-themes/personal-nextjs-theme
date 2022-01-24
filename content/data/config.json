@@ -10,20 +10,17 @@
             {
                 "type": "Link",
                 "label": "Info",
-                "url": "/info",
-                "altText": ""
+                "url": "/info"
             },
             {
                 "type": "Link",
                 "label": "Projects",
-                "url": "/projects",
-                "altText": ""
+                "url": "/projects"
             },
             {
                 "type": "Link",
                 "label": "Blog",
-                "url": "/blog",
-                "altText": ""
+                "url": "/blog"
             }
         ],
         "socialLinks": [
