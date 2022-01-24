@@ -140,8 +140,9 @@
         @apply text-lg border-2 border-current inline-flex items-center justify-center no-underline relative text-center transition duration-200 ease-in;
         box-shadow: none;
     }
-    .sb-component-button:hover {
+    .sb-component-button:not(.sb-component-button-no-hover):hover {
         box-shadow: 0 6px 0 0 currentColor;
+        transform: translate(0, -6px);
     }
     .sb-component-button-secondary {
         @apply rounded-full;
