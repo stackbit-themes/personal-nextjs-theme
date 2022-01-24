@@ -62,7 +62,7 @@ function itemActions(props) {
     return (
         <div
             className={classNames('overflow-x-hidden', {
-                'mt-6': props.title || props.subtitle || props.text
+                'mt-4': props.title || props.subtitle || props.text
             })}
         >
             <div
@@ -73,7 +73,7 @@ function itemActions(props) {
                 data-sb-field-path=".actions"
             >
                 {actions.map((action, index) => (
-                    <Action key={index} {...action} className="mb-3 mx-2 lg:whitespace-nowrap" data-sb-field-path={`.${index}`} />
+                    <Action key={index} {...action} className="my-2 mx-2 lg:whitespace-nowrap" data-sb-field-path={`.${index}`} />
                 ))}
             </div>
         </div>

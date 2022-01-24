@@ -10,12 +10,12 @@ export default function CtaSection(props) {
     const cssId = props.elementId || null;
     const colors = props.colors || 'colors-a';
     const bgSize = props.backgroundSize || 'full';
-    const sectionStyles = props.styles?.self || {};
-    const sectionWidth = sectionStyles.width || 'wide';
-    const sectionHeight = sectionStyles.height || 'auto';
-    const sectionJustifyContent = sectionStyles.justifyContent || 'center';
-    const sectionFlexDirection = sectionStyles.flexDirection || 'row';
-    const sectionAlignItems = sectionStyles.alignItems || 'center';
+    const styles = props.styles || {};
+    const sectionWidth = styles.self?.width || 'wide';
+    const sectionHeight = styles.self?.height || 'auto';
+    const sectionJustifyContent = styles.self?.justifyContent || 'center';
+    const sectionFlexDirection = styles.self?.flexDirection || 'row';
+    const sectionAlignItems = styles.self?.alignItems || 'center';
     return (
         <div
             id={cssId}
@@ -26,7 +26,7 @@ export default function CtaSection(props) {
                 'sb-component-cta-section',
                 bgSize === 'inset' ? 'flex' : null,
                 bgSize === 'inset' ? mapStyles({ justifyContent: sectionJustifyContent }) : null,
-                sectionStyles.margin
+                styles.self?.margin
             )}
         >
             <div
@@ -39,14 +39,14 @@ export default function CtaSection(props) {
                     bgSize === 'inset' ? 'w-full' : null,
                     bgSize === 'inset' ? mapMaxWidthStyles(sectionWidth) : null,
                     mapMinHeightStyles(sectionHeight),
-                    sectionStyles.padding || 'py-12 px-4',
-                    sectionStyles.borderColor,
-                    sectionStyles.borderStyle ? mapStyles({ borderStyle: sectionStyles.borderStyle }) : 'border-none',
-                    sectionStyles.borderRadius ? mapStyles({ borderRadius: sectionStyles.borderRadius }) : null,
-                    sectionStyles.boxShadow ? mapStyles({ boxShadow: sectionStyles.boxShadow }) : null
+                    styles.self?.padding || 'py-12 px-4',
+                    styles.self?.borderColor,
+                    styles.self?.borderStyle ? mapStyles({ borderStyle: styles.self?.borderStyle }) : 'border-none',
+                    styles.self?.borderRadius ? mapStyles({ borderRadius: styles.self?.borderRadius }) : null,
+                    styles.self?.boxShadow ? mapStyles({ boxShadow: styles.self?.boxShadow }) : null
                 )}
                 style={{
-                    borderWidth: sectionStyles.borderWidth ? `${sectionStyles.borderWidth}px` : null
+                    borderWidth: styles.self?.borderWidth ? `${styles.self?.borderWidth}px` : null
                 }}
             >
                 <div
@@ -69,8 +69,8 @@ export default function CtaSection(props) {
                                 }
                             )}
                         >
-                            {ctaBody(props)}
-                            {ctaActions(props)}
+                            <CtaBody title={props.title} text={props.text} styles={styles} />
+                            <CtaActions actions={props.actions} styles={styles} />
                         </div>
                     </div>
                 </div>
@@ -79,22 +79,21 @@ export default function CtaSection(props) {
     );
 }
 
-function ctaBody(props) {
+function CtaBody(props) {
     if (!props.title && !props.text) {
         return null;
     }
-    const styles = props.styles || {};
     return (
         <div className="w-full lg:flex-grow">
             {props.title && (
-                <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
+                <h2 className={classNames(props.styles?.title ? mapStyles(props.styles?.title) : null)} data-sb-field-path=".title">
                     {props.title}
                 </h2>
             )}
             {props.text && (
                 <Markdown
                     options={{ forceBlock: true, forceWrapper: true }}
-                    className={classNames('sb-markdown', 'sm:text-lg', styles.text ? mapStyles(styles.text) : null, { 'mt-4': props.title })}
+                    className={classNames('sb-markdown', 'sm:text-lg', props.styles?.text ? mapStyles(props.styles?.text) : null, { 'mt-4': props.title })}
                     data-sb-field-path=".text"
                 >
                     {props.text}
@@ -104,7 +103,7 @@ function ctaBody(props) {
     );
 }
 
-function ctaActions(props) {
+function CtaActions(props) {
     const actions = props.actions || [];
     if (actions.length === 0) {
         return null;
@@ -115,7 +114,7 @@ function ctaActions(props) {
         <div className={classNames('w-full', { 'lg:w-auto': sectionFlexDirection === 'row' })}>
             <div className={classNames('flex', mapStyles({ justifyContent: actionsJustifyContent }))}>
                 <div
-                    className={classNames('flex', 'flex-col', 'space-y-4', actionsJustifyContent === 'center' ? 'items-center' : 'items-start', {
+                    className={classNames('flex', 'flex-col', 'space-y-5', actionsJustifyContent === 'center' ? 'items-center' : 'items-start', {
                         'lg:items-center': sectionFlexDirection === 'row' && actionsJustifyContent !== 'center'
                     })}
                     data-sb-field-path=".actions"
@@ -133,8 +132,9 @@ function mapMinHeightStyles(height) {
     switch (height) {
         case 'screen':
             return 'min-h-screen';
+        default:
+            return null;
     }
-    return null;
 }
 
 function mapMaxWidthStyles(width) {
@@ -145,8 +145,9 @@ function mapMaxWidthStyles(width) {
             return 'max-w-7xl';
         case 'full':
             return 'max-w-full';
+        default:
+            return null;
     }
-    return null;
 }
 
 function mapFlexDirectionStyles(flexDirection) {
@@ -155,6 +156,7 @@ function mapFlexDirectionStyles(flexDirection) {
             return ['flex-col', 'lg:flex-row', 'lg:justify-between'];
         case 'col':
             return ['flex-col'];
+        default:
+            return null;
     }
-    return null;
 }
