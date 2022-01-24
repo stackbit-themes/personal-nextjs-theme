@@ -52,8 +52,7 @@ const iconMap = {
 };
 
 export default function Action(props) {
-    const { type, label, altText, url, showIcon } = props;
-    const icon = props.icon || 'arrowLeft';
+    const { type, label, altText, url, showIcon, icon } = props;
     const iconPosition = props.iconPosition || 'right';
     const IconComponent = iconMap[icon];
     const annotationPrefix = props['data-sb-field-path'] || '';

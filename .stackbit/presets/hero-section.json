@@ -50,7 +50,7 @@
                         "label": "Hire me",
                         "showIcon": true,
                         "icon": "arrowRight",
-                        "style": "secondary",
+                        "style": "primary",
                         "url": "/"
                     }
                 ],

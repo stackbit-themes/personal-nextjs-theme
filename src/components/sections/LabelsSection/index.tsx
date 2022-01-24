@@ -6,12 +6,12 @@ import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to
 import { getDataAttrs } from '../../../utils/get-data-attrs';
 
 export default function LabelsSection(props) {
+    const { title, subtitle, styles } = props;
     const cssId = props.elementId || null;
     const colors = props.colors || 'colors-a';
-    const styles = props.styles || {};
-    const sectionWidth = styles.self?.width || 'wide';
-    const sectionHeight = styles.self?.height || 'auto';
-    const sectionJustifyContent = styles.self?.justifyContent || 'center';
+    const sectionWidth = styles?.self?.width || 'wide';
+    const sectionHeight = styles?.self?.height || 'auto';
+    const sectionJustifyContent = styles?.self?.justifyContent || 'center';
     const items = props.items || [];
     return (
         <div
@@ -26,41 +26,41 @@ export default function LabelsSection(props) {
                 'flex-col',
                 'justify-center',
                 mapMinHeightStyles(sectionHeight),
-                styles.self?.margin,
-                styles.self?.padding || 'py-12 px-4',
-                styles.self?.borderColor,
-                styles.self?.borderStyle ? mapStyles({ borderStyle: styles.self?.borderStyle }) : 'border-none',
-                styles.self?.borderRadius ? mapStyles({ borderRadius: styles.self?.borderRadius }) : null
+                styles?.self?.margin,
+                styles?.self?.padding || 'py-12 px-4',
+                styles?.self?.borderColor,
+                styles?.self?.borderStyle ? mapStyles({ borderStyle: styles?.self?.borderStyle }) : 'border-none',
+                styles?.self?.borderRadius ? mapStyles({ borderRadius: styles?.self?.borderRadius }) : null
             )}
             style={{
-                borderWidth: styles.self?.borderWidth ? `${styles.self?.borderWidth}px` : null
+                borderWidth: styles?.self?.borderWidth ? `${styles?.self?.borderWidth}px` : null
             }}
         >
             <div className={classNames('flex', 'w-full', mapStyles({ justifyContent: sectionJustifyContent }))}>
                 <div className={classNames('w-full', mapMaxWidthStyles(sectionWidth))}>
-                    {props.title && (
-                        <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                            {props.title}
+                    {title && (
+                        <h2 className={classNames(styles?.title ? mapStyles(styles?.title) : null)} data-sb-field-path=".title">
+                            {title}
                         </h2>
                     )}
-                    {props.subtitle && (
+                    {subtitle && (
                         <p
-                            className={classNames('text-lg', 'sm:text-xl', styles.subtitle ? mapStyles(styles.subtitle) : null, {
-                                'mt-6': props.title
+                            className={classNames('text-lg', 'sm:text-xl', styles?.subtitle ? mapStyles(styles?.subtitle) : null, {
+                                'mt-6': title
                             })}
                             data-sb-field-path=".subtitle"
                         >
-                            {props.subtitle}
+                            {subtitle}
                         </p>
                     )}
                     {items.length > 0 && (
                         <div
                             className={classNames('flex', 'flex-wrap', mapColStyles(props?.columns || 3), {
-                                'mt-12 lg:mt-16': props.title || props.subtitle
+                                'mt-12 lg:mt-16': title || subtitle
                             })}
                             data-sb-field-path=".items"
                         >
-                            {props.items.map((item, index) => (
+                            {items.map((item, index) => (
                                 <LabelItem key={index} {...item} data-sb-field-path={`.${index}`} />
                             ))}
                         </div>
@@ -72,27 +72,27 @@ export default function LabelsSection(props) {
 }
 
 function LabelItem(props) {
-    if (!props.label) {
+    const { label, url, 'data-sb-field-path': annotationPrefix } = props;
+    if (!label) {
         return null;
     }
-    const annotationPrefix = props['data-sb-field-path'] || '';
-    if (props.url) {
+    if (url) {
         return (
             <Link
-                href={props.url}
-                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon mr-6 mb-6"
+                href={url}
+                className="sb-component sb-component-block sb-component-button sb-component-button-secondary mr-6 mb-6"
                 data-sb-field-path={`${annotationPrefix} ${annotationPrefix}.url#@href ${annotationPrefix}.label#span[1]`}
             >
-                <span>{props.label}</span>
+                <span>{label}</span>
             </Link>
         );
     } else {
         return (
             <div
-                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon mr-6 mb-6"
+                className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-no-hover mr-6 mb-6"
                 data-sb-field-path={`${annotationPrefix} ${annotationPrefix}.label#span[1]`}
             >
-                <span>{props.label}</span>
+                <span>{label}</span>
             </div>
         );
     }
@@ -106,16 +106,18 @@ function mapColStyles(columns) {
             return 'md:grid-cols-3';
         case 2:
             return 'md:grid-cols-2';
+        default:
+            return null;
     }
-    return null;
 }
 
 function mapMinHeightStyles(height) {
     switch (height) {
         case 'screen':
             return 'min-h-screen';
+        default:
+            return null;
     }
-    return null;
 }
 
 function mapMaxWidthStyles(width) {
@@ -126,6 +128,7 @@ function mapMaxWidthStyles(width) {
             return 'max-w-7xl';
         case 'full':
             return 'max-w-full';
+        default:
+            return null;
     }
-    return null;
 }

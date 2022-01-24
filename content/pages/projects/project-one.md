@@ -8,11 +8,11 @@ description: >-
   It’s hard to imagine that I’ve that I wrote all this code by myself, probably because I worked with an entire team :) but they definitely followed my lead most of the time.
 featuredImage:
   type: ImageBlock
-  url: https://assets.stackbit.com/components/images/default/post-4.jpeg
+  url: /images/bg1.jpg
   altText: Project thumbnail image
 media:
   type: ImageBlock
-  url: https://assets.stackbit.com/components/images/default/post-4.jpeg
+  url: /images/bg1.jpg
   altText: Project image
 ---
 

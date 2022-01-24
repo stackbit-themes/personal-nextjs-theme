@@ -34,6 +34,11 @@ module.exports = {
             fontFamily: {
                 fontPrimary: ['DM Mono', 'monospace'],
                 fontSecondary: ['Azeret Mono', 'monospace']
+            },
+            letterSpacing: {
+                wide: '.05em',
+                wider: '.1em',
+                widest: '.25em'
             }
         }
     },
@@ -42,26 +47,56 @@ module.exports = {
     },
     plugins: [
         plugin(function ({ addBase, addComponents, theme }) {
+            const h1Size = themeStyle.h1.size;
+            const adjustH1Size = ['6xl', '7xl', '8xl', '9xl'].includes(h1Size);
+            const h2Size = themeStyle.h2.size;
+            const adjustH2Size = ['5xl', '6xl', '7xl', '8xl', '9xl'].includes(h2Size);
+            const h3Size = themeStyle.h3.size;
+            const adjustH3Size = ['4xl', '5xl', '6xl', '7xl', '8xl', '9xl'].includes(h3Size);
             addBase({
                 body: {
                     fontFamily: theme(`fontFamily.${themeStyle.fontBody}`)
                 },
                 'h1,.h1': {
-                    fontSize: theme(`fontSize.${themeStyle.h1.size}`),
+                    ...(adjustH1Size && {
+                        fontSize: theme('fontSize.5xl'),
+                        '@media (min-width: 640px)': {
+                            fontSize: theme(`fontSize.${h1Size}`)
+                        }
+                    }),
+                    ...(!adjustH1Size && {
+                        fontSize: theme(`fontSize.${h1Size}`)
+                    }),
                     fontWeight: theme(`fontWeight.${themeStyle.h1.weight}`),
                     letterSpacing: theme(`letterSpacing.${themeStyle.h1.letterSpacing}`),
                     textDecoration: themeStyle.h1.decoration,
                     textTransform: themeStyle.h1.case
                 },
                 h2: {
-                    fontSize: theme(`fontSize.${themeStyle.h2.size}`),
+                    ...(adjustH2Size && {
+                        fontSize: theme('fontSize.4xl'),
+                        '@media (min-width: 640px)': {
+                            fontSize: theme(`fontSize.${h2Size}`)
+                        }
+                    }),
+                    ...(!adjustH2Size && {
+                        fontSize: theme(`fontSize.${h2Size}`)
+                    }),
                     fontWeight: theme(`fontWeight.${themeStyle.h2.weight}`),
                     letterSpacing: theme(`letterSpacing.${themeStyle.h2.letterSpacing}`),
                     textDecoration: themeStyle.h2.decoration,
                     textTransform: themeStyle.h2.case
                 },
                 h3: {
-                    fontSize: theme(`fontSize.${themeStyle.h3.size}`),
+                    ...(adjustH3Size && {
+                        fontSize: theme('fontSize.3xl'),
+                        '@media (min-width: 640px)': {
+                            fontSize: theme(`fontSize.${h3Size}`)
+                        }
+                    }),
+                    ...(!adjustH3Size && {
+                        fontSize: theme(`fontSize.${h3Size}`)
+                    }),
                     fontWeight: theme(`fontWeight.${themeStyle.h3.weight}`),
                     letterSpacing: theme(`letterSpacing.${themeStyle.h3.letterSpacing}`),
                     textDecoration: themeStyle.h3.decoration,

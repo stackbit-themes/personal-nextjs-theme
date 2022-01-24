@@ -21,6 +21,7 @@ fields:
       - label: Header with logo on the left and primary links furthest to the right
         value: variant-c
     default: variant-c
+    required: true
   - type: boolean
     name: isSticky
     group: styles

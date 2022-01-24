@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
-
 import { Action } from '../../atoms';
 
 export default function Footer(props) {
@@ -13,34 +12,44 @@ export default function Footer(props) {
             className={classNames('sb-component', 'sb-component-footer', footerStyles.padding || 'py-16 px-4')}
             data-sb-field-path={`${props.annotationPrefix}:footer`}
         >
-            <div className={classNames('border-t-2', 'border-current', 'mx-auto', 'pt-8', mapMaxWidthStyles(footerWidth))}>
-                {primaryLinks.length > 0 && (
-                    <div className="w-full max-w-5xl">
-                        <ul className="flex flex-wrap mb-12 text-lg" data-sb-field-path=".primaryLinks">
-                            {primaryLinks.map((link, index) => (
-                                <li key={index} className="mr-8 mb-2">
-                                    <Action {...link} data-sb-field-path={`.${index}`} />
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-                {(props.contacts || props.copyrightText) && (
-                    <div className="pt-8 md:flex md:justify-between md:items-end">
-                        {props.contacts && <Contacts {...props.contacts} className="mb-12 space-y-4 text-lg md:flex-shrink-0 max-w-2xl" />}
-                        {props.copyrightText && (
-                            <div className="mb-12 md:text-right md:ml-12">
-                                <Markdown
-                                    options={{ forceInline: true, forceWrapper: true, wrapper: 'p' }}
-                                    className="sb-markdown"
-                                    data-sb-field-path=".copyrightText"
-                                >
-                                    {props.copyrightText}
-                                </Markdown>
-                            </div>
-                        )}
-                    </div>
-                )}
+            <div className={classNames('border-t-2', 'border-current', 'mx-auto', mapMaxWidthStyles(footerWidth))}>
+                <div className="flex flex-col md:flex-row md:flex-wrap">
+                    {primaryLinks.length > 0 && (
+                        <div className={classNames('mt-6', props.contacts ? 'w-full' : 'md:mr-auto')}>
+                            <ul className="flex flex-wrap max-w-5xl text-lg" data-sb-field-path=".primaryLinks">
+                                {primaryLinks.map((link, index) => (
+                                    <li key={index} className="mr-8 mt-2">
+                                        <Action {...link} data-sb-field-path={`.${index}`} />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                    {props.contacts && (
+                        <Contacts
+                            {...props.contacts}
+                            className={classNames(
+                                'text-lg',
+                                'space-y-4',
+                                'md:max-w-3xl',
+                                'md:mr-auto',
+                                'md:pr-12',
+                                primaryLinks.length > 0 ? 'mt-12 md:mt-32' : 'mt-8'
+                            )}
+                        />
+                    )}
+                    {props.copyrightText && (
+                        <div className={classNames('mt-8', primaryLinks.length > 0 || props.contacts ? 'md:self-end' : null)}>
+                            <Markdown
+                                options={{ forceInline: true, forceWrapper: true, wrapper: 'p' }}
+                                className="sb-markdown text-sm tracking-widest uppercase"
+                                data-sb-field-path=".copyrightText"
+                            >
+                                {props.copyrightText}
+                            </Markdown>
+                        </div>
+                    )}
+                </div>
             </div>
         </footer>
     );

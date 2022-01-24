@@ -29,3 +29,4 @@ fields:
       - label: 'One half'
         value: '1/2'
     default: full
+    required: true
