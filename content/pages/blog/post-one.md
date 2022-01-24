@@ -18,6 +18,7 @@ media:
   type: ImageBlock
 bottomSections:
   - elementId: ''
+    type: RecentPostsSection
     colors: colors-f
     variant: variant-d
     subtitle: Recent posts
@@ -29,8 +30,16 @@ bottomSections:
       self:
         height: auto
         width: wide
-        margin: ['mt-0', 'mb-0', 'ml-0', 'mr-0']
-        padding: ['pt-12', 'pb-56', 'pr-4', 'pl-4']
+        margin:
+          - mt-0
+          - mb-0
+          - ml-0
+          - mr-0
+        padding:
+          - pt-12
+          - pb-56
+          - pr-4
+          - pl-4
         justifyContent: center
       title:
         textAlign: left
@@ -38,7 +47,8 @@ bottomSections:
         textAlign: left
       actions:
         justifyContent: center
-    type: RecentPostsSection
+    showFeaturedImage: true
+    showReadMoreLink: true
   - type: ContactSection
     backgroundSize: full
     title: 'Stay up-to-date with my words ✍️'
