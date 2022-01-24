@@ -6,7 +6,6 @@
             "thumbnail": "images/cta-transparent-btn-bottom.png",
             "data": {
                 "colors": "colors-f",
-                "backgroundImage": null,
                 "actions": [
                     {
                         "type": "Button",
@@ -44,7 +43,6 @@
             "thumbnail": "images/cta-primary-btn-bottom.png",
             "data": {
                 "colors": "colors-c",
-                "backgroundImage": null,
                 "actions": [
                     {
                         "type": "Button",
@@ -82,7 +80,6 @@
             "thumbnail": "images/cta-transparent-btn-right.png",
             "data": {
                 "colors": "colors-f",
-                "backgroundImage": null,
                 "actions": [
                     {
                         "type": "Button",
