@@ -31,6 +31,10 @@ fields:
     label: Show post excerpt
     default: false
   - type: boolean
+    name: showFeaturedImage
+    label: Show featured image
+    default: false
+  - type: boolean
     name: showReadMoreLink
     label: Show keep reading link
     default: false
@@ -38,7 +42,6 @@ fields:
     name: variant
     group: styles
     label: Arrangement
-    default: variant-a
     options:
       - label: Two columns grid
         value: variant-a
@@ -48,6 +51,8 @@ fields:
         value: variant-c
       - label: List alt
         value: variant-d
+    default: variant-a
+    required: true
   - type: list
     name: actions
     label: Actions

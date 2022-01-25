@@ -19,6 +19,8 @@ fields:
         value: fontPrimary
       - label: Font secondary
         value: fontSecondary
+    default: fontPrimary
+    required: true
   - type: object
     name: h1
     label: H1
@@ -57,6 +59,7 @@ fields:
           - label: 9XL
             value: 9xl
         default: 5xl
+        required: true
       - type: enum
         name: weight
         label: Font weight
@@ -67,6 +70,7 @@ fields:
           - label: Medium
             value: medium
         default: medium
+        required: true
       - type: enum
         name: decoration
         label: Decoration
@@ -79,6 +83,7 @@ fields:
           - label: Line through
             value: line-through
         default: none
+        required: true
       - type: enum
         name: case
         label: Case
@@ -93,6 +98,7 @@ fields:
           - label: AG
             value: uppercase
         default: none
+        required: true
       - type: enum
         name: letterSpacing
         label: Letter spacing
@@ -109,6 +115,7 @@ fields:
           - label: Wider
             value: wider
         default: normal
+        required: true
   - type: object
     name: h2
     label: H2
@@ -147,6 +154,7 @@ fields:
           - label: 9XL
             value: 9xl
         default: 4xl
+        required: true
       - type: enum
         name: weight
         label: Font weight
@@ -157,6 +165,7 @@ fields:
           - label: Medium
             value: medium
         default: medium
+        required: true
       - type: enum
         name: decoration
         label: Decoration
@@ -169,6 +178,7 @@ fields:
           - label: Line through
             value: line-through
         default: none
+        required: true
       - type: enum
         name: case
         label: Case
@@ -183,6 +193,7 @@ fields:
           - label: AG
             value: uppercase
         default: none
+        required: true
       - type: enum
         name: letterSpacing
         label: Letter spacing
@@ -199,6 +210,7 @@ fields:
           - label: Wider
             value: wider
         default: normal
+        required: true
   - type: object
     name: h3
     label: H3
@@ -237,6 +249,7 @@ fields:
           - label: 9XL
             value: 9xl
         default: 3xl
+        required: true
       - type: enum
         name: weight
         label: Font weight
@@ -247,6 +260,7 @@ fields:
           - label: Medium
             value: medium
         default: medium
+        required: true
       - type: enum
         name: decoration
         label: Decoration
@@ -259,6 +273,7 @@ fields:
           - label: Line through
             value: line-through
         default: none
+        required: true
       - type: enum
         name: case
         label: Case
@@ -273,6 +288,7 @@ fields:
           - label: AG
             value: uppercase
         default: none
+        required: true
       - type: enum
         name: letterSpacing
         label: Letter spacing
@@ -289,6 +305,7 @@ fields:
           - label: Wider
             value: wider
         default: normal
+        required: true
   - type: object
     name: h4
     label: H4
@@ -327,6 +344,7 @@ fields:
           - label: 9XL
             value: 9xl
         default: 2xl
+        required: true
       - type: enum
         name: weight
         label: Font weight
@@ -337,6 +355,7 @@ fields:
           - label: Medium
             value: medium
         default: medium
+        required: true
       - type: enum
         name: decoration
         label: Decoration
@@ -349,6 +368,7 @@ fields:
           - label: Line through
             value: line-through
         default: none
+        required: true
       - type: enum
         name: case
         label: Case
@@ -363,6 +383,7 @@ fields:
           - label: AG
             value: uppercase
         default: none
+        required: true
       - type: enum
         name: letterSpacing
         label: Letter spacing
@@ -379,6 +400,7 @@ fields:
           - label: Wider
             value: wider
         default: normal
+        required: true
   - type: object
     name: h5
     label: H5
@@ -417,6 +439,7 @@ fields:
           - label: 9XL
             value: 9xl
         default: xl
+        required: true
       - type: enum
         name: weight
         label: Font weight
@@ -427,6 +450,7 @@ fields:
           - label: Medium
             value: medium
         default: medium
+        required: true
       - type: enum
         name: decoration
         label: Decoration
@@ -439,6 +463,7 @@ fields:
           - label: Line through
             value: line-through
         default: none
+        required: true
       - type: enum
         name: case
         label: Case
@@ -453,6 +478,7 @@ fields:
           - label: AG
             value: uppercase
         default: none
+        required: true
       - type: enum
         name: letterSpacing
         label: Letter spacing
@@ -469,6 +495,7 @@ fields:
           - label: Wider
             value: wider
         default: normal
+        required: true
   - type: object
     name: h6
     label: H6
@@ -507,6 +534,7 @@ fields:
           - label: 9XL
             value: 9xl
         default: lg
+        required: true
       - type: enum
         name: weight
         label: Font weight
@@ -517,6 +545,7 @@ fields:
           - label: Medium
             value: medium
         default: medium
+        required: true
       - type: enum
         name: decoration
         label: Decoration
@@ -529,6 +558,7 @@ fields:
           - label: Line through
             value: line-through
         default: none
+        required: true
       - type: enum
         name: case
         label: Case
@@ -543,6 +573,7 @@ fields:
           - label: AG
             value: uppercase
         default: none
+        required: true
       - type: enum
         name: letterSpacing
         label: Letter spacing
@@ -559,6 +590,7 @@ fields:
           - label: Wider
             value: wider
         default: normal
+        required: true
   - type: color
     name: light
     label: Light
@@ -615,6 +647,7 @@ fields:
           - label: Medium
             value: medium
         default: normal
+        required: true
       - type: enum
         name: case
         label: Case
@@ -629,6 +662,7 @@ fields:
           - label: AG
             value: uppercase
         default: none
+        required: true
       - type: enum
         name: letterSpacing
         label: Letter spacing
@@ -645,6 +679,7 @@ fields:
           - label: Wider
             value: wider
         default: normal
+        required: true
       - type: number
         name: horizontalPadding
         label: Horizontal padding
@@ -679,6 +714,7 @@ fields:
           - label: Medium
             value: medium
         default: medium
+        required: true
       - type: enum
         name: case
         label: Case
@@ -693,6 +729,7 @@ fields:
           - label: AG
             value: uppercase
         default: none
+        required: true
       - type: enum
         name: letterSpacing
         label: Letter spacing
@@ -709,6 +746,7 @@ fields:
           - label: Wider
             value: wider
         default: normal
+        required: true
       - type: number
         name: horizontalPadding
         label: Horizontal padding
@@ -743,6 +781,7 @@ fields:
           - label: Medium
             value: medium
         default: medium
+        required: true
       - type: enum
         name: case
         label: Case
@@ -757,6 +796,7 @@ fields:
           - label: AG
             value: uppercase
         default: none
+        required: true
       - type: enum
         name: letterSpacing
         label: Letter spacing
@@ -773,3 +813,4 @@ fields:
           - label: Wider
             value: wider
         default: normal
+        required: true

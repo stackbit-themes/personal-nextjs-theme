@@ -24,6 +24,7 @@ fields:
       - label: Contain
         value: contain
     default: cover
+    required: true
   - type: enum
     name: backgroundPosition
     group: styles
@@ -48,6 +49,7 @@ fields:
       - label: Top
         value: top
     default: center
+    required: true
   - type: enum
     name: backgroundRepeat
     group: styles
@@ -63,6 +65,7 @@ fields:
       - label: No repeat
         value: no-repeat
     default: no-repeat
+    required: true
   - type: number
     name: opacity
     group: styles

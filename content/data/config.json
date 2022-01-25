@@ -10,14 +10,17 @@
             {
                 "type": "Link",
                 "label": "Info",
-                "url": "/info",
-                "altText": ""
+                "url": "/info"
+            },
+            {
+                "type": "Link",
+                "label": "Projects",
+                "url": "/projects"
             },
             {
                 "type": "Link",
                 "label": "Blog",
-                "url": "/blog",
-                "altText": ""
+                "url": "/blog"
             }
         ],
         "socialLinks": [
@@ -25,14 +28,14 @@
                 "type": "Social",
                 "altText": "Twitter",
                 "label": "Twitter",
-                "url": "/",
+                "url": "https://twitter.com/stackbit",
                 "icon": "twitter"
             },
             {
                 "type": "Social",
                 "altText": "GitHub",
                 "label": "GitHub",
-                "url": "/",
+                "url": "https://github.com/stackbit-themes",
                 "icon": "github"
             }
         ],
@@ -54,7 +57,7 @@
             {
                 "type": "Link",
                 "label": "Contact",
-                "url": "/contact",
+                "url": "mailto:thisismyemail.@myemail.me",
                 "altText": ""
             },
             {
@@ -66,18 +69,18 @@
             {
                 "type": "Link",
                 "label": "GitHub",
-                "url": "https://github.com/",
+                "url": "https://github.com/stackbit-themes",
                 "altText": ""
             }
         ],
         "contacts": {
             "title": "Contact details",
             "phoneNumber": "850-123-5021",
-            "phoneAltText": "Our phone",
-            "email": "info@lorem.mail",
-            "emailAltText": "Our email",
+            "phoneAltText": "My phone number",
+            "email": "thisismyemail.@myemail.me",
+            "emailAltText": "My email",
             "address": "312 Lovely Street, Brooklyn, NY, 123456",
-            "addressAltText": "Our address"
+            "addressAltText": "My address"
         },
         "copyrightText": "Powered by [Stackbit](https://www.stackbit.com/)",
         "styles": {

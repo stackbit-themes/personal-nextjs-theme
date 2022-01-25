@@ -25,6 +25,7 @@ fields:
       - label: Centered, small author image
         value: variant-c
     default: variant-a
+    required: true
   - type: string
     name: title
     label: Title

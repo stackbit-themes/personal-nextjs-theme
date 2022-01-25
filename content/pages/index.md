@@ -3,7 +3,7 @@ title: Home
 layout: PageLayout
 colors: colors-a
 backgroundImage:
-  url: /images/bg.jpg
+  url: /images/bg1.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
@@ -54,6 +54,7 @@ sections:
         url: /projects
     showDate: false
     showDescription: true
+    showFeaturedImage: true
     showReadMoreLink: true
     variant: variant-b
     projects:
@@ -86,7 +87,8 @@ sections:
     elementId: ''
     colors: colors-f
     variant: variant-d
-    title: Posts
+    subtitle: Posts
+    showFeaturedImage: false
     actions:
       - type: Link
         label: See all posts
@@ -125,6 +127,7 @@ sections:
         justifyContent: flex-end
   - type: ContactSection
     colors: colors-f
+    backgroundSize: full
     title: "Got an interesting project? Tell me more...\U0001F4AC"
     form:
       type: FormBlock

@@ -11,12 +11,12 @@ export default function ContactSection(props) {
     const cssId = props.elementId || null;
     const colors = props.colors || 'colors-a';
     const bgSize = props.backgroundSize || 'full';
-    const sectionStyles = props.styles?.self || {};
-    const sectionWidth = sectionStyles.width || 'wide';
-    const sectionHeight = sectionStyles.height || 'auto';
-    const sectionJustifyContent = sectionStyles.justifyContent || 'center';
-    const sectionFlexDirection = sectionStyles.flexDirection || 'row';
-    const sectionAlignItems = sectionStyles.alignItems || 'center';
+    const styles = props.styles || {};
+    const sectionWidth = styles.self?.width || 'wide';
+    const sectionHeight = styles.self?.height || 'auto';
+    const sectionJustifyContent = styles.self?.justifyContent || 'center';
+    const sectionFlexDirection = styles.self?.flexDirection || 'row';
+    const sectionAlignItems = styles.self?.alignItems || 'center';
     return (
         <div
             id={cssId}
@@ -27,7 +27,7 @@ export default function ContactSection(props) {
                 'sb-component-contact-section',
                 bgSize === 'inset' ? 'flex' : null,
                 bgSize === 'inset' ? mapStyles({ justifyContent: sectionJustifyContent }) : null,
-                sectionStyles.margin
+                styles.self?.margin
             )}
         >
             <div
@@ -39,14 +39,14 @@ export default function ContactSection(props) {
                     bgSize === 'inset' ? 'w-full' : null,
                     bgSize === 'inset' ? mapMaxWidthStyles(sectionWidth) : null,
                     mapMinHeightStyles(sectionHeight),
-                    sectionStyles.padding || 'py-12 px-4',
-                    sectionStyles.borderColor,
-                    sectionStyles.borderStyle ? mapStyles({ borderStyle: sectionStyles.borderStyle }) : 'border-none',
-                    sectionStyles.borderRadius ? mapStyles({ borderRadius: sectionStyles.borderRadius }) : null,
-                    sectionStyles.boxShadow ? mapStyles({ boxShadow: sectionStyles.boxShadow }) : null
+                    styles.self?.padding || 'py-12 px-4',
+                    styles.self?.borderColor,
+                    styles.self?.borderStyle ? mapStyles({ borderStyle: styles.self?.borderStyle }) : 'border-none',
+                    styles.self?.borderRadius ? mapStyles({ borderRadius: styles.self?.borderRadius }) : null,
+                    styles.self?.boxShadow ? mapStyles({ boxShadow: styles.self?.boxShadow }) : null
                 )}
                 style={{
-                    borderWidth: sectionStyles.borderWidth ? `${sectionStyles.borderWidth}px` : null
+                    borderWidth: styles.self?.borderWidth ? `${styles.self?.borderWidth}px` : null
                 }}
             >
                 <div
@@ -71,7 +71,7 @@ export default function ContactSection(props) {
                             )}
                         >
                             <div className="flex-1 w-full">
-                                {contactBody(props)}
+                                <ContactBody title={props.title} subtitle={props.subtitle} text={props.text} styles={styles} />
                                 {props.form && (
                                     <div className={classNames('sb-contact-section-form', { 'mt-12': props.title || props.text })}>
                                         <FormBlock {...props.form} className="inline-block w-full" data-sb-field-path=".form" />
@@ -80,7 +80,7 @@ export default function ContactSection(props) {
                             </div>
                             {props.media && (
                                 <div className="flex-1 w-full">
-                                    <div>{contactMedia(props.media)}</div>
+                                    <ContactMedia media={props.media} />
                                 </div>
                             )}
                         </div>
@@ -91,7 +91,7 @@ export default function ContactSection(props) {
     );
 }
 
-function contactMedia(media) {
+function ContactMedia({ media }) {
     const mediaType = media.type;
     if (!mediaType) {
         throw new Error(`contact section media does not have the 'type' property`);
@@ -103,19 +103,18 @@ function contactMedia(media) {
     return <Media {...media} data-sb-field-path=".media" />;
 }
 
-function contactBody(props) {
-    const styles = props.styles || {};
+function ContactBody(props) {
     return (
         <>
             {props.title && (
-                <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
+                <h2 className={classNames(props.styles?.title ? mapStyles(props.styles?.title) : null)} data-sb-field-path=".title">
                     {props.title}
                 </h2>
             )}
             {props.text && (
                 <Markdown
                     options={{ forceBlock: true, forceWrapper: true }}
-                    className={classNames('sb-markdown', styles.text ? mapStyles(styles.text) : null, { 'mt-4': props.title })}
+                    className={classNames('sb-markdown', props.styles?.text ? mapStyles(props.styles?.text) : null, { 'mt-4': props.title })}
                     data-sb-field-path=".text"
                 >
                     {props.text}
@@ -129,8 +128,9 @@ function mapMinHeightStyles(height) {
     switch (height) {
         case 'screen':
             return 'min-h-screen';
+        default:
+            return null;
     }
-    return null;
 }
 
 function mapMaxWidthStyles(width) {
@@ -141,8 +141,9 @@ function mapMaxWidthStyles(width) {
             return 'max-w-7xl';
         case 'full':
             return 'max-w-full';
+        default:
+            return null;
     }
-    return null;
 }
 
 function mapFlexDirectionStyles(flexDirection) {
@@ -155,6 +156,7 @@ function mapFlexDirectionStyles(flexDirection) {
             return ['flex-col'];
         case 'col-reverse':
             return ['flex-col-reverse'];
+        default:
+            return null;
     }
-    return null;
 }
