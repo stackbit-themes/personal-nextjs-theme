@@ -48,7 +48,7 @@ fields:
   - type: model
     name: backgroundImage
     group: styles
-    label: Site background image
+    label: Page background image
     models:
       - BackgroundImage
   - type: number
