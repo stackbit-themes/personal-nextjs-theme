@@ -48,7 +48,7 @@ fields:
   - type: model
     name: backgroundImage
     group: styles
-    label: Site background image
+    label: Project background image
     models:
       - BackgroundImage
     default:
