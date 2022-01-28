@@ -6,6 +6,8 @@ hideContent: true
 fieldGroups:
   - name: styles
     label: Styles
+extends:
+  - Seo
 fields:
   - type: string
     name: title
