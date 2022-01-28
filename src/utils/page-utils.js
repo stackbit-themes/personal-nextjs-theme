@@ -55,9 +55,16 @@ function flattenMarkdownData() {
     };
 }
 
+function setEnvironmentVariables() {
+  return {
+    ...(process?.env?.URL && { URL: process.env.URL }),
+  }
+}
+
 module.exports = {
     urlPathFromFilePath,
     cssClassesFromUrlPath,
     cssClassesFromFilePath,
-    flattenMarkdownData
+    flattenMarkdownData,
+    setEnvironmentVariables,
 };
