@@ -2,7 +2,16 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 
-export default function Section(props) {
+type SectionProps = React.PropsWithChildren<{
+    type?: string;
+    elementId?: string;
+    colors?: 'colors-a' | 'colors-b' | 'colors-c' | 'colors-d' | 'colors-e' | 'colors-f';
+    backgroundSize?: 'full' | 'inset';
+    styles?: any;
+    'data-sb-field-path'?: string;
+}>;
+
+export default function Section(props: SectionProps) {
     const { backgroundSize = 'full', ...rest } = props;
     if (backgroundSize === 'inset') {
         return <SectionInset {...rest} />;
@@ -11,7 +20,7 @@ export default function Section(props) {
     }
 }
 
-function SectionInset(props) {
+function SectionInset(props: SectionProps) {
     const { type, elementId, colors = 'colors-f', styles = {}, children, 'data-sb-field-path': fieldPath } = props;
     const classSuffix = type && type.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
     return (
@@ -53,7 +62,7 @@ function SectionInset(props) {
     );
 }
 
-function SectionFullWidth(props) {
+function SectionFullWidth(props: SectionProps) {
     const { type, elementId, colors = 'colors-f', styles = {}, children, 'data-sb-field-path': fieldPath } = props;
     const classSuffix = type && type.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
     return (
@@ -87,7 +96,7 @@ function SectionFullWidth(props) {
     );
 }
 
-function mapMinHeightStyles(height) {
+function mapMinHeightStyles(height?: 'screen' | 'auto') {
     switch (height) {
         case 'screen':
             return 'min-h-screen';
@@ -96,7 +105,7 @@ function mapMinHeightStyles(height) {
     }
 }
 
-function mapMaxWidthStyles(width) {
+function mapMaxWidthStyles(width?: 'narrow' | 'wide' | 'full') {
     switch (width) {
         case 'narrow':
             return 'max-w-5xl';

@@ -15,6 +15,12 @@ const TAILWIND_MAP = {
         'right-top': 'bg-right-top',
         top: 'bg-top'
     },
+    backgroundRepeat: {
+        repeat: 'bg-repeat',
+        'repeat-x': 'bg-repeat-x',
+        'repeat-y': 'bg-repeat-y',
+        'no-repeat': 'bg-no-repeat'
+    },
     backgroundSize: {
         auto: 'bg-auto',
         cover: 'bg-cover',

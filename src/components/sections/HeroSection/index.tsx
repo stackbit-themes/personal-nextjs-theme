@@ -98,7 +98,7 @@ function HeroActions(props) {
     );
 }
 
-function mapFlexDirectionStyles(flexDirection) {
+function mapFlexDirectionStyles(flexDirection?: 'row' | 'row-reverse' | 'col' | 'col-reverse') {
     switch (flexDirection) {
         case 'row':
             return ['flex-col', 'lg:flex-row'];
