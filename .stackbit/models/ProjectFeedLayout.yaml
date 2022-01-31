@@ -3,6 +3,8 @@ label: Projects
 labelField: title
 layout: ProjectFeedLayout
 hideContent: true
+extends:
+  - Seo
 fieldGroups:
   - name: styles
     label: Styles

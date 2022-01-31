@@ -2,6 +2,8 @@ name: ProjectLayout
 label: Project
 layout: ProjectLayout
 thumbnail: https://assets.stackbit.com/components/models/thumbnails/default.png
+extends:
+  - Seo
 fieldGroups:
   - name: styles
     label: Styles
