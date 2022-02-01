@@ -45,7 +45,6 @@ fields:
         backgroundColor: 'transparent'
         borderColor: '#ececec'
     default: colors-f
-    required: true
   - type: string
     name: elementId
     group: settings

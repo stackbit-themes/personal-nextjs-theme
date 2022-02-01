@@ -46,7 +46,6 @@ fields:
         backgroundColor: '$complementary'
         borderColor: '#ececec'
     default: colors-a
-    required: true
   - type: model
     name: backgroundImage
     group: styles
