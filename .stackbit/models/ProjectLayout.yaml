@@ -1,5 +1,5 @@
 name: ProjectLayout
-label: Project
+label: Project page
 layout: ProjectLayout
 thumbnail: https://assets.stackbit.com/components/models/thumbnails/default.png
 extends:
