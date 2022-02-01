@@ -1,32 +1,35 @@
 export function seoGenerateMetaTags(page, site) {
-    let defaultMetaTags = {
-        'og:title': seoGenerateTitle(page, site),
-        'og:image': defaultOgImage(page, site)
+    let pageMetaTags = {};
+
+    if (site.defaultMetaTags?.length) {
+        site.defaultMetaTags.forEach((metaTag) => {
+            pageMetaTags[metaTag.property] = metaTag.content;
+        });
+    }
+
+    pageMetaTags = {
+        ...pageMetaTags,
+        ...(seoGenerateTitle(page, site) && { 'og:title': seoGenerateTitle(page, site) }),
+        ...(seoGenerateOgImage(page, site) && { 'og:image': seoGenerateOgImage(page, site) })
     };
 
-    let pageMetaTags = {};
     if (page.metaTags?.length) {
         page.metaTags.forEach((metaTag) => {
             pageMetaTags[metaTag.property] = metaTag.content;
         });
     }
 
-    const mergedMetaTags = {
-        ...defaultMetaTags,
-        ...pageMetaTags
-    };
-
     let metaTags = [];
-    Object.keys(mergedMetaTags).forEach((key) => {
-        if (mergedMetaTags[key] !== null) {
+    Object.keys(pageMetaTags).forEach((key) => {
+        if (pageMetaTags[key] !== null) {
             metaTags.push({
                 property: key,
-                content: mergedMetaTags[key],
+                content: pageMetaTags[key],
                 format: key.startsWith('og') ? 'property' : 'name'
             });
         }
     });
-    
+
     return metaTags;
 }
 
@@ -51,7 +54,7 @@ export function seoGenerateMetaDescription(page, site) {
     return metaDescription;
 }
 
-export function defaultOgImage(page, site) {
+export function seoGenerateOgImage(page, site) {
     let ogImage = null;
     // Use the sites default og:image field
     if (site.defaultSocialImage) {
@@ -69,15 +72,14 @@ export function defaultOgImage(page, site) {
     }
 
     // ogImage should use an absolute URL. Get the Netlify domain URL from the Netlify environment variable process.env.URL
-    const domainUrl = site.env?.URL ? site.env.URL : null; 
+    const domainUrl = site.env?.URL ? site.env.URL : null;
 
     if (ogImage) {
-      if (domainUrl) {
-        return domainUrl + ogImage
-      } else {
-        return ogImage;
-      }
+        if (domainUrl) {
+            return domainUrl + ogImage;
+        } else {
+            return ogImage;
+        }
     }
-    
     return null;
 }
