@@ -1,5 +1,5 @@
 name: ProjectLayout
-label: Project
+label: Project page
 layout: ProjectLayout
 thumbnail: https://assets.stackbit.com/components/models/thumbnails/default.png
 extends:
@@ -46,7 +46,6 @@ fields:
         backgroundColor: '$complementary'
         borderColor: '#ececec'
     default: colors-a
-    required: true
   - type: model
     name: backgroundImage
     group: styles
