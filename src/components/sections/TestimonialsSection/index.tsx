@@ -3,207 +3,145 @@ import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
-import { getDataAttrs } from '../../../utils/get-data-attrs';
+import Section from '../Section';
 import ImageBlock from '../../molecules/ImageBlock';
 
 export default function TestimonialsSection(props) {
-    const cssId = props.elementId || null;
-    const variant = props.variant || 'variant-a';
-    const colors = props.colors || 'colors-a';
-    const styles = props.styles || {};
-    const sectionWidth = styles.self?.width || 'wide';
-    const sectionHeight = styles.self?.height || 'auto';
-    const sectionJustifyContent = styles.self?.justifyContent || 'center';
-    const testimonials = props.testimonials || [];
+    const { type, elementId, colors, variant, title, subtitle, testimonials, styles = {}, 'data-sb-field-path': fieldPath } = props;
     return (
-        <div
-            id={cssId}
-            {...getDataAttrs(props)}
-            className={classNames(
-                'sb-component',
-                'sb-component-section',
-                'sb-component-testimonials-section',
-                colors,
-                'flex',
-                'flex-col',
-                'justify-center',
-                'relative',
-                mapMinHeightStyles(sectionHeight),
-                styles.self?.margin,
-                styles.self?.padding || 'py-12 px-4',
-                styles.self?.borderColor,
-                styles.self?.borderStyle ? mapStyles({ borderStyle: styles.self?.borderStyle }) : 'border-none',
-                styles.self?.borderRadius ? mapStyles({ borderRadius: styles.self?.borderRadius }) : null
+        <Section type={type} elementId={elementId} colors={colors} styles={styles.self} data-sb-field-path={fieldPath}>
+            {title && (
+                <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
+                    {title}
+                </h2>
             )}
-            style={{
-                borderWidth: styles.self?.borderWidth ? `${styles.self?.borderWidth}px` : null
-            }}
-        >
-            <div className={classNames('flex', 'w-full', mapStyles({ justifyContent: sectionJustifyContent }))}>
-                <div className={classNames('w-full', mapMaxWidthStyles(sectionWidth))}>
-                    {props.title && (
-                        <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                            {props.title}
-                        </h2>
-                    )}
-                    {props.subtitle && (
-                        <p
-                            className={classNames('text-lg', 'sm:text-xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-6': props.title })}
-                            data-sb-field-path=".subtitle"
-                        >
-                            {props.subtitle}
-                        </p>
-                    )}
-                    {testimonials.length > 0 && (
-                        <div className={classNames('space-y-12', { 'mt-12': props.title || props.subtitle })} data-sb-field-path=".testimonials">
-                            {testimonials.map((testimonial, index) => {
-                                switch (variant) {
-                                    case 'variant-a':
-                                        return testimonialVariantA(testimonial, index);
-                                    case 'variant-b':
-                                        return testimonialVariantB(testimonial, index);
-                                    case 'variant-c':
-                                        return testimonialVariantC(testimonial, index);
-                                }
-                            })}
-                        </div>
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-}
-
-function testimonialVariantA(testimonial, index) {
-    const styles = testimonial.styles || {};
-    return (
-        <blockquote key={index} className="flex flex-col md:items-center md:flex-row" data-sb-field-path={`.${index}`}>
-            {testimonial.image && (
-                <div className="flex-shrink-0 max-w-lg mb-8 md:mb-0 md:mr-8 md:w-2/5">
-                    <ImageBlock {...testimonial.image} className="w-full" data-sb-field-path=".image" />
-                </div>
-            )}
-            <div className="flex-grow">
-                {testimonial.quote && (
-                    <Markdown
-                        options={{ forceBlock: true, forceWrapper: true }}
-                        className="sb-markdown text-3xl sm:text-4xl sm:leading-tight lg:text-5xl lg:leading-tight"
-                        data-sb-field-path=".quote"
-                    >
-                        {testimonial.quote}
-                    </Markdown>
-                )}
-                {(testimonial.name || testimonial.title) && (
-                    <footer className="mt-8 md:mt-12">
-                        {testimonial.name && (
-                            <div className={classNames('text-lg', styles.name ? mapStyles(styles.name) : null)} data-sb-field-path=".name">
-                                {testimonial.name}
-                            </div>
-                        )}
-                        {testimonial.title && (
-                            <div className={classNames('text-lg', styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                                {testimonial.title}
-                            </div>
-                        )}
-                    </footer>
-                )}
-            </div>
-        </blockquote>
-    );
-}
-
-function testimonialVariantB(testimonial, index) {
-    const styles = testimonial.styles || {};
-    return (
-        <blockquote key={index} data-sb-field-path={`.${index}`}>
-            {testimonial.quote && (
-                <Markdown
-                    options={{ forceBlock: true, forceWrapper: true }}
-                    className="sb-markdown text-3xl sm:text-4xl sm:leading-tight lg:text-5xl lg:leading-tight"
-                    data-sb-field-path=".quote"
+            {subtitle && (
+                <p
+                    className={classNames('text-lg', 'sm:text-xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-6': title })}
+                    data-sb-field-path=".subtitle"
                 >
-                    {testimonial.quote}
-                </Markdown>
+                    {subtitle}
+                </p>
             )}
-            {(testimonial.name || testimonial.title || testimonial.image) && (
-                <footer className="flex flex-wrap mt-8 md:mt-16">
+            <TestimonialVariants variant={variant} testimonials={testimonials} hasTopMargin={!!(title || subtitle)} />
+        </Section>
+    );
+}
+
+function TestimonialVariants(props) {
+    const { variant = 'variant-a', ...rest } = props;
+    switch (variant) {
+        case 'variant-a':
+            return <TestimonialsVariantA {...rest} />;
+        case 'variant-b':
+            return <TestimonialsVariantB {...rest} />;
+        default:
+            return null;
+    }
+}
+
+function TestimonialsVariantA(props) {
+    const { testimonials = [], hasTopMargin } = props;
+    if (testimonials.length === 0) {
+        return null;
+    }
+    return (
+        <div className={classNames('grid', 'md:grid-cols-2', 'gap-y-12', 'md:gap-y-16', { 'mt-12 sm:mt-16': hasTopMargin })} data-sb-field-path=".testimonials">
+            {testimonials.map((testimonial, index) => (
+                <blockquote key={index} className={classNames(index % 2 === 0 ? 'md:pr-12' : 'md:border-l md:pl-12')} data-sb-field-path={`.${index}`}>
                     {testimonial.image && (
-                        <div className="flex-shrink-0 mt-4 mr-6 sm:mr-8 w-36 sm:w-72">
-                            <ImageBlock {...testimonial.image} className="w-full" data-sb-field-path=".image" />
+                        <div className="mb-8">
+                            <ImageBlock {...testimonial.image} className="w-24 h-24 object-cover rounded-full" data-sb-field-path=".image" />
                         </div>
+                    )}
+                    {testimonial.quote && (
+                        <Markdown
+                            options={{ forceBlock: true, forceWrapper: true }}
+                            className="sb-markdown text-3xl sm:text-4xl sm:leading-tight"
+                            data-sb-field-path=".quote"
+                        >
+                            {testimonial.quote}
+                        </Markdown>
                     )}
                     {(testimonial.name || testimonial.title) && (
-                        <div className="flex-grow mt-4">
+                        <footer className="mt-8 md:mt-12">
                             {testimonial.name && (
-                                <div className={classNames('text-lg', styles.name ? mapStyles(styles.name) : null)} data-sb-field-path=".name">
+                                <div
+                                    className={classNames('text-lg', testimonial.styles?.name ? mapStyles(testimonial.styles?.name) : null)}
+                                    data-sb-field-path=".name"
+                                >
                                     {testimonial.name}
                                 </div>
                             )}
                             {testimonial.title && (
-                                <div className={classNames('text-lg', styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
+                                <div
+                                    className={classNames('text-lg', testimonial.styles?.title ? mapStyles(testimonial.styles?.title) : null)}
+                                    data-sb-field-path=".title"
+                                >
                                     {testimonial.title}
                                 </div>
                             )}
-                        </div>
+                        </footer>
                     )}
-                </footer>
-            )}
-        </blockquote>
+                </blockquote>
+            ))}
+        </div>
     );
 }
 
-function testimonialVariantC(testimonial, index) {
-    const styles = testimonial.styles || {};
+function TestimonialsVariantB(props) {
+    const { testimonials = [], hasTopMargin } = props;
+    if (testimonials.length === 0) {
+        return null;
+    }
     return (
-        <blockquote key={index} className="text-center" data-sb-field-path={`.${index}`}>
-            {testimonial.quote && (
-                <Markdown
-                    options={{ forceBlock: true, forceWrapper: true }}
-                    className="sb-markdown text-3xl sm:text-4xl sm:leading-tight lg:text-5xl lg:leading-tight"
-                    data-sb-field-path=".quote"
-                >
-                    {testimonial.quote}
-                </Markdown>
-            )}
-            {(testimonial.name || testimonial.title || testimonial.image) && (
-                <footer className="mt-12 md:mt-16">
-                    {testimonial.image && (
-                        <div className={classNames('mx-auto', 'w-20', 'sm:w-28', { 'mb-6': testimonial.name || testimonial.title })}>
-                            <ImageBlock {...testimonial.image} className="w-full" data-sb-field-path=".image" />
-                        </div>
+        <div className={classNames('space-y-12', 'sm:space-y-20', { 'mt-12 sm:mt-20': hasTopMargin })} data-sb-field-path=".testimonials">
+            {testimonials.map((testimonial, index) => (
+                <blockquote key={index} data-sb-field-path={`.${index}`}>
+                    {testimonial.quote && (
+                        <Markdown
+                            options={{ forceBlock: true, forceWrapper: true }}
+                            className="sb-markdown text-3xl sm:text-4xl sm:leading-tight lg:text-5xl lg:leading-tight"
+                            data-sb-field-path=".quote"
+                        >
+                            {testimonial.quote}
+                        </Markdown>
                     )}
-                    {testimonial.name && (
-                        <div className={classNames('text-lg', styles.name ? mapStyles(styles.name) : null)} data-sb-field-path=".name">
-                            {testimonial.name}
-                        </div>
+                    {(testimonial.name || testimonial.title || testimonial.image) && (
+                        <footer className="flex flex-wrap items-center mt-6 md:mt-8">
+                            {testimonial.image && (
+                                <div className="flex-shrink-0 mt-4 mr-6">
+                                    <ImageBlock
+                                        {...testimonial.image}
+                                        className="w-12 h-12 sm:w-20 sm:h-20 object-cover rounded-full"
+                                        data-sb-field-path=".image"
+                                    />
+                                </div>
+                            )}
+                            {(testimonial.name || testimonial.title) && (
+                                <div className="flex-grow mt-4">
+                                    {testimonial.name && (
+                                        <div
+                                            className={classNames('text-lg', testimonial.styles?.name ? mapStyles(testimonial.styles?.name) : null)}
+                                            data-sb-field-path=".name"
+                                        >
+                                            {testimonial.name}
+                                        </div>
+                                    )}
+                                    {testimonial.title && (
+                                        <div
+                                            className={classNames('text-lg', testimonial.styles?.title ? mapStyles(testimonial.styles?.title) : null)}
+                                            data-sb-field-path=".title"
+                                        >
+                                            {testimonial.title}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </footer>
                     )}
-                    {testimonial.title && (
-                        <div className={classNames('text-lg', styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                            {testimonial.title}
-                        </div>
-                    )}
-                </footer>
-            )}
-        </blockquote>
+                </blockquote>
+            ))}
+        </div>
     );
-}
-
-function mapMinHeightStyles(height) {
-    switch (height) {
-        case 'screen':
-            return 'min-h-screen';
-    }
-    return null;
-}
-
-function mapMaxWidthStyles(width) {
-    switch (width) {
-        case 'narrow':
-            return 'max-w-5xl';
-        case 'wide':
-            return 'max-w-7xl';
-        case 'full':
-            return 'max-w-full';
-    }
-    return null;
 }

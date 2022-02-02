@@ -159,7 +159,7 @@ function PostsVariantD(props) {
                         <div className="md:flex md:items-center">
                             {showFeaturedImage && post.featuredImage && (
                                 <div className="mb-8 md:flex-shrink-0 md:self-stretch md:w-48 md:mb-0 md:mr-8">
-                                    <div className="block h-0 w-full pt-2/3 relative overflow-hidden md:h-24 md:min-h-full md:pt-0">
+                                    <div className="h-0 w-full pt-2/3 relative overflow-hidden md:h-24 md:min-h-full md:pt-0">
                                         <ImageBlock
                                             {...post.featuredImage}
                                             className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

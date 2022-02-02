@@ -18,12 +18,10 @@ fields:
     group: styles
     label: Arrangement
     options:
-      - label: Left aligned, large author image
+      - label: Two columns
         value: variant-a
-      - label: Left aligned, small author image
+      - label: List
         value: variant-b
-      - label: Centered, small author image
-        value: variant-c
     default: variant-a
     required: true
   - type: string
