@@ -7,68 +7,64 @@ import Action from '../../../atoms/Action';
 import ImageBlock from '../../../molecules/ImageBlock';
 
 export default function FeaturedItem(props) {
-    const cssId = props.elementId || null;
-    const styles = props.styles || {};
-    const itemBorderWidth = styles.self?.borderWidth ? styles.self?.borderWidth : 0;
+    const { elementId, title, subtitle, text, featuredImage, actions = [], styles = {}, 'data-sb-field-path': fieldPath } = props;
+    const { self = {} } = styles;
+    const { borderWidth, ...otherSelfStyles } = self;
     return (
         <article
-            id={cssId}
-            className={classNames('sb-component', 'sb-component-block', 'sb-component-item', mapStyles(styles.self))}
+            id={elementId || null}
+            className={classNames('sb-component', 'sb-component-block', 'sb-component-item', mapStyles(otherSelfStyles))}
             style={{
-                borderWidth: itemBorderWidth ? `${itemBorderWidth}px` : undefined
+                borderWidth: borderWidth ? `${borderWidth}px` : null
             }}
-            data-sb-field-path={props['data-sb-field-path']}
+            data-sb-field-path={fieldPath}
         >
-            {props.featuredImage && (
+            {featuredImage && (
                 <div className="mb-6">
-                    <ImageBlock {...props.featuredImage} className="inline-block" data-sb-field-path=".featuredImage" />
+                    <ImageBlock {...featuredImage} className="inline-block" data-sb-field-path=".featuredImage" />
                 </div>
             )}
-            {props.title && (
+            {title && (
                 <h3 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                    {props.title}
+                    {title}
                 </h3>
             )}
-            {props.subtitle && (
-                <p
-                    className={classNames('text-lg', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-1': props.title })}
-                    data-sb-field-path=".subtitle"
-                >
-                    {props.subtitle}
+            {subtitle && (
+                <p className={classNames('text-lg', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-1': title })} data-sb-field-path=".subtitle">
+                    {subtitle}
                 </p>
             )}
-            {props.text && (
+            {text && (
                 <Markdown
                     options={{ forceBlock: true, forceWrapper: true }}
                     className={classNames('sb-markdown', {
-                        'mt-4': props.title || props.subtitle
+                        'mt-4': title || subtitle
                     })}
                     data-sb-field-path=".text"
                 >
-                    {props.text}
+                    {text}
                 </Markdown>
             )}
-            {itemActions(props)}
+            <ItemActions actions={actions} textAlign={otherSelfStyles.textAlign} hasTopMargin={!!(title || subtitle || text)} />
         </article>
     );
 }
 
-function itemActions(props) {
-    const actions = props.actions || [];
+function ItemActions(props) {
+    const { actions = [], textAlign, hasTopMargin } = props;
     if (actions.length === 0) {
         return null;
     }
-    const styles = props.styles || {};
     return (
         <div
             className={classNames('overflow-x-hidden', {
-                'mt-4': props.title || props.subtitle || props.text
+                'mt-4': hasTopMargin
             })}
         >
             <div
                 className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', {
-                    'justify-center': styles.self?.textAlign === 'center',
-                    'justify-end': styles.self?.textAlign === 'right'
+                    'justify-center': textAlign === 'center',
+                    'justify-end': textAlign === 'right'
                 })}
                 data-sb-field-path=".actions"
             >

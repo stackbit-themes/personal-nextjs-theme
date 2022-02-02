@@ -67,7 +67,7 @@ function PostFeedActions(props) {
         return null;
     }
     return (
-        <div className="mt-8 overflow-x-hidden">
+        <div className="mt-10 overflow-x-hidden">
             <div className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', mapStyles(styles))} data-sb-field-path=".actions">
                 {actions.map((action, index) => (
                     <Action key={index} {...action} className="my-2 mx-2 lg:whitespace-nowrap" data-sb-field-path={`.${index}`} />

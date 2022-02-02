@@ -130,11 +130,6 @@ sections:
         styles:
           self:
             textAlign: left
-            padding:
-              - pt-0
-              - pl-0
-              - pb-0
-              - pr-0
       - type: FeaturedItem
         actions:
           - type: Link
@@ -143,11 +138,6 @@ sections:
         styles:
           self:
             textAlign: left
-            padding:
-              - pt-0
-              - pl-0
-              - pb-0
-              - pr-0
       - type: FeaturedItem
         actions:
           - type: Link
@@ -156,11 +146,6 @@ sections:
         styles:
           self:
             textAlign: left
-            padding:
-              - pt-0
-              - pl-0
-              - pb-0
-              - pr-0
       - type: FeaturedItem
         actions:
           - type: Link
@@ -169,11 +154,6 @@ sections:
         styles:
           self:
             textAlign: left
-            padding:
-              - pt-0
-              - pl-0
-              - pb-0
-              - pr-0
       - type: FeaturedItem
         actions:
           - type: Link
@@ -182,11 +162,6 @@ sections:
         styles:
           self:
             textAlign: left
-            padding:
-              - pt-0
-              - pl-0
-              - pb-0
-              - pr-0
       - type: FeaturedItem
         actions:
           - type: Link
@@ -195,11 +170,6 @@ sections:
         styles:
           self:
             textAlign: left
-            padding:
-              - pt-0
-              - pl-0
-              - pb-0
-              - pr-0
     columns: 3
     spacingX: 120
     spacingY: 0
@@ -207,11 +177,6 @@ sections:
       self:
         height: auto
         width: wide
-        margin:
-          - mt-0
-          - mb-0
-          - ml-0
-          - mr-0
         padding:
           - pt-8
           - pb-8
