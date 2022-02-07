@@ -76,6 +76,53 @@
             }
         },
         {
+            "label": "Testimonials black - with small image, list, text left",
+            "thumbnail": "images/testimonials-dark-small-image-list.png",
+            "data": {
+                "colors": "colors-a",
+                "variant": "variant-a",
+                "title": "",
+                "subtitle": "",
+                "testimonials": [
+                    {
+                        "quote": "\"Our website is the core of our sales strategy. Doris helped us establish an easy-to-maintain Stackbit site with outstanding visuals!\"",
+                        "name": "John Doe",
+                        "title": "CEO at Parks",
+                        "image": {
+                            "type": "ImageBlock",
+                            "url": "/images/person-2.jpg",
+                            "altText": "John Doe"
+                        }
+                    },
+                    {
+                        "quote": "“Anytime I have a question, I know I can get in touch with Doris. She always helps me adjust my site to look as perfect as I’d hoped.”\n",
+                        "name": "Johnna Doe",
+                        "title": "Product Marketing Manager at Acme",
+                        "image": {
+                            "type": "ImageBlock",
+                            "url": "/images/person-2.jpg",
+                            "altText": "Johnna Doe"
+                        }
+                    }
+                ],
+                "styles": {
+                    "self": {
+                        "height": "auto",
+                        "width": "wide",
+                        "margin": ["mt-0", "mb-0"],
+                        "padding": ["pt-28", "pb-28"],
+                        "justifyContent": "center"
+                    },
+                    "title": {
+                        "textAlign": "left"
+                    },
+                    "subtitle": {
+                        "textAlign": "left"
+                    }
+                }
+            }
+        },
+        {
             "label": "Testimonials secondary - no image, text centered",
             "thumbnail": "images/testimonials-secondary-text-centered.png",
             "data": {

@@ -105,7 +105,8 @@ function mapMinHeightStyles(height?: 'screen' | 'auto') {
     }
 }
 
-function mapMaxWidthStyles(width?: 'narrow' | 'wide' | 'full') {
+type WidthStyles = 'narrow' | 'wide' | 'full';
+function mapMaxWidthStyles(width?: WidthStyles) {
     switch (width) {
         case 'narrow':
             return 'max-w-5xl';
