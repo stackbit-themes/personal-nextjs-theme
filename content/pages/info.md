@@ -59,6 +59,7 @@ sections:
         borderStyle: solid
   - type: MediaGallerySection
     colors: colors-f
+    subtitle: 'I worked with these folks:'
     images:
       - type: ImageBlock
         url: /images/logo1.svg
@@ -89,9 +90,6 @@ sections:
       self:
         width: wide
         height: auto
-        margin:
-          - mt-0
-          - mb-0
         padding:
           - pt-8
           - pb-8
@@ -106,7 +104,6 @@ sections:
         textAlign: left
       subtitle:
         textAlign: left
-    subtitle: 'I worked with these folks:'
   - type: DividerSection
     styles:
       self:
