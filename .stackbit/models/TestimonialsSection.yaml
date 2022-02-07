@@ -20,8 +20,10 @@ fields:
     options:
       - label: Two columns
         value: variant-a
-      - label: List
+      - label: List, small images
         value: variant-b
+      - label: List, large images
+        value: variant-c
     default: variant-a
     required: true
   - type: string
