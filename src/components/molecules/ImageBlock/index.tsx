@@ -2,27 +2,21 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 export default function ImageBlock(props) {
-    const { url, altText } = props;
+    const { elementId, className, url, altText = '', 'data-sb-field-path': fieldPath } = props;
     if (!url) {
         return null;
     }
-    const cssClasses = props.className || null;
-    const cssId = props.elementId || null;
-    const annotationPrefix = props['data-sb-field-path'] || '';
-    const annotations = [
-        `${annotationPrefix}`,
-        `${annotationPrefix}.url#@src`,
-        `${annotationPrefix}.altText#@alt`,
-        `${annotationPrefix}.elementId#@id`
-    ];
+    const annotations = fieldPath
+        ? { 'data-sb-field-path': [fieldPath, `${fieldPath}.url#@src`, `${fieldPath}.altText#@alt`, `${fieldPath}.elementId#@id`].join(' ').trim() }
+        : {};
 
     return (
         <img
-            id={cssId}
-            className={classNames('sb-component', 'sb-component-block', 'sb-component-image-block', cssClasses)}
+            id={elementId || null}
+            className={classNames('sb-component', 'sb-component-block', 'sb-component-image-block', className)}
             src={url}
-            alt={altText || ''}
-            data-sb-field-path={annotations.join(' ').trim()}
+            alt={altText}
+            {...annotations}
         />
     );
 }

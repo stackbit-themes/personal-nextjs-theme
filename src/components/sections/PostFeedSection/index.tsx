@@ -3,88 +3,72 @@ import classNames from 'classnames';
 import dayjs from 'dayjs';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
-import { getDataAttrs } from '../../../utils/get-data-attrs';
+import Section from '../Section';
 import { Link, Action } from '../../atoms';
 import ImageBlock from '../../molecules/ImageBlock';
 import ArrowUpRightIcon from '../../svgs/arrow-up-right';
 import getPageUrlPath from '../../../utils/get-page-url-path';
 
 export default function PostFeedSection(props) {
-    const cssId = props.elementId || null;
-    const colors = props.colors || 'colors-b';
-    const styles = props.styles || {};
-    const sectionWidth = styles.self?.width || 'wide';
-    const sectionHeight = styles.self?.height || 'auto';
-    const sectionJustifyContent = styles.self?.justifyContent || 'center';
+    const {
+        type,
+        elementId,
+        colors,
+        variant,
+        title,
+        subtitle,
+        actions = [],
+        posts = [],
+        showDate,
+        showAuthor,
+        showExcerpt,
+        showFeaturedImage,
+        showReadMoreLink,
+        pageLinks,
+        annotatePosts,
+        styles = {},
+        'data-sb-field-path': fieldPath
+    } = props;
     return (
-        <div
-            id={cssId}
-            {...getDataAttrs(props)}
-            className={classNames(
-                'sb-component',
-                'sb-component-section',
-                'sb-component-post-feed-section',
-                colors,
-                'flex',
-                'flex-col',
-                'justify-center',
-                'relative',
-                mapMinHeightStyles(sectionHeight),
-                styles.self?.margin,
-                styles.self?.padding || 'py-12 px-4',
-                styles.self?.borderColor,
-                styles.self?.borderRadius ? mapStyles({ borderRadius: styles.self?.borderRadius }) : null,
-                styles.self?.borderStyle ? mapStyles({ borderStyle: styles.self?.borderStyle }) : 'border-none'
+        <Section type={type} elementId={elementId} colors={colors} styles={styles.self} data-sb-field-path={fieldPath}>
+            {title && (
+                <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
+                    {title}
+                </h2>
             )}
-            style={{
-                borderWidth: styles.self?.borderWidth ? `${styles.self?.borderWidth}px` : null
-            }}
-        >
-            <div className={classNames('flex', 'w-full', mapStyles({ justifyContent: sectionJustifyContent }))}>
-                <div className={classNames('w-full', mapMaxWidthStyles(sectionWidth))}>
-                    {props.title && (
-                        <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                            {props.title}
-                        </h2>
-                    )}
-                    {props.subtitle && (
-                        <p
-                            className={classNames('text-lg', 'sm:text-xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-6': props.title })}
-                            data-sb-field-path=".subtitle"
-                        >
-                            {props.subtitle}
-                        </p>
-                    )}
-                    <PostFeedVariants
-                        variant={props.variant}
-                        posts={props.posts}
-                        showDate={props.showDate}
-                        showAuthor={props.showAuthor}
-                        showExcerpt={props.showExcerpt}
-                        showFeaturedImage={props.showFeaturedImage}
-                        showReadMoreLink={props.showReadMoreLink}
-                        hasHeader={props.title || props.subtitle}
-                        annotatePosts={props.annotatePosts}
-                    />
-                    <PostFeedActions actions={props.actions} styles={styles.actions} />
-                    {props.pageLinks}
-                </div>
-            </div>
-        </div>
+            {subtitle && (
+                <p
+                    className={classNames('text-lg', 'sm:text-xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-6': title })}
+                    data-sb-field-path=".subtitle"
+                >
+                    {subtitle}
+                </p>
+            )}
+            <PostFeedVariants
+                variant={variant}
+                posts={posts}
+                showDate={showDate}
+                showAuthor={showAuthor}
+                showExcerpt={showExcerpt}
+                showFeaturedImage={showFeaturedImage}
+                showReadMoreLink={showReadMoreLink}
+                hasTopMargin={!!(title || subtitle)}
+                annotatePosts={annotatePosts}
+            />
+            <PostFeedActions actions={actions} styles={styles.actions} />
+            {pageLinks}
+        </Section>
     );
 }
 
 function PostFeedActions(props) {
-    const actions = props.actions || [];
+    const { actions = [], styles = {} } = props;
     if (actions.length === 0) {
         return null;
     }
     return (
         <div className="mt-10 overflow-x-hidden">
-            <div
-                className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', props.styles ? mapStyles(props.styles) : null)}
-                data-sb-field-path=".actions"
-            >
+            <div className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', mapStyles(styles))} data-sb-field-path=".actions">
                 {actions.map((action, index) => (
                     <Action key={index} {...action} className="my-2 mx-2 lg:whitespace-nowrap" data-sb-field-path={`.${index}`} />
                 ))}
@@ -94,7 +78,7 @@ function PostFeedActions(props) {
 }
 
 function PostFeedVariants(props) {
-    const variant = props.variant || 'variant-a';
+    const { variant = 'variant-a' } = props;
     switch (variant) {
         case 'variant-a':
         case 'variant-b':
@@ -108,8 +92,7 @@ function PostFeedVariants(props) {
 }
 
 function PostsVariantABC(props) {
-    const variant = props.variant || 'variant-a';
-    const posts = props.posts || [];
+    const { variant = 'variant-a', posts = [], showDate, showAuthor, showExcerpt, showFeaturedImage, showReadMoreLink, hasTopMargin, annotatePosts } = props;
     if (posts.length === 0) {
         return null;
     }
@@ -120,14 +103,14 @@ function PostsVariantABC(props) {
                 'md:grid-cols-3': variant === 'variant-b',
                 'justify-center': variant === 'variant-c',
                 'gap-x-6 lg:gap-x-8': variant === 'variant-a' || 'variant-b',
-                'mt-12': props.hasHeader
+                'mt-12': hasTopMargin
             })}
-            {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
+            {...(annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
                 <Link key={index} data-sb-object-id={post.__metadata?.id} href={getPageUrlPath(post)} className="sb-post-feed-item block group">
                     <article className="border-b border-current pb-10 max-w-3xl">
-                        {props.showFeaturedImage && post.featuredImage && (
+                        {showFeaturedImage && post.featuredImage && (
                             <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                                 <ImageBlock
                                     {...post.featuredImage}
@@ -136,14 +119,14 @@ function PostsVariantABC(props) {
                                 />
                             </div>
                         )}
-                        <PostAttribution showDate={props.showDate} showAuthor={props.showAuthor} post={post} className="mb-3" />
+                        <PostAttribution showDate={showDate} showAuthor={showAuthor} post={post} className="mb-3" />
                         <h3 data-sb-field-path="title">{post.title}</h3>
-                        {props.showExcerpt && post.excerpt && (
+                        {showExcerpt && post.excerpt && (
                             <p className="text-lg mt-5" data-sb-field-path="excerpt">
                                 {post.excerpt}
                             </p>
                         )}
-                        {props.showReadMoreLink && (
+                        {showReadMoreLink && (
                             <div className="mt-8">
                                 <span className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon">
                                     <span className="sr-only">Read more</span>
@@ -159,24 +142,24 @@ function PostsVariantABC(props) {
 }
 
 function PostsVariantD(props) {
-    const posts = props.posts || [];
+    const { posts = [], showDate, showAuthor, showExcerpt, showFeaturedImage, showReadMoreLink, hasTopMargin, annotatePosts } = props;
     if (posts.length === 0) {
         return null;
     }
     return (
         <div
             className={classNames('grid', 'gap-y-12', {
-                'mt-12': props.hasHeader
+                'mt-12': hasTopMargin
             })}
-            {...(props.annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
+            {...(annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
                 <Link key={index} data-sb-object-id={post.__metadata?.id} href={getPageUrlPath(post)} className="sb-post-feed-item block group">
                     <article className="border-b border-current pb-10 md:pb-12 md:px-4">
                         <div className="md:flex md:items-center">
-                            {props.showFeaturedImage && post.featuredImage && (
+                            {showFeaturedImage && post.featuredImage && (
                                 <div className="mb-8 md:flex-shrink-0 md:self-stretch md:w-48 md:mb-0 md:mr-8">
-                                    <div className="block h-0 w-full pt-2/3 relative overflow-hidden md:h-24 md:min-h-full md:pt-0">
+                                    <div className="h-0 w-full pt-2/3 relative overflow-hidden md:h-24 md:min-h-full md:pt-0">
                                         <ImageBlock
                                             {...post.featuredImage}
                                             className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -185,16 +168,16 @@ function PostsVariantD(props) {
                                     </div>
                                 </div>
                             )}
-                            <div className={classNames('md:flex-grow', props.showFeaturedImage && post.featuredImage ? null : 'md:ml-12')}>
-                                <PostAttribution showDate={props.showDate} showAuthor={props.showAuthor} post={post} className="mb-3" />
+                            <div className={classNames('md:flex-grow', showFeaturedImage && post.featuredImage ? null : 'md:ml-12')}>
+                                <PostAttribution showDate={showDate} showAuthor={showAuthor} post={post} className="mb-3" />
                                 <h3 data-sb-field-path="title">{post.title}</h3>
-                                {props.showExcerpt && post.excerpt && (
+                                {showExcerpt && post.excerpt && (
                                     <p className="text-lg mt-5" data-sb-field-path="excerpt">
                                         {post.excerpt}
                                     </p>
                                 )}
                             </div>
-                            {props.showReadMoreLink && (
+                            {showReadMoreLink && (
                                 <div className="mt-8 md:mt-0 md:mx-8">
                                     <span className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon">
                                         <span className="sr-only">Read more</span>
@@ -282,28 +265,4 @@ function postCategory(post) {
             {category.title}
         </Link>
     );
-}
-
-function mapMinHeightStyles(height) {
-    switch (height) {
-        case 'auto':
-            return 'min-h-0';
-        case 'screen':
-            return 'min-h-screen';
-        default:
-            return null;
-    }
-}
-
-function mapMaxWidthStyles(width) {
-    switch (width) {
-        case 'narrow':
-            return 'max-w-5xl';
-        case 'wide':
-            return 'max-w-7xl';
-        case 'full':
-            return 'max-w-full';
-        default:
-            return null;
-    }
 }
