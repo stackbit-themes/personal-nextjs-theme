@@ -3,87 +3,70 @@ import classNames from 'classnames';
 import dayjs from 'dayjs';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
-import { getDataAttrs } from '../../../utils/get-data-attrs';
+import Section from '../Section';
 import { Link, Action } from '../../atoms';
 import ImageBlock from '../../molecules/ImageBlock';
 import ArrowUpRightIcon from '../../svgs/arrow-up-right';
 import getPageUrlPath from '../../../utils/get-page-url-path';
 
 export default function ProjectFeedSection(props) {
-    const cssId = props.elementId || null;
-    const colors = props.colors || 'colors-b';
-    const styles = props.styles || {};
-    const sectionWidth = styles.self?.width || 'wide';
-    const sectionHeight = styles.self?.height || 'auto';
-    const sectionJustifyContent = styles.self?.justifyContent || 'center';
+    const {
+        type,
+        elementId,
+        colors,
+        variant,
+        title,
+        subtitle,
+        actions = [],
+        projects = [],
+        showDate,
+        showDescription,
+        showFeaturedImage,
+        showReadMoreLink,
+        pageLinks,
+        annotateProjects,
+        styles = {},
+        'data-sb-field-path': fieldPath
+    } = props;
     return (
-        <div
-            id={cssId}
-            {...getDataAttrs(props)}
-            className={classNames(
-                'sb-component',
-                'sb-component-section',
-                'sb-component-project-feed-section',
-                colors,
-                'flex',
-                'flex-col',
-                'justify-center',
-                'relative',
-                mapMinHeightStyles(sectionHeight),
-                styles.self?.margin,
-                styles.self?.padding || 'py-12 px-4',
-                styles.self?.borderColor,
-                styles.self?.borderRadius ? mapStyles({ borderRadius: styles.self?.borderRadius }) : null,
-                styles.self?.borderStyle ? mapStyles({ borderStyle: styles.self?.borderStyle }) : 'border-none'
+        <Section type={type} elementId={elementId} colors={colors} styles={styles.self} data-sb-field-path={fieldPath}>
+            {title && (
+                <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
+                    {title}
+                </h2>
             )}
-            style={{
-                borderWidth: styles.self?.borderWidth ? `${styles.self?.borderWidth}px` : null
-            }}
-        >
-            <div className={classNames('flex', 'w-full', mapStyles({ justifyContent: sectionJustifyContent }))}>
-                <div className={classNames('w-full', mapMaxWidthStyles(sectionWidth))}>
-                    {props.title && (
-                        <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                            {props.title}
-                        </h2>
-                    )}
-                    {props.subtitle && (
-                        <p
-                            className={classNames('text-lg', 'sm:text-xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-6': props.title })}
-                            data-sb-field-path=".subtitle"
-                        >
-                            {props.subtitle}
-                        </p>
-                    )}
-                    <ProjectFeedVariants
-                        variant={props.variant}
-                        projects={props.projects}
-                        showDate={props.showDate}
-                        showDescription={props.showDescription}
-                        showFeaturedImage={props.showFeaturedImage}
-                        showReadMoreLink={props.showReadMoreLink}
-                        hasHeader={props.title || props.subtitle}
-                        annotateProjects={props.annotateProjects}
-                    />
-                    <ProjectFeedActions actions={props.actions} styles={styles.actions} />
-                    {props.pageLinks}
-                </div>
-            </div>
-        </div>
+            {subtitle && (
+                <p
+                    className={classNames('text-lg', 'sm:text-xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-6': title })}
+                    data-sb-field-path=".subtitle"
+                >
+                    {subtitle}
+                </p>
+            )}
+            <ProjectFeedVariants
+                variant={variant}
+                projects={projects}
+                showDate={showDate}
+                showDescription={showDescription}
+                showFeaturedImage={showFeaturedImage}
+                showReadMoreLink={showReadMoreLink}
+                hasTopMargin={!!(title || subtitle)}
+                annotateProjects={annotateProjects}
+            />
+            <ProjectFeedActions actions={actions} styles={styles.actions} />
+            {pageLinks}
+        </Section>
     );
 }
 
 function ProjectFeedActions(props) {
-    const actions = props.actions ?? [];
+    const { actions = [], styles = {} } = props;
     if (actions.length === 0) {
         return null;
     }
     return (
         <div className="mt-10 overflow-x-hidden">
-            <div
-                className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', props.styles ? mapStyles(props.styles) : null)}
-                data-sb-field-path=".actions"
-            >
+            <div className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', mapStyles(styles))} data-sb-field-path=".actions">
                 {actions.map((action, index) => (
                     <Action key={index} {...action} className="my-2 mx-2 lg:whitespace-nowrap" data-sb-field-path={`.${index}`} />
                 ))}
@@ -93,7 +76,7 @@ function ProjectFeedActions(props) {
 }
 
 function ProjectFeedVariants(props) {
-    const variant = props.variant || 'variant-a';
+    const { variant = 'variant-a' } = props;
     switch (variant) {
         case 'variant-a':
         case 'variant-b':
@@ -107,8 +90,7 @@ function ProjectFeedVariants(props) {
 }
 
 function ProjectsVariantABC(props) {
-    const variant = props.variant || 'variant-a';
-    const projects = props.projects || [];
+    const { variant = 'variant-a', projects = [], showDate, showDescription, showFeaturedImage, showReadMoreLink, hasTopMargin, annotateProjects } = props;
     if (projects.length === 0) {
         return null;
     }
@@ -119,14 +101,14 @@ function ProjectsVariantABC(props) {
                 'md:grid-cols-3': variant === 'variant-b',
                 'justify-center': variant === 'variant-c',
                 'gap-x-6 lg:gap-x-8': variant === 'variant-a' || 'variant-b',
-                'mt-12': props.hasHeader
+                'mt-12': hasTopMargin
             })}
-            {...(props.annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
+            {...(annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
             {projects.map((project, index) => (
                 <Link key={index} data-sb-object-id={project.__metadata?.id} href={getPageUrlPath(project)} className="sb-project-feed-item block group">
                     <article className="border-b border-current pb-10 max-w-3xl">
-                        {props.showFeaturedImage && project.featuredImage && (
+                        {showFeaturedImage && project.featuredImage && (
                             <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                                 <ImageBlock
                                     {...project.featuredImage}
@@ -135,14 +117,18 @@ function ProjectsVariantABC(props) {
                                 />
                             </div>
                         )}
-                        {props.showDate && <ProjectDate project={project} className="mb-3" />}
+                        {showDate && project.date && (
+                            <div className="mb-3">
+                                <ProjectDate date={project.date} />
+                            </div>
+                        )}
                         <h3 data-sb-field-path="title">{project.title}</h3>
-                        {props.showDescription && project.description && (
+                        {showDescription && project.description && (
                             <p className="text-lg mt-5" data-sb-field-path="description">
                                 {project.description}
                             </p>
                         )}
-                        {props.showReadMoreLink && (
+                        {showReadMoreLink && (
                             <div className="mt-8">
                                 <span className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon">
                                     <span className="sr-only">Read more</span>
@@ -158,22 +144,22 @@ function ProjectsVariantABC(props) {
 }
 
 function ProjectsVariantD(props) {
-    const projects = props.projects || [];
+    const { projects = [], showDate, showDescription, showFeaturedImage, showReadMoreLink, hasTopMargin, annotateProjects } = props;
     if (projects.length === 0) {
         return null;
     }
     return (
         <div
             className={classNames('grid', 'gap-y-8', {
-                'mt-12': props.hasHeader
+                'mt-12': hasTopMargin
             })}
-            {...(props.annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
+            {...(annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
             {projects.map((project, index) => (
                 <Link key={index} data-sb-object-id={project.__metadata?.id} href={getPageUrlPath(project)} className="sb-project-feed-item block group">
                     <article className="border-b border-current pb-10 md:pb-12 md:px-4">
                         <div className="md:flex md:items-center">
-                            {props.showFeaturedImage && project.featuredImage && (
+                            {showFeaturedImage && project.featuredImage && (
                                 <div className="mb-8 md:flex-shrink-0 md:self-stretch md:w-48 md:mb-0 md:mr-8">
                                     <div className="block h-0 w-full pt-2/3 relative overflow-hidden md:h-24 md:min-h-full md:pt-0">
                                         <ImageBlock
@@ -184,16 +170,20 @@ function ProjectsVariantD(props) {
                                     </div>
                                 </div>
                             )}
-                            <div className={classNames('md:flex-grow', props.showFeaturedImage && project.featuredImage ? null : 'md:ml-12')}>
-                                {props.showDate && <ProjectDate project={project} className="mb-3" />}
+                            <div className={classNames('md:flex-grow', showFeaturedImage && project.featuredImage ? null : 'md:ml-12')}>
+                                {showDate && project.date && (
+                                    <div className="mb-3">
+                                        <ProjectDate date={project.date} />
+                                    </div>
+                                )}
                                 <h3 data-sb-field-path="title">{project.title}</h3>
-                                {props.showDescription && project.description && (
+                                {showDescription && project.description && (
                                     <p className="text-lg mt-5" data-sb-field-path="description">
                                         {project.description}
                                     </p>
                                 )}
                             </div>
-                            {props.showReadMoreLink && (
+                            {showReadMoreLink && (
                                 <div className="mt-8 md:mt-0 md:mx-8">
                                     <span className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon">
                                         <span className="sr-only">Read more</span>
@@ -209,42 +199,12 @@ function ProjectsVariantD(props) {
     );
 }
 
-function ProjectDate({ project, className = '' }) {
-    if (!project.date) {
-        return null;
-    }
-    const date = project.date;
+function ProjectDate({ date }) {
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('MM-DD-YYYY');
     return (
-        <div className={className ? className : null}>
-            <time dateTime={dateTimeAttr} data-sb-field-path="date">
-                {formattedDate}
-            </time>
-        </div>
+        <time dateTime={dateTimeAttr} data-sb-field-path="date">
+            {formattedDate}
+        </time>
     );
-}
-
-function mapMinHeightStyles(height) {
-    switch (height) {
-        case 'auto':
-            return 'min-h-0';
-        case 'screen':
-            return 'min-h-screen';
-        default:
-            return null;
-    }
-}
-
-function mapMaxWidthStyles(width) {
-    switch (width) {
-        case 'narrow':
-            return 'max-w-5xl';
-        case 'wide':
-            return 'max-w-7xl';
-        case 'full':
-            return 'max-w-full';
-        default:
-            return null;
-    }
 }

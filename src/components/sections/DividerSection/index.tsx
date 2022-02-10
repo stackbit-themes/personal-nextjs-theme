@@ -5,13 +5,10 @@ import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to
 import { getDataAttrs } from '../../../utils/get-data-attrs';
 
 export default function DividerSection(props) {
-    const cssId = props.elementId || null;
-    const styles = props.styles || {};
-    const sectionWidth = styles.self?.width || 'wide';
-    const sectionJustifyContent = styles.self?.justifyContent || 'center';
+    const { elementId, styles = {} } = props;
     return (
         <div
-            id={cssId}
+            id={elementId || null}
             {...getDataAttrs(props)}
             className={classNames(
                 'sb-component',
@@ -19,18 +16,18 @@ export default function DividerSection(props) {
                 'sb-component-divider-section',
                 'w-full',
                 'flex',
-                mapStyles({ justifyContent: sectionJustifyContent }),
-                styles.self?.padding || 'py-12 px-4'
+                mapStyles({ justifyContent: styles.self?.justifyContent ?? 'center' }),
+                styles.self?.padding ?? 'py-12 px-4'
             )}
         >
             <div
                 className={classNames(
                     'h-0',
                     'w-full',
-                    mapMaxWidthStyles(sectionWidth),
+                    mapMaxWidthStyles(styles.self?.width ?? 'wide'),
                     'border-t',
                     'border-current',
-                    styles.self?.borderStyle ? mapStyles({ borderStyle: styles.self?.borderStyle }) : null
+                    mapStyles({ borderStyle: styles.self?.borderStyle ?? 'solid' })
                 )}
                 style={{
                     borderTopWidth: styles.self?.borderWidth ? `${styles.self?.borderWidth}px` : '1px'
@@ -40,7 +37,7 @@ export default function DividerSection(props) {
     );
 }
 
-function mapMaxWidthStyles(width) {
+function mapMaxWidthStyles(width?: 'narrow' | 'wide' | 'full') {
     switch (width) {
         case 'narrow':
             return 'max-w-5xl';
