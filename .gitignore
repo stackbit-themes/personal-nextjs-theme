@@ -6,6 +6,7 @@
 .pnp.js
 
 # stackbit
+.cache
 .sourcebit-nextjs-cache.json
 .stackbit/dynamic-components.js
 
