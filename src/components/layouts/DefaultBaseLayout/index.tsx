@@ -5,23 +5,21 @@ import classNames from 'classnames';
 import Header from '../../sections/Header';
 import Footer from '../../sections/Footer';
 import { seoGenerateTitle, seoGenerateMetaTags, seoGenerateMetaDescription } from '../../../utils/seo-utils';
-
 import { BackgroundImage } from '../../atoms';
 
 export default function DefaultBaseLayout(props) {
     const { page, site } = props;
-    const siteMeta = site?.__metadata || {};
-    const pageMeta = page?.__metadata || {};
-    const colors = page?.colors || 'colors-a';
+    const siteMeta = site?.__metadata ?? {};
+    const pageMeta = page?.__metadata ?? {};
     const title = seoGenerateTitle(page, site);
     const metaTags = seoGenerateMetaTags(page, site);
     const metaDescription = seoGenerateMetaDescription(page, site);
     return (
-        <div className={classNames('sb-page', pageMeta.pageCssClasses, colors)} data-sb-object-id={pageMeta.id}>
+        <div className={classNames('sb-page', pageMeta.pageCssClasses, page?.colors ? page?.colors : 'colors-a')} data-sb-object-id={pageMeta.id}>
             {page?.backgroundImage && <BackgroundImage {...page?.backgroundImage} />}
             <div className="sb-base sb-default-base-layout relative">
                 <Head>
-                <title>{title}</title>
+                    <title>{title}</title>
                     {metaDescription && <meta name="description" content={metaDescription} />}
                     {metaTags.map((metaTag) => (
                         <meta key={metaTag.property} name={metaTag.property} content={metaTag.content} />

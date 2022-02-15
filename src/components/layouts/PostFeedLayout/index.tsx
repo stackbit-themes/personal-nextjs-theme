@@ -9,9 +9,7 @@ import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to
 export default function PostFeedLayout(props) {
     const { page, site } = props;
     const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
-    const { title, topSections = [], bottomSections = [], pageIndex, baseUrlPath, numOfPages, items, postFeed } = page;
-    const postFeedWidth = postFeed?.styles?.self?.width || 'wide';
-    const postFeedJustifyContent = postFeed?.styles?.self?.justifyContent || 'center';
+    const { title, topSections = [], bottomSections = [], pageIndex, baseUrlPath, numOfPages, items, postFeed, styles = {} } = page;
     const PostFeedSection = getComponent('PostFeedSection');
     const pageLinks = PageLinks({ pageIndex, baseUrlPath, numOfPages });
 
@@ -19,9 +17,21 @@ export default function PostFeedLayout(props) {
         <BaseLayout page={page} site={site}>
             <main id="main" className="layout page-layout">
                 {title && (
-                    <div className={classNames('flex', 'py-12', 'lg:py-16', 'px-4', mapStyles({ justifyContent: postFeedJustifyContent }))}>
+                    <div
+                        className={classNames(
+                            'flex',
+                            'py-12',
+                            'lg:py-16',
+                            'px-4',
+                            mapStyles({ justifyContent: postFeed?.styles?.self?.justifyContent ?? 'center' })
+                        )}
+                    >
                         <h1
-                            className={classNames('w-full', mapMaxWidthStyles(postFeedWidth), page?.styles?.title ? mapStyles(page?.styles?.title) : null)}
+                            className={classNames(
+                                'w-full',
+                                mapMaxWidthStyles(postFeed?.styles?.self?.width ?? 'wide'),
+                                styles?.title ? mapStyles(styles?.title) : null
+                            )}
                             data-sb-field-path="title"
                         >
                             {title}
@@ -143,6 +153,7 @@ function mapMaxWidthStyles(width) {
             return 'max-w-7xl';
         case 'full':
             return 'max-w-full';
+        default:
+            return null;
     }
-    return null;
 }

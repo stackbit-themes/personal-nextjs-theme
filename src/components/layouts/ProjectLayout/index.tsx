@@ -13,9 +13,9 @@ import Link from '../../atoms/Link';
 export default function ProjectLayout(props) {
     const { page, site } = props;
     const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
-    const sections = page.bottomSections || [];
-    const dateTimeAttr = dayjs(page.date).format('YYYY-MM-DD HH:mm:ss');
-    const formattedDate = dayjs(page.date).format('MM-DD-YYYY');
+    const { title, date, client, description, markdown_content, media, prevProject, nextProject, bottomSections = [] } = page;
+    const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
+    const formattedDate = dayjs(date).format('MM-DD-YYYY');
 
     return (
         <BaseLayout page={page} site={site}>
@@ -23,9 +23,9 @@ export default function ProjectLayout(props) {
                 <article className="px-4 py-14 lg:py-20">
                     <div className="max-w-5xl mx-auto">
                         <header className="mb-10 sm:mb-16">
-                            {page.client && (
+                            {client && (
                                 <div className="text-lg uppercase mb-2 md:mb-6" data-sb-field-path="client">
-                                    {page.client}
+                                    {client}
                                 </div>
                             )}
                             <div className="md:flex md:justify-between">
@@ -35,38 +35,42 @@ export default function ProjectLayout(props) {
                                     </time>
                                 </div>
                                 <h1 className="md:max-w-2xl md:flex-grow" data-sb-field-path="title">
-                                    {page.title}
+                                    {title}
                                 </h1>
                             </div>
                         </header>
-                        {page.description && (
+                        {description && (
                             <div className="text-xl leading-normal uppercase max-w-screen-md mx-auto mb-10 sm:mb-16" data-sb-field-path="description">
-                                {page.description}
+                                {description}
                             </div>
                         )}
-                        {page.media && (
+                        {media && (
                             <div className="mb-10 sm:mb-16">
-                                <ProjectMedia media={page.media} />
+                                <ProjectMedia media={media} />
                             </div>
                         )}
-                        {page.markdown_content && (
-                            <Markdown options={{ forceBlock: true, overrides: { pre: HighlightedPreBlock } }} className="sb-markdown max-w-screen-md mx-auto" data-sb-field-path="markdown_content">
-                                {page.markdown_content}
+                        {markdown_content && (
+                            <Markdown
+                                options={{ forceBlock: true, overrides: { pre: HighlightedPreBlock } }}
+                                className="sb-markdown max-w-screen-md mx-auto"
+                                data-sb-field-path="markdown_content"
+                            >
+                                {markdown_content}
                             </Markdown>
                         )}
                     </div>
                 </article>
-                {(page.prevProject || page.nextProject) && (
+                {(prevProject || nextProject) && (
                     <nav className="sb-project-nav px-4 sm:px-8 mt-12 mb-20">
                         <div className="max-w-5xl mx-auto grid gap-x-6 gap-y-12 md:grid-cols-2 lg:gap-x-8">
-                            {page.prevProject && <ProjectNavItem project={page.prevProject} label="Previous project" />}
-                            {page.nextProject && <ProjectNavItem project={page.nextProject} label="Next project" />}
+                            {prevProject && <ProjectNavItem project={prevProject} label="Previous project" />}
+                            {nextProject && <ProjectNavItem project={nextProject} label="Next project" />}
                         </div>
                     </nav>
                 )}
-                {sections.length > 0 && (
+                {bottomSections.length > 0 && (
                     <div data-sb-field-path="bottomSections">
-                        {sections.map((section, index) => {
+                        {bottomSections.map((section, index) => {
                             const Component = getComponent(section.type);
                             if (!Component) {
                                 throw new Error(`no component matching the page section's type: ${section.type}`);

@@ -2,13 +2,13 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 export default function CheckboxFormControl(props) {
-    const width = props.width || 'full';
-    const labelId = `${props.name}-label`;
+    const { name, label, isRequired, width = 'full', 'data-sb-field-path': fieldPath } = props;
+    const labelId = `${name}-label`;
     const attr: any = {};
-    if (props.label) {
+    if (label) {
         attr['aria-labelledby'] = labelId;
     }
-    if (props.isRequired) {
+    if (isRequired) {
         attr.required = true;
     }
     return (
@@ -16,12 +16,12 @@ export default function CheckboxFormControl(props) {
             className={classNames('sb-form-control', 'flex', 'items-center', {
                 'sm:col-span-2': width === 'full'
             })}
-            data-sb-field-path={props['data-sb-field-path']}
+            data-sb-field-path={fieldPath}
         >
-            <input id={props.name} className="sb-checkbox" type="checkbox" name={props.name} {...attr} data-sb-field-path=".name#@id .name#@name" />
-            {props.label && (
-                <label id={labelId} className="sb-label" htmlFor={props.name} data-sb-field-path=".label .name#@for">
-                    {props.label}
+            <input id={name} className="sb-checkbox" type="checkbox" name={name} {...attr} data-sb-field-path=".name#@id .name#@name" />
+            {label && (
+                <label id={labelId} className="sb-label" htmlFor={name} data-sb-field-path=".label .name#@for">
+                    {label}
                 </label>
             )}
         </div>

@@ -6,10 +6,9 @@ import { BackgroundImage } from '../../atoms';
 
 export default function BlankBaseLayout(props) {
     const { page, site } = props;
-    const pageMeta = page?.__metadata || {};
-    const colors = page?.colors || 'colors-a';
+    const pageMeta = page?.__metadata ?? {};
     return (
-        <div className={classNames('sb-page', pageMeta.pageCssClasses, colors)} data-sb-object-id={pageMeta.id}>
+        <div className={classNames('sb-page', pageMeta.pageCssClasses, page?.colors ? page?.colors : 'colors-a')} data-sb-object-id={pageMeta.id}>
             {page?.backgroundImage && <BackgroundImage {...page?.backgroundImage} />}
             <Head>
                 <title>{page.title}</title>
