@@ -4,18 +4,16 @@ import classNames from 'classnames';
 import { Action } from '../../atoms';
 
 export default function Footer(props) {
-    const footerStyles = props.styles?.self || {};
-    const footerWidth = footerStyles.width || 'narrow';
-    const primaryLinks = props.primaryLinks || [];
+    const { primaryLinks = [], contacts, copyrightText, styles = {}, annotationPrefix } = props;
     return (
         <footer
-            className={classNames('sb-component', 'sb-component-footer', footerStyles.padding || 'py-16 px-4')}
-            data-sb-field-path={`${props.annotationPrefix}:footer`}
+            className={classNames('sb-component', 'sb-component-footer', styles.self?.padding ?? 'py-16 px-4')}
+            data-sb-field-path={`${annotationPrefix}:footer`}
         >
-            <div className={classNames('border-t-2', 'border-current', 'mx-auto', mapMaxWidthStyles(footerWidth))}>
+            <div className={classNames('border-t-2', 'border-current', 'mx-auto', mapMaxWidthStyles(styles.self?.width ?? 'narrow'))}>
                 <div className="flex flex-col md:flex-row md:flex-wrap">
                     {primaryLinks.length > 0 && (
-                        <div className={classNames('mt-6', props.contacts ? 'w-full' : 'md:mr-auto')}>
+                        <div className={classNames('mt-6', contacts ? 'w-full' : 'md:mr-auto')}>
                             <ul className="flex flex-wrap max-w-5xl text-lg" data-sb-field-path=".primaryLinks">
                                 {primaryLinks.map((link, index) => (
                                     <li key={index} className="mr-8 mt-2">
@@ -25,9 +23,9 @@ export default function Footer(props) {
                             </ul>
                         </div>
                     )}
-                    {props.contacts && (
+                    {contacts && (
                         <Contacts
-                            {...props.contacts}
+                            {...contacts}
                             className={classNames(
                                 'text-lg',
                                 'space-y-4',
@@ -38,14 +36,14 @@ export default function Footer(props) {
                             )}
                         />
                     )}
-                    {props.copyrightText && (
-                        <div className={classNames('mt-8', primaryLinks.length > 0 || props.contacts ? 'md:self-end' : null)}>
+                    {copyrightText && (
+                        <div className={classNames('mt-8', primaryLinks.length > 0 || contacts ? 'md:self-end' : null)}>
                             <Markdown
                                 options={{ forceInline: true, forceWrapper: true, wrapper: 'p' }}
                                 className="sb-markdown text-sm tracking-widest uppercase"
                                 data-sb-field-path=".copyrightText"
                             >
-                                {props.copyrightText}
+                                {copyrightText}
                             </Markdown>
                         </div>
                     )}
@@ -56,44 +54,44 @@ export default function Footer(props) {
 }
 
 function Contacts(props) {
-    const cssClasses = props.className || null;
+    const { phoneNumber, phoneAltText, email, emailAltText, address, addressAltText, elementId, className } = props;
     return (
-        <div className={cssClasses} data-sb-field-path=".contacts">
-            {props.phoneNumber && (
+        <div id={elementId || null} className={className} data-sb-field-path=".contacts">
+            {phoneNumber && (
                 <p>
                     <a
                         className="underline hover:no-underline"
-                        href={`tel:${props.phoneNumber}`}
-                        aria-label={props.phoneAltText}
+                        href={`tel:${phoneNumber}`}
+                        aria-label={phoneAltText}
                         data-sb-field-path=".phoneNumber .phoneNumber#@href .phoneAltText#@title"
                     >
-                        {props.phoneNumber}
+                        {phoneNumber}
                     </a>
                 </p>
             )}
-            {props.email && (
+            {email && (
                 <p>
                     <a
                         className="underline hover:no-underline"
-                        href={`mailto:${props.email}`}
-                        aria-label={props.emailAltText}
+                        href={`mailto:${email}`}
+                        aria-label={emailAltText}
                         data-sb-field-path=".email .email#@href .emailAltText#@title"
                     >
-                        {props.email}
+                        {email}
                     </a>
                 </p>
             )}
-            {props.address && (
+            {address && (
                 <p>
                     <a
                         className="underline hover:no-underline"
-                        href={`https://www.google.com/maps/search/${encodeURIComponent(props.address)}`}
-                        aria-label={props.addressAltText}
+                        href={`https://www.google.com/maps/search/${encodeURIComponent(address)}`}
+                        aria-label={addressAltText}
                         target="_blank"
                         rel="noopener noreferrer"
                         data-sb-field-path=".address .address#@href .addressAltText#@title"
                     >
-                        {props.address}
+                        {address}
                     </a>
                 </p>
             )}
@@ -109,6 +107,7 @@ function mapMaxWidthStyles(width) {
             return 'max-w-screen-2xl';
         case 'full':
             return 'max-w-full';
+        default:
+            return null;
     }
-    return null;
 }

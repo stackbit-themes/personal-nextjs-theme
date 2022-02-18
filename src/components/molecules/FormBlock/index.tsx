@@ -57,7 +57,7 @@ export default class FormBlock extends React.Component<any> {
     }
 
     render() {
-        const { fields = [], elementId, action, destination, submitLabel, className, styles = {}, 'data-sb-field-path': annotation } = this.props;
+        const { elementId, className, action, destination, fields = [], submitLabel, styles = {}, 'data-sb-field-path': fieldPath } = this.props;
         if (fields.length === 0) {
             return null;
         }
@@ -71,7 +71,7 @@ export default class FormBlock extends React.Component<any> {
                 data-netlify="true"
                 ref={this.formRef}
                 data-netlify-honeypot={formHoneypotName}
-                data-sb-field-path={annotation}
+                data-sb-field-path={fieldPath}
             >
                 <div className="grid sm:grid-cols-2 sm:gap-x-4" data-sb-field-path=".fields">
                     <input type="hidden" name="form-name" value={elementId} />
@@ -96,8 +96,8 @@ export default class FormBlock extends React.Component<any> {
                     >
                         {submitLabel}
                     </button>
-                    {this.state.submitted && <span className="ml-8">Thank you, your message was sent.</span>}
-                    {this.state.error && <span className="ml-8 text-info">Something went wrong, please try again.</span>}
+                    {this.state.submitted && <p className="mt-8 colors-c">Thank you, your message was sent.</p>}
+                    {this.state.error && <p className="mt-8 text-info">Something went wrong, please try again.</p>}
                 </div>
             </form>
         );
