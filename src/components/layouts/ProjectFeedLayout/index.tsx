@@ -5,6 +5,7 @@ import Link from '../../atoms/Link';
 import { getComponent } from '../../components-registry';
 import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
+import { mapMaxWidthStyles } from '../../../utils/map-sizing-styles-to-class-names';
 
 export default function ProjectFeedLayout(props) {
     const { page, site } = props;
@@ -143,17 +144,4 @@ function Ellipsis() {
 
 function urlPathForPageAtIndex(pageIndex, baseUrlPath) {
     return pageIndex === 0 ? baseUrlPath : `${baseUrlPath}/page/${pageIndex + 1}`;
-}
-
-function mapMaxWidthStyles(width) {
-    switch (width) {
-        case 'narrow':
-            return 'max-w-5xl';
-        case 'wide':
-            return 'max-w-7xl';
-        case 'full':
-            return 'max-w-full';
-        default:
-            return null;
-    }
 }

@@ -2,6 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
+import { mapMaxWidthStyles } from '../../../utils/map-sizing-styles-to-class-names';
 import { getDataAttrs } from '../../../utils/get-data-attrs';
 
 export default function DividerSection(props) {
@@ -35,17 +36,4 @@ export default function DividerSection(props) {
             ></div>
         </div>
     );
-}
-
-function mapMaxWidthStyles(width?: 'narrow' | 'wide' | 'full') {
-    switch (width) {
-        case 'narrow':
-            return 'max-w-5xl';
-        case 'wide':
-            return 'max-w-7xl';
-        case 'full':
-            return 'max-w-full';
-        default:
-            return null;
-    }
 }
