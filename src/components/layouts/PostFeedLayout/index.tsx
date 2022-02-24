@@ -5,7 +5,6 @@ import Link from '../../atoms/Link';
 import { getComponent } from '../../components-registry';
 import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
-import { mapMaxWidthStyles } from '../../../utils/map-sizing-styles-to-class-names';
 
 export default function PostFeedLayout(props) {
     const { page, site } = props;
@@ -30,7 +29,7 @@ export default function PostFeedLayout(props) {
                         <h1
                             className={classNames(
                                 'w-full',
-                                mapMaxWidthStyles(postFeed?.styles?.self?.width ?? 'wide'),
+                                mapStyles({ width: postFeed?.styles?.self?.width ?? 'wide' }),
                                 styles?.title ? mapStyles(styles?.title) : null
                             )}
                             data-sb-field-path="title"

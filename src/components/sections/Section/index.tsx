@@ -1,7 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
-import { mapMinHeightStyles, mapMaxWidthStyles } from '../../../utils/map-sizing-styles-to-class-names';
 
 type SectionProps = React.PropsWithChildren<{
     type?: string;
@@ -45,8 +44,8 @@ function SectionInset(props: SectionProps) {
                     'justify-center',
                     'relative',
                     'w-full',
-                    mapMaxWidthStyles(styles.width ?? 'wide'),
-                    mapMinHeightStyles(styles.height ?? 'auto'),
+                    mapStyles({ width: styles.width ?? 'wide' }),
+                    mapStyles({ height: styles.height ?? 'auto' }),
                     styles.padding ?? 'py-12 px-4',
                     styles.borderColor,
                     styles.borderStyle ? mapStyles({ borderStyle: styles.borderStyle }) : null,
@@ -77,7 +76,7 @@ function SectionFullWidth(props: SectionProps) {
                 'flex',
                 'flex-col',
                 'justify-center',
-                mapMinHeightStyles(styles.height ?? 'auto'),
+                mapStyles({ height: styles.height ?? 'auto' }),
                 styles.margin,
                 styles.padding ?? 'py-12 px-4',
                 styles.borderColor,
@@ -91,7 +90,7 @@ function SectionFullWidth(props: SectionProps) {
             data-sb-field-path={fieldPath}
         >
             <div className={classNames('flex', 'w-full', mapStyles({ justifyContent: styles.justifyContent ?? 'center' }))}>
-                <div className={classNames('relative', 'w-full', mapMaxWidthStyles(styles.width ?? 'wide'))}>{children}</div>
+                <div className={classNames('relative', 'w-full', mapStyles({ width: styles.width ?? 'wide' }))}>{children}</div>
             </div>
         </div>
     );
