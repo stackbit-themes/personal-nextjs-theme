@@ -17,7 +17,7 @@ export default function Action(props) {
         style = 'primary',
         'data-sb-field-path': fieldPath
     } = props;
-    const IconComponent = iconMap[icon];
+    const IconComponent = icon ? iconMap[icon] : null;
     const annotations = fieldPath
         ? {
               'data-sb-field-path': [

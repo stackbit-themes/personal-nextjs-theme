@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
+import { mapMinHeightStyles, mapMaxWidthStyles } from '../../../utils/map-sizing-styles-to-class-names';
 
 type SectionProps = React.PropsWithChildren<{
     type?: string;
@@ -94,27 +95,4 @@ function SectionFullWidth(props: SectionProps) {
             </div>
         </div>
     );
-}
-
-function mapMinHeightStyles(height?: 'screen' | 'auto') {
-    switch (height) {
-        case 'screen':
-            return 'min-h-screen';
-        default:
-            return null;
-    }
-}
-
-type WidthStyles = 'narrow' | 'wide' | 'full';
-function mapMaxWidthStyles(width?: WidthStyles) {
-    switch (width) {
-        case 'narrow':
-            return 'max-w-5xl';
-        case 'wide':
-            return 'max-w-7xl';
-        case 'full':
-            return 'max-w-full';
-        default:
-            return null;
-    }
 }

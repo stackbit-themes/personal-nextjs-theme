@@ -87,8 +87,6 @@ fields:
     styles:
       self:
         width: ['narrow', 'wide', 'full']
-        padding: ['tw0:36']
     default:
       self:
         width: narrow
-        padding: ['pt-5', 'pb-5', 'pl-4', 'pr-4']
