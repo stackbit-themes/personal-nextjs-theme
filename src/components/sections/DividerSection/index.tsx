@@ -2,7 +2,6 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
-import { mapMaxWidthStyles } from '../../../utils/map-sizing-styles-to-class-names';
 import { getDataAttrs } from '../../../utils/get-data-attrs';
 
 export default function DividerSection(props) {
@@ -25,7 +24,7 @@ export default function DividerSection(props) {
                 className={classNames(
                     'h-0',
                     'w-full',
-                    mapMaxWidthStyles(styles.self?.width ?? 'wide'),
+                    mapStyles({ width: styles.self?.width ?? 'wide' }),
                     'border-t',
                     'border-current',
                     mapStyles({ borderStyle: styles.self?.borderStyle ?? 'solid' })
