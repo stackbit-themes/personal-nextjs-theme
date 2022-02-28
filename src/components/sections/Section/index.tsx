@@ -44,8 +44,8 @@ function SectionInset(props: SectionProps) {
                     'justify-center',
                     'relative',
                     'w-full',
-                    mapMaxWidthStyles(styles.width ?? 'wide'),
-                    mapMinHeightStyles(styles.height ?? 'auto'),
+                    mapStyles({ width: styles.width ?? 'wide' }),
+                    mapStyles({ height: styles.height ?? 'auto' }),
                     styles.padding ?? 'py-12 px-4',
                     styles.borderColor,
                     styles.borderStyle ? mapStyles({ borderStyle: styles.borderStyle }) : null,
@@ -76,7 +76,7 @@ function SectionFullWidth(props: SectionProps) {
                 'flex',
                 'flex-col',
                 'justify-center',
-                mapMinHeightStyles(styles.height ?? 'auto'),
+                mapStyles({ height: styles.height ?? 'auto' }),
                 styles.margin,
                 styles.padding ?? 'py-12 px-4',
                 styles.borderColor,
@@ -90,31 +90,8 @@ function SectionFullWidth(props: SectionProps) {
             data-sb-field-path={fieldPath}
         >
             <div className={classNames('flex', 'w-full', mapStyles({ justifyContent: styles.justifyContent ?? 'center' }))}>
-                <div className={classNames('relative', 'w-full', mapMaxWidthStyles(styles.width ?? 'wide'))}>{children}</div>
+                <div className={classNames('relative', 'w-full', mapStyles({ width: styles.width ?? 'wide' }))}>{children}</div>
             </div>
         </div>
     );
-}
-
-function mapMinHeightStyles(height?: 'screen' | 'auto') {
-    switch (height) {
-        case 'screen':
-            return 'min-h-screen';
-        default:
-            return null;
-    }
-}
-
-type WidthStyles = 'narrow' | 'wide' | 'full';
-function mapMaxWidthStyles(width?: WidthStyles) {
-    switch (width) {
-        case 'narrow':
-            return 'max-w-5xl';
-        case 'wide':
-            return 'max-w-7xl';
-        case 'full':
-            return 'max-w-full';
-        default:
-            return null;
-    }
 }

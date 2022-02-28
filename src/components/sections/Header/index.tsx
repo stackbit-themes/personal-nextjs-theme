@@ -9,11 +9,12 @@ import CloseIcon from '../../svgs/close';
 import MenuIcon from '../../svgs/menu';
 
 export default function Header(props) {
-    const headerWidth = props.styles?.self?.width || 'narrow';
+    const { headerVariant, isSticky, title, isTitleVisible, logo, primaryLinks = [], socialLinks = [], styles = {}, annotationPrefix } = props;
+    const headerWidth = styles.self?.width ?? 'narrow';
     return (
         <header
-            className={classNames('sb-component', 'sb-component-header', props.isSticky ? 'sticky top-0 z-10' : 'relative', 'border-b', 'border-current')}
-            data-sb-field-path={`${props.annotationPrefix}:header`}
+            className={classNames('sb-component', 'sb-component-header', isSticky ? 'sticky top-0 z-10' : 'relative', 'border-b', 'border-current')}
+            data-sb-field-path={`${annotationPrefix}:header`}
         >
             <div
                 className={classNames('mx-auto', mapMaxWidthStyles(headerWidth), {
@@ -24,39 +25,46 @@ export default function Header(props) {
                 <Link href="#main" className="sr-only">
                     Skip to main content
                 </Link>
-                {headerVariants(props)}
+                <HeaderVariants
+                    variant={headerVariant}
+                    title={title}
+                    isTitleVisible={isTitleVisible}
+                    logo={logo}
+                    primaryLinks={primaryLinks}
+                    socialLinks={socialLinks}
+                />
             </div>
         </header>
     );
 }
 
-function headerVariants(props) {
-    const headerVariant = props.headerVariant || 'variant-a';
-    switch (headerVariant) {
+function HeaderVariants(props) {
+    const { variant = 'variant-a', ...rest } = props;
+    switch (variant) {
         case 'variant-a':
-            return headerVariantA(props);
+            return <HeaderVariantA {...rest} />;
         case 'variant-b':
-            return headerVariantB(props);
+            return <HeaderVariantB {...rest} />;
         case 'variant-c':
-            return headerVariantC(props);
+            return <HeaderVariantC {...rest} />;
+        default:
+            return null;
     }
-    return null;
 }
 
-function headerVariantA(props) {
-    const primaryLinks = props.primaryLinks || [];
-    const socialLinks = props.socialLinks || [];
+function HeaderVariantA(props) {
+    const { primaryLinks = [], socialLinks = [], ...logoProps } = props;
     return (
         <div className="flex items-stretch relative">
-            {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
+            <SiteLogoLink {...logoProps} />
             {primaryLinks.length > 0 && (
                 <ul className="hidden lg:flex divide-x divide-current border-r border-current" data-sb-field-path=".primaryLinks">
-                    {listOfLinks(primaryLinks)}
+                    <ListOfLinks links={primaryLinks} inMobileMenu={false} />
                 </ul>
             )}
             {socialLinks.length > 0 && (
                 <ul className="hidden lg:flex border-l border-current ml-auto" data-sb-field-path=".socialLinks">
-                    {listOfSocialLinks(socialLinks)}
+                    <ListOfSocialLinks links={socialLinks} inMobileMenu={false} />
                 </ul>
             )}
             {(primaryLinks.length > 0 || socialLinks.length > 0) && <MobileMenu {...props} />}
@@ -64,15 +72,14 @@ function headerVariantA(props) {
     );
 }
 
-function headerVariantB(props) {
-    const primaryLinks = props.primaryLinks || [];
-    const socialLinks = props.socialLinks || [];
+function HeaderVariantB(props) {
+    const { primaryLinks = [], socialLinks = [], ...logoProps } = props;
     return (
         <div className="flex items-stretch relative">
-            {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
+            <SiteLogoLink {...logoProps} />
             {primaryLinks.length > 0 && (
                 <ul className="hidden lg:flex border-l border-current divide-x divide-current ml-auto" data-sb-field-path=".primaryLinks">
-                    {listOfLinks(primaryLinks)}
+                    <ListOfLinks links={primaryLinks} inMobileMenu={false} />
                 </ul>
             )}
             {socialLinks.length > 0 && (
@@ -82,7 +89,7 @@ function headerVariantB(props) {
                     })}
                     data-sb-field-path=".socialLinks"
                 >
-                    {listOfSocialLinks(socialLinks)}
+                    <ListOfSocialLinks links={socialLinks} inMobileMenu={false} />
                 </ul>
             )}
             {(primaryLinks.length > 0 || socialLinks.length > 0) && <MobileMenu {...props} />}
@@ -90,15 +97,14 @@ function headerVariantB(props) {
     );
 }
 
-function headerVariantC(props) {
-    const primaryLinks = props.primaryLinks || [];
-    const socialLinks = props.socialLinks || [];
+function HeaderVariantC(props) {
+    const { primaryLinks = [], socialLinks = [], ...logoProps } = props;
     return (
         <div className="flex items-stretch relative">
-            {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
+            <SiteLogoLink {...logoProps} />
             {socialLinks.length > 0 && (
                 <ul className="hidden lg:flex border-l border-current ml-auto" data-sb-field-path=".socialLinks">
-                    {listOfSocialLinks(socialLinks)}
+                    <ListOfSocialLinks links={socialLinks} inMobileMenu={false} />
                 </ul>
             )}
             {primaryLinks.length > 0 && (
@@ -108,7 +114,7 @@ function headerVariantC(props) {
                     })}
                     data-sb-field-path=".primaryLinks"
                 >
-                    {listOfLinks(primaryLinks)}
+                    <ListOfLinks links={primaryLinks} inMobileMenu={false} />
                 </ul>
             )}
             {(primaryLinks.length > 0 || socialLinks.length > 0) && <MobileMenu {...props} />}
@@ -117,8 +123,7 @@ function headerVariantC(props) {
 }
 
 function MobileMenu(props) {
-    const primaryLinks = props.primaryLinks || [];
-    const socialLinks = props.socialLinks || [];
+    const { primaryLinks = [], socialLinks = [], ...logoProps } = props;
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const router = useRouter();
 
@@ -135,26 +140,16 @@ function MobileMenu(props) {
 
     return (
         <div className="ml-auto lg:hidden">
-            <button
-                aria-label="Open Menu"
-                title="Open Menu"
-                className="border-l border-current h-10 min-h-full p-4 focus:outline-none"
-                onClick={() => setIsMenuOpen(true)}
-            >
+            <button aria-label="Open Menu" className="border-l border-current h-10 min-h-full p-4 focus:outline-none" onClick={() => setIsMenuOpen(true)}>
                 <span className="sr-only">Open Menu</span>
                 <MenuIcon className="fill-current h-6 w-6" />
             </button>
             <div className={classNames('sb-header-overlay', 'fixed', 'inset-0', 'overflow-y-auto', 'z-20', isMenuOpen ? 'block' : 'hidden')}>
                 <div className="flex flex-col min-h-full">
                     <div className="border-b border-current flex items-stretch justify-between">
-                        {(props.logo || (props.title && props.isTitleVisible)) && siteLogoLink(props)}
+                        <SiteLogoLink {...logoProps} />
                         <div className="border-l border-current">
-                            <button
-                                aria-label="Close Menu"
-                                title="Close Menu"
-                                className="h-10 min-h-full p-4 focus:outline-none"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
+                            <button aria-label="Close Menu" className="h-10 min-h-full p-4 focus:outline-none" onClick={() => setIsMenuOpen(false)}>
                                 <CloseIcon className="fill-current h-6 w-6" />
                             </button>
                         </div>
@@ -163,12 +158,12 @@ function MobileMenu(props) {
                         <div className="flex flex-col justify-center flex-grow px-4 py-20 space-y-12">
                             {primaryLinks.length > 0 && (
                                 <ul className="space-y-6" data-sb-field-path=".primaryLinks">
-                                    {listOfLinks(primaryLinks, true)}
+                                    <ListOfLinks links={primaryLinks} inMobileMenu={true} />
                                 </ul>
                             )}
                             {socialLinks.length > 0 && (
                                 <ul className="flex flex-wrap justify-center" data-sb-field-path=".socialLinks">
-                                    {listOfSocialLinks(socialLinks, true)}
+                                    <ListOfSocialLinks links={socialLinks} inMobileMenu={true} />
                                 </ul>
                             )}
                         </div>
@@ -179,14 +174,17 @@ function MobileMenu(props) {
     );
 }
 
-function siteLogoLink(props) {
+function SiteLogoLink({ title, isTitleVisible, logo }) {
+    if (!(logo || (title && isTitleVisible))) {
+        return null;
+    }
     return (
         <div className="border-r border-current flex items-center">
             <Link href="/" className="sb-header-logo flex items-center h-full p-4">
-                {props.logo && <ImageBlock {...props.logo} className={classNames('max-h-12', { 'mr-2': props.isTitleVisible })} data-sb-field-path=".logo" />}
-                {props.title && props.isTitleVisible && (
+                {logo && <ImageBlock {...logo} className={classNames('max-h-12', { 'mr-2': isTitleVisible })} data-sb-field-path=".logo" />}
+                {title && isTitleVisible && (
                     <span className="text-base tracking-widest uppercase" data-sb-field-path=".title">
-                        {props.title}
+                        {title}
                     </span>
                 )}
             </Link>
@@ -194,7 +192,7 @@ function siteLogoLink(props) {
     );
 }
 
-function listOfLinks(links, inMobileMenu = false) {
+function ListOfLinks({ links, inMobileMenu }) {
     return links.map((link, index) => (
         <li key={index} className={classNames(inMobileMenu ? 'text-center w-full' : 'inline-flex items-stretch')}>
             <Action
@@ -206,7 +204,7 @@ function listOfLinks(links, inMobileMenu = false) {
     ));
 }
 
-function listOfSocialLinks(links, inMobileMenu = false) {
+function ListOfSocialLinks({ links, inMobileMenu = false }) {
     return links.map((link, index) => (
         <li key={index} className={classNames(inMobileMenu ? 'border border-current -ml-px -mt-px' : 'inline-flex items-stretch')}>
             <Social {...link} className={classNames('sb-component-social-fill', 'text-base', inMobileMenu ? 'p-5' : 'p-4')} data-sb-field-path={`.${index}`} />
@@ -222,6 +220,7 @@ function mapMaxWidthStyles(width) {
             return 'max-w-screen-2xl';
         case 'full':
             return 'max-w-full';
+        default:
+            return null;
     }
-    return null;
 }

@@ -24,7 +24,7 @@ export default function DividerSection(props) {
                 className={classNames(
                     'h-0',
                     'w-full',
-                    mapMaxWidthStyles(styles.self?.width ?? 'wide'),
+                    mapStyles({ width: styles.self?.width ?? 'wide' }),
                     'border-t',
                     'border-current',
                     mapStyles({ borderStyle: styles.self?.borderStyle ?? 'solid' })
@@ -35,17 +35,4 @@ export default function DividerSection(props) {
             ></div>
         </div>
     );
-}
-
-function mapMaxWidthStyles(width?: 'narrow' | 'wide' | 'full') {
-    switch (width) {
-        case 'narrow':
-            return 'max-w-5xl';
-        case 'wide':
-            return 'max-w-7xl';
-        case 'full':
-            return 'max-w-full';
-        default:
-            return null;
-    }
 }

@@ -77,16 +77,14 @@ const TAILWIND_MAP = {
         700: 'font-bold',
         800: 'font-extrabold'
     },
+    height: {
+        auto: 'min-h-0',
+        screen: 'min-h-screen'
+    },
     justifyContent: {
         'flex-start': 'justify-start',
         'flex-end': 'justify-end',
         center: 'justify-center'
-    },
-    textAlign: {
-        left: 'text-left',
-        center: 'text-center',
-        right: 'text-right',
-        justify: 'text-justify'
     },
     margin: function (value) {
         // for tailwind margins - ['twt0:16', 'twb0:16'], the value will be array ['mt-0', 'mb-4']
@@ -107,6 +105,17 @@ const TAILWIND_MAP = {
         // this object can not be converted into classes and needs to be handled differently
         console.warn('cannot convert "padding" style field value to class name');
         return '';
+    },
+    textAlign: {
+        left: 'text-left',
+        center: 'text-center',
+        right: 'text-right',
+        justify: 'text-justify'
+    },
+    width: {
+        narrow: 'max-w-5xl',
+        wide: 'max-w-7xl',
+        full: 'max-w-full'
     }
 };
 

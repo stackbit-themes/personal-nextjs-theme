@@ -6,14 +6,14 @@ import { getComponent } from '../../components-registry';
 export default function PageLayout(props) {
     const { page, site } = props;
     const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
-    const sections = page.sections || [];
+    const { title, sections = [] } = page;
 
     return (
         <BaseLayout page={page} site={site}>
             <main id="main" className="sb-layout sb-page-layout">
-                {page.title && (
+                {title && (
                     <h1 className="sr-only" data-sb-field-path="title">
-                        {page.title}
+                        {title}
                     </h1>
                 )}
                 {sections.length > 0 && (
