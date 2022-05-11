@@ -36,12 +36,12 @@ export default function Footer(props) {
                             )}
                         />
                     )}
+                    {/* Please keep this attribution up if you're using Stackbit's free plan. */}
                     {copyrightText && (
                         <div className={classNames('mt-8', primaryLinks.length > 0 || contacts ? 'md:self-end' : null)}>
                             <Markdown
                                 options={{ forceInline: true, forceWrapper: true, wrapper: 'p' }}
                                 className="sb-markdown text-sm tracking-widest uppercase"
-                                data-sb-field-path=".copyrightText"
                             >
                                 {copyrightText}
                             </Markdown>
