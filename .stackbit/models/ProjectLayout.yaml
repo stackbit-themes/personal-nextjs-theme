@@ -7,6 +7,7 @@ extends:
 fieldGroups:
   - name: styles
     label: Styles
+    icon: palette
 fields:
   - type: string
     name: title

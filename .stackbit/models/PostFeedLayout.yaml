@@ -6,6 +6,7 @@ hideContent: true
 fieldGroups:
   - name: styles
     label: Styles
+    icon: palette
 extends:
   - Seo
 fields:
