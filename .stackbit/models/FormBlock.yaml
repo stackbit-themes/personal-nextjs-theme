@@ -5,6 +5,7 @@ labelField: elementId
 fieldGroups:
   - name: settings
     label: Settings
+    icon: gear
 fields:
   - type: list
     name: fields

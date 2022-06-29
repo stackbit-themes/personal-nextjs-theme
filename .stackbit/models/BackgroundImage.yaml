@@ -5,6 +5,7 @@ labelField: url
 fieldGroups:
   - name: styles
     label: Styles
+    icon: palette
 fields:
   - type: image
     name: url
