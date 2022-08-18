@@ -64,7 +64,6 @@ const TAILWIND_MAP = {
         'xxx-large': 'text-3xl'
     },
     fontStyle: {
-        normal: 'non-italic',
         italic: 'italic'
     },
     fontWeight: {

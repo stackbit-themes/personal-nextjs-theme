@@ -39,14 +39,12 @@ fields:
     styles:
       name:
         fontWeight: ['400', '500']
-        fontStyle: ['normal', 'italic']
+        fontStyle: ['italic']
       title:
         fontWeight: ['400', '500']
-        fontStyle: ['normal', 'italic']
+        fontStyle: ['italic']
     default:
       name:
         fontWeight: 400
-        fontStyle: normal
       title:
         fontWeight: 400
-        fontStyle: normal

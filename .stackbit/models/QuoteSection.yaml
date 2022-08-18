@@ -58,11 +58,11 @@ fields:
         textAlign: ['left', 'center', 'right']
       name:
         fontWeight: ['400', '500']
-        fontStyle: ['normal', 'italic']
+        fontStyle: ['italic']
         textAlign: ['left', 'center', 'right']
       title:
         fontWeight: ['400', '500']
-        fontStyle: ['normal', 'italic']
+        fontStyle: ['italic']
         textAlign: ['left', 'center', 'right']
     default:
       self:
@@ -79,9 +79,7 @@ fields:
         textAlign: center
       name:
         fontWeight: 400
-        fontStyle: normal
         textAlign: center
       title:
         fontWeight: 400
-        fontStyle: normal
         textAlign: center

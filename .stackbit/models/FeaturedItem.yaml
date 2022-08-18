@@ -69,10 +69,10 @@ fields:
         textAlign: ['left', 'center', 'right']
       title:
         fontWeight: ['400', '500']
-        fontStyle: ['normal', 'italic']
+        fontStyle: ['italic']
       subtitle:
         fontWeight: ['400', '500']
-        fontStyle: ['normal', 'italic']
+        fontStyle: ['italic']
     default:
       self:
         textAlign: left

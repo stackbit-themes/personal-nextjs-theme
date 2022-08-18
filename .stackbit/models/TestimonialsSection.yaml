@@ -79,11 +79,11 @@ fields:
             color: '$complementary'
       title:
         fontWeight: ['400', '500']
-        fontStyle: ['normal', 'italic']
+        fontStyle: ['italic']
         textAlign: ['left', 'center', 'right']
       subtitle:
         fontWeight: ['400', '500']
-        fontStyle: ['normal', 'italic']
+        fontStyle: ['italic']
         textAlign: ['left', 'center', 'right']
     default:
       self:
@@ -100,5 +100,4 @@ fields:
         textAlign: center
       subtitle:
         fontWeight: 400
-        fontStyle: normal
         textAlign: center
