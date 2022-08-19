@@ -14,11 +14,9 @@ presets:
           textAlign: left
         name:
           fontWeight": 500
-          fontStyle: normal
           textAlign: left
         title:
           fontWeight": 400
-          fontStyle: normal
           textAlign: left
   - label: Quote transparent, text centered
     thumbnail: images/quote-transparent-centered.png
@@ -34,11 +32,9 @@ presets:
           textAlign: center
         name:
           fontWeight": 500
-          fontStyle: normal
           textAlign: center
         title:
           fontWeight": 400
-          fontStyle: normal
           textAlign: center
   - label: Quote secondary, text left
     thumbnail: images/quote-secondary-left.png
@@ -54,9 +50,7 @@ presets:
           textAlign: left
         name:
           fontWeight": 500
-          fontStyle: normal
           textAlign: left
         title:
           fontWeight": 400
-          fontStyle: normal
           textAlign: left
