@@ -88,7 +88,7 @@ fields:
     styles:
       title:
         fontWeight: ['400', '500']
-        fontStyle: ['normal', 'italic']
+        fontStyle: ['italic']
         textAlign: ['left', 'center', 'right']
     default:
       title:
