@@ -40,9 +40,11 @@ fields:
       name:
         fontWeight: ['400', '500']
         fontStyle: ['italic']
+        textDecoration: ['underline']
       title:
         fontWeight: ['400', '500']
         fontStyle: ['italic']
+        textDecoration: ['underline']
     default:
       name:
         fontWeight: 400
