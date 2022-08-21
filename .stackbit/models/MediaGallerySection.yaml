@@ -122,10 +122,12 @@ fields:
         fontWeight: ['400', '500']
         fontStyle: ['italic']
         textAlign: ['left', 'center', 'right']
+        textDecoration: ['underline']
       subtitle:
         fontWeight: ['400', '500']
         fontStyle: ['italic']
         textAlign: ['left', 'center', 'right']
+        textDecoration: ['underline']
     default:
       self:
         width: full

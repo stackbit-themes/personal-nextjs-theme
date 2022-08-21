@@ -54,15 +54,6 @@ const TAILWIND_MAP = {
         'xx-large': 'shadow-2xl',
         'inner': 'shadow-inner'
     },
-    fontSize: {
-        'x-small': 'text-xs',
-        small: 'text-sm',
-        medium: 'text-base',
-        large: 'text-lg',
-        'x-large': 'text-xl',
-        'xx-large': 'text-2xl',
-        'xxx-large': 'text-3xl'
-    },
     fontStyle: {
         italic: 'italic'
     },
@@ -110,6 +101,10 @@ const TAILWIND_MAP = {
         center: 'text-center',
         right: 'text-right',
         justify: 'text-justify'
+    },
+    textDecoration: {
+        underline: 'underline',
+        'line-through': 'line-through'
     },
     width: {
         narrow: 'max-w-5xl',
