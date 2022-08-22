@@ -70,9 +70,11 @@ fields:
       title:
         fontWeight: ['400', '500']
         fontStyle: ['italic']
+        textDecoration: ['underline']
       subtitle:
         fontWeight: ['400', '500']
         fontStyle: ['italic']
+        textDecoration: ['underline']
     default:
       self:
         textAlign: left

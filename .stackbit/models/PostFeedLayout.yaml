@@ -90,6 +90,7 @@ fields:
         fontWeight: ['400', '500']
         fontStyle: ['italic']
         textAlign: ['left', 'center', 'right']
+        textDecoration: ['underline']
     default:
       title:
         textAlign: center
