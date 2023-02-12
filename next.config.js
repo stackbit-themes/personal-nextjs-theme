@@ -21,10 +21,10 @@ module.exports = withBundleAnalyzer({
         // Instead, the src/pages/[...slug].js uses the "withRemoteDataUpdates"
         // function to update the content on the page without refreshing the
         // whole page
-        config.watchOptions.ignored.push('/content/');
+        config.watchOptions.ignored.push('**/content/**');
         if (dev) {
             // enable tree shaking for development mode, on production it is on by default
-            config.optimization.usedExports = true;
+            //config.optimization.usedExports = true;
         }
 
         return config;
