@@ -1,0 +1,30 @@
+import { Model } from '@stackbit/types';
+
+export const RecentProjectsSection: Model = {
+  type: "object",
+  name: "RecentProjectsSection",
+  label: "Recent projects",
+  labelField: "title",
+  extends: [
+    "ProjectFeedSection"
+  ],
+  groups: [
+    "sectionComponent"
+  ],
+  fields: [
+    {
+      name: "title",
+      default: "Recent projects"
+    },
+    {
+      name: "subtitle",
+      default: "Latest projects section example"
+    },
+    {
+      type: "number",
+      name: "recentCount",
+      label: "Number of recent projects to show",
+      default: 6
+    }
+  ]
+}
