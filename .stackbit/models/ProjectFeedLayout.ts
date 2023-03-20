@@ -1,155 +1,142 @@
 import { Model } from '@stackbit/types';
+import { seoFields, seoFieldGroups } from './seo-fields';
 
 export const ProjectFeedLayout: Model = {
-  name: "ProjectFeedLayout",
-  label: "Projects",
-  labelField: "title",
-  layout: "ProjectFeedLayout",
-  hideContent: true,
-  extends: [
-    "Seo"
-  ],
-  fieldGroups: [
-    {
-      name: "styles",
-      label: "Styles",
-      icon: "palette"
-    }
-  ],
-  fields: [
-    {
-      type: "string",
-      name: "title",
-      label: "Title",
-      default: "This is a page title"
-    },
-    {
-      type: "enum",
-      name: "colors",
-      label: "Colors",
-      description: "The color theme of the page",
-      group: "styles",
-      controlType: "palette",
-      options: [
+    type: 'page',
+    name: 'ProjectFeedLayout',
+    label: 'Projects',
+    layout: 'ProjectFeedLayout',
+    hideContent: true,
+    singleInstance: true,
+    urlPath: '/projects',
+    file: 'projects/index.md',
+    filePath: 'projects/index.md',
+    fieldGroups: [
+        ...seoFieldGroups,
         {
-          label: "Colors A",
-          value: "colors-a",
-          textColor: "$onDark",
-          backgroundColor: "$dark",
-          borderColor: "#ececec"
-        },
-        {
-          label: "Colors B",
-          value: "colors-b",
-          textColor: "$onLight",
-          backgroundColor: "$light",
-          borderColor: "#ececec"
-        },
-        {
-          label: "Colors C",
-          value: "colors-c",
-          textColor: "$onPrimary",
-          backgroundColor: "$primary",
-          borderColor: "#ececec"
-        },
-        {
-          label: "Colors D",
-          value: "colors-d",
-          textColor: "$onSecondary",
-          backgroundColor: "$secondary",
-          borderColor: "#ececec"
-        },
-        {
-          label: "Colors E",
-          value: "colors-e",
-          textColor: "$onComplementary",
-          backgroundColor: "$complementary",
-          borderColor: "#ececec"
+            name: 'styles',
+            label: 'Styles',
+            icon: 'palette'
         }
-      ],
-      default: "colors-a"
-    },
-    {
-      type: "model",
-      name: "backgroundImage",
-      group: "styles",
-      label: "Page background image",
-      models: [
-        "BackgroundImage"
-      ]
-    },
-    {
-      type: "number",
-      name: "numOfProjectsPerPage",
-      label: "Number of projects per page",
-      description: "set to 0 to show all projects on a single page",
-      default: 10
-    },
-    {
-      type: "model",
-      name: "projectFeed",
-      readOnly: true,
-      label: "Project feed",
-      models: [
-        "PagedProjectsSection"
-      ],
-      default: {
-        title: null,
-        subtitle: null,
-        showDate: true,
-        showDescription: true,
-        variant: "variant-a"
-      }
-    },
-    {
-      type: "list",
-      name: "topSections",
-      label: "Top Sections",
-      items: {
-        type: "model",
-        groups: [
-          "sectionComponent"
-        ]
-      }
-    },
-    {
-      type: "list",
-      name: "bottomSections",
-      label: "Bottom Sections",
-      items: {
-        type: "model",
-        groups: [
-          "sectionComponent"
-        ]
-      }
-    },
-    {
-      type: "style",
-      name: "styles",
-      styles: {
-        title: {
-          fontWeight: [
-            "400",
-            "500"
-          ],
-          fontStyle: [
-            "italic"
-          ],
-          textAlign: [
-            "left",
-            "center",
-            "right"
-          ],
-          textDecoration: [
-            "underline"
-          ]
+    ],
+    fields: [
+        {
+            type: 'string',
+            name: 'title',
+            label: 'Title',
+            default: 'This is a page title'
+        },
+        {
+            type: 'model',
+            name: 'projectFeed',
+            readOnly: true,
+            label: 'Project feed',
+            models: ['PagedProjectsSection'],
+            default: {
+                title: null,
+                subtitle: null,
+                showDate: true,
+                showDescription: true,
+                variant: 'variant-a'
+            }
+        },
+        {
+            type: 'number',
+            name: 'numOfProjectsPerPage',
+            label: 'Number of projects per page',
+            description: 'Set to 0 to show all projects on a single page',
+            default: 10
+        },
+        {
+            type: 'list',
+            name: 'topSections',
+            label: 'Top Sections',
+            items: {
+                type: 'model',
+                models: [],
+                groups: ['sectionComponent']
+            }
+        },
+        {
+            type: 'list',
+            name: 'bottomSections',
+            label: 'Bottom Sections',
+            items: {
+                type: 'model',
+                models: [],
+                groups: ['sectionComponent']
+            }
+        },
+        ...seoFields,
+        {
+            type: 'enum',
+            name: 'colors',
+            label: 'Colors',
+            description: 'The color theme of the page',
+            group: 'styles',
+            controlType: 'palette',
+            options: [
+                {
+                    label: 'Colors A',
+                    value: 'colors-a',
+                    textColor: '$onDark',
+                    backgroundColor: '$dark',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors B',
+                    value: 'colors-b',
+                    textColor: '$onLight',
+                    backgroundColor: '$light',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors C',
+                    value: 'colors-c',
+                    textColor: '$onPrimary',
+                    backgroundColor: '$primary',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors D',
+                    value: 'colors-d',
+                    textColor: '$onSecondary',
+                    backgroundColor: '$secondary',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors E',
+                    value: 'colors-e',
+                    textColor: '$onComplementary',
+                    backgroundColor: '$complementary',
+                    borderColor: '#ececec'
+                }
+            ],
+            default: 'colors-a'
+        },
+        {
+            type: 'model',
+            name: 'backgroundImage',
+            group: 'styles',
+            label: 'Page background image',
+            models: ['BackgroundImage']
+        },
+        {
+            type: 'style',
+            name: 'styles',
+            styles: {
+                title: {
+                    fontWeight: ['400', '500'],
+                    fontStyle: ['italic'],
+                    textAlign: ['left', 'center', 'right'],
+                    textDecoration: ['underline']
+                }
+            },
+            default: {
+                title: {
+                    textAlign: 'center'
+                }
+            }
         }
-      },
-      default: {
-        title: {
-          textAlign: "center"
-        }
-      }
-    }
-  ]
-}
+    ]
+};

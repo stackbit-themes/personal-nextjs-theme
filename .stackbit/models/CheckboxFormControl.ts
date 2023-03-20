@@ -1,54 +1,61 @@
 import { Model } from '@stackbit/types';
 
 export const CheckboxFormControl: Model = {
-  type: "object",
-  name: "CheckboxFormControl",
-  label: "Checkbox",
-  labelField: "label",
-  fields: [
-    {
-      type: "string",
-      name: "name",
-      label: "Name",
-      default: "updates",
-      required: true
-    },
-    {
-      type: "string",
-      name: "label",
-      label: "Label",
-      default: "Sign me up to receive updates"
-    },
-    {
-      type: "boolean",
-      name: "isRequired",
-      label: "Is the field required?",
-      default: false
-    },
-    {
-      type: "enum",
-      name: "width",
-      group: "styles",
-      label: "Width",
-      options: [
+    type: 'object',
+    name: 'CheckboxFormControl',
+    label: 'Checkbox',
+    labelField: 'label',
+    fieldGroups: [
         {
-          label: "Full",
-          value: "full"
+            name: 'styles',
+            label: 'Styles',
+            icon: 'palette'
         },
         {
-          label: "One half",
-          value: "1/2"
+            name: 'settings',
+            label: 'Settings',
+            icon: 'gear'
         }
-      ],
-      default: "full",
-      required: true
-    }
-  ],
-  fieldGroups: [
-    {
-      name: "styles",
-      label: "Styles",
-      icon: "palette"
-    }
-  ]
-}
+    ],
+    fields: [
+        {
+            type: 'string',
+            name: 'name',
+            label: 'Name',
+            default: 'updates',
+            required: true,
+            description: "Must be unique - this is the property name that will be sent to the server with this field's value."
+        },
+        {
+            type: 'string',
+            name: 'label',
+            label: 'Label',
+            default: 'Sign me up to receive updates'
+        },
+        {
+            type: 'enum',
+            name: 'width',
+            group: 'styles',
+            label: 'Width',
+            options: [
+                {
+                    label: 'Full',
+                    value: 'full'
+                },
+                {
+                    label: 'One half',
+                    value: '1/2'
+                }
+            ],
+            default: 'full',
+            required: true
+        },
+        {
+            type: 'boolean',
+            name: 'isRequired',
+            group: 'settings',
+            label: 'Is the field required?',
+            default: false
+        }
+    ]
+};

@@ -1,66 +1,73 @@
 import { Model } from '@stackbit/types';
 
 export const TextFormControl: Model = {
-  type: "object",
-  name: "TextFormControl",
-  label: "Text",
-  labelField: "label",
-  fieldGroups: [
-    {
-      name: "styles",
-      label: "Styles",
-      icon: "palette"
-    }
-  ],
-  fields: [
-    {
-      type: "string",
-      name: "name",
-      label: "Name",
-      required: true,
-      default: "home-address"
-    },
-    {
-      type: "string",
-      name: "label",
-      label: "Label",
-      default: "Home address"
-    },
-    {
-      type: "boolean",
-      name: "hideLabel",
-      label: "Hide label",
-      default: false
-    },
-    {
-      type: "string",
-      name: "placeholder",
-      label: "Placeholder text",
-      default: "Your home address"
-    },
-    {
-      type: "boolean",
-      name: "isRequired",
-      label: "Is the field required?",
-      default: false
-    },
-    {
-      type: "enum",
-      name: "width",
-      group: "styles",
-      label: "Width",
-      options: [
+    type: 'object',
+    name: 'TextFormControl',
+    label: 'Text',
+    labelField: 'label',
+    fieldGroups: [
         {
-          label: "Full",
-          value: "full"
+            name: 'styles',
+            label: 'Styles',
+            icon: 'palette'
         },
         {
-          label: "One half",
-          value: "1/2"
+            name: 'settings',
+            label: 'Settings',
+            icon: 'gear'
         }
-      ],
-      default: "full",
-      required: true
-    }
-  ]
-}
+    ],
+    fields: [
+        {
+            type: 'string',
+            name: 'name',
+            label: 'Name',
+            required: true,
+            default: 'name',
+            description: "Must be unique - this is the property name that will be sent to the server with this field's value."
+        },
+        {
+            type: 'string',
+            name: 'label',
+            label: 'Label',
+            default: 'Name'
+        },
+        {
+            type: 'boolean',
+            name: 'hideLabel',
+            label: 'Hide label',
+            default: false
+        },
+        {
+            type: 'string',
+            name: 'placeholder',
+            label: 'Placeholder text',
+            default: 'Your name'
+        },
+        {
+            type: 'enum',
+            name: 'width',
+            group: 'styles',
+            label: 'Width',
+            options: [
+                {
+                    label: 'Full',
+                    value: 'full'
+                },
+                {
+                    label: 'One half',
+                    value: '1/2'
+                }
+            ],
+            default: 'full',
+            required: true
+        },
+        {
+            type: 'boolean',
+            name: 'isRequired',
+            group: 'settings',
+            label: 'Is the field required?',
+            default: false
+        }
+    ]
+};

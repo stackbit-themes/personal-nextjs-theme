@@ -1,155 +1,139 @@
 import { Model } from '@stackbit/types';
+import { seoFields, seoFieldGroups } from './seo-fields';
 
 export const PostFeedLayout: Model = {
-  name: "PostFeedLayout",
-  label: "Blog",
-  labelField: "title",
-  layout: "PostFeedLayout",
-  hideContent: true,
-  fieldGroups: [
-    {
-      name: "styles",
-      label: "Styles",
-      icon: "palette"
-    }
-  ],
-  extends: [
-    "Seo"
-  ],
-  fields: [
-    {
-      type: "string",
-      name: "title",
-      label: "Title",
-      default: "This is a page title"
-    },
-    {
-      type: "enum",
-      name: "colors",
-      label: "Colors",
-      description: "The color theme of the page",
-      group: "styles",
-      controlType: "palette",
-      options: [
+    type: 'page',
+    name: 'PostFeedLayout',
+    label: 'Blog',
+    labelField: 'title',
+    layout: 'PostFeedLayout',
+    hideContent: true,
+    fieldGroups: [
+        ...seoFieldGroups,
         {
-          label: "Colors A",
-          value: "colors-a",
-          textColor: "$onDark",
-          backgroundColor: "$dark",
-          borderColor: "#ececec"
-        },
-        {
-          label: "Colors B",
-          value: "colors-b",
-          textColor: "$onLight",
-          backgroundColor: "$light",
-          borderColor: "#ececec"
-        },
-        {
-          label: "Colors C",
-          value: "colors-c",
-          textColor: "$onPrimary",
-          backgroundColor: "$primary",
-          borderColor: "#ececec"
-        },
-        {
-          label: "Colors D",
-          value: "colors-d",
-          textColor: "$onSecondary",
-          backgroundColor: "$secondary",
-          borderColor: "#ececec"
-        },
-        {
-          label: "Colors E",
-          value: "colors-e",
-          textColor: "$onComplementary",
-          backgroundColor: "$complementary",
-          borderColor: "#ececec"
+            name: 'styles',
+            label: 'Styles',
+            icon: 'palette'
         }
-      ],
-      default: "colors-a"
-    },
-    {
-      type: "model",
-      name: "backgroundImage",
-      group: "styles",
-      label: "Page background image",
-      models: [
-        "BackgroundImage"
-      ]
-    },
-    {
-      type: "number",
-      name: "numOfPostsPerPage",
-      label: "Number of Posts per page",
-      description: "set to 0 to show all posts on a single page",
-      default: 10
-    },
-    {
-      type: "model",
-      name: "postFeed",
-      readOnly: true,
-      label: "Post Feed",
-      models: [
-        "PagedPostsSection"
-      ],
-      default: {
-        title: null,
-        subtitle: null,
-        showDate: true,
-        showAuthor: true,
-        variant: "variant-a"
-      }
-    },
-    {
-      type: "list",
-      name: "topSections",
-      label: "Top Sections",
-      items: {
-        type: "model",
-        groups: [
-          "sectionComponent"
-        ]
-      }
-    },
-    {
-      type: "list",
-      name: "bottomSections",
-      label: "Bottom Sections",
-      items: {
-        type: "model",
-        groups: [
-          "sectionComponent"
-        ]
-      }
-    },
-    {
-      type: "style",
-      name: "styles",
-      styles: {
-        title: {
-          fontWeight: [
-            "400",
-            "500"
-          ],
-          fontStyle: [
-            "italic"
-          ],
-          textAlign: [
-            "left",
-            "center",
-            "right"
-          ],
-          textDecoration: [
-            "underline"
-          ]
+    ],
+    fields: [
+        {
+            type: 'string',
+            name: 'title',
+            label: 'Title',
+            default: 'This is a page title'
+        },
+        {
+            type: 'model',
+            name: 'postFeed',
+            readOnly: true,
+            label: 'Post Feed',
+            models: ['PagedPostsSection'],
+            default: {
+                title: null,
+                subtitle: null,
+                showDate: true,
+                showAuthor: true,
+                variant: 'variant-a'
+            }
+        },
+        {
+            type: 'number',
+            name: 'numOfPostsPerPage',
+            label: 'Number of Posts per page',
+            description: 'set to 0 to show all posts on a single page',
+            default: 10
+        },
+        {
+            type: 'list',
+            name: 'topSections',
+            label: 'Top Sections',
+            items: {
+                type: 'model',
+                models: [],
+                groups: ['sectionComponent']
+            }
+        },
+        {
+            type: 'list',
+            name: 'bottomSections',
+            label: 'Bottom Sections',
+            items: {
+                type: 'model',
+                models: [],
+                groups: ['sectionComponent']
+            }
+        },
+        ...seoFields,
+        {
+            type: 'enum',
+            name: 'colors',
+            label: 'Colors',
+            description: 'The color theme of the page',
+            group: 'styles',
+            controlType: 'palette',
+            options: [
+                {
+                    label: 'Colors A',
+                    value: 'colors-a',
+                    textColor: '$onDark',
+                    backgroundColor: '$dark',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors B',
+                    value: 'colors-b',
+                    textColor: '$onLight',
+                    backgroundColor: '$light',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors C',
+                    value: 'colors-c',
+                    textColor: '$onPrimary',
+                    backgroundColor: '$primary',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors D',
+                    value: 'colors-d',
+                    textColor: '$onSecondary',
+                    backgroundColor: '$secondary',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors E',
+                    value: 'colors-e',
+                    textColor: '$onComplementary',
+                    backgroundColor: '$complementary',
+                    borderColor: '#ececec'
+                }
+            ],
+            default: 'colors-a'
+        },
+        {
+            type: 'model',
+            name: 'backgroundImage',
+            group: 'styles',
+            label: 'Page background image',
+            models: ['BackgroundImage']
+        },
+        {
+            type: 'style',
+            name: 'styles',
+            styles: {
+                title: {
+                    fontWeight: ['400', '500'],
+                    fontStyle: ['italic'],
+                    textAlign: ['left', 'center', 'right'],
+                    textDecoration: ['underline']
+                }
+            },
+            default: {
+                title: {
+                    textAlign: 'center'
+                }
+            }
         }
-      },
-      default: {
-        title: {
-          textAlign: "center"
-        }
-      }
-    }
-  ]
-}
+    ]
+};
