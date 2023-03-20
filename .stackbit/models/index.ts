@@ -35,7 +35,6 @@ import { QuoteSection } from './QuoteSection';
 import { RecentPostsSection } from './RecentPostsSection';
 import { RecentProjectsSection } from './RecentProjectsSection';
 import { SelectFormControl } from './SelectFormControl';
-import { Seo } from './Seo';
 import { Social } from './Social';
 import { Testimonial } from './Testimonial';
 import { TestimonialsSection } from './TestimonialsSection';
@@ -83,7 +82,6 @@ export const allModels = {
     RecentPostsSection,
     RecentProjectsSection,
     SelectFormControl,
-    Seo,
     Social,
     Testimonial,
     TestimonialsSection,

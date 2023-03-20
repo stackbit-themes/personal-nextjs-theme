@@ -19,7 +19,8 @@ export const config = defineStackbitConfig({
         uploadDir: 'images',
         publicPath: '/'
     },
-    pageLayoutKey: 'type',
+    pageLayoutKey: 'layout',
+    objectTypeKey: 'type',
     styleObjectModelName: 'ThemeStyle'
 });
 export default config;
