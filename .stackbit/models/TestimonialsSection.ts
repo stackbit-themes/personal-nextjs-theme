@@ -6,7 +6,6 @@ export const TestimonialsSection: Model = {
     label: 'Testimonials',
     labelField: 'title',
     thumbnail: 'https://assets.stackbit.com/components/models/thumbnails/default.png',
-    extends: ['Section'],
     groups: ['sectionComponent'],
     fieldGroups: [
         {
@@ -21,28 +20,6 @@ export const TestimonialsSection: Model = {
         }
     ],
     fields: [
-        {
-            type: 'enum',
-            name: 'variant',
-            group: 'styles',
-            label: 'Arrangement',
-            options: [
-                {
-                    label: 'Two columns',
-                    value: 'variant-a'
-                },
-                {
-                    label: 'List, small images',
-                    value: 'variant-b'
-                },
-                {
-                    label: 'List, large images',
-                    value: 'variant-c'
-                }
-            ],
-            default: 'variant-a',
-            required: true
-        },
         {
             type: 'string',
             name: 'title',
@@ -74,6 +51,89 @@ export const TestimonialsSection: Model = {
                     }
                 }
             ]
+        },
+        {
+            type: 'enum',
+            name: 'colors',
+            label: 'Colors',
+            description: 'The color theme of the section',
+            group: 'styles',
+            controlType: 'palette',
+            options: [
+                {
+                    label: 'Colors A',
+                    value: 'colors-a',
+                    textColor: '$onDark',
+                    backgroundColor: '$dark',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors B',
+                    value: 'colors-b',
+                    textColor: '$onLight',
+                    backgroundColor: '$light',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors C',
+                    value: 'colors-c',
+                    textColor: '$onPrimary',
+                    backgroundColor: '$primary',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors D',
+                    value: 'colors-d',
+                    textColor: '$onSecondary',
+                    backgroundColor: '$secondary',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors E',
+                    value: 'colors-e',
+                    textColor: '$onComplementary',
+                    backgroundColor: '$complementary',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors F',
+                    value: 'colors-f',
+                    textColor: '$onLight',
+                    backgroundColor: 'transparent',
+                    borderColor: '#ececec'
+                }
+            ],
+            default: 'colors-f'
+        },
+        {
+            type: 'enum',
+            name: 'variant',
+            group: 'styles',
+            label: 'Arrangement',
+            options: [
+                {
+                    label: 'Two columns',
+                    value: 'variant-a'
+                },
+                {
+                    label: 'List, small images',
+                    value: 'variant-b'
+                },
+                {
+                    label: 'List, large images',
+                    value: 'variant-c'
+                }
+            ],
+            default: 'variant-a',
+            required: true
+        },
+        {
+            type: 'string',
+            name: 'elementId',
+            group: 'settings',
+            label: 'Element ID',
+            description: 'The unique ID for an HTML element, must not contain whitespace',
+            default: ''
         },
         {
             type: 'style',

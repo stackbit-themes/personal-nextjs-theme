@@ -6,7 +6,6 @@ export const HeroSection: Model = {
     label: 'Hero',
     labelField: 'title',
     thumbnail: 'https://assets.stackbit.com/components/models/thumbnails/default.png',
-    extends: ['Section'],
     groups: ['sectionComponent'],
     fieldGroups: [
         {
@@ -21,24 +20,6 @@ export const HeroSection: Model = {
         }
     ],
     fields: [
-        {
-            type: 'enum',
-            name: 'backgroundSize',
-            group: 'styles',
-            label: 'Background size',
-            options: [
-                {
-                    label: 'Full',
-                    value: 'full'
-                },
-                {
-                    label: 'Inset',
-                    value: 'inset'
-                }
-            ],
-            default: 'full',
-            required: true
-        },
         {
             type: 'string',
             name: 'title',
@@ -56,7 +37,7 @@ export const HeroSection: Model = {
             name: 'text',
             label: 'Text',
             default:
-                'Aenean eros ipsum, interdum quis dignissim non, sollicitudin vitae nisl.\nAenean vel aliquet elit, at blandit ipsum. Sed eleifend felis sit amet\nerat molestie, hendrerit malesuada justo ultrices. Nunc volutpat at erat\nvitae interdum. Ut nec massa eget lorem blandit condimentum et at risus.'
+                'Aenean eros ipsum, interdum quis dignissim non, sollicitudin vitae nisl. Aenean vel aliquet elit, at blandit ipsum. Sed eleifend felis sit amet erat molestie, hendrerit malesuada justo ultrices. Nunc volutpat at erat vitae interdum. Ut nec massa eget lorem blandit condimentum et at risus.'
         },
         {
             type: 'list',
@@ -92,6 +73,85 @@ export const HeroSection: Model = {
                 url: '/images/hero.webp',
                 altText: 'Hero section image'
             }
+        },
+        {
+            type: 'enum',
+            name: 'colors',
+            label: 'Colors',
+            description: 'The color theme of the section',
+            group: 'styles',
+            controlType: 'palette',
+            options: [
+                {
+                    label: 'Colors A',
+                    value: 'colors-a',
+                    textColor: '$onDark',
+                    backgroundColor: '$dark',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors B',
+                    value: 'colors-b',
+                    textColor: '$onLight',
+                    backgroundColor: '$light',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors C',
+                    value: 'colors-c',
+                    textColor: '$onPrimary',
+                    backgroundColor: '$primary',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors D',
+                    value: 'colors-d',
+                    textColor: '$onSecondary',
+                    backgroundColor: '$secondary',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors E',
+                    value: 'colors-e',
+                    textColor: '$onComplementary',
+                    backgroundColor: '$complementary',
+                    borderColor: '#ececec'
+                },
+                {
+                    label: 'Colors F',
+                    value: 'colors-f',
+                    textColor: '$onLight',
+                    backgroundColor: 'transparent',
+                    borderColor: '#ececec'
+                }
+            ],
+            default: 'colors-f'
+        },
+        {
+            type: 'enum',
+            name: 'backgroundSize',
+            group: 'styles',
+            label: 'Background size',
+            options: [
+                {
+                    label: 'Full',
+                    value: 'full'
+                },
+                {
+                    label: 'Inset',
+                    value: 'inset'
+                }
+            ],
+            default: 'full',
+            required: true
+        },
+        {
+            type: 'string',
+            name: 'elementId',
+            group: 'settings',
+            label: 'Element ID',
+            description: 'The unique ID for an HTML element, must not contain whitespace',
+            default: ''
         },
         {
             type: 'style',
