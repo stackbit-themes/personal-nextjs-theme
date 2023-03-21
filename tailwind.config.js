@@ -2,12 +2,8 @@ const plugin = require('tailwindcss/plugin');
 const themeStyle = require('./content/data/style.json');
 
 module.exports = {
-    mode: 'jit',
-    purge: {
-        content: ['./src/**/*.{js,ts,jsx,tsx}', './content/**/*'],
-        safelist: ['colors-a', 'colors-b', 'colors-c', 'colors-d', 'colors-e', 'colors-f']
-    },
-    darkMode: false,
+    content: ['./src/**/*.{js,ts,jsx,tsx}', './content/**/*'],
+    safelist: ['colors-a', 'colors-b', 'colors-c', 'colors-d', 'colors-e', 'colors-f'],
     theme: {
         extend: {
             colors: {
@@ -41,9 +37,6 @@ module.exports = {
                 widest: '.25em'
             }
         }
-    },
-    variants: {
-        extend: {}
     },
     plugins: [
         plugin(function ({ addBase, addComponents, theme }) {
@@ -126,7 +119,7 @@ module.exports = {
             });
             addComponents({
                 '.sb-component-button-primary': {
-                    fontWeight: themeStyle.buttonPrimary.weight,
+                    fontWeight: theme(`fontWeight.${themeStyle.buttonPrimary.weight}`),
                     letterSpacing: theme(`letterSpacing.${themeStyle.buttonPrimary.letterSpacing}`),
                     padding: `${themeStyle.buttonPrimary.verticalPadding}px ${themeStyle.buttonPrimary.horizontalPadding}px`,
                     textTransform: themeStyle.buttonPrimary.case
@@ -135,7 +128,7 @@ module.exports = {
                     padding: `${themeStyle.buttonPrimary.verticalPadding}px`
                 },
                 '.sb-component-button-secondary': {
-                    fontWeight: themeStyle.buttonSecondary.weight,
+                    fontWeight: theme(`fontWeight.${themeStyle.buttonSecondary.weight}`),
                     letterSpacing: theme(`letterSpacing.${themeStyle.buttonSecondary.letterSpacing}`),
                     padding: `${themeStyle.buttonSecondary.verticalPadding}px ${themeStyle.buttonSecondary.horizontalPadding}px`,
                     textTransform: themeStyle.buttonSecondary.case
@@ -144,7 +137,7 @@ module.exports = {
                     padding: `${themeStyle.buttonSecondary.verticalPadding}px`
                 },
                 '.sb-component-link': {
-                    fontWeight: themeStyle.link.weight,
+                    fontWeight: theme(`fontWeight.${themeStyle.link.weight}`),
                     letterSpacing: theme(`letterSpacing.${themeStyle.link.letterSpacing}`),
                     textTransform: themeStyle.link.case
                 }
