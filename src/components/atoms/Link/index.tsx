@@ -6,7 +6,7 @@ export default function Link({ children, href, ...other }) {
     const internal = /^\/(?!\/)/.test(href);
     if (internal) {
         return (
-            <NextLink href={href}>
+            <NextLink href={href} legacyBehavior>
                 <a {...other}>{children}</a>
             </NextLink>
         );
