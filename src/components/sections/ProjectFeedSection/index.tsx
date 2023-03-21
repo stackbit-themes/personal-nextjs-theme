@@ -160,7 +160,7 @@ function ProjectsVariantD(props) {
                     <article className="border-b border-current pb-10 md:pb-12 md:px-4">
                         <div className="md:flex md:items-center">
                             {showFeaturedImage && project.featuredImage && (
-                                <div className="mb-8 md:flex-shrink-0 md:self-stretch md:w-48 md:mb-0 md:mr-8">
+                                <div className="mb-8 md:shrink-0 md:self-stretch md:w-48 md:mb-0 md:mr-8">
                                     <div className="block h-0 w-full pt-2/3 relative overflow-hidden md:h-24 md:min-h-full md:pt-0">
                                         <ImageBlock
                                             {...project.featuredImage}
@@ -170,7 +170,7 @@ function ProjectsVariantD(props) {
                                     </div>
                                 </div>
                             )}
-                            <div className={classNames('md:flex-grow', showFeaturedImage && project.featuredImage ? null : 'md:ml-12')}>
+                            <div className={classNames('md:grow', showFeaturedImage && project.featuredImage ? null : 'md:ml-12')}>
                                 {showDate && project.date && (
                                     <div className="mb-3">
                                         <ProjectDate date={project.date} />

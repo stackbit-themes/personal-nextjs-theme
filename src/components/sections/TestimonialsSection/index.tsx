@@ -112,7 +112,7 @@ function TestimonialsVariantB(props) {
                     {(testimonial.name || testimonial.title || testimonial.image) && (
                         <footer className="flex flex-wrap items-center mt-6 md:mt-8">
                             {testimonial.image && (
-                                <div className="flex-shrink-0 mt-4 mr-6">
+                                <div className="shrink-0 mt-4 mr-6">
                                     <ImageBlock
                                         {...testimonial.image}
                                         className="w-12 h-12 sm:w-20 sm:h-20 object-cover rounded-full"
@@ -121,7 +121,7 @@ function TestimonialsVariantB(props) {
                                 </div>
                             )}
                             {(testimonial.name || testimonial.title) && (
-                                <div className="flex-grow mt-4">
+                                <div className="grow mt-4">
                                     {testimonial.name && (
                                         <div
                                             className={classNames('text-lg', testimonial.styles?.name ? mapStyles(testimonial.styles?.name) : null)}
@@ -162,11 +162,11 @@ function TestimonialsVariantC(props) {
                     data-sb-field-path={`.${index}`}
                 >
                     {testimonial.image && (
-                        <div className={classNames('flex-shrink-0', 'max-w-lg', 'mb-8', 'md:mb-0', 'md:w-2/5', index % 2 === 0 ? 'md:mr-8' : 'md:ml-8')}>
+                        <div className={classNames('shrink-0', 'max-w-lg', 'mb-8', 'md:mb-0', 'md:w-2/5', index % 2 === 0 ? 'md:mr-8' : 'md:ml-8')}>
                             <ImageBlock {...testimonial.image} className="w-full" data-sb-field-path=".image" />
                         </div>
                     )}
-                    <div className="flex-grow">
+                    <div className="grow">
                         {testimonial.quote && (
                             <Markdown
                                 options={{ forceBlock: true, forceWrapper: true }}
@@ -179,7 +179,7 @@ function TestimonialsVariantC(props) {
                         {(testimonial.name || testimonial.title) && (
                             <footer className="flex flex-wrap items-center mt-6 md:mt-8">
                                 {(testimonial.name || testimonial.title) && (
-                                    <div className="flex-grow mt-4">
+                                    <div className="grow mt-4">
                                         {testimonial.name && (
                                             <div
                                                 className={classNames('text-lg', testimonial.styles?.name ? mapStyles(testimonial.styles?.name) : null)}

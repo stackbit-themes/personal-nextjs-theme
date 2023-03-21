@@ -114,7 +114,7 @@ function MediaGalleryImage(props: MediaGalleryItemProps) {
                 })}
             />
             {showCaption && image.caption && (
-                <figcaption className="absolute bg-white bg-opacity-70 left-0 mx-2 bottom-2 p-1.5 text-xs pointer-events-none">{image.caption}</figcaption>
+                <figcaption className="absolute bg-white/50 text-dark left-0 mx-2 bottom-2 p-1.5 text-xs pointer-events-none">{image.caption}</figcaption>
             )}
         </figure>
     );

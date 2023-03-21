@@ -28,7 +28,7 @@ export default function VideoBlock(props) {
             {videoData.id && VideoComponent ? (
                 <VideoComponent id={videoData.id} autoplay={autoplay} loop={loop} muted={muted} controls={controls} />
             ) : (
-                <p className="absolute italic left-0 text-center top-1/2 transform -translate-y-1/2 w-full">Video URL is not supported.</p>
+                <p className="absolute italic left-0 text-center top-1/2 -translate-y-1/2 w-full">Video URL is not supported.</p>
             )}
         </div>
     );

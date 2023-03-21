@@ -34,7 +34,7 @@ export default function ProjectLayout(props) {
                                         {formattedDate}
                                     </time>
                                 </div>
-                                <h1 className="md:max-w-2xl md:flex-grow" data-sb-field-path="title">
+                                <h1 className="md:max-w-2xl md:grow" data-sb-field-path="title">
                                     {title}
                                 </h1>
                             </div>
