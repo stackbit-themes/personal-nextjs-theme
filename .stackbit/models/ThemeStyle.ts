@@ -5,7 +5,8 @@ export const ThemeStyle: Model = {
     name: 'ThemeStyle',
     label: 'Theme Style',
     singleInstance: true,
-    file: 'style.json',
+    readOnly: true,
+    filePath: 'content/data/style.json',
     fieldGroups: [
         {
             name: 'color-palettes',
