@@ -11,7 +11,7 @@ import Link from '../../atoms/Link';
 export default function PostLayout(props) {
     const { page, site } = props;
     const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
-    const { title, date, author, category, content, media, bottomSections = [] } = page;
+    const { title, date, author, category, markdown_content, media, bottomSections = [] } = page;
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('MM-DD-YYYY');
 
@@ -36,13 +36,13 @@ export default function PostLayout(props) {
                                 <PostMedia media={media} />
                             </div>
                         )}
-                        {content && (
+                        {markdown_content && (
                             <Markdown
                                 options={{ forceBlock: true, overrides: { pre: HighlightedPreBlock } }}
                                 className="sb-markdown max-w-screen-md mx-auto"
-                                data-sb-field-path="content"
+                                data-sb-field-path="markdown_content"
                             >
-                                {content}
+                                {markdown_content}
                             </Markdown>
                         )}
                     </div>

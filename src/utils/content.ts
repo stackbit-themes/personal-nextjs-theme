@@ -36,7 +36,7 @@ function readContent(file: string) {
             const parsedMd = frontmatter<Record<string, any>>(rawContent);
             content = {
                 ...parsedMd.attributes,
-                content: parsedMd.body
+                markdown_content: parsedMd.body
             };
             break;
         case 'json':
