@@ -6,14 +6,13 @@ import classNames from 'classnames';
 import HighlightedPreBlock from './../../../utils/highlighted-markdown';
 import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import { getComponent } from '../../components-registry';
-import getPageUrlPath from '../../../utils/get-page-url-path';
 import ImageBlock from '../../molecules/ImageBlock';
 import Link from '../../atoms/Link';
 
 export default function ProjectLayout(props) {
     const { page, site } = props;
     const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
-    const { title, date, client, description, markdown_content, media, prevProject, nextProject, bottomSections = [] } = page;
+    const { title, date, client, description, content, media, prevProject, nextProject, bottomSections = [] } = page;
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('MM-DD-YYYY');
 
@@ -49,13 +48,13 @@ export default function ProjectLayout(props) {
                                 <ProjectMedia media={media} />
                             </div>
                         )}
-                        {markdown_content && (
+                        {content && (
                             <Markdown
                                 options={{ forceBlock: true, overrides: { pre: HighlightedPreBlock } }}
                                 className="sb-markdown max-w-screen-md mx-auto"
-                                data-sb-field-path="markdown_content"
+                                data-sb-field-path="content"
                             >
-                                {markdown_content}
+                                {content}
                             </Markdown>
                         )}
                     </div>
@@ -98,7 +97,7 @@ function ProjectMedia({ media }) {
 
 function ProjectNavItem({ project, label }) {
     return (
-        <Link className="sb-project-nav-item group" href={getPageUrlPath(project)} data-sb-object-id={project.__metadata?.id}>
+        <Link className="sb-project-nav-item group" href={project.__metadata?.urlPath} data-sb-object-id={project.__metadata?.id}>
             {project.featuredImage && (
                 <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                     <ImageBlock

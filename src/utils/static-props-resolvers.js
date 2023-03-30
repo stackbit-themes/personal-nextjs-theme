@@ -30,7 +30,7 @@ export function resolveStaticProps(urlPath, data) {
     return mapDeepAsync(
         props,
         async (value, keyPath, stack) => {
-            const objectType = value?.type || value?.layout;
+            const objectType = value?.__metadata?.modelName;
             if (objectType && StaticPropsResolvers[objectType]) {
                 const resolver = StaticPropsResolvers[objectType];
                 return resolver(value, data, { keyPath, stack });
@@ -68,7 +68,7 @@ const StaticPropsResolvers = {
             items
         };
     },
-    Person: (props, data) => {
+    /*Person: (props, data) => {
         const authorId = props.__metadata?.id;
         const allAuthorPosts = getAllAuthorPostsSorted(data.objects, authorId);
         const paginationData = getPagedItemsForPage(props, allAuthorPosts, 10);
@@ -77,14 +77,14 @@ const StaticPropsResolvers = {
             ...props,
             ...paginationData,
             items,
-            layout: 'PostFeedLayout',
+            type: 'PostFeedLayout',
             postFeed: {
                 showAuthor: true,
                 showDate: true,
                 variant: 'variant-d'
             }
         };
-    },
+    },*/
     RecentPostsSection: (props, data) => {
         const allPosts = getAllPostsSorted(data.objects).slice(0, props.recentCount || 6);
         const recentPosts = resolveReferences(allPosts, ['author', 'category'], data.objects);

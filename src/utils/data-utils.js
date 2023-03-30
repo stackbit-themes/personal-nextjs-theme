@@ -16,7 +16,7 @@ export function getAllAuthorPostsSorted(objects, authorId) {
 }
 
 export function getAllPosts(objects) {
-    return objects.filter((object) => object.layout === 'PostLayout');
+    return objects.filter((object) => object.__metadata?.modelName === 'PostLayout');
 }
 
 export function sortPosts(posts) {
@@ -29,7 +29,7 @@ export function getAllProjectsSorted(objects) {
 }
 
 export function getAllProjects(objects) {
-    return objects.filter((object) => object.layout === 'ProjectLayout');
+    return objects.filter((object) => object.__metadata?.modelName === 'ProjectLayout');
 }
 
 export function sortProjects(projects) {

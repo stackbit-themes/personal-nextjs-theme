@@ -5,7 +5,6 @@ export const ProjectFeedLayout: Model = {
     type: 'page',
     name: 'ProjectFeedLayout',
     label: 'Projects',
-    layout: 'ProjectFeedLayout',
     hideContent: true,
     singleInstance: true,
     urlPath: '/projects',

@@ -5,7 +5,6 @@ export const PageLayout: Model = {
     type: 'page',
     name: 'PageLayout',
     label: 'Page',
-    layout: 'PageLayout',
     hideContent: true,
     urlPath: '/{slug}',
     filePath: '{slug}.md',
