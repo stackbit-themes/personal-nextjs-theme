@@ -6,12 +6,11 @@ import { resolveStaticPaths } from '../utils/static-paths-resolvers';
 
 function Page(props) {
     const { page, site } = props;
-    const { modelName } = page.__metadata;
+    const { modelName, urlPath } = page.__metadata;
     if (!modelName) {
-        throw new Error(`page has no type, page '${props.path}'`);
+        throw new Error(`page has no type, page: ${urlPath}`);
     }
     const PageLayout = getComponent(modelName);
-
     if (!PageLayout) {
         throw new Error(`no page type matching the page model: ${modelName}`);
     }

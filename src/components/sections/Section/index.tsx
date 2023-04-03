@@ -49,8 +49,7 @@ function SectionInset(props: SectionProps) {
                     styles.padding ?? 'py-12 px-4',
                     styles.borderColor,
                     styles.borderStyle ? mapStyles({ borderStyle: styles.borderStyle }) : null,
-                    styles.borderRadius ? mapStyles({ borderRadius: styles.borderRadius }) : null,
-                    styles.boxShadow ? mapStyles({ boxShadow: styles.boxShadow }) : null
+                    styles.borderRadius ? mapStyles({ borderRadius: styles.borderRadius }) : null
                 )}
                 style={{
                     borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : null
@@ -81,8 +80,7 @@ function SectionFullWidth(props: SectionProps) {
                 styles.padding ?? 'py-12 px-4',
                 styles.borderColor,
                 styles.borderStyle ? mapStyles({ borderStyle: styles.borderStyle }) : null,
-                styles.borderRadius ? mapStyles({ borderRadius: styles.borderRadius }) : null,
-                styles.boxShadow ? mapStyles({ boxShadow: styles.boxShadow }) : null
+                styles.borderRadius ? mapStyles({ borderRadius: styles.borderRadius }) : null
             )}
             style={{
                 borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : null
