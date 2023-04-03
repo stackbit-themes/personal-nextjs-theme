@@ -1,16 +1,7 @@
 import { SignJWT } from 'jose/jwt/sign';
 import crypto from 'crypto';
 
-import {
-    getRootPagePath,
-    resolveReferences,
-    getAllPostsSorted,
-    getAllCategoryPostsSorted,
-    getAllAuthorPostsSorted,
-    getAllProjectsSorted,
-    getPagedItemsForPage,
-    mapDeepAsync
-} from './data-utils';
+import { getRootPagePath, resolveReferences, getAllPostsSorted, getAllProjectsSorted, getPagedItemsForPage, mapDeepAsync } from './data-utils';
 
 export function resolveStaticProps(urlPath, data) {
     // get root path of paged path: /blog/page/2 => /blog
@@ -43,58 +34,29 @@ export function resolveStaticProps(urlPath, data) {
 
 const StaticPropsResolvers = {
     PostLayout: (props, data, debugContext) => {
-        return resolveReferences(props, ['author', 'category'], data.objects, debugContext);
+        return resolveReferences(props, ['author'], data.objects, debugContext);
     },
     PostFeedLayout: (props, data) => {
         const numOfPostsPerPage = props.numOfPostsPerPage ?? 10;
         const allPosts = getAllPostsSorted(data.objects);
         const paginationData = getPagedItemsForPage(props, allPosts, numOfPostsPerPage);
-        const items = resolveReferences(paginationData.items, ['author', 'category'], data.objects);
+        const items = resolveReferences(paginationData.items, ['author'], data.objects);
         return {
             ...props,
             ...paginationData,
             items
         };
     },
-    PostFeedCategoryLayout: (props, data) => {
-        const categoryId = props.__metadata?.id;
-        const numOfPostsPerPage = props.numOfPostsPerPage ?? 10;
-        const allCategoryPosts = getAllCategoryPostsSorted(data.objects, categoryId);
-        const paginationData = getPagedItemsForPage(props, allCategoryPosts, numOfPostsPerPage);
-        const items = resolveReferences(paginationData.items, ['author', 'category'], data.objects);
-        return {
-            ...props,
-            ...paginationData,
-            items
-        };
-    },
-    /*Person: (props, data) => {
-        const authorId = props.__metadata?.id;
-        const allAuthorPosts = getAllAuthorPostsSorted(data.objects, authorId);
-        const paginationData = getPagedItemsForPage(props, allAuthorPosts, 10);
-        const items = resolveReferences(paginationData.items, ['author', 'category'], data.objects);
-        return {
-            ...props,
-            ...paginationData,
-            items,
-            type: 'PostFeedLayout',
-            postFeed: {
-                showAuthor: true,
-                showDate: true,
-                variant: 'variant-d'
-            }
-        };
-    },*/
     RecentPostsSection: (props, data) => {
         const allPosts = getAllPostsSorted(data.objects).slice(0, props.recentCount || 6);
-        const recentPosts = resolveReferences(allPosts, ['author', 'category'], data.objects);
+        const recentPosts = resolveReferences(allPosts, ['author'], data.objects);
         return {
             ...props,
             posts: recentPosts
         };
     },
     FeaturedPostsSection: (props, data, debugContext) => {
-        return resolveReferences(props, ['posts.author', 'posts.category'], data.objects, debugContext);
+        return resolveReferences(props, ['posts.author'], data.objects, debugContext);
     },
     ProjectLayout: (props, data) => {
         const allProjects = getAllProjectsSorted(data.objects);

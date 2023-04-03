@@ -6,12 +6,11 @@ import classNames from 'classnames';
 import HighlightedPreBlock from './../../../utils/highlighted-markdown';
 import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import { getComponent } from '../../components-registry';
-import Link from '../../atoms/Link';
 
 export default function PostLayout(props) {
     const { page, site } = props;
     const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
-    const { title, date, author, category, markdown_content, media, bottomSections = [] } = page;
+    const { title, date, author, markdown_content, media, bottomSections = [] } = page;
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('MM-DD-YYYY');
 
@@ -22,12 +21,15 @@ export default function PostLayout(props) {
                     <div className="max-w-5xl mx-auto">
                         <header className="mb-10 sm:mb-14">
                             <div className="uppercase mb-4 sm:mb-6">
-                                <span>
-                                    <time dateTime={dateTimeAttr} data-sb-field-path="date">
-                                        {formattedDate}
-                                    </time>
-                                </span>
-                                <PostAttribution author={author} category={category} />
+                                <time dateTime={dateTimeAttr} data-sb-field-path="date">
+                                    {formattedDate}
+                                </time>
+                                {author && (
+                                    <>
+                                        {' | '}
+                                        <PostAuthor author={author} />
+                                    </>
+                                )}
                             </div>
                             <h1 data-sb-field-path="title">{title}</h1>
                         </header>
@@ -75,46 +77,11 @@ function PostMedia({ media }) {
     return <Media {...media} className={classNames({ 'w-full': mediaType === 'ImageBlock' })} data-sb-field-path="media" />;
 }
 
-function PostAttribution(props) {
-    if (!props.author && !props.category) {
-        return null;
-    }
-    const author = props.author ? postAuthor(props.author) : null;
-    //const category = props.category ? postCategory(props.category) : null;
+function PostAuthor({ author }) {
     return (
-        <span>
-            {author && (
-                <>
-                    {' | '}
-                    {author}
-                </>
-            )}
+        <span data-sb-field-path="author">
+            {author.firstName && <span data-sb-field-path=".firstName">{author.firstName}</span>}{' '}
+            {author.lastName && <span data-sb-field-path=".lastName">{author.lastName}</span>}
         </span>
     );
 }
-
-function postAuthor(author) {
-    const children = (
-        <>
-            {author.firstName && <span data-sb-field-path=".firstName">{author.firstName}</span>}{' '}
-            {author.lastName && <span data-sb-field-path=".lastName">{author.lastName}</span>}
-        </>
-    );
-    return author.slug ? (
-        <Link data-sb-field-path="author" href={`/blog/author/${author.slug}`}>
-            {children}
-        </Link>
-    ) : (
-        <span data-sb-field-path="author">{children}</span>
-    );
-}
-
-/*
-function postCategory(category) {
-    return (
-        <Link data-sb-field-path="category" href={getPageUrlPath(category)}>
-            {category.title}
-        </Link>
-    );
-}
-*/

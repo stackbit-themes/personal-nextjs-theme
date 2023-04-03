@@ -7,7 +7,6 @@ import Section from '../Section';
 import { Link, Action } from '../../atoms';
 import ImageBlock from '../../molecules/ImageBlock';
 import ArrowUpRightIcon from '../../svgs/arrow-up-right';
-import getPageUrlPath from '../../../utils/get-page-url-path';
 
 export default function ProjectFeedSection(props) {
     const {

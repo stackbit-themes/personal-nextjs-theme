@@ -4,7 +4,7 @@ import glob from 'glob';
 import frontmatter from 'front-matter';
 import { allModels } from '../../.stackbit/models';
 import { Config } from '../../.stackbit/models/Config';
-import { urlPathFromFilePath } from './page-utils';
+import { urlPathFromFilePath, cssClassesFromFilePath } from './page-utils';
 
 export const pagesDir = 'content/pages';
 export const dataDir = 'content/data';
@@ -98,7 +98,9 @@ export function allContent() {
     objects.forEach((e) => resolveReferences(e, fileToContent));
 
     pages.forEach((page) => {
-        page.__metadata.urlPath = urlPathFromFilePath(page.__metadata.id.slice(pagesDir.length));
+        const filePath = page.__metadata.id.slice(pagesDir.length);
+        page.__metadata.urlPath = urlPathFromFilePath(filePath);
+        page.__metadata.pageCssClasses = cssClassesFromFilePath(filePath);
     });
 
     const siteConfig = data.find((e) => e.__metadata.modelName === Config.name);
