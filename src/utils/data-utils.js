@@ -3,20 +3,8 @@ export function getAllPostsSorted(objects) {
     return sortPosts(allPosts);
 }
 
-export function getAllCategoryPostsSorted(objects, categoryId) {
-    const allPosts = getAllPosts(objects);
-    const categoryPosts = allPosts.filter((post) => post.category === categoryId);
-    return sortPosts(categoryPosts);
-}
-
-export function getAllAuthorPostsSorted(objects, authorId) {
-    const allPosts = getAllPosts(objects);
-    const authorPosts = allPosts.filter((post) => post.author === authorId);
-    return sortPosts(authorPosts);
-}
-
 export function getAllPosts(objects) {
-    return objects.filter((object) => object.layout === 'PostLayout');
+    return objects.filter((object) => object.__metadata?.modelName === 'PostLayout');
 }
 
 export function sortPosts(posts) {
@@ -29,7 +17,7 @@ export function getAllProjectsSorted(objects) {
 }
 
 export function getAllProjects(objects) {
-    return objects.filter((object) => object.layout === 'ProjectLayout');
+    return objects.filter((object) => object.__metadata?.modelName === 'ProjectLayout');
 }
 
 export function sortProjects(projects) {

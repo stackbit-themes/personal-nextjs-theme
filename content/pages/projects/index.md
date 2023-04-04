@@ -1,5 +1,5 @@
 ---
-layout: ProjectFeedLayout
+type: ProjectFeedLayout
 title: Projects
 colors: colors-a
 backgroundImage:

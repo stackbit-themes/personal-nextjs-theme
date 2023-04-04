@@ -1,6 +1,6 @@
 ---
+type: PageLayout
 title: Home
-layout: PageLayout
 colors: colors-a
 backgroundImage:
   url: /images/bg1.jpg

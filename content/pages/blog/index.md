@@ -1,5 +1,5 @@
 ---
-layout: PostFeedLayout
+type: PostFeedLayout
 title: Blog
 colors: colors-a
 backgroundImage:

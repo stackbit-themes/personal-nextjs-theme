@@ -1,7 +1,7 @@
 ---
+type: PostLayout
 title: How I started a startup 🚀
 colors: colors-a
-layout: PostLayout
 date: '2021-06-28'
 author: content/data/team/doris-soto.json
 excerpt: >-

@@ -6,7 +6,6 @@ import classNames from 'classnames';
 import HighlightedPreBlock from './../../../utils/highlighted-markdown';
 import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import { getComponent } from '../../components-registry';
-import getPageUrlPath from '../../../utils/get-page-url-path';
 import ImageBlock from '../../molecules/ImageBlock';
 import Link from '../../atoms/Link';
 
@@ -98,7 +97,7 @@ function ProjectMedia({ media }) {
 
 function ProjectNavItem({ project, label }) {
     return (
-        <Link className="sb-project-nav-item group" href={getPageUrlPath(project)} data-sb-object-id={project.__metadata?.id}>
+        <Link className="sb-project-nav-item group" href={project.__metadata?.urlPath} data-sb-object-id={project.__metadata?.id}>
             {project.featuredImage && (
                 <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                     <ImageBlock

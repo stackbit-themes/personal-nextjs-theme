@@ -6,6 +6,7 @@ export const Config: Model = {
     label: 'Site configuration',
     singleInstance: true,
     readOnly: true,
+    filePath: 'content/data/config.json',
     fieldGroups: [
         {
             name: 'seo',

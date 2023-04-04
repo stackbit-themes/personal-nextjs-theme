@@ -6,8 +6,10 @@ export const PostFeedLayout: Model = {
     name: 'PostFeedLayout',
     label: 'Blog',
     labelField: 'title',
-    layout: 'PostFeedLayout',
     hideContent: true,
+    singleInstance: true,
+    urlPath: '/blog',
+    filePath: 'content/pages/blog/index.md',
     fieldGroups: [
         ...seoFieldGroups,
         {

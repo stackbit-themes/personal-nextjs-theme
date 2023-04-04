@@ -5,7 +5,7 @@ export const Person: Model = {
     name: 'Person',
     label: 'Person',
     labelField: 'firstName',
-    filePath: 'team/{slug}.json',
+    filePath: 'content/data/team/{slug}.json',
     fields: [
         {
             type: 'string',

@@ -164,8 +164,7 @@ export const CtaSection: Model = {
                             label: 'Complementary color',
                             color: '$complementary'
                         }
-                    ],
-                    boxShadow: '*'
+                    ]
                 },
                 title: {
                     fontWeight: ['400', '500'],

@@ -7,7 +7,6 @@ import Section from '../Section';
 import { Link, Action } from '../../atoms';
 import ImageBlock from '../../molecules/ImageBlock';
 import ArrowUpRightIcon from '../../svgs/arrow-up-right';
-import getPageUrlPath from '../../../utils/get-page-url-path';
 
 export default function PostFeedSection(props) {
     const {
@@ -108,7 +107,7 @@ function PostsVariantABC(props) {
             {...(annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
-                <Link key={index} data-sb-object-id={post.__metadata?.id} href={getPageUrlPath(post)} className="sb-post-feed-item block group">
+                <Link key={index} data-sb-object-id={post.__metadata?.id} href={post.__metadata?.urlPath} className="sb-post-feed-item block group">
                     <article className="border-b border-current pb-10 max-w-3xl">
                         {showFeaturedImage && post.featuredImage && (
                             <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
@@ -119,7 +118,7 @@ function PostsVariantABC(props) {
                                 />
                             </div>
                         )}
-                        <PostAttribution showDate={showDate} showAuthor={showAuthor} post={post} className="mb-3" />
+                        <PostAttribution showDate={showDate} showAuthor={showAuthor} date={post.date} author={post.author} className="mb-3" />
                         <h3 data-sb-field-path="title">{post.title}</h3>
                         {showExcerpt && post.excerpt && (
                             <p className="text-lg mt-5" data-sb-field-path="excerpt">
@@ -154,7 +153,7 @@ function PostsVariantD(props) {
             {...(annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
-                <Link key={index} data-sb-object-id={post.__metadata?.id} href={getPageUrlPath(post)} className="sb-post-feed-item block group">
+                <Link key={index} data-sb-object-id={post.__metadata?.id} href={post.__metadata?.urlPath} className="sb-post-feed-item block group">
                     <article className="border-b border-current pb-10 md:pb-12 md:px-4">
                         <div className="md:flex md:items-center">
                             {showFeaturedImage && post.featuredImage && (
@@ -169,7 +168,7 @@ function PostsVariantD(props) {
                                 </div>
                             )}
                             <div className={classNames('md:grow', showFeaturedImage && post.featuredImage ? null : 'md:ml-12')}>
-                                <PostAttribution showDate={showDate} showAuthor={showAuthor} post={post} className="mb-3" />
+                                <PostAttribution showDate={showDate} showAuthor={showAuthor} date={post.date} author={post.author} className="mb-3" />
                                 <h3 data-sb-field-path="title">{post.title}</h3>
                                 {showExcerpt && post.excerpt && (
                                     <p className="text-lg mt-5" data-sb-field-path="excerpt">
@@ -193,76 +192,26 @@ function PostsVariantD(props) {
     );
 }
 
-function PostAttribution({ showDate, showAuthor, post, className = '' }) {
-    const date = showDate ? postDate(post) : null;
-    const author = showAuthor ? postAuthor(post) : null;
-    const category = postCategory(post);
-    if (!date && !author && !category) {
+function PostAttribution({ showDate, showAuthor, date, author, className = '' }) {
+    if (!showDate && !(showAuthor && author)) {
         return null;
     }
     return (
-        <div className={className ? className : null}>
-            {date && <>{date}</>}
-            {author && (
-                <>
-                    {date && ' | '}
-                    {author}
-                </>
+        <div className={className}>
+            {showDate && (
+                <time dateTime={dayjs(date).format('YYYY-MM-DD HH:mm:ss')} data-sb-field-path="date">
+                    {dayjs(date).format('MM-DD-YYYY')}
+                </time>
             )}
-            {category && (
+            {showAuthor && author && (
                 <>
-                    {(date || author) && ' | '}
-                    {category}
+                    {showDate && ' | '}
+                    <span data-sb-field-path="author">
+                        {author.firstName && <span data-sb-field-path=".firstName">{author.firstName}</span>}{' '}
+                        {author.lastName && <span data-sb-field-path=".lastName">{author.lastName}</span>}
+                    </span>
                 </>
             )}
         </div>
-    );
-}
-
-function postDate(post) {
-    if (!post.date) {
-        return null;
-    }
-    const date = post.date;
-    const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
-    const formattedDate = dayjs(date).format('MM-DD-YYYY');
-    return (
-        <time dateTime={dateTimeAttr} data-sb-field-path="date">
-            {formattedDate}
-        </time>
-    );
-}
-
-function postAuthor(post) {
-    if (!post.author) {
-        return null;
-    }
-    const author = post.author;
-    const children = (
-        <>
-            {author.firstName && <span data-sb-field-path=".firstName">{author.firstName}</span>}{' '}
-            {author.lastName && <span data-sb-field-path=".lastName">{author.lastName}</span>}
-        </>
-    );
-    if (author.slug) {
-        return (
-            <Link data-sb-field-path="author" href={`/blog/author/${author.slug}`}>
-                {children}
-            </Link>
-        );
-    } else {
-        return <span data-sb-field-path="author">{children}</span>;
-    }
-}
-
-function postCategory(post) {
-    if (!post.category) {
-        return null;
-    }
-    const category = post.category;
-    return (
-        <Link data-sb-field-path="category" href={getPageUrlPath(category)}>
-            {category.title}
-        </Link>
     );
 }
