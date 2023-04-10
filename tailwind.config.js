@@ -1,13 +1,10 @@
 const plugin = require('tailwindcss/plugin');
 const themeStyle = require('./content/data/style.json');
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-    mode: 'jit',
-    purge: {
-        content: ['./src/**/*.{js,ts,jsx,tsx}', './content/**/*'],
-        safelist: ['colors-a', 'colors-b', 'colors-c', 'colors-d', 'colors-e', 'colors-f']
-    },
-    darkMode: false,
+    content: ['./src/**/*.{js,ts,jsx,tsx}', './content/**/*'],
+    safelist: ['colors-a', 'colors-b', 'colors-c', 'colors-d', 'colors-e', 'colors-f'],
     theme: {
         extend: {
             colors: {
@@ -41,9 +38,6 @@ module.exports = {
                 widest: '.25em'
             }
         }
-    },
-    variants: {
-        extend: {}
     },
     plugins: [
         plugin(function ({ addBase, addComponents, theme }) {
