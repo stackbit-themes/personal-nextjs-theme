@@ -1,7 +1,7 @@
 ---
 title: Sharing my wisdom with the world 🌎
 colors: colors-a
-layout: PostLayout
+type: PostLayout
 date: '2021-12-01'
 author: content/data/team/doris-soto.json
 excerpt: >-

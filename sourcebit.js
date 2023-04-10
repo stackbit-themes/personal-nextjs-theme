@@ -48,20 +48,6 @@ module.exports = {
                     return { site };
                 },
                 pages: (objects) => {
-                    const personObjects = objects.filter((object) => object.__metadata.relProjectPath?.startsWith('content/data/team/') && !!object.slug);
-                    const personPages = personObjects.map((person) => {
-                        const { __metadata, ...restProps } = person;
-                        const urlPath = `/blog/author/${person.slug}`;
-                        return {
-                            __metadata: {
-                                ...__metadata,
-                                urlPath,
-                                pageCssClasses: cssClassesFromUrlPath(urlPath)
-                            },
-                            ...restProps
-                        };
-                    });
-
                     const pageObjects = objects.filter((page) => page.__metadata.sourceName === 'pages');
                     const pages = pageObjects.map((page) => {
                         const { __metadata, ...restProps } = page;
@@ -69,14 +55,17 @@ module.exports = {
                         return {
                             __metadata: {
                                 ...__metadata,
-                                urlPath,
-                                pageCssClasses: cssClassesFromFilePath(page.__metadata.relSourcePath)
+                                urlPath
                             },
                             ...restProps
                         };
                     });
-
-                    return [...pages, ...personPages];
+                    /*
+                    console.log(
+                        '***',
+                        pages.map((p) => [p.__metadata.id, p.__metadata.urlPath])
+                    );*/
+                    return pages;
                 }
             }
         }

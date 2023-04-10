@@ -1,7 +1,7 @@
 ---
 title: One more cool project
 colors: colors-a
-layout: ProjectLayout
+type: ProjectLayout
 date: '2022-01-22'
 client: Awesome client
 description: >-
