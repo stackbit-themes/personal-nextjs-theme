@@ -6,7 +6,6 @@
 # stackbit
 .cache
 .stackbit/cache
-.sourcebit-nextjs-cache.json
 
 # testing
 /coverage
