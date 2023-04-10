@@ -4,15 +4,13 @@ import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
 
 import HighlightedPreBlock from './../../../utils/highlighted-markdown';
-import { getBaseLayoutComponent } from '../../../utils/base-layout';
+import BaseLayout from '../BaseLayout';
 import { getComponent } from '../../components-registry';
-import getPageUrlPath from '../../../utils/get-page-url-path';
 import Link from '../../atoms/Link';
 
 export default function PostLayout(props) {
     const { page, site } = props;
-    const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
-    const { title, date, author, category, markdown_content, media, bottomSections = [] } = page;
+    const { title, date, author, markdown_content, media, bottomSections = [] } = page;
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('MM-DD-YYYY');
 
@@ -28,7 +26,7 @@ export default function PostLayout(props) {
                                         {formattedDate}
                                     </time>
                                 </span>
-                                <PostAttribution author={author} category={category} />
+                                <PostAttribution author={author} />
                             </div>
                             <h1 data-sb-field-path="title">{title}</h1>
                         </header>
@@ -77,23 +75,16 @@ function PostMedia({ media }) {
 }
 
 function PostAttribution(props) {
-    if (!props.author && !props.category) {
+    if (!props.author) {
         return null;
     }
     const author = props.author ? postAuthor(props.author) : null;
-    const category = props.category ? postCategory(props.category) : null;
     return (
         <span>
             {author && (
                 <>
                     {' | '}
                     {author}
-                </>
-            )}
-            {category && (
-                <>
-                    {' | '}
-                    {category}
                 </>
             )}
         </span>
@@ -113,13 +104,5 @@ function postAuthor(author) {
         </Link>
     ) : (
         <span data-sb-field-path="author">{children}</span>
-    );
-}
-
-function postCategory(category) {
-    return (
-        <Link data-sb-field-path="category" href={getPageUrlPath(category)}>
-            {category.title}
-        </Link>
     );
 }

@@ -7,7 +7,6 @@ import Section from '../Section';
 import { Link, Action } from '../../atoms';
 import ImageBlock from '../../molecules/ImageBlock';
 import ArrowUpRightIcon from '../../svgs/arrow-up-right';
-import getPageUrlPath from '../../../utils/get-page-url-path';
 
 export default function ProjectFeedSection(props) {
     const {
@@ -106,7 +105,7 @@ function ProjectsVariantABC(props) {
             {...(annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
             {projects.map((project, index) => (
-                <Link key={index} data-sb-object-id={project.__metadata?.id} href={getPageUrlPath(project)} className="sb-project-feed-item block group">
+                <Link key={index} data-sb-object-id={project.__metadata.id} href={project.__metadata.urlPath} className="sb-project-feed-item block group">
                     <article className="border-b border-current pb-10 max-w-3xl">
                         {showFeaturedImage && project.featuredImage && (
                             <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
@@ -156,7 +155,7 @@ function ProjectsVariantD(props) {
             {...(annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
             {projects.map((project, index) => (
-                <Link key={index} data-sb-object-id={project.__metadata?.id} href={getPageUrlPath(project)} className="sb-project-feed-item block group">
+                <Link key={index} data-sb-object-id={project.__metadata.id} href={project.__metadata.urlPath} className="sb-project-feed-item block group">
                     <article className="border-b border-current pb-10 md:pb-12 md:px-4">
                         <div className="md:flex md:items-center">
                             {showFeaturedImage && project.featuredImage && (

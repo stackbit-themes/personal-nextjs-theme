@@ -194,12 +194,6 @@ export const PostLayout: Model = {
                     'TextSection'
                 ]
             }
-        },
-        {
-            type: 'markdown',
-            name: 'markdown_content',
-            label: 'Content',
-            description: 'Page content'
         }
     ]
 };

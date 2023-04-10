@@ -3,6 +3,7 @@ type: ProjectFeedLayout
 title: Projects
 colors: colors-a
 backgroundImage:
+  type: BackgroundImage
   url: /images/bg1.jpg
   backgroundSize: cover
   backgroundPosition: center
@@ -10,6 +11,7 @@ backgroundImage:
   opacity: 50
 numOfProjectsPerPage: 10
 projectFeed:
+  type: PagedProjectsSection
   colors: colors-f
   showDate: false
   showDescription: true

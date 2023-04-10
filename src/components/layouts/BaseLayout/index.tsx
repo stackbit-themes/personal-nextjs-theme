@@ -7,7 +7,7 @@ import Footer from '../../sections/Footer';
 import { seoGenerateTitle, seoGenerateMetaTags, seoGenerateMetaDescription } from '../../../utils/seo-utils';
 import { BackgroundImage } from '../../atoms';
 
-export default function DefaultBaseLayout(props) {
+export default function BaseLayout(props) {
     const { page, site } = props;
     const siteMeta = site?.__metadata ?? {};
     const pageMeta = page?.__metadata ?? {};
@@ -22,11 +22,11 @@ export default function DefaultBaseLayout(props) {
                     <title>{title}</title>
                     {metaDescription && <meta name="description" content={metaDescription} />}
                     {metaTags.map((metaTag) => {
-                      if (metaTag.format === 'property' ) {
-                        // OpenGraph meta tags (og:*) should be have the format <meta property="og:…" content="…">
-                        return  <meta key={metaTag.property} property={metaTag.property} content={metaTag.content} />
-                      }
-                      return  <meta key={metaTag.property} name={metaTag.property} content={metaTag.content} />
+                        if (metaTag.format === 'property') {
+                            // OpenGraph meta tags (og:*) should be have the format <meta property="og:…" content="…">
+                            return <meta key={metaTag.property} property={metaTag.property} content={metaTag.content} />;
+                        }
+                        return <meta key={metaTag.property} name={metaTag.property} content={metaTag.content} />;
                     })}
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     {site.favicon && <link rel="icon" href={site.favicon} />}

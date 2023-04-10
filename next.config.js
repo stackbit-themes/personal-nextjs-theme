@@ -1,18 +1,14 @@
-const sourcebit = require('sourcebit');
-const sourcebitConfig = require('./sourcebit.js');
+//const sourcebit = require('sourcebit');
+//const sourcebitConfig = require('./sourcebit.js');
+//sourcebit.fetch(sourcebitConfig);
 
-sourcebit.fetch(sourcebitConfig);
-
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    reactStrictMode: true,
     webpack: (config) => {
         config.watchOptions.ignored.push('**/content/**');
         return config;
     }
 };
 
-/** @type {import('next').NextConfig} */
-/*const nextConfig = {
-    reactStrictMode: true,
-  }
-  
-  module.exports = nextConfig*/
+module.exports = nextConfig;
