@@ -4,8 +4,8 @@
 /node_modules
 
 # stackbit
-.cache
 .stackbit/cache
+.cache
 
 # testing
 /coverage

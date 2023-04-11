@@ -107,7 +107,7 @@ function PostsVariantABC(props) {
             {...(annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
-                <Link key={index} data-sb-object-id={post.__metadata.id} href={post.__metadata.urlPath} className="sb-post-feed-item block group">
+                <Link key={index} data-sb-object-id={post.__metadata?.id} href={post.__metadata?.urlPath} className="sb-post-feed-item block group">
                     <article className="border-b border-current pb-10 max-w-3xl">
                         {showFeaturedImage && post.featuredImage && (
                             <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
@@ -153,7 +153,7 @@ function PostsVariantD(props) {
             {...(annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
-                <Link key={index} data-sb-object-id={post.__metadata.id} href={post.__metadata.urlPath} className="sb-post-feed-item block group">
+                <Link key={index} data-sb-object-id={post.__metadata?.id} href={post.__metadata?.urlPath} className="sb-post-feed-item block group">
                     <article className="border-b border-current pb-10 md:pb-12 md:px-4">
                         <div className="md:flex md:items-center">
                             {showFeaturedImage && post.featuredImage && (

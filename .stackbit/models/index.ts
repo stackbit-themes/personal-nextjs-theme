@@ -34,16 +34,17 @@ import { ProjectLayout } from './ProjectLayout';
 import { QuoteSection } from './QuoteSection';
 import { RecentPostsSection } from './RecentPostsSection';
 import { RecentProjectsSection } from './RecentProjectsSection';
-import { Section } from './Section';
 import { SelectFormControl } from './SelectFormControl';
-import { Seo } from './Seo';
 import { Social } from './Social';
 import { Testimonial } from './Testimonial';
 import { TestimonialsSection } from './TestimonialsSection';
+import { TextareaFormControl } from './TextareaFormControl';
 import { TextFormControl } from './TextFormControl';
 import { TextSection } from './TextSection';
-import { TextareaFormControl } from './TextareaFormControl';
 import { ThemeStyle } from './ThemeStyle';
+import { ThemeStyleButton } from './ThemeStyleButton';
+import { ThemeStyleHeading } from './ThemeStyleHeading';
+import { ThemeStyleLink } from './ThemeStyleLink';
 import { VideoBlock } from './VideoBlock';
 
 export const allModels = [
@@ -83,15 +84,16 @@ export const allModels = [
     QuoteSection,
     RecentPostsSection,
     RecentProjectsSection,
-    Section,
     SelectFormControl,
-    Seo,
     Social,
     Testimonial,
     TestimonialsSection,
+    TextareaFormControl,
     TextFormControl,
     TextSection,
-    TextareaFormControl,
     ThemeStyle,
+    ThemeStyleButton,
+    ThemeStyleHeading,
+    ThemeStyleLink,
     VideoBlock
 ];

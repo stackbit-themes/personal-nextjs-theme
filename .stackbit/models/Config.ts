@@ -6,7 +6,7 @@ export const Config: Model = {
     label: 'Site configuration',
     labelField: 'fixedLabel',
     singleInstance: true,
-    file: 'content/data/{slug}.json',
+    file: 'content/data/config.json',
     fieldGroups: [
         {
             name: 'seo',

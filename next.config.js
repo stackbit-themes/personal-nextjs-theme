@@ -6,7 +6,7 @@ const nextConfig = {
     trailingSlash: true,
     reactStrictMode: true,
     webpack: (config) => {
-        config.watchOptions.ignored.push('**/content/**');
+        config.watchOptions.ignored.push('**/content/pages/**');
         return config;
     }
 };

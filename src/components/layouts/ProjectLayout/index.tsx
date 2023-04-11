@@ -96,7 +96,7 @@ function ProjectMedia({ media }) {
 
 function ProjectNavItem({ project, label }) {
     return (
-        <Link className="sb-project-nav-item group" href={project.__metadata.urlPath} data-sb-object-id={project.__metadata.id}>
+        <Link className="sb-project-nav-item group" href={project.__metadata?.urlPath} data-sb-object-id={project.__metadata?.id}>
             {project.featuredImage && (
                 <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                     <ImageBlock

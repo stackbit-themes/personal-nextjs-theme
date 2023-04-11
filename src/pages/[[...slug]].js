@@ -1,7 +1,7 @@
 import React from 'react';
+import { allContent } from '../utils/content';
 import { getComponent } from '../components/components-registry';
 import { resolveStaticProps } from '../utils/static-props-resolvers';
-import { allContent } from '../utils/content';
 
 function Page(props) {
     const { page, site } = props;
