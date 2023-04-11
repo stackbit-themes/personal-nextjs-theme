@@ -3,6 +3,7 @@ type: PostLayout
 title: The Great Unbundling
 colors: colors-a
 backgroundImage:
+  type: BackgroundImage
   url: /images/bg2.jpg
   backgroundSize: cover
   backgroundPosition: center

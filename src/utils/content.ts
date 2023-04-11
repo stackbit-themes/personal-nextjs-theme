@@ -2,18 +2,17 @@ import * as fs from 'fs';
 import path from 'path';
 import glob from 'glob';
 import frontmatter from 'front-matter';
-import { allModels } from '../../.stackbit/models';
-import { Config } from '../../.stackbit/models/Config';
-import { urlPathFromFilePath, cssClassesFromFilePath } from './page-utils';
+import { allModels } from '.stackbit/models';
+import { Config } from '.stackbit/models/Config';
 
-export const pagesDir = 'content/pages';
-export const dataDir = 'content/data';
+const pagesDir = 'content/pages';
+const dataDir = 'content/data';
 
 const allReferenceFields = {};
-Object.entries(allModels).forEach(([modelName, model]) => {
+allModels.forEach((model) => {
     model.fields.forEach((field) => {
         if (field.type === 'reference' || (field.type === 'list' && field.items?.type === 'reference')) {
-            allReferenceFields[modelName + ':' + field.name] = true;
+            allReferenceFields[model.name + ':' + field.name] = true;
         }
     });
 });
@@ -60,7 +59,7 @@ function resolveReferences(content, fileToContent) {
 
     const modelName = content.type;
     // Make Sourcebit-compatible
-    if (!content.__metadata) content.__metadata = { modelName: modelName };
+    if (!content.__metadata) content.__metadata = { modelName };
 
     for (const fieldName in content) {
         let fieldValue = content[fieldName];
@@ -88,6 +87,17 @@ function resolveReferences(content, fileToContent) {
     }
 }
 
+function fileToUrl(file: string) {
+    if (!file.startsWith(pagesDir)) return null;
+
+    let url = file.slice(pagesDir.length);
+    url = url.split('.')[0];
+    if (url.endsWith('/index')) {
+        url = url.slice(0, -6) || '/';
+    }
+    return url;
+}
+
 export function allContent() {
     const [data, pages] = [dataDir, pagesDir].map((dir) => {
         return contentFilesInPath(dir).map((file) => readContent(file));
@@ -98,9 +108,7 @@ export function allContent() {
     objects.forEach((e) => resolveReferences(e, fileToContent));
 
     pages.forEach((page) => {
-        const filePath = page.__metadata.id.slice(pagesDir.length);
-        page.__metadata.urlPath = urlPathFromFilePath(filePath);
-        page.__metadata.pageCssClasses = cssClassesFromFilePath(filePath);
+        page.__metadata.urlPath = fileToUrl(page.__metadata.id);
     });
 
     const siteConfig = data.find((e) => e.__metadata.modelName === Config.name);

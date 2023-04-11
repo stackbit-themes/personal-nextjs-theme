@@ -4,12 +4,11 @@ import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
 
 import HighlightedPreBlock from './../../../utils/highlighted-markdown';
-import { getBaseLayoutComponent } from '../../../utils/base-layout';
+import BaseLayout from '../BaseLayout';
 import { getComponent } from '../../components-registry';
 
 export default function PostLayout(props) {
     const { page, site } = props;
-    const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
     const { title, date, author, markdown_content, media, bottomSections = [] } = page;
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('MM-DD-YYYY');

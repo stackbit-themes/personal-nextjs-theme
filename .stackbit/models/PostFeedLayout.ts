@@ -9,7 +9,7 @@ export const PostFeedLayout: Model = {
     hideContent: true,
     singleInstance: true,
     urlPath: '/blog',
-    filePath: 'content/pages/blog/index.md',
+    file: 'content/pages/blog/index.md',
     fieldGroups: [
         ...seoFieldGroups,
         {

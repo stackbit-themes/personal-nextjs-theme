@@ -47,7 +47,7 @@ import { ThemeStyleHeading } from './ThemeStyleHeading';
 import { ThemeStyleLink } from './ThemeStyleLink';
 import { VideoBlock } from './VideoBlock';
 
-export const allModels = {
+export const allModels = [
     BackgroundImage,
     Button,
     CheckboxFormControl,
@@ -96,4 +96,4 @@ export const allModels = {
     ThemeStyleHeading,
     ThemeStyleLink,
     VideoBlock
-};
+];

@@ -1,23 +1,11 @@
-import { SignJWT } from 'jose/jwt/sign';
-import crypto from 'crypto';
-
-import { getRootPagePath, resolveReferences, getAllPostsSorted, getAllProjectsSorted, getPagedItemsForPage, mapDeepAsync } from './data-utils';
+import { getAllPostsSorted, getAllProjectsSorted, mapDeepAsync } from './data-utils';
 
 export function resolveStaticProps(urlPath, data) {
-    // get root path of paged path: /blog/page/2 => /blog
-    const rootUrlPath = getRootPagePath(urlPath);
-    const { __metadata, ...rest } = data.pages.find((page) => page.__metadata.urlPath === rootUrlPath);
     const props = {
-        page: {
-            __metadata: {
-                ...__metadata,
-                // override urlPath in metadata with paged path: /blog => /blog/page/2
-                urlPath
-            },
-            ...rest
-        },
+        page: data.pages.find((page) => page.__metadata.urlPath === urlPath),
         ...data.props
     };
+
     return mapDeepAsync(
         props,
         async (value, keyPath, stack) => {
@@ -33,30 +21,19 @@ export function resolveStaticProps(urlPath, data) {
 }
 
 const StaticPropsResolvers = {
-    PostLayout: (props, data, debugContext) => {
-        return resolveReferences(props, ['author'], data.objects, debugContext);
-    },
     PostFeedLayout: (props, data) => {
-        const numOfPostsPerPage = props.numOfPostsPerPage ?? 10;
         const allPosts = getAllPostsSorted(data.objects);
-        const paginationData = getPagedItemsForPage(props, allPosts, numOfPostsPerPage);
-        const items = resolveReferences(paginationData.items, ['author'], data.objects);
         return {
             ...props,
-            ...paginationData,
-            items
+            items: allPosts
         };
     },
     RecentPostsSection: (props, data) => {
-        const allPosts = getAllPostsSorted(data.objects).slice(0, props.recentCount || 6);
-        const recentPosts = resolveReferences(allPosts, ['author'], data.objects);
+        const recentPosts = getAllPostsSorted(data.objects).slice(0, props.recentCount || 3);
         return {
             ...props,
             posts: recentPosts
         };
-    },
-    FeaturedPostsSection: (props, data, debugContext) => {
-        return resolveReferences(props, ['posts.author'], data.objects, debugContext);
     },
     ProjectLayout: (props, data) => {
         const allProjects = getAllProjectsSorted(data.objects);
@@ -71,39 +48,17 @@ const StaticPropsResolvers = {
         };
     },
     ProjectFeedLayout: (props, data) => {
-        const numOfProjectsPerPage = props.numOfProjectsPerPage ?? 10;
         const allProjects = getAllProjectsSorted(data.objects);
-        const paginationData = getPagedItemsForPage(props, allProjects, numOfProjectsPerPage);
-        const items = paginationData.items;
         return {
             ...props,
-            ...paginationData,
-            items
+            items: allProjects
         };
     },
     RecentProjectsSection: (props, data) => {
-        const recentProjects = getAllProjectsSorted(data.objects).slice(0, props.recentCount || 6);
+        const recentProjects = getAllProjectsSorted(data.objects).slice(0, props.recentCount || 3);
         return {
             ...props,
             projects: recentProjects
-        };
-    },
-    FeaturedProjectsSection: (props, data, debugContext) => {
-        return resolveReferences(props, ['projects'], data.objects, debugContext);
-    },
-    FormBlock: async (props) => {
-        if (!props.destination) {
-            return props;
-        }
-        if (!process.env.STACKBIT_CONTACT_FORM_SECRET) {
-            console.error(`No STACKBIT_CONTACT_FORM_SECRET provided. It will not work properly for production build.`);
-            return props;
-        }
-        const secretKey = crypto.createHash('sha256').update(process.env.STACKBIT_CONTACT_FORM_SECRET).digest();
-        const destination = await new SignJWT({ email: props.destination }).setProtectedHeader({ alg: 'HS256' }).sign(secretKey);
-        return {
-            ...props,
-            destination
         };
     }
 };

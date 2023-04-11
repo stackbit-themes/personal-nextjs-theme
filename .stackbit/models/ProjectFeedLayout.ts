@@ -8,7 +8,7 @@ export const ProjectFeedLayout: Model = {
     hideContent: true,
     singleInstance: true,
     urlPath: '/projects',
-    filePath: 'content/pages/projects/index.md',
+    file: 'content/pages/projects/index.md',
     fieldGroups: [
         ...seoFieldGroups,
         {

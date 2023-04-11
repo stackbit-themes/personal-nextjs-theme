@@ -4,14 +4,13 @@ import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
 
 import HighlightedPreBlock from './../../../utils/highlighted-markdown';
-import { getBaseLayoutComponent } from '../../../utils/base-layout';
+import BaseLayout from '../BaseLayout';
 import { getComponent } from '../../components-registry';
 import ImageBlock from '../../molecules/ImageBlock';
 import Link from '../../atoms/Link';
 
 export default function ProjectLayout(props) {
     const { page, site } = props;
-    const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
     const { title, date, client, description, markdown_content, media, prevProject, nextProject, bottomSections = [] } = page;
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('MM-DD-YYYY');
@@ -33,7 +32,7 @@ export default function ProjectLayout(props) {
                                         {formattedDate}
                                     </time>
                                 </div>
-                                <h1 className="md:max-w-2xl md:grow" data-sb-field-path="title">
+                                <h1 className="md:max-w-2xl md:flex-grow" data-sb-field-path="title">
                                     {title}
                                 </h1>
                             </div>

@@ -2,11 +2,8 @@
 
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
 
 # stackbit
-.sourcebit-nextjs-cache.json
 .stackbit/cache
 .cache
 
@@ -15,7 +12,6 @@
 
 # next.js
 /.next/
-/out/
 
 # production
 /build
