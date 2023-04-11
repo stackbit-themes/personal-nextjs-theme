@@ -36,6 +36,3 @@ yarn-error.log*
 # IDE
 *.code-workspace
 .idea
-
-# TODO remove
-src/pages/api/content
