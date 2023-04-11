@@ -11,6 +11,7 @@ featuredImage:
   url: /images/featured-Image1.jpg
   altText: Post thumbnail image
 backgroundImage:
+  type: BackgroundImage
   url: /images/gallery-3.jpg
   backgroundSize: cover
   backgroundPosition: center

@@ -1,8 +1,7 @@
 import React from 'react';
-import { allContent } from '../utils/content';
 import { getComponent } from '../components/components-registry';
 import { resolveStaticProps } from '../utils/static-props-resolvers';
-import { resolveStaticPaths } from '../utils/static-paths-resolvers';
+import { allContent } from '../utils/local-content';
 
 function Page(props) {
     const { page, site } = props;
@@ -17,9 +16,9 @@ function Page(props) {
     return <PageLayout page={page} site={site} />;
 }
 
-export async function getStaticPaths() {
+export function getStaticPaths() {
     const data = allContent();
-    const paths = resolveStaticPaths(data);
+    const paths = data.pages.map((page) => page.__metadata?.urlPath);
     return { paths, fallback: false };
 }
 

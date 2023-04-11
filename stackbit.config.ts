@@ -2,7 +2,8 @@ import { defineStackbitConfig } from '@stackbit/types';
 import { GitContentSource } from '@stackbit/cms-git';
 import { allModels } from './.stackbit/models';
 
-export const config = defineStackbitConfig({
+// TODO siteMap function!
+const config = defineStackbitConfig({
     stackbitVersion: '~0.6.0',
     ssgName: 'nextjs',
     nodeVersion: '16',
@@ -10,7 +11,7 @@ export const config = defineStackbitConfig({
         new GitContentSource({
             rootPath: __dirname,
             contentDirs: ['content'],
-            models: Object.values(allModels),
+            models: allModels,
             assetsConfig: {
                 referenceType: 'static',
                 staticDir: 'public',

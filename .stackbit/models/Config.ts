@@ -4,9 +4,9 @@ export const Config: Model = {
     type: 'data',
     name: 'Config',
     label: 'Site configuration',
+    labelField: 'fixedLabel',
     singleInstance: true,
-    readOnly: true,
-    filePath: 'content/data/config.json',
+    file: 'content/data/{slug}.json',
     fieldGroups: [
         {
             name: 'seo',
@@ -15,6 +15,12 @@ export const Config: Model = {
         }
     ],
     fields: [
+        {
+            type: 'string',
+            name: 'fixedLabel',
+            const: 'Site configuration',
+            hidden: true
+        },
         {
             type: 'image',
             name: 'favicon',

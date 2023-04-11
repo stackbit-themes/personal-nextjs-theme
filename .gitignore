@@ -2,20 +2,16 @@
 
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
 
 # stackbit
-.sourcebit-nextjs-cache.json
-.stackbit/cache
 .cache
+.stackbit/cache
 
 # testing
 /coverage
 
 # next.js
 /.next/
-/out/
 
 # production
 /build
@@ -40,3 +36,6 @@ yarn-error.log*
 # IDE
 *.code-workspace
 .idea
+
+# TODO remove
+src/pages/api/content
