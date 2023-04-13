@@ -107,6 +107,7 @@ export const CtaSection: Model = {
             name: 'backgroundSize',
             group: 'styles',
             label: 'Background size',
+            controlType: 'button-group',
             options: [
                 {
                     label: 'Full',
@@ -117,8 +118,7 @@ export const CtaSection: Model = {
                     value: 'inset'
                 }
             ],
-            default: 'full',
-            required: true
+            default: 'full'
         },
         {
             type: 'string',

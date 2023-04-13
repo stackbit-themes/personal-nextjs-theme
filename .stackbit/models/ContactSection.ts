@@ -145,6 +145,7 @@ export const ContactSection: Model = {
             name: 'backgroundSize',
             group: 'styles',
             label: 'Background size',
+            controlType: 'button-group',
             options: [
                 {
                     label: 'Full',
@@ -155,8 +156,7 @@ export const ContactSection: Model = {
                     value: 'inset'
                 }
             ],
-            default: 'full',
-            required: true
+            default: 'full'
         },
         {
             type: 'string',

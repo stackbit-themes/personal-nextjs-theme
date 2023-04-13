@@ -132,6 +132,7 @@ export const HeroSection: Model = {
             name: 'backgroundSize',
             group: 'styles',
             label: 'Background size',
+            controlType: 'button-group',
             options: [
                 {
                     label: 'Full',
@@ -142,8 +143,7 @@ export const HeroSection: Model = {
                     value: 'inset'
                 }
             ],
-            default: 'full',
-            required: true
+            default: 'full'
         },
         {
             type: 'string',
