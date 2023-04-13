@@ -22,7 +22,6 @@ export default function ProjectFeedSection(props) {
         showDescription,
         showFeaturedImage,
         showReadMoreLink,
-        pageLinks,
         annotateProjects,
         styles = {},
         'data-sb-field-path': fieldPath
@@ -53,7 +52,6 @@ export default function ProjectFeedSection(props) {
                 annotateProjects={annotateProjects}
             />
             <ProjectFeedActions actions={actions} styles={styles.actions} />
-            {pageLinks}
         </Section>
     );
 }

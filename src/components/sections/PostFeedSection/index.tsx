@@ -23,7 +23,6 @@ export default function PostFeedSection(props) {
         showExcerpt,
         showFeaturedImage,
         showReadMoreLink,
-        pageLinks,
         annotatePosts,
         styles = {},
         'data-sb-field-path': fieldPath
@@ -55,7 +54,6 @@ export default function PostFeedSection(props) {
                 annotatePosts={annotatePosts}
             />
             <PostFeedActions actions={actions} styles={styles.actions} />
-            {pageLinks}
         </Section>
     );
 }
