@@ -7,7 +7,6 @@ import Section from '../Section';
 import { Link, Action } from '../../atoms';
 import ImageBlock from '../../molecules/ImageBlock';
 import ArrowUpRightIcon from '../../svgs/arrow-up-right';
-import getPageUrlPath from '../../../utils/get-page-url-path';
 
 export default function ProjectFeedSection(props) {
     const {
@@ -23,7 +22,6 @@ export default function ProjectFeedSection(props) {
         showDescription,
         showFeaturedImage,
         showReadMoreLink,
-        pageLinks,
         annotateProjects,
         styles = {},
         'data-sb-field-path': fieldPath
@@ -54,7 +52,6 @@ export default function ProjectFeedSection(props) {
                 annotateProjects={annotateProjects}
             />
             <ProjectFeedActions actions={actions} styles={styles.actions} />
-            {pageLinks}
         </Section>
     );
 }
@@ -106,7 +103,7 @@ function ProjectsVariantABC(props) {
             {...(annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
             {projects.map((project, index) => (
-                <Link key={index} data-sb-object-id={project.__metadata?.id} href={getPageUrlPath(project)} className="sb-project-feed-item block group">
+                <Link key={index} data-sb-object-id={project.__metadata?.id} href={project.__metadata?.urlPath} className="sb-project-feed-item block group">
                     <article className="border-b border-current pb-10 max-w-3xl">
                         {showFeaturedImage && project.featuredImage && (
                             <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
@@ -156,11 +153,11 @@ function ProjectsVariantD(props) {
             {...(annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
             {projects.map((project, index) => (
-                <Link key={index} data-sb-object-id={project.__metadata?.id} href={getPageUrlPath(project)} className="sb-project-feed-item block group">
+                <Link key={index} data-sb-object-id={project.__metadata?.id} href={project.__metadata?.urlPath} className="sb-project-feed-item block group">
                     <article className="border-b border-current pb-10 md:pb-12 md:px-4">
                         <div className="md:flex md:items-center">
                             {showFeaturedImage && project.featuredImage && (
-                                <div className="mb-8 md:flex-shrink-0 md:self-stretch md:w-48 md:mb-0 md:mr-8">
+                                <div className="mb-8 md:shrink-0 md:self-stretch md:w-48 md:mb-0 md:mr-8">
                                     <div className="block h-0 w-full pt-2/3 relative overflow-hidden md:h-24 md:min-h-full md:pt-0">
                                         <ImageBlock
                                             {...project.featuredImage}
@@ -170,7 +167,7 @@ function ProjectsVariantD(props) {
                                     </div>
                                 </div>
                             )}
-                            <div className={classNames('md:flex-grow', showFeaturedImage && project.featuredImage ? null : 'md:ml-12')}>
+                            <div className={classNames('md:grow', showFeaturedImage && project.featuredImage ? null : 'md:ml-12')}>
                                 {showDate && project.date && (
                                     <div className="mb-3">
                                         <ProjectDate date={project.date} />

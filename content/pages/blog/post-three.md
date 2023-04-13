@@ -1,7 +1,7 @@
 ---
+type: PostLayout
 title: JAMstack the future of web
 colors: colors-b
-layout: PostLayout
 date: '2021-11-04'
 author: content/data/team/doris-soto.json
 excerpt: >-
@@ -11,6 +11,7 @@ featuredImage:
   url: /images/featured-Image3.jpg
   altText: Post thumbnail image
 backgroundImage:
+  type: BackgroundImage
   url: /images/gallery-2.jpg
   backgroundSize: cover
   backgroundPosition: center

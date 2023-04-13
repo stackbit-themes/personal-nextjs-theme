@@ -1,5 +1,15 @@
 {
     "type": "ThemeStyle",
+    "light": "#ffffff",
+    "onLight": "#050806",
+    "dark": "#000000",
+    "onDark": "#FBFFF2",
+    "primary": "#0804F6",
+    "onPrimary": "#FBFFF2",
+    "secondary": "#FE491F",
+    "onSecondary": "#050806",
+    "complementary": "#565862",
+    "onComplementary": "#FBFFF2",
     "fontBody": "fontPrimary",
     "h1": {
         "size": "6xl",
@@ -43,16 +53,6 @@
         "case": "uppercase",
         "letterSpacing": "normal"
     },
-    "light": "#ffffff",
-    "onLight": "#050806",
-    "dark": "#000000",
-    "onDark": "#FBFFF2",
-    "primary": "#0804F6",
-    "onPrimary": "#FBFFF2",
-    "secondary": "#FE491F",
-    "onSecondary": "#050806",
-    "complementary": "#565862",
-    "onComplementary": "#FBFFF2",
     "buttonPrimary": {
         "weight": "normal",
         "case": "none",

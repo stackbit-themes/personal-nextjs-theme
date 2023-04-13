@@ -1,7 +1,7 @@
 ---
+type: PostLayout
 title: Habits of highly productive web developers ⌨️
 colors: colors-a
-layout: PostLayout
 date: '2022-01-04'
 author: content/data/team/doris-soto.json
 excerpt: >-
@@ -11,6 +11,7 @@ featuredImage:
   url: /images/featured-Image1.jpg
   altText: Post thumbnail image
 backgroundImage:
+  type: BackgroundImage
   url: /images/gallery-3.jpg
   backgroundSize: cover
   backgroundPosition: center

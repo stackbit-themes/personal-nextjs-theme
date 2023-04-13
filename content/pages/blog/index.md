@@ -1,15 +1,16 @@
 ---
-layout: PostFeedLayout
+type: PostFeedLayout
 title: Blog
 colors: colors-a
 backgroundImage:
+  type: BackgroundImage
   url: /images/bg2.jpg
   backgroundSize: cover
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 75
-numOfPostsPerPage: 10
 postFeed:
+  type: PagedPostsSection
   colors: colors-f
   showDate: true
   showAuthor: false

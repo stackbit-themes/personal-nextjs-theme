@@ -11,10 +11,10 @@
     body > div,
     .sb-page,
     .sb-base {
-        @apply flex flex-col flex-grow;
+        @apply flex flex-col grow;
     }
     .sb-layout {
-        @apply flex-grow;
+        @apply grow;
     }
     h1,
     h2,
@@ -224,7 +224,7 @@
         padding-left: 2.5em;
     }
     .sb-checkbox + .sb-label:before {
-        @apply absolute left-0 top-1/2 transform -translate-y-1/2 border border-current cursor-pointer text-center font-sans;
+        @apply absolute left-0 top-1/2 -translate-y-1/2 border border-current cursor-pointer text-center font-sans;
         content: '';
         height: 1.5em;
         width: 1.5em;

@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import {funky} from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import { funky } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+
+SyntaxHighlighter.registerLanguage('javascript', js);
+SyntaxHighlighter.registerLanguage('css', css);
 
 const CodeBlock = ({ className, children }) => {
     let lang = 'text'; // default monospaced text
@@ -12,7 +17,7 @@ const CodeBlock = ({ className, children }) => {
             {children}
         </SyntaxHighlighter>
     );
-}
+};
 
 // markdown-to-jsx uses <pre><code/></pre> for code blocks.
 export default function HighlightedPreBlock({ children, ...rest }) {
@@ -20,4 +25,4 @@ export default function HighlightedPreBlock({ children, ...rest }) {
         return CodeBlock(children['props']);
     }
     return <pre {...rest}>{children}</pre>;
-};
+}

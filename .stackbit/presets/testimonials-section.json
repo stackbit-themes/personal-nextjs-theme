@@ -2,41 +2,18 @@
     "model": "TestimonialsSection",
     "presets": [
         {
-            "label": "Testimonials transparent - small images, two columns",
+            "label": "Testimonials black - small images, two columns",
             "thumbnail": "images/testimonials-dark-small-images-col.png",
             "data": {
                 "colors": "colors-a",
                 "variant": "variant-a",
-                "title": "",
-                "subtitle": "",
-                "testimonials": [
-                    {
-                        "quote": "\"Our website is the core of our sales strategy. Doris helped us establish an easy-to-maintain Stackbit site with outstanding visuals!\"",
-                        "name": "John Doe",
-                        "title": "CEO at Parks",
-                        "image": {
-                            "type": "ImageBlock",
-                            "url": "/images/person-2.jpg",
-                            "altText": "John Doe"
-                        }
-                    },
-                    {
-                        "quote": "“Anytime I have a question, I know I can get in touch with Doris. She always helps me adjust my site to look as perfect as I’d hoped.”\n",
-                        "name": "Johnna Doe",
-                        "title": "Product Marketing Manager at Acme",
-                        "image": {
-                            "type": "ImageBlock",
-                            "url": "/images/person-3.jpg",
-                            "altText": "Johnna Doe"
-                        }
-                    }
-                ],
+                "title": null,
+                "subtitle": null,
                 "styles": {
                     "self": {
                         "height": "auto",
                         "width": "wide",
-                        "margin": ["mt-0", "mb-0"],
-                        "padding": ["pt-28", "pb-28"],
+                        "padding": ["pt-28", "pb-28", "pl-4", "pr-4"],
                         "justifyContent": "center"
                     },
                     "title": {
@@ -45,7 +22,29 @@
                     "subtitle": {
                         "textAlign": "center"
                     }
-                }
+                },
+                "testimonials": [
+                    {
+                        "quote": "\"Our website is the core of our sales strategy. Doris helped us establish an easy-to-maintain Stackbit site with outstanding visuals!\"\n",
+                        "name": "John Doe",
+                        "title": "CEO at Parks",
+                        "image": {
+                            "type": "ImageBlock",
+                            "url": "/images/person-2.jpg",
+                            "altText": "John Doe"
+                        }
+                    },
+                    {
+                        "quote": "“Anytime I have a question, I know I can get in touch with Doris. She always helps me adjust my site to look as perfect as I’d hoped.”\n",
+                        "name": "Johnna Doe",
+                        "title": "Product Marketing Manager at Acme",
+                        "image": {
+                            "type": "ImageBlock",
+                            "url": "/images/person-3.jpg",
+                            "altText": "Johnna Doe"
+                        }
+                    }
+                ]
             }
         },
         {
@@ -54,11 +53,11 @@
             "data": {
                 "colors": "colors-b",
                 "variant": "variant-b",
-                "title": "",
-                "subtitle": "",
+                "title": null,
+                "subtitle": null,
                 "testimonials": [
                     {
-                        "quote": "\"Our website is the core of our sales strategy. Doris helped us establish an easy-to-maintain Stackbit site with outstanding visuals!\"",
+                        "quote": "\"Our website is the core of our sales strategy. Doris helped us establish an easy-to-maintain Stackbit site with outstanding visuals!\"\n",
                         "name": "John Doe",
                         "title": "CEO at Parks",
                         "image": {
@@ -82,8 +81,7 @@
                     "self": {
                         "height": "auto",
                         "width": "wide",
-                        "margin": ["mt-0", "mb-0"],
-                        "padding": ["pt-28", "pb-28"],
+                        "padding": ["pt-28", "pb-28", "pl-4", "pr-4"],
                         "justifyContent": "center"
                     },
                     "title": {
@@ -101,11 +99,11 @@
             "data": {
                 "colors": "colors-d",
                 "variant": "variant-c",
-                "title": "",
-                "subtitle": "",
+                "title": null,
+                "subtitle": null,
                 "testimonials": [
                     {
-                        "quote": "\"Our website is the core of our sales strategy. Doris helped us establish an easy-to-maintain Stackbit site with outstanding visuals!\"",
+                        "quote": "\"Our website is the core of our sales strategy. Doris helped us establish an easy-to-maintain Stackbit site with outstanding visuals!\"\n",
                         "name": "John Doe",
                         "title": "CEO at Parks",
                         "image": {
@@ -129,8 +127,7 @@
                     "self": {
                         "height": "auto",
                         "width": "wide",
-                        "margin": ["mt-0", "mb-0"],
-                        "padding": ["pt-28", "pb-28"],
+                        "padding": ["pt-28", "pb-28", "pl-4", "pr-4"],
                         "justifyContent": "center"
                     },
                     "title": {

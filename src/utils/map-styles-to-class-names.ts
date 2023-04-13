@@ -44,28 +44,13 @@ const TAILWIND_MAP = {
         dotted: 'border-dotted',
         double: 'border-double'
     },
-    boxShadow: {
-        'none': 'shadow-none',
-        'x-small': 'shadow-sm',
-        small: 'shadow',
-        medium: 'shadow-md',
-        large: 'shadow-lg',
-        'x-large': 'shadow-xl',
-        'xx-large': 'shadow-2xl',
-        'inner': 'shadow-inner'
-    },
     fontStyle: {
         italic: 'italic'
     },
     fontWeight: {
-        100: 'font-thin',
-        200: 'font-extralight',
-        300: 'font-light',
         400: 'font-normal',
         500: 'font-medium',
-        600: 'font-semibold',
-        700: 'font-bold',
-        800: 'font-extrabold'
+        700: 'font-bold'
     },
     height: {
         auto: 'min-h-0',

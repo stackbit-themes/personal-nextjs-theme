@@ -2,20 +2,16 @@
 
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
 
 # stackbit
+.stackbit/cache
 .cache
-.sourcebit-nextjs-cache.json
-.stackbit/dynamic-components.js
 
 # testing
 /coverage
 
 # next.js
 /.next/
-/out/
 
 # production
 /build

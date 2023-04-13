@@ -30,7 +30,7 @@ function CtaBody(props) {
         return null;
     }
     return (
-        <div className="w-full lg:flex-grow">
+        <div className="w-full lg:grow">
             {title && (
                 <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
                     {title}
