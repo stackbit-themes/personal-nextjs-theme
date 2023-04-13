@@ -4,6 +4,7 @@ import glob from 'glob';
 import frontmatter from 'front-matter';
 import { allModels } from '.stackbit/models';
 import { Config } from '.stackbit/models/Config';
+import { isDev, objectIdAttr, fieldPathAttr } from './common';
 
 const pagesDir = 'content/pages';
 const dataDir = 'content/data';
@@ -88,7 +89,7 @@ function resolveReferences(content, fileToContent) {
 }
 
 function fileToUrl(file: string) {
-    if (!file.startsWith(pagesDir)) return null;
+    if (!file.startsWith(pagesDir)) return;
 
     let url = file.slice(pagesDir.length);
     url = url.split('.')[0];
@@ -99,18 +100,61 @@ function fileToUrl(file: string) {
 }
 
 export function allContent() {
-    const [data, pages] = [dataDir, pagesDir].map((dir) => {
+    let objects = [dataDir, pagesDir].flatMap((dir) => {
         return contentFilesInPath(dir).map((file) => readContent(file));
     });
-    const objects = [...pages, ...data];
-    const fileToContent = Object.fromEntries(objects.map((e) => [e.__metadata.id, e]));
-
-    objects.forEach((e) => resolveReferences(e, fileToContent));
-
-    pages.forEach((page) => {
-        page.__metadata.urlPath = fileToUrl(page.__metadata.id);
+    objects.forEach((o) => {
+        o.__metadata.urlPath = fileToUrl(o.__metadata.id);
     });
 
-    const siteConfig = data.find((e) => e.__metadata.modelName === Config.name);
+    const fileToContent = Object.fromEntries(objects.map((e) => [e.__metadata.id, e]));
+    objects.forEach((e) => resolveReferences(e, fileToContent));
+
+    objects = objects.map((e) => deepClone(e));
+    objects.forEach((e) => annotateContentObject(e));
+
+    const pages = objects.filter((o) => !!o.__metadata.urlPath);
+    const siteConfig = objects.find((e) => e.__metadata.modelName === Config.name);
     return { objects, pages, props: { site: siteConfig } };
+}
+
+/*
+Add annotation data to a content object and its nested children.
+*/
+const skipList = ['__metadata'];
+const logAnnotations = false;
+
+function annotateContentObject(o, prefix = '', depth = 0) {
+    if (!isDev || !o || typeof o !== 'object' || !o.type || skipList.includes(prefix)) return;
+
+    const depthPrefix = '--'.repeat(depth);
+    if (depth === 0) {
+        if (o.__metadata?.id) {
+            o[objectIdAttr] = o.__metadata.id;
+            if (logAnnotations) console.log('[annotateContentObject] added object ID:', depthPrefix, o[objectIdAttr]);
+        } else {
+            if (logAnnotations) console.warn('[annotateContentObject] NO object ID:', o);
+        }
+    } else {
+        o[fieldPathAttr] = prefix;
+        if (logAnnotations) console.log('[annotateContentObject] added field path:', depthPrefix, o[fieldPathAttr]);
+    }
+
+    Object.entries(o).forEach(([k, v]) => {
+        if (v && typeof v === 'object') {
+            const fieldPrefix = (prefix ? prefix + '.' : '') + k;
+            if (Array.isArray(v)) {
+                v.forEach((e, idx) => {
+                    const elementPrefix = fieldPrefix + '.' + idx;
+                    annotateContentObject(e, elementPrefix, depth + 1);
+                });
+            } else {
+                annotateContentObject(v, fieldPrefix, depth + 1);
+            }
+        }
+    });
+}
+
+function deepClone(o: object) {
+    return JSON.parse(JSON.stringify(o));
 }

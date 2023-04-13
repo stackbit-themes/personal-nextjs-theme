@@ -7,7 +7,7 @@ import Action from '../../../atoms/Action';
 import ImageBlock from '../../../molecules/ImageBlock';
 
 export default function FeaturedItem(props) {
-    const { elementId, title, subtitle, text, featuredImage, actions = [], styles = {}, 'data-sb-field-path': fieldPath } = props;
+    const { elementId, title, subtitle, text, featuredImage, actions = [], styles = {} } = props;
     const { self = {} } = styles;
     const { borderWidth, ...otherSelfStyles } = self;
     return (
@@ -17,30 +17,20 @@ export default function FeaturedItem(props) {
             style={{
                 borderWidth: borderWidth ? `${borderWidth}px` : null
             }}
-            data-sb-field-path={fieldPath}
         >
             {featuredImage && (
                 <div className="mb-6">
-                    <ImageBlock {...featuredImage} className="inline-block" data-sb-field-path=".featuredImage" />
+                    <ImageBlock {...featuredImage} className="inline-block" />
                 </div>
             )}
-            {title && (
-                <h3 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                    {title}
-                </h3>
-            )}
-            {subtitle && (
-                <p className={classNames('text-lg', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-1': title })} data-sb-field-path=".subtitle">
-                    {subtitle}
-                </p>
-            )}
+            {title && <h3 className={classNames(styles.title ? mapStyles(styles.title) : null)}>{title}</h3>}
+            {subtitle && <p className={classNames('text-lg', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-1': title })}>{subtitle}</p>}
             {text && (
                 <Markdown
                     options={{ forceBlock: true, forceWrapper: true }}
                     className={classNames('sb-markdown', {
                         'mt-4': title || subtitle
                     })}
-                    data-sb-field-path=".text"
                 >
                     {text}
                 </Markdown>
@@ -66,10 +56,9 @@ function ItemActions(props) {
                     'justify-center': textAlign === 'center',
                     'justify-end': textAlign === 'right'
                 })}
-                data-sb-field-path=".actions"
             >
                 {actions.map((action, index) => (
-                    <Action key={index} {...action} className="my-2 mx-2 lg:whitespace-nowrap" data-sb-field-path={`.${index}`} />
+                    <Action key={index} {...action} className="my-2 mx-2 lg:whitespace-nowrap" />
                 ))}
             </div>
         </div>

@@ -7,11 +7,11 @@ import Section from '../Section';
 import { Action } from '../../atoms';
 
 export default function CtaSection(props) {
-    const { type, elementId, colors, backgroundSize, title, text, actions = [], styles = {}, 'data-sb-field-path': fieldPath } = props;
+    const { type, elementId, colors, backgroundSize, title, text, actions = [], styles = {} } = props;
     const sectionFlexDirection = styles.self?.flexDirection ?? 'row';
     const sectionAlignItems = styles.self?.alignItems || 'center';
     return (
-        <Section type={type} elementId={elementId} colors={colors} backgroundSize={backgroundSize} styles={styles.self} data-sb-field-path={fieldPath}>
+        <Section type={type} elementId={elementId} colors={colors} backgroundSize={backgroundSize} styles={styles.self}>
             <div
                 className={classNames('flex', mapFlexDirectionStyles(sectionFlexDirection), mapStyles({ alignItems: sectionAlignItems }), 'space-y-8', {
                     'lg:space-y-0 lg:space-x-8': sectionFlexDirection === 'row'
@@ -31,16 +31,11 @@ function CtaBody(props) {
     }
     return (
         <div className="w-full lg:grow">
-            {title && (
-                <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                    {title}
-                </h2>
-            )}
+            {title && <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)}>{title}</h2>}
             {text && (
                 <Markdown
                     options={{ forceBlock: true, forceWrapper: true }}
                     className={classNames('sb-markdown', 'sm:text-lg', styles.text ? mapStyles(styles.text) : null, { 'mt-4': title })}
-                    data-sb-field-path=".text"
                 >
                     {text}
                 </Markdown>
@@ -62,10 +57,9 @@ function CtaActions(props) {
                     className={classNames('flex', 'flex-col', 'space-y-5', actionsJustifyContent === 'center' ? 'items-center' : 'items-start', {
                         'lg:items-center': sectionFlexDirection === 'row' && actionsJustifyContent !== 'center'
                     })}
-                    data-sb-field-path=".actions"
                 >
                     {actions.map((action, index) => (
-                        <Action key={index} {...action} className="lg:whitespace-nowrap" data-sb-field-path={`.${index}`} />
+                        <Action key={index} {...action} className="lg:whitespace-nowrap" />
                     ))}
                 </div>
             </div>

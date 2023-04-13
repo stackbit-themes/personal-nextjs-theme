@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import HighlightedPreBlock from './../../../utils/highlighted-markdown';
 import BaseLayout from '../BaseLayout';
-import { getComponent } from '../../components-registry';
+import { DynamicComponent } from '../../components-registry';
 
 export default function PostLayout(props) {
     const { page, site } = props;
@@ -20,9 +20,7 @@ export default function PostLayout(props) {
                     <div className="max-w-5xl mx-auto">
                         <header className="mb-10 sm:mb-14">
                             <div className="uppercase mb-4 sm:mb-6">
-                                <time dateTime={dateTimeAttr} data-sb-field-path="date">
-                                    {formattedDate}
-                                </time>
+                                <time dateTime={dateTimeAttr}>{formattedDate}</time>
                                 {author && (
                                     <>
                                         {' | '}
@@ -30,7 +28,7 @@ export default function PostLayout(props) {
                                     </>
                                 )}
                             </div>
-                            <h1 data-sb-field-path="title">{title}</h1>
+                            <h1>{title}</h1>
                         </header>
                         {media && (
                             <div className="mb-10 sm:mb-14">
@@ -38,24 +36,16 @@ export default function PostLayout(props) {
                             </div>
                         )}
                         {markdown_content && (
-                            <Markdown
-                                options={{ forceBlock: true, overrides: { pre: HighlightedPreBlock } }}
-                                className="sb-markdown max-w-screen-md mx-auto"
-                                data-sb-field-path="markdown_content"
-                            >
+                            <Markdown options={{ forceBlock: true, overrides: { pre: HighlightedPreBlock } }} className="sb-markdown max-w-screen-md mx-auto">
                                 {markdown_content}
                             </Markdown>
                         )}
                     </div>
                 </article>
                 {bottomSections.length > 0 && (
-                    <div data-sb-field-path="bottomSections">
+                    <div>
                         {bottomSections.map((section, index) => {
-                            const Component = getComponent(section.type);
-                            if (!Component) {
-                                throw new Error(`no component matching the post section's type: ${section.type}`);
-                            }
-                            return <Component key={index} {...section} data-sb-field-path={`bottomSections.${index}`} />;
+                            return <DynamicComponent key={index} {...section} />;
                         })}
                     </div>
                 )}
@@ -65,22 +55,13 @@ export default function PostLayout(props) {
 }
 
 function PostMedia({ media }) {
-    const mediaType = media.type;
-    if (!mediaType) {
-        throw new Error(`post media does not have the 'type' property`);
-    }
-    const Media = getComponent(mediaType);
-    if (!Media) {
-        throw new Error(`no component matching the post media type: ${mediaType}`);
-    }
-    return <Media {...media} className={classNames({ 'w-full': mediaType === 'ImageBlock' })} data-sb-field-path="media" />;
+    return <DynamicComponent {...media} className={classNames({ 'w-full': media.type === 'ImageBlock' })} />;
 }
 
 function PostAuthor({ author }) {
     return (
-        <span data-sb-field-path="author">
-            {author.firstName && <span data-sb-field-path=".firstName">{author.firstName}</span>}{' '}
-            {author.lastName && <span data-sb-field-path=".lastName">{author.lastName}</span>}
+        <span>
+            {author.firstName && <span>{author.firstName}</span>} {author.lastName && <span>{author.lastName}</span>}
         </span>
     );
 }

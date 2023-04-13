@@ -30,7 +30,7 @@ export const PostFeedLayout: Model = {
             name: 'postFeed',
             readOnly: true,
             label: 'Post Feed',
-            models: ['PagedPostsSection'],
+            models: ['PostFeedSection'],
             default: {
                 title: null,
                 subtitle: null,

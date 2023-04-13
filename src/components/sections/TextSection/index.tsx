@@ -6,9 +6,9 @@ import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to
 import Section from '../Section';
 
 export default function TextSection(props) {
-    const { type, elementId, colors, variant, title, subtitle, text, styles = {}, 'data-sb-field-path': fieldPath } = props;
+    const { type, elementId, colors, variant, title, subtitle, text, styles = {} } = props;
     return (
-        <Section type={type} elementId={elementId} colors={colors} styles={styles.self} data-sb-field-path={fieldPath}>
+        <Section type={type} elementId={elementId} colors={colors} styles={styles.self}>
             <TextBodyVariants variant={variant} title={title} subtitle={subtitle} text={text} styles={styles} />
         </Section>
     );
@@ -30,18 +30,9 @@ function TextBodyVariantA(props) {
     const { title, subtitle, text, styles = {} } = props;
     return (
         <div>
-            {title && (
-                <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                    {title}
-                </h2>
-            )}
+            {title && <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)}>{title}</h2>}
             {subtitle && (
-                <p
-                    className={classNames('text-xl', 'sm:text-2xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-2': title })}
-                    data-sb-field-path=".subtitle"
-                >
-                    {subtitle}
-                </p>
+                <p className={classNames('text-xl', 'sm:text-2xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-2': title })}>{subtitle}</p>
             )}
             {text && (
                 <Markdown
@@ -49,7 +40,6 @@ function TextBodyVariantA(props) {
                     className={classNames('sb-markdown', 'sm:text-lg', styles.text ? mapStyles(styles.text) : null, {
                         'mt-6': title || subtitle
                     })}
-                    data-sb-field-path=".text"
                 >
                     {text}
                 </Markdown>
@@ -64,17 +54,12 @@ function TextBodyVariantB(props) {
         <div className="flex flex-wrap">
             {(title || subtitle) && (
                 <div className={classNames('w-full', { 'lg:w-1/3 lg:pr-3': text })}>
-                    {title && (
-                        <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                            {title}
-                        </h2>
-                    )}
+                    {title && <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)}>{title}</h2>}
                     {subtitle && (
                         <p
                             className={classNames('text-xl', 'sm:text-2xl', styles.subtitle ? mapStyles(styles.subtitle) : null, {
                                 'mt-2': title
                             })}
-                            data-sb-field-path=".subtitle"
                         >
                             {subtitle}
                         </p>
@@ -86,7 +71,6 @@ function TextBodyVariantB(props) {
                     <Markdown
                         options={{ forceBlock: true, forceWrapper: true }}
                         className={classNames('sb-markdown', 'sm:text-lg', styles.text ? mapStyles(styles.text) : null)}
-                        data-sb-field-path=".text"
                     >
                         {text}
                     </Markdown>

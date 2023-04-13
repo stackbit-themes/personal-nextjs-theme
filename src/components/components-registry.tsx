@@ -1,21 +1,41 @@
 import dynamic from 'next/dynamic';
 import { ComponentType } from 'react';
+import { Annotated } from './Annotated';
 
 /**
  * Dynamic components can be selected at run-time based on the type of their content (props). This is because
  * components are mapped by models that describe their content, and content's type always matches the model name.
- * For example, a page component can call `getComponent(section.type)` function, passing it the type of section
+ * For example, a page component can call `getComponent(section)` function, passing it the type of section
  * data it needs to render, and get back the component that can render that type of data:
  *
- *     const Section = getComponent(section.type);
+ *     const Section = getComponent(section);
  *     return <Section {...section} />;
  *
  * The getComponent() function loads a component using dynamic import,
  * so the code for a component is only loaded when actually used in a page.
  */
-export function getComponent(key: string): ComponentType {
-    return components[key];
-}
+// TODO update docs, use types
+export const DynamicComponent = (props) => {
+    const { forContent, ...restOfProps } = props;
+    const contentProps = forContent || restOfProps;
+    const modelName = contentProps.type;
+
+    // Resolve component by content type
+    if (!modelName) {
+        throw new Error(`Object does not have a 'type' property: ${JSON.stringify(props, null, 2)}`);
+    }
+
+    let Component = components[modelName] as ComponentType;
+    if (!Component) {
+        throw new Error(`No component matches type: '${modelName}'`);
+    }
+
+    return (
+        <Annotated content={contentProps} wrapperName="DynamicComponent">
+            <Component {...restOfProps} />
+        </Annotated>
+    );
+};
 
 const components = {
     CheckboxFormControl: dynamic(() => import('./molecules/FormBlock/CheckboxFormControl')),

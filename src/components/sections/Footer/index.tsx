@@ -4,20 +4,17 @@ import classNames from 'classnames';
 import { Action } from '../../atoms';
 
 export default function Footer(props) {
-    const { primaryLinks = [], contacts, copyrightText, styles = {}, annotationPrefix } = props;
+    const { primaryLinks = [], contacts, copyrightText, styles = {} } = props;
     return (
-        <footer
-            className={classNames('sb-component', 'sb-component-footer', styles.self?.padding ?? 'py-16 px-4')}
-            data-sb-field-path={`${annotationPrefix}:footer`}
-        >
+        <footer className={classNames('sb-component', 'sb-component-footer', styles.self?.padding ?? 'py-16 px-4')}>
             <div className={classNames('border-t-2', 'border-current', 'mx-auto', mapMaxWidthStyles(styles.self?.width ?? 'narrow'))}>
                 <div className="flex flex-col md:flex-row md:flex-wrap">
                     {primaryLinks.length > 0 && (
                         <div className={classNames('mt-6', contacts ? 'w-full' : 'md:mr-auto')}>
-                            <ul className="flex flex-wrap max-w-5xl text-lg" data-sb-field-path=".primaryLinks">
+                            <ul className="flex flex-wrap max-w-5xl text-lg">
                                 {primaryLinks.map((link, index) => (
                                     <li key={index} className="mr-8 mt-2">
-                                        <Action {...link} data-sb-field-path={`.${index}`} />
+                                        <Action {...link} />
                                     </li>
                                 ))}
                             </ul>
@@ -56,27 +53,17 @@ export default function Footer(props) {
 function Contacts(props) {
     const { phoneNumber, phoneAltText, email, emailAltText, address, addressAltText, elementId, className } = props;
     return (
-        <div id={elementId || null} className={className} data-sb-field-path=".contacts">
+        <div id={elementId || null} className={className}>
             {phoneNumber && (
                 <p>
-                    <a
-                        className="underline hover:no-underline"
-                        href={`tel:${phoneNumber}`}
-                        aria-label={phoneAltText}
-                        data-sb-field-path=".phoneNumber .phoneNumber#@href .phoneAltText#@title"
-                    >
+                    <a className="underline hover:no-underline" href={`tel:${phoneNumber}`} aria-label={phoneAltText}>
                         {phoneNumber}
                     </a>
                 </p>
             )}
             {email && (
                 <p>
-                    <a
-                        className="underline hover:no-underline"
-                        href={`mailto:${email}`}
-                        aria-label={emailAltText}
-                        data-sb-field-path=".email .email#@href .emailAltText#@title"
-                    >
+                    <a className="underline hover:no-underline" href={`mailto:${email}`} aria-label={emailAltText}>
                         {email}
                     </a>
                 </p>
@@ -89,7 +76,6 @@ function Contacts(props) {
                         aria-label={addressAltText}
                         target="_blank"
                         rel="noopener noreferrer"
-                        data-sb-field-path=".address .address#@href .addressAltText#@title"
                     >
                         {address}
                     </a>

@@ -2,6 +2,7 @@
     "type": "Config",
     "favicon": "/images/favicon.svg",
     "header": {
+        "type": "Header",
         "headerVariant": "variant-c",
         "isSticky": false,
         "title": "Personal",
@@ -46,6 +47,7 @@
         }
     },
     "footer": {
+        "type": "Footer",
         "primaryLinks": [
             {
                 "type": "Link",
@@ -73,6 +75,7 @@
             }
         ],
         "contacts": {
+            "type": "ContactBlock",
             "title": "Contact details",
             "phoneNumber": "850-123-5021",
             "phoneAltText": "My phone number",

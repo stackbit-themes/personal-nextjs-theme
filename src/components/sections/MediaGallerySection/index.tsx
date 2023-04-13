@@ -18,7 +18,6 @@ type MediaGallerySectionProps = {
     showCaption: boolean;
     enableHover: boolean;
     styles?: any;
-    'data-sb-field-path'?: string;
 };
 
 type MediaGalleryItemProps = {
@@ -26,7 +25,6 @@ type MediaGalleryItemProps = {
     showCaption: boolean;
     enableHover: boolean;
     aspectRatio: string;
-    'data-sb-field-path': string;
 };
 
 type Image = {
@@ -48,22 +46,16 @@ export default function MediaGallerySection(props: MediaGallerySectionProps) {
         aspectRatio = '1:1',
         showCaption,
         enableHover,
-        styles = {},
-        'data-sb-field-path': fieldPath
+        styles = {}
     } = props;
     return (
-        <Section type={type} elementId={elementId} colors={colors} styles={styles.self} data-sb-field-path={fieldPath}>
-            {title && (
-                <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                    {title}
-                </h2>
-            )}
+        <Section type={type} elementId={elementId} colors={colors} styles={styles.self}>
+            {title && <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)}>{title}</h2>}
             {subtitle && (
                 <p
                     className={classNames('text-lg', 'sm:text-xl', styles.subtitle ? mapStyles(styles.subtitle) : null, {
                         'mt-6': title
                     })}
-                    data-sb-field-path=".subtitle"
                 >
                     {subtitle}
                 </p>
@@ -73,20 +65,12 @@ export default function MediaGallerySection(props: MediaGallerySectionProps) {
                     className={classNames('grid', 'place-items-center', mapColStyles(columns), {
                         'mt-12': title || subtitle
                     })}
-                    data-sb-field-path=".images"
                     style={{
                         gap: spacing ? `${spacing}px` : undefined
                     }}
                 >
                     {images.map((image, index) => (
-                        <MediaGalleryImage
-                            key={index}
-                            image={image}
-                            showCaption={showCaption}
-                            enableHover={enableHover}
-                            aspectRatio={aspectRatio}
-                            data-sb-field-path={`.${index}`}
-                        />
+                        <MediaGalleryImage key={index} image={image} showCaption={showCaption} enableHover={enableHover} aspectRatio={aspectRatio} />
                     ))}
                 </div>
             )}
@@ -95,7 +79,7 @@ export default function MediaGallerySection(props: MediaGallerySectionProps) {
 }
 
 function MediaGalleryImage(props: MediaGalleryItemProps) {
-    const { image, showCaption, enableHover, aspectRatio, 'data-sb-field-path': fieldPath } = props;
+    const { image, showCaption, enableHover, aspectRatio } = props;
     if (!image) {
         return null;
     }
@@ -104,7 +88,6 @@ function MediaGalleryImage(props: MediaGalleryItemProps) {
             className={classNames('overflow-hidden', 'relative', 'w-full', mapAspectRatioStyles(aspectRatio), {
                 'h-0': aspectRatio !== 'auto'
             })}
-            data-sb-field-path={fieldPath}
         >
             <ImageBlock
                 {...image}

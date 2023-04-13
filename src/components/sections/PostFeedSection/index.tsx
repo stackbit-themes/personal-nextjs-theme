@@ -23,24 +23,13 @@ export default function PostFeedSection(props) {
         showExcerpt,
         showFeaturedImage,
         showReadMoreLink,
-        annotatePosts,
-        styles = {},
-        'data-sb-field-path': fieldPath
+        styles = {}
     } = props;
     return (
-        <Section type={type} elementId={elementId} colors={colors} styles={styles.self} data-sb-field-path={fieldPath}>
-            {title && (
-                <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                    {title}
-                </h2>
-            )}
+        <Section type={type} elementId={elementId} colors={colors} styles={styles.self}>
+            {title && <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)}>{title}</h2>}
             {subtitle && (
-                <p
-                    className={classNames('text-lg', 'sm:text-xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-6': title })}
-                    data-sb-field-path=".subtitle"
-                >
-                    {subtitle}
-                </p>
+                <p className={classNames('text-lg', 'sm:text-xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-6': title })}>{subtitle}</p>
             )}
             <PostFeedVariants
                 variant={variant}
@@ -51,7 +40,6 @@ export default function PostFeedSection(props) {
                 showFeaturedImage={showFeaturedImage}
                 showReadMoreLink={showReadMoreLink}
                 hasTopMargin={!!(title || subtitle)}
-                annotatePosts={annotatePosts}
             />
             <PostFeedActions actions={actions} styles={styles.actions} />
         </Section>
@@ -65,9 +53,9 @@ function PostFeedActions(props) {
     }
     return (
         <div className="mt-10 overflow-x-hidden">
-            <div className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', mapStyles(styles))} data-sb-field-path=".actions">
+            <div className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', mapStyles(styles))}>
                 {actions.map((action, index) => (
-                    <Action key={index} {...action} className="my-2 mx-2 lg:whitespace-nowrap" data-sb-field-path={`.${index}`} />
+                    <Action key={index} {...action} className="my-2 mx-2 lg:whitespace-nowrap" />
                 ))}
             </div>
         </div>
@@ -89,7 +77,7 @@ function PostFeedVariants(props) {
 }
 
 function PostsVariantABC(props) {
-    const { variant = 'variant-a', posts = [], showDate, showAuthor, showExcerpt, showFeaturedImage, showReadMoreLink, hasTopMargin, annotatePosts } = props;
+    const { variant = 'variant-a', posts = [], showDate, showAuthor, showExcerpt, showFeaturedImage, showReadMoreLink, hasTopMargin } = props;
     if (posts.length === 0) {
         return null;
     }
@@ -102,27 +90,21 @@ function PostsVariantABC(props) {
                 'gap-x-6 lg:gap-x-8': variant === 'variant-a' || 'variant-b',
                 'mt-12': hasTopMargin
             })}
-            {...(annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
-                <Link key={index} data-sb-object-id={post.__metadata?.id} href={post.__metadata?.urlPath} className="sb-post-feed-item block group">
+                <Link key={index} content={post} href={post.__metadata.urlPath} className="sb-post-feed-item block group">
                     <article className="border-b border-current pb-10 max-w-3xl">
                         {showFeaturedImage && post.featuredImage && (
                             <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                                 <ImageBlock
                                     {...post.featuredImage}
                                     className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    data-sb-field-path="featuredImage"
                                 />
                             </div>
                         )}
                         <PostAttribution showDate={showDate} showAuthor={showAuthor} date={post.date} author={post.author} className="mb-3" />
-                        <h3 data-sb-field-path="title">{post.title}</h3>
-                        {showExcerpt && post.excerpt && (
-                            <p className="text-lg mt-5" data-sb-field-path="excerpt">
-                                {post.excerpt}
-                            </p>
-                        )}
+                        <h3>{post.title}</h3>
+                        {showExcerpt && post.excerpt && <p className="text-lg mt-5">{post.excerpt}</p>}
                         {showReadMoreLink && (
                             <div className="mt-8">
                                 <span className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon">
@@ -139,7 +121,7 @@ function PostsVariantABC(props) {
 }
 
 function PostsVariantD(props) {
-    const { posts = [], showDate, showAuthor, showExcerpt, showFeaturedImage, showReadMoreLink, hasTopMargin, annotatePosts } = props;
+    const { posts = [], showDate, showAuthor, showExcerpt, showFeaturedImage, showReadMoreLink, hasTopMargin } = props;
     if (posts.length === 0) {
         return null;
     }
@@ -148,10 +130,9 @@ function PostsVariantD(props) {
             className={classNames('grid', 'gap-y-12', {
                 'mt-12': hasTopMargin
             })}
-            {...(annotatePosts ? { 'data-sb-field-path': '.posts' } : null)}
         >
             {posts.map((post, index) => (
-                <Link key={index} data-sb-object-id={post.__metadata?.id} href={post.__metadata?.urlPath} className="sb-post-feed-item block group">
+                <Link key={index} content={post} href={post.__metadata.urlPath} className="sb-post-feed-item block group">
                     <article className="border-b border-current pb-10 md:pb-12 md:px-4">
                         <div className="md:flex md:items-center">
                             {showFeaturedImage && post.featuredImage && (
@@ -160,19 +141,14 @@ function PostsVariantD(props) {
                                         <ImageBlock
                                             {...post.featuredImage}
                                             className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                            data-sb-field-path="featuredImage"
                                         />
                                     </div>
                                 </div>
                             )}
                             <div className={classNames('md:grow', showFeaturedImage && post.featuredImage ? null : 'md:ml-12')}>
                                 <PostAttribution showDate={showDate} showAuthor={showAuthor} date={post.date} author={post.author} className="mb-3" />
-                                <h3 data-sb-field-path="title">{post.title}</h3>
-                                {showExcerpt && post.excerpt && (
-                                    <p className="text-lg mt-5" data-sb-field-path="excerpt">
-                                        {post.excerpt}
-                                    </p>
-                                )}
+                                <h3>{post.title}</h3>
+                                {showExcerpt && post.excerpt && <p className="text-lg mt-5">{post.excerpt}</p>}
                             </div>
                             {showReadMoreLink && (
                                 <div className="mt-8 md:mt-0 md:mx-8">
@@ -196,17 +172,12 @@ function PostAttribution({ showDate, showAuthor, date, author, className = '' })
     }
     return (
         <div className={className}>
-            {showDate && (
-                <time dateTime={dayjs(date).format('YYYY-MM-DD HH:mm:ss')} data-sb-field-path="date">
-                    {dayjs(date).format('MM-DD-YYYY')}
-                </time>
-            )}
+            {showDate && <time dateTime={dayjs(date).format('YYYY-MM-DD HH:mm:ss')}>{dayjs(date).format('MM-DD-YYYY')}</time>}
             {showAuthor && author && (
                 <>
                     {showDate && ' | '}
-                    <span data-sb-field-path="author">
-                        {author.firstName && <span data-sb-field-path=".firstName">{author.firstName}</span>}{' '}
-                        {author.lastName && <span data-sb-field-path=".lastName">{author.lastName}</span>}
+                    <span>
+                        {author.firstName && <span>{author.firstName}</span>} {author.lastName && <span>{author.lastName}</span>}
                     </span>
                 </>
             )}

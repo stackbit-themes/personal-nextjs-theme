@@ -8,7 +8,6 @@ type SectionProps = React.PropsWithChildren<{
     colors?: 'colors-a' | 'colors-b' | 'colors-c' | 'colors-d' | 'colors-e' | 'colors-f';
     backgroundSize?: 'full' | 'inset';
     styles?: any;
-    'data-sb-field-path'?: string;
 }>;
 
 export default function Section(props: SectionProps) {
@@ -21,7 +20,7 @@ export default function Section(props: SectionProps) {
 }
 
 function SectionInset(props: SectionProps) {
-    const { type, elementId, colors = 'colors-f', styles = {}, children, 'data-sb-field-path': fieldPath } = props;
+    const { type, elementId, colors = 'colors-f', styles = {}, children } = props;
     const classSuffix = type && type.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
     return (
         <div
@@ -34,7 +33,6 @@ function SectionInset(props: SectionProps) {
                 mapStyles({ justifyContent: styles.justifyContent ?? 'center' }),
                 styles.margin
             )}
-            data-sb-field-path={fieldPath}
         >
             <div
                 className={classNames(
@@ -62,7 +60,7 @@ function SectionInset(props: SectionProps) {
 }
 
 function SectionFullWidth(props: SectionProps) {
-    const { type, elementId, colors = 'colors-f', styles = {}, children, 'data-sb-field-path': fieldPath } = props;
+    const { type, elementId, colors = 'colors-f', styles = {}, children } = props;
     const classSuffix = type && type.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
     return (
         <div
@@ -85,7 +83,6 @@ function SectionFullWidth(props: SectionProps) {
             style={{
                 borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : null
             }}
-            data-sb-field-path={fieldPath}
         >
             <div className={classNames('flex', 'w-full', mapStyles({ justifyContent: styles.justifyContent ?? 'center' }))}>
                 <div className={classNames('relative', 'w-full', mapStyles({ width: styles.width ?? 'wide' }))}>{children}</div>

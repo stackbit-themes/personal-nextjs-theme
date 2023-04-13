@@ -22,24 +22,13 @@ export default function ProjectFeedSection(props) {
         showDescription,
         showFeaturedImage,
         showReadMoreLink,
-        annotateProjects,
-        styles = {},
-        'data-sb-field-path': fieldPath
+        styles = {}
     } = props;
     return (
-        <Section type={type} elementId={elementId} colors={colors} styles={styles.self} data-sb-field-path={fieldPath}>
-            {title && (
-                <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)} data-sb-field-path=".title">
-                    {title}
-                </h2>
-            )}
+        <Section type={type} elementId={elementId} colors={colors} styles={styles.self}>
+            {title && <h2 className={classNames(styles.title ? mapStyles(styles.title) : null)}>{title}</h2>}
             {subtitle && (
-                <p
-                    className={classNames('text-lg', 'sm:text-xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-6': title })}
-                    data-sb-field-path=".subtitle"
-                >
-                    {subtitle}
-                </p>
+                <p className={classNames('text-lg', 'sm:text-xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-6': title })}>{subtitle}</p>
             )}
             <ProjectFeedVariants
                 variant={variant}
@@ -49,7 +38,6 @@ export default function ProjectFeedSection(props) {
                 showFeaturedImage={showFeaturedImage}
                 showReadMoreLink={showReadMoreLink}
                 hasTopMargin={!!(title || subtitle)}
-                annotateProjects={annotateProjects}
             />
             <ProjectFeedActions actions={actions} styles={styles.actions} />
         </Section>
@@ -63,9 +51,9 @@ function ProjectFeedActions(props) {
     }
     return (
         <div className="mt-10 overflow-x-hidden">
-            <div className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', mapStyles(styles))} data-sb-field-path=".actions">
+            <div className={classNames('flex', 'flex-wrap', 'items-center', '-mx-2', mapStyles(styles))}>
                 {actions.map((action, index) => (
-                    <Action key={index} {...action} className="my-2 mx-2 lg:whitespace-nowrap" data-sb-field-path={`.${index}`} />
+                    <Action key={index} {...action} className="my-2 mx-2 lg:whitespace-nowrap" />
                 ))}
             </div>
         </div>
@@ -87,7 +75,7 @@ function ProjectFeedVariants(props) {
 }
 
 function ProjectsVariantABC(props) {
-    const { variant = 'variant-a', projects = [], showDate, showDescription, showFeaturedImage, showReadMoreLink, hasTopMargin, annotateProjects } = props;
+    const { variant = 'variant-a', projects = [], showDate, showDescription, showFeaturedImage, showReadMoreLink, hasTopMargin } = props;
     if (projects.length === 0) {
         return null;
     }
@@ -100,17 +88,15 @@ function ProjectsVariantABC(props) {
                 'gap-x-6 lg:gap-x-8': variant === 'variant-a' || 'variant-b',
                 'mt-12': hasTopMargin
             })}
-            {...(annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
             {projects.map((project, index) => (
-                <Link key={index} data-sb-object-id={project.__metadata?.id} href={project.__metadata?.urlPath} className="sb-project-feed-item block group">
+                <Link key={index} content={project} href={project.__metadata?.urlPath} className="sb-project-feed-item block group">
                     <article className="border-b border-current pb-10 max-w-3xl">
                         {showFeaturedImage && project.featuredImage && (
                             <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
                                 <ImageBlock
                                     {...project.featuredImage}
                                     className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    data-sb-field-path="featuredImage"
                                 />
                             </div>
                         )}
@@ -119,12 +105,8 @@ function ProjectsVariantABC(props) {
                                 <ProjectDate date={project.date} />
                             </div>
                         )}
-                        <h3 data-sb-field-path="title">{project.title}</h3>
-                        {showDescription && project.description && (
-                            <p className="text-lg mt-5" data-sb-field-path="description">
-                                {project.description}
-                            </p>
-                        )}
+                        <h3>{project.title}</h3>
+                        {showDescription && project.description && <p className="text-lg mt-5">{project.description}</p>}
                         {showReadMoreLink && (
                             <div className="mt-8">
                                 <span className="sb-component sb-component-block sb-component-button sb-component-button-secondary sb-component-button-icon">
@@ -141,7 +123,7 @@ function ProjectsVariantABC(props) {
 }
 
 function ProjectsVariantD(props) {
-    const { projects = [], showDate, showDescription, showFeaturedImage, showReadMoreLink, hasTopMargin, annotateProjects } = props;
+    const { projects = [], showDate, showDescription, showFeaturedImage, showReadMoreLink, hasTopMargin } = props;
     if (projects.length === 0) {
         return null;
     }
@@ -150,10 +132,9 @@ function ProjectsVariantD(props) {
             className={classNames('grid', 'gap-y-8', {
                 'mt-12': hasTopMargin
             })}
-            {...(annotateProjects ? { 'data-sb-field-path': '.projects' } : null)}
         >
             {projects.map((project, index) => (
-                <Link key={index} data-sb-object-id={project.__metadata?.id} href={project.__metadata?.urlPath} className="sb-project-feed-item block group">
+                <Link key={index} content={project} href={project.__metadata?.urlPath} className="sb-project-feed-item block group">
                     <article className="border-b border-current pb-10 md:pb-12 md:px-4">
                         <div className="md:flex md:items-center">
                             {showFeaturedImage && project.featuredImage && (
@@ -162,7 +143,6 @@ function ProjectsVariantD(props) {
                                         <ImageBlock
                                             {...project.featuredImage}
                                             className="absolute left-0 top-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                            data-sb-field-path="featuredImage"
                                         />
                                     </div>
                                 </div>
@@ -173,12 +153,8 @@ function ProjectsVariantD(props) {
                                         <ProjectDate date={project.date} />
                                     </div>
                                 )}
-                                <h3 data-sb-field-path="title">{project.title}</h3>
-                                {showDescription && project.description && (
-                                    <p className="text-lg mt-5" data-sb-field-path="description">
-                                        {project.description}
-                                    </p>
-                                )}
+                                <h3>{project.title}</h3>
+                                {showDescription && project.description && <p className="text-lg mt-5">{project.description}</p>}
                             </div>
                             {showReadMoreLink && (
                                 <div className="mt-8 md:mt-0 md:mx-8">
@@ -199,9 +175,5 @@ function ProjectsVariantD(props) {
 function ProjectDate({ date }) {
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('MM-DD-YYYY');
-    return (
-        <time dateTime={dateTimeAttr} data-sb-field-path="date">
-            {formattedDate}
-        </time>
-    );
+    return <time dateTime={dateTimeAttr}>{formattedDate}</time>;
 }

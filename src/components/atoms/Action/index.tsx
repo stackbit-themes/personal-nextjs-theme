@@ -4,35 +4,8 @@ import Link from '../Link';
 import { iconMap } from '../../svgs';
 
 export default function Action(props) {
-    const {
-        type,
-        elementId,
-        className,
-        label,
-        altText,
-        url,
-        showIcon,
-        icon,
-        iconPosition = 'right',
-        style = 'primary',
-        'data-sb-field-path': fieldPath
-    } = props;
+    const { type, elementId, className, label, altText, url, showIcon, icon, iconPosition = 'right', style = 'primary' } = props;
     const IconComponent = icon ? iconMap[icon] : null;
-    const annotations = fieldPath
-        ? {
-              'data-sb-field-path': [
-                  fieldPath,
-                  `${fieldPath}.url#@href`,
-                  `${fieldPath}.altText#@aria-label`,
-                  `${fieldPath}.elementId#@id`,
-                  `${fieldPath}.label#span[1]`,
-                  `${fieldPath}.icon#svg[1]`
-              ]
-                  .join(' ')
-                  .trim()
-          }
-        : {};
-
     return (
         <Link
             href={url}
@@ -49,7 +22,7 @@ export default function Action(props) {
                 },
                 className
             )}
-            {...annotations}
+            content={props}
         >
             {label && <span>{label}</span>}
             {showIcon && IconComponent && (

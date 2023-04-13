@@ -29,7 +29,7 @@ export const ProjectFeedLayout: Model = {
             name: 'projectFeed',
             readOnly: true,
             label: 'Project feed',
-            models: ['PagedProjectsSection'],
+            models: ['ProjectFeedSection'],
             default: {
                 title: null,
                 subtitle: null,

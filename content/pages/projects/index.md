@@ -10,7 +10,7 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 50
 projectFeed:
-  type: PagedProjectsSection
+  type: ProjectFeedSection
   colors: colors-f
   showDate: false
   showDescription: true

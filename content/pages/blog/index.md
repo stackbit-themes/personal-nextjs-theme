@@ -10,7 +10,7 @@ backgroundImage:
   backgroundRepeat: no-repeat
   opacity: 75
 postFeed:
-  type: PagedPostsSection
+  type: PostFeedSection
   colors: colors-f
   showDate: true
   showAuthor: false

@@ -2,17 +2,17 @@ import * as React from 'react';
 import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
 
-import { getComponent } from '../../components-registry';
+import { DynamicComponent } from '../../components-registry';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import Section from '../Section';
 import FormBlock from '../../molecules/FormBlock';
 
 export default function ContactSection(props) {
-    const { type, elementId, colors, backgroundSize, title, text, form, media, styles = {}, 'data-sb-field-path': fieldPath } = props;
+    const { type, elementId, colors, backgroundSize, title, text, form, media, styles = {} } = props;
     const sectionFlexDirection = styles.self?.flexDirection ?? 'row';
     const sectionAlignItems = styles.self?.alignItems ?? 'center';
     return (
-        <Section type={type} elementId={elementId} colors={colors} backgroundSize={backgroundSize} styles={styles.self} data-sb-field-path={fieldPath}>
+        <Section type={type} elementId={elementId} colors={colors} backgroundSize={backgroundSize} styles={styles.self}>
             <div
                 className={classNames('flex', mapFlexDirectionStyles(sectionFlexDirection), mapStyles({ alignItems: sectionAlignItems }), 'space-y-8', {
                     'lg:space-y-0 lg:space-x-8': sectionFlexDirection === 'row',
@@ -24,7 +24,7 @@ export default function ContactSection(props) {
                     <ContactBody title={title} text={text} styles={styles} />
                     {form && (
                         <div className={classNames('sb-contact-section-form', { 'mt-12': title || text })}>
-                            <FormBlock {...form} className="inline-block w-full" data-sb-field-path=".form" />
+                            <FormBlock {...form} className="inline-block w-full" />
                         </div>
                     )}
                 </div>
@@ -39,30 +39,17 @@ export default function ContactSection(props) {
 }
 
 function ContactMedia({ media }) {
-    const mediaType = media.type;
-    if (!mediaType) {
-        throw new Error(`contact section media does not have the 'type' property`);
-    }
-    const Media = getComponent(mediaType);
-    if (!Media) {
-        throw new Error(`no component matching the contact section media type: ${mediaType}`);
-    }
-    return <Media {...media} data-sb-field-path=".media" />;
+    return <DynamicComponent {...media} />;
 }
 
 function ContactBody(props) {
     return (
         <>
-            {props.title && (
-                <h2 className={classNames(props.styles?.title ? mapStyles(props.styles?.title) : null)} data-sb-field-path=".title">
-                    {props.title}
-                </h2>
-            )}
+            {props.title && <h2 className={classNames(props.styles?.title ? mapStyles(props.styles?.title) : null)}>{props.title}</h2>}
             {props.text && (
                 <Markdown
                     options={{ forceBlock: true, forceWrapper: true }}
                     className={classNames('sb-markdown', props.styles?.text ? mapStyles(props.styles?.text) : null, { 'mt-4': props.title })}
-                    data-sb-field-path=".text"
                 >
                     {props.text}
                 </Markdown>

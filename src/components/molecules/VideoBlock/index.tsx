@@ -9,11 +9,10 @@ const videoServiceMap = {
 };
 
 export default function VideoBlock(props) {
-    const { elementId, className, url, aspectRatio = '16:9', autoplay, loop, muted, controls = true, 'data-sb-field-path': fieldPath } = props;
+    const { elementId, className, url, aspectRatio = '16:9', autoplay, loop, muted, controls = true } = props;
     if (!url) {
         return null;
     }
-    const annotations = fieldPath ? { 'data-sb-field-path': [fieldPath, `${fieldPath}.elementId#@id`].join(' ').trim() } : {};
     const videoData = getVideoData(url);
     const VideoComponent = videoServiceMap[videoData.service];
     return (
@@ -23,7 +22,6 @@ export default function VideoBlock(props) {
                 'pt-3/4': aspectRatio === '4:3',
                 'pt-9/16': aspectRatio === '16:9'
             })}
-            {...annotations}
         >
             {videoData.id && VideoComponent ? (
                 <VideoComponent id={videoData.id} autoplay={autoplay} loop={loop} muted={muted} controls={controls} />
@@ -48,7 +46,6 @@ function YouTubeVideo({ id, autoplay, loop, muted, controls }) {
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-            data-sb-field-path=".url#@src"
             className="absolute left-0 top-0 h-full w-full"
         ></iframe>
     );
@@ -68,7 +65,6 @@ function VimeoVideo({ id, autoplay, loop, muted, controls }) {
             title="Vimeo video player"
             frameBorder="0"
             allowFullScreen
-            data-sb-field-path=".url#@src"
             className="absolute left-0 top-0 h-full w-full"
         ></iframe>
     );
@@ -84,7 +80,7 @@ function SelfHostedVideo({ id, autoplay, loop, muted, controls }) {
             playsInline
             className="absolute left-0 top-0 h-full w-full"
         >
-            <source src={id} type="video/mp4" data-sb-field-path=".url#@src" />
+            <source src={id} type="video/mp4" />
         </video>
     );
 }
