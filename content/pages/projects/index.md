@@ -9,7 +9,6 @@ backgroundImage:
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 50
-numOfProjectsPerPage: 10
 projectFeed:
   type: PagedProjectsSection
   colors: colors-f

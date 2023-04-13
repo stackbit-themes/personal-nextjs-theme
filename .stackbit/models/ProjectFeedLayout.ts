@@ -39,13 +39,6 @@ export const ProjectFeedLayout: Model = {
             }
         },
         {
-            type: 'number',
-            name: 'numOfProjectsPerPage',
-            label: 'Number of projects per page',
-            description: 'Set to 0 to show all projects on a single page',
-            default: 10
-        },
-        {
             type: 'list',
             name: 'topSections',
             label: 'Top Sections',

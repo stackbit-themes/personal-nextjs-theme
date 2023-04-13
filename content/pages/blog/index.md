@@ -9,7 +9,6 @@ backgroundImage:
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 75
-numOfPostsPerPage: 10
 postFeed:
   type: PagedPostsSection
   colors: colors-f

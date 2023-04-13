@@ -40,13 +40,6 @@ export const PostFeedLayout: Model = {
             }
         },
         {
-            type: 'number',
-            name: 'numOfPostsPerPage',
-            label: 'Number of Posts per page',
-            description: 'set to 0 to show all posts on a single page',
-            default: 10
-        },
-        {
             type: 'list',
             name: 'topSections',
             label: 'Top Sections',
