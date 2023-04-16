@@ -6,7 +6,7 @@ export const MediaGallerySectionModel: Model = {
     label: 'Media gallery',
     labelField: 'title',
     thumbnail: 'https://assets.stackbit.com/components/models/thumbnails/default.png',
-    groups: ['sectionComponent'],
+    groups: ['SectionModels'],
     fieldGroups: [
         {
             name: 'styles',

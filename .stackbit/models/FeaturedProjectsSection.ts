@@ -6,7 +6,7 @@ export const FeaturedProjectsSectionModel: Model = {
     label: 'Featured projects',
     labelField: 'title',
     thumbnail: 'https://assets.stackbit.com/components/models/thumbnails/default.png',
-    groups: ['sectionComponent'],
+    groups: ['SectionModels'],
     fieldGroups: [
         {
             name: 'styles',

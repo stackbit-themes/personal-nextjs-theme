@@ -1,9 +1,19 @@
-import type { PropsWithChildren } from 'react';
+/*
+ * <Annotated> wrapper component is used both by <DynamicComponent> and explicitly by other components,
+ * to wrap a given child with a tag having a Stackbit annotation extracted from the component props.
+ * Note that all content object types include the HasAnnotation type.
+ *
+ * If you want to annotate a primitive field (rather than a content object) you can use the
+ * <AnnotatedField> helper below, which accepts a field-path string.
+ * Annotating primitive fields this way is more intrusive in code, and requires manually entering a field path,
+ * but unlocks not just direct selection of fields but also field-level styling controls.
+ */
+import { PropsWithChildren } from 'react';
 import { isDev } from '@/utils/common';
-import { ContentObject, HasAnnotation, fieldPathAttr, objectIdAttr } from '@/types';
+import { HasAnnotation, fieldPathAttr, objectIdAttr } from '@/types';
 
 type AnnotatedProps = PropsWithChildren & {
-    content: ContentObject;
+    content: HasAnnotation;
 };
 
 export const Annotated: React.FC<AnnotatedProps> = (props) => {
@@ -28,7 +38,17 @@ export const Annotated: React.FC<AnnotatedProps> = (props) => {
     }
 };
 
-export function annotationFromProps(props: HasAnnotation) {
+type AnnotatedFieldProps = PropsWithChildren & {
+    path: string;
+};
+
+export const AnnotatedField: React.FC<AnnotatedFieldProps> = (props) => {
+    const content: HasAnnotation = { [fieldPathAttr]: props.path };
+
+    return <Annotated content={content}>{props.children}</Annotated>;
+};
+
+function annotationFromProps(props: HasAnnotation) {
     return props?.[objectIdAttr] ? { [objectIdAttr]: props[objectIdAttr] } : props?.[fieldPathAttr] ? { [fieldPathAttr]: props[fieldPathAttr] } : undefined;
 }
 

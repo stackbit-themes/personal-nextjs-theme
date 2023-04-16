@@ -72,7 +72,7 @@ export const ProjectLayoutModel: Model = {
             items: {
                 type: 'model',
                 models: [],
-                groups: ['sectionComponent']
+                groups: ['SectionModels']
             }
         },
         ...seoFields,

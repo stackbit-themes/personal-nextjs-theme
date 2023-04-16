@@ -71,7 +71,7 @@ export const PostLayoutModel: Model = {
             items: {
                 type: 'model',
                 models: [],
-                groups: ['sectionComponent']
+                groups: ['SectionModels']
             }
         },
         ...seoFields,

@@ -46,7 +46,7 @@ export const PostFeedLayoutModel: Model = {
             items: {
                 type: 'model',
                 models: [],
-                groups: ['sectionComponent']
+                groups: ['SectionModels']
             }
         },
         {
@@ -56,7 +56,7 @@ export const PostFeedLayoutModel: Model = {
             items: {
                 type: 'model',
                 models: [],
-                groups: ['sectionComponent']
+                groups: ['SectionModels']
             }
         },
         ...seoFields,

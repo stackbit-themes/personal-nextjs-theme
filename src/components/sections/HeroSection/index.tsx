@@ -6,8 +6,10 @@ import { DynamicComponent } from '../../components-registry';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import Section from '../Section';
 import { Action } from '../../atoms';
+import { AnnotatedField } from '@/components/Annotated';
+import { Button, HeroSection, Link } from '@/types';
 
-export default function HeroSection(props) {
+export default function Component(props: HeroSection) {
     const { type, elementId, colors, backgroundSize, title, subtitle, text, media, actions = [], styles = {} } = props;
     const sectionFlexDirection = styles.self?.flexDirection ?? 'row';
     const sectionAlignItems = styles.self?.alignItems ?? 'center';
@@ -21,7 +23,7 @@ export default function HeroSection(props) {
                 })}
             >
                 <div className="flex-1 w-full">
-                    <HeroBody title={title} subtitle={subtitle} text={text} styles={styles} />
+                    <HeroBody {...props} />
                     <HeroActions actions={actions} styles={styles.actions} hasTopMargin={!!(title || subtitle || text)} />
                 </div>
                 {media && (
@@ -38,29 +40,42 @@ function HeroMedia({ media }) {
     return <DynamicComponent {...media} />;
 }
 
-function HeroBody(props) {
+/*
+ This is the only component in this codebase which has a few Stackbit annotations for specific primitive
+ field. These are added by the <AnnotatedField> helper.
+ The motivation for these annotations: allowing the content editor to edit styles at the field level.
+ */
+function HeroBody(props: HeroSection) {
     const { title, subtitle, text, styles = {} } = props;
     return (
         <>
-            {title && <h2 className={classNames('h1', styles.title ? mapStyles(styles.title) : null)}>{title}</h2>}
+            {title && (
+                <AnnotatedField path=".title">
+                    <h2 className={classNames('h1', styles.title ? mapStyles(styles.title) : null)}>{title}</h2>
+                </AnnotatedField>
+            )}
             {subtitle && (
-                <p className={classNames('text-xl', 'sm:text-2xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-4': title })}>{subtitle}</p>
+                <AnnotatedField path=".subtitle">
+                    <p className={classNames('text-xl', 'sm:text-2xl', styles.subtitle ? mapStyles(styles.subtitle) : null, { 'mt-4': title })}>{subtitle}</p>
+                </AnnotatedField>
             )}
             {text && (
-                <Markdown
-                    options={{ forceBlock: true, forceWrapper: true }}
-                    className={classNames('sb-markdown', 'sm:text-lg', styles.text ? mapStyles(styles.text) : null, {
-                        'mt-6': title || subtitle
-                    })}
-                >
-                    {text}
-                </Markdown>
+                <AnnotatedField path=".text">
+                    <Markdown
+                        options={{ forceBlock: true, forceWrapper: true }}
+                        className={classNames('sb-markdown', 'sm:text-lg', styles.text ? mapStyles(styles.text) : null, {
+                            'mt-6': title || subtitle
+                        })}
+                    >
+                        {text}
+                    </Markdown>
+                </AnnotatedField>
             )}
         </>
     );
 }
 
-function HeroActions(props) {
+function HeroActions(props: { actions: (Button | Link)[]; styles: any; hasTopMargin: boolean }) {
     const { actions = [], styles = {}, hasTopMargin } = props;
     if (actions.length === 0) {
         return null;

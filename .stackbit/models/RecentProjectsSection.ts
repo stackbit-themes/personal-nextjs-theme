@@ -5,7 +5,7 @@ export const RecentProjectsSectionModel: Model = {
     name: 'RecentProjectsSection',
     label: 'Recent projects',
     labelField: 'title',
-    groups: ['sectionComponent'],
+    groups: ['SectionModels'],
     fieldGroups: [
         {
             name: 'styles',

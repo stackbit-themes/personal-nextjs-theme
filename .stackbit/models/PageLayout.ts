@@ -32,7 +32,7 @@ export const PageLayoutModel: Model = {
             items: {
                 type: 'model',
                 models: [],
-                groups: ['sectionComponent']
+                groups: ['SectionModels']
             },
             default: [
                 {

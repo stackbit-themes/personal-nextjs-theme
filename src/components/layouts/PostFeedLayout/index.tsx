@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { DynamicComponent } from '../../components-registry';
 import BaseLayout from '../BaseLayout';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
-import { PostFeedLayout, PageComponentProps, PostLayout } from '@/types';
+import { PostFeedLayout, PageComponentProps, PostLayout, SectionModels } from '@/types';
 
 type ComponentProps = PageComponentProps & PostFeedLayout & { items: PostLayout[] };
 
@@ -45,7 +45,7 @@ const Component: React.FC<ComponentProps> = (props) => {
 };
 export default Component;
 
-function Sections({ sections }) {
+function Sections({ sections }: { sections: SectionModels[] }) {
     if (sections.length === 0) {
         return null;
     }

@@ -6,7 +6,7 @@ export const QuoteSectionModel: Model = {
     label: 'Quote',
     labelField: 'name',
     thumbnail: 'https://assets.stackbit.com/components/models/thumbnails/default.png',
-    groups: ['sectionComponent'],
+    groups: ['SectionModels'],
     fieldGroups: [
         {
             name: 'styles',

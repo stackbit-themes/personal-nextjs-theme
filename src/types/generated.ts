@@ -6,7 +6,7 @@ export type PageModelType = PageLayout | PostFeedLayout | PostLayout | ProjectFe
 export const DATA_MODEL_NAMES = ['Config', 'Person', 'ThemeStyle'];
 export const PAGE_MODEL_NAMES = ['PageLayout', 'PostFeedLayout', 'PostLayout', 'ProjectFeedLayout', 'ProjectLayout'];
 
-export type sectionComponent =
+export type SectionModels =
     | ContactSection
     | CtaSection
     | DividerSection
@@ -434,7 +434,7 @@ export type MetaTag = BaseContentObject & {
 export type PageLayout = BaseContentObject & {
     type: 'PageLayout';
     title: string;
-    sections?: sectionComponent[];
+    sections?: SectionModels[];
     metaTitle?: string;
     metaDescription?: string;
     addTitleSuffix?: boolean;
@@ -457,8 +457,8 @@ export type PostFeedLayout = BaseContentObject & {
     type: 'PostFeedLayout';
     title?: string;
     postFeed?: PostFeedSection;
-    topSections?: sectionComponent[];
-    bottomSections?: sectionComponent[];
+    topSections?: SectionModels[];
+    bottomSections?: SectionModels[];
     metaTitle?: string;
     metaDescription?: string;
     addTitleSuffix?: boolean;
@@ -493,7 +493,7 @@ export type PostLayout = BaseContentObject & {
     excerpt?: string;
     featuredImage?: ImageBlock;
     media?: ImageBlock | VideoBlock;
-    bottomSections?: sectionComponent[];
+    bottomSections?: SectionModels[];
     metaTitle?: string;
     metaDescription?: string;
     addTitleSuffix?: boolean;
@@ -508,8 +508,8 @@ export type ProjectFeedLayout = BaseContentObject & {
     type: 'ProjectFeedLayout';
     title?: string;
     projectFeed?: ProjectFeedSection;
-    topSections?: sectionComponent[];
-    bottomSections?: sectionComponent[];
+    topSections?: SectionModels[];
+    bottomSections?: SectionModels[];
     metaTitle?: string;
     metaDescription?: string;
     addTitleSuffix?: boolean;
@@ -543,7 +543,7 @@ export type ProjectLayout = BaseContentObject & {
     description?: string;
     featuredImage?: ImageBlock;
     media?: ImageBlock | VideoBlock;
-    bottomSections?: sectionComponent[];
+    bottomSections?: SectionModels[];
     metaTitle?: string;
     metaDescription?: string;
     addTitleSuffix?: boolean;
