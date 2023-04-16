@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const ThemeStyleButton: Model = {
+export const ThemeStyleButtonModel: Model = {
     type: 'object',
     name: 'ThemeStyleButton',
     label: 'Button',

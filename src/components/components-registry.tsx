@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import { ComponentType } from 'react';
 import { Annotated } from './Annotated';
+import { ContentObject, GlobalProps } from '@/types';
 
 /**
  * Dynamic components can be selected at run-time based on the type of their content (props). This is because
@@ -15,10 +16,13 @@ import { Annotated } from './Annotated';
  * so the code for a component is only loaded when actually used in a page.
  */
 // TODO update docs, use types
-export const DynamicComponent = (props) => {
-    const { forContent, ...restOfProps } = props;
-    const contentProps = forContent || restOfProps;
-    const modelName = contentProps.type;
+
+type DynamicComponentProps = ContentObject & {
+    global?: GlobalProps;
+};
+
+export const DynamicComponent: React.FC<DynamicComponentProps> = (props) => {
+    const modelName = props.type;
 
     // Resolve component by content type
     if (!modelName) {
@@ -31,8 +35,8 @@ export const DynamicComponent = (props) => {
     }
 
     return (
-        <Annotated content={contentProps} wrapperName="DynamicComponent">
-            <Component {...restOfProps} />
+        <Annotated content={props}>
+            <Component {...props} />
         </Annotated>
     );
 };

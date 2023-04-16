@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const SelectFormControl: Model = {
+export const SelectFormControlModel: Model = {
     type: 'object',
     name: 'SelectFormControl',
     label: 'Select',

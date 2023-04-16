@@ -9,15 +9,22 @@ import { DynamicComponent } from '../../components-registry';
 import ImageBlock from '../../molecules/ImageBlock';
 import Link from '../../atoms/Link';
 import { Annotated } from '@/components/Annotated';
+import { PageComponentProps, ProjectLayout } from '@/types';
 
-export default function ProjectLayout(props) {
-    const { page, site } = props;
-    const { title, date, client, description, markdown_content, media, prevProject, nextProject, bottomSections = [] } = page;
+type ComponentProps = PageComponentProps &
+    ProjectLayout & {
+        prevProject?: ProjectLayout;
+        nextProject?: ProjectLayout;
+    };
+
+const Component: React.FC<ComponentProps> = (props) => {
+    const { global, ...page } = props;
+    const { title, date, client, description, markdownContent, media, prevProject, nextProject, bottomSections = [] } = page;
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('MM-DD-YYYY');
 
     return (
-        <BaseLayout page={page} site={site}>
+        <BaseLayout {...props}>
             <main id="main" className="sb-layout sb-project-layout">
                 <article className="px-4 py-14 lg:py-20">
                     <div className="max-w-5xl mx-auto">
@@ -36,9 +43,9 @@ export default function ProjectLayout(props) {
                                 <ProjectMedia media={media} />
                             </div>
                         )}
-                        {markdown_content && (
+                        {markdownContent && (
                             <Markdown options={{ forceBlock: true, overrides: { pre: HighlightedPreBlock } }} className="sb-markdown max-w-screen-md mx-auto">
-                                {markdown_content}
+                                {markdownContent}
                             </Markdown>
                         )}
                     </div>
@@ -61,7 +68,8 @@ export default function ProjectLayout(props) {
             </main>
         </BaseLayout>
     );
-}
+};
+export default Component;
 
 function ProjectMedia({ media }) {
     return <DynamicComponent {...media} className={classNames({ 'w-full': media.type === 'ImageBlock' })} />;

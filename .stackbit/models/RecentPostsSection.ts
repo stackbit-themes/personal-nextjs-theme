@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const RecentPostsSection: Model = {
+export const RecentPostsSectionModel: Model = {
     type: 'object',
     name: 'RecentPostsSection',
     label: 'Recent posts',

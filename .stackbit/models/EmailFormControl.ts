@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const EmailFormControl: Model = {
+export const EmailFormControlModel: Model = {
     type: 'object',
     name: 'EmailFormControl',
     label: 'Email',

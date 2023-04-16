@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const Config: Model = {
+export const ConfigModel: Model = {
     type: 'data',
     name: 'Config',
     label: 'Site configuration',

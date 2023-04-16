@@ -1,7 +1,7 @@
 import { Model } from '@stackbit/types';
 import { seoFields, seoFieldGroups } from './seo-fields';
 
-export const ProjectFeedLayout: Model = {
+export const ProjectFeedLayoutModel: Model = {
     type: 'page',
     name: 'ProjectFeedLayout',
     label: 'Projects',

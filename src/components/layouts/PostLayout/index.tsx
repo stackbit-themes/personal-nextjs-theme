@@ -6,15 +6,18 @@ import classNames from 'classnames';
 import HighlightedPreBlock from './../../../utils/highlighted-markdown';
 import BaseLayout from '../BaseLayout';
 import { DynamicComponent } from '../../components-registry';
+import { PostLayout, PageComponentProps } from '@/types';
 
-export default function PostLayout(props) {
-    const { page, site } = props;
-    const { title, date, author, markdown_content, media, bottomSections = [] } = page;
+type ComponentProps = PageComponentProps & PostLayout;
+
+const Component: React.FC<ComponentProps> = (props) => {
+    const { global, ...page } = props;
+    const { title, date, author, markdownContent, media, bottomSections = [] } = page;
     const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
     const formattedDate = dayjs(date).format('MM-DD-YYYY');
 
     return (
-        <BaseLayout page={page} site={site}>
+        <BaseLayout {...props}>
             <main id="main" className="sb-layout sb-post-layout">
                 <article className="px-4 py-14 lg:py-20">
                     <div className="max-w-5xl mx-auto">
@@ -35,9 +38,9 @@ export default function PostLayout(props) {
                                 <PostMedia media={media} />
                             </div>
                         )}
-                        {markdown_content && (
+                        {markdownContent && (
                             <Markdown options={{ forceBlock: true, overrides: { pre: HighlightedPreBlock } }} className="sb-markdown max-w-screen-md mx-auto">
-                                {markdown_content}
+                                {markdownContent}
                             </Markdown>
                         )}
                     </div>
@@ -52,7 +55,8 @@ export default function PostLayout(props) {
             </main>
         </BaseLayout>
     );
-}
+};
+export default Component;
 
 function PostMedia({ media }) {
     return <DynamicComponent {...media} className={classNames({ 'w-full': media.type === 'ImageBlock' })} />;

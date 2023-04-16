@@ -3,11 +3,12 @@ import path from 'path';
 import glob from 'glob';
 import frontmatter from 'front-matter';
 import { allModels } from '.stackbit/models';
-import { Config } from '.stackbit/models/Config';
-import { isDev, objectIdAttr, fieldPathAttr } from './common';
+import * as types from '@/types';
+import { isDev } from './common';
+import { PAGE_MODEL_NAMES, PageModelType } from '@/types/generated';
 
-const pagesDir = 'content/pages';
-const dataDir = 'content/data';
+const contentBaseDir = 'content';
+const pagesBaseDir = contentBaseDir + '/pages';
 
 const allReferenceFields = {};
 allModels.forEach((model) => {
@@ -28,7 +29,7 @@ function contentFilesInPath(dir: string) {
     return glob.sync(globPattern);
 }
 
-function readContent(file: string) {
+function readContent(file: string): types.ContentObject {
     const rawContent = fs.readFileSync(file, 'utf8');
     let content = null;
     switch (path.extname(file).substring(1)) {
@@ -36,7 +37,7 @@ function readContent(file: string) {
             const parsedMd = frontmatter<Record<string, any>>(rawContent);
             content = {
                 ...parsedMd.attributes,
-                markdown_content: parsedMd.body
+                markdownContent: parsedMd.body
             };
             break;
         case 'json':
@@ -46,7 +47,6 @@ function readContent(file: string) {
             throw Error(`Unhandled file type: ${file}`);
     }
 
-    // Make Sourcebit-compatible
     content.__metadata = {
         id: file,
         modelName: content.type
@@ -55,11 +55,10 @@ function readContent(file: string) {
     return content;
 }
 
-function resolveReferences(content, fileToContent) {
+function resolveReferences(content: types.ContentObject, fileToContent: Record<string, types.ContentObject>) {
     if (!content || !content.type) return;
 
     const modelName = content.type;
-    // Make Sourcebit-compatible
     if (!content.__metadata) content.__metadata = { modelName };
 
     for (const fieldName in content) {
@@ -88,10 +87,14 @@ function resolveReferences(content, fileToContent) {
     }
 }
 
-function fileToUrl(file: string) {
-    if (!file.startsWith(pagesDir)) return;
+function contentUrl(obj: types.ContentObject) {
+    const fileName = obj.__metadata.id;
+    if (!fileName.startsWith(pagesBaseDir)) {
+        console.warn('Content file', fileName, 'expected to be a page, but is not under', pagesBaseDir);
+        return;
+    }
 
-    let url = file.slice(pagesDir.length);
+    let url = fileName.slice(pagesBaseDir.length);
     url = url.split('.')[0];
     if (url.endsWith('/index')) {
         url = url.slice(0, -6) || '/';
@@ -99,23 +102,26 @@ function fileToUrl(file: string) {
     return url;
 }
 
-export function allContent() {
-    let objects = [dataDir, pagesDir].flatMap((dir) => {
-        return contentFilesInPath(dir).map((file) => readContent(file));
-    });
-    objects.forEach((o) => {
-        o.__metadata.urlPath = fileToUrl(o.__metadata.id);
+export function allContent(): types.ContentObject[] {
+    let objects = contentFilesInPath(contentBaseDir).map((file) => readContent(file));
+
+    allPages(objects).forEach((obj) => {
+        obj.__metadata.urlPath = contentUrl(obj);
     });
 
-    const fileToContent = Object.fromEntries(objects.map((e) => [e.__metadata.id, e]));
+    const fileToContent: Record<string, types.ContentObject> = Object.fromEntries(objects.map((e) => [e.__metadata.id, e]));
     objects.forEach((e) => resolveReferences(e, fileToContent));
 
     objects = objects.map((e) => deepClone(e));
     objects.forEach((e) => annotateContentObject(e));
 
-    const pages = objects.filter((o) => !!o.__metadata.urlPath);
-    const siteConfig = objects.find((e) => e.__metadata.modelName === Config.name);
-    return { objects, pages, props: { site: siteConfig } };
+    return objects;
+}
+
+export function allPages(allData: types.ContentObject[]): PageModelType[] {
+    return allData.filter((obj) => {
+        return PAGE_MODEL_NAMES.includes(obj.__metadata.modelName);
+    }) as PageModelType[];
 }
 
 /*
@@ -124,20 +130,20 @@ Add annotation data to a content object and its nested children.
 const skipList = ['__metadata'];
 const logAnnotations = false;
 
-function annotateContentObject(o, prefix = '', depth = 0) {
+function annotateContentObject(o: any, prefix = '', depth = 0) {
     if (!isDev || !o || typeof o !== 'object' || !o.type || skipList.includes(prefix)) return;
 
     const depthPrefix = '--'.repeat(depth);
     if (depth === 0) {
         if (o.__metadata?.id) {
-            o[objectIdAttr] = o.__metadata.id;
-            if (logAnnotations) console.log('[annotateContentObject] added object ID:', depthPrefix, o[objectIdAttr]);
+            o[types.objectIdAttr] = o.__metadata.id;
+            if (logAnnotations) console.log('[annotateContentObject] added object ID:', depthPrefix, o[types.objectIdAttr]);
         } else {
             if (logAnnotations) console.warn('[annotateContentObject] NO object ID:', o);
         }
     } else {
-        o[fieldPathAttr] = prefix;
-        if (logAnnotations) console.log('[annotateContentObject] added field path:', depthPrefix, o[fieldPathAttr]);
+        o[types.fieldPathAttr] = prefix;
+        if (logAnnotations) console.log('[annotateContentObject] added field path:', depthPrefix, o[types.fieldPathAttr]);
     }
 
     Object.entries(o).forEach(([k, v]) => {

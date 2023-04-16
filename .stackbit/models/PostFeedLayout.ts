@@ -1,7 +1,7 @@
 import { Model } from '@stackbit/types';
 import { seoFields, seoFieldGroups } from './seo-fields';
 
-export const PostFeedLayout: Model = {
+export const PostFeedLayoutModel: Model = {
     type: 'page',
     name: 'PostFeedLayout',
     label: 'Blog',

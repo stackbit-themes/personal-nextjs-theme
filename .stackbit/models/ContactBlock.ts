@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const ContactBlock: Model = {
+export const ContactBlockModel: Model = {
     type: 'object',
     name: 'ContactBlock',
     label: 'Contact',

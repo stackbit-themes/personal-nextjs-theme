@@ -4,13 +4,16 @@ import classNames from 'classnames';
 import { DynamicComponent } from '../../components-registry';
 import BaseLayout from '../BaseLayout';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
+import { ProjectFeedLayout, PageComponentProps, ProjectLayout } from '@/types';
 
-export default function ProjectFeedLayout(props) {
-    const { page, site } = props;
+type ComponentProps = PageComponentProps & ProjectFeedLayout & { items: ProjectLayout[] };
+
+const Component: React.FC<ComponentProps> = (props) => {
+    const { global, ...page } = props;
     const { title, topSections = [], bottomSections = [], items, projectFeed, styles = {} } = page;
 
     return (
-        <BaseLayout page={page} site={site}>
+        <BaseLayout {...props}>
             <main id="main" className="layout page-layout">
                 {title && (
                     <div
@@ -39,7 +42,8 @@ export default function ProjectFeedLayout(props) {
             </main>
         </BaseLayout>
     );
-}
+};
+export default Component;
 
 function Sections({ sections }) {
     if (sections.length === 0) {

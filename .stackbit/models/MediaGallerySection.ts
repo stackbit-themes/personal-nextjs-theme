@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const MediaGallerySection: Model = {
+export const MediaGallerySectionModel: Model = {
     type: 'object',
     name: 'MediaGallerySection',
     label: 'Media gallery',

@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const Person: Model = {
+export const PersonModel: Model = {
     type: 'data',
     name: 'Person',
     label: 'Person',

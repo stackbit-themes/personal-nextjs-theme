@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const CheckboxFormControl: Model = {
+export const CheckboxFormControlModel: Model = {
     type: 'object',
     name: 'CheckboxFormControl',
     label: 'Checkbox',

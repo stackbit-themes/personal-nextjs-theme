@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const FormBlock: Model = {
+export const FormBlockModel: Model = {
     type: 'object',
     name: 'FormBlock',
     label: 'Form',

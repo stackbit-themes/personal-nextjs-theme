@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const ImageBlock: Model = {
+export const ImageBlockModel: Model = {
     type: 'object',
     name: 'ImageBlock',
     label: 'Image',

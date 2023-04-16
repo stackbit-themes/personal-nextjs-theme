@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const FeaturedItemsSection: Model = {
+export const FeaturedItemsSectionModel: Model = {
     type: 'object',
     name: 'FeaturedItemsSection',
     label: 'Featured items',

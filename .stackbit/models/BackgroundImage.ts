@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const BackgroundImage: Model = {
+export const BackgroundImageModel: Model = {
     type: 'object',
     name: 'BackgroundImage',
     label: 'Background image',

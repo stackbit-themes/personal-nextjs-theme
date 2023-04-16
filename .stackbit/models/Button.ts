@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const Button: Model = {
+export const ButtonModel: Model = {
     type: 'object',
     name: 'Button',
     label: 'Button',

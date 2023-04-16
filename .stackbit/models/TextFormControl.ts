@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const TextFormControl: Model = {
+export const TextFormControlModel: Model = {
     type: 'object',
     name: 'TextFormControl',
     label: 'Text',

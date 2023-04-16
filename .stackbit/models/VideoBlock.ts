@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const VideoBlock: Model = {
+export const VideoBlockModel: Model = {
     type: 'object',
     name: 'VideoBlock',
     label: 'Video',

@@ -2,21 +2,26 @@ import * as React from 'react';
 import Head from 'next/head';
 import classNames from 'classnames';
 
-import Header from '../../sections/Header';
-import Footer from '../../sections/Footer';
-import { seoGenerateTitle, seoGenerateMetaTags, seoGenerateMetaDescription } from '../../../utils/seo-utils';
-import { BackgroundImage } from '../../atoms';
+import Header from '@/components/sections/Header';
+import Footer from '@/components/sections/Footer';
+import { seoGenerateTitle, seoGenerateMetaTags, seoGenerateMetaDescription } from '@/utils/seo-utils';
+import { BackgroundImage } from '@/components/atoms';
 import { Annotated } from '@/components/Annotated';
+import { PageComponentProps } from '@/types';
+import { PageModelType } from '@/types/generated';
 
-export default function BaseLayout(props) {
-    const { page, site } = props;
-    const pageMeta = page?.__metadata ?? {};
+type BaseLayoutProps = React.PropsWithChildren & PageComponentProps & PageModelType;
+
+const BaseLayout: React.FC<BaseLayoutProps> = (props) => {
+    const { global, ...page } = props;
+    const { site } = global;
+
     const title = seoGenerateTitle(page, site);
     const metaTags = seoGenerateMetaTags(page, site);
     const metaDescription = seoGenerateMetaDescription(page, site);
     return (
         <Annotated content={page}>
-            <div className={classNames('sb-page', pageMeta.pageCssClasses, page?.colors ? page?.colors : 'colors-a')}>
+            <div className={classNames('sb-page', page?.colors || 'colors-a')}>
                 {page?.backgroundImage && <BackgroundImage {...page?.backgroundImage} />}
                 <div className="sb-base sb-default-base-layout relative">
                     <Head>
@@ -51,4 +56,6 @@ export default function BaseLayout(props) {
             </div>
         </Annotated>
     );
-}
+};
+
+export default BaseLayout;

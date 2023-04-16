@@ -4,13 +4,16 @@ import classNames from 'classnames';
 import { DynamicComponent } from '../../components-registry';
 import BaseLayout from '../BaseLayout';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
+import { PostFeedLayout, PageComponentProps, PostLayout } from '@/types';
 
-export default function PostFeedLayout(props) {
-    const { page, site } = props;
+type ComponentProps = PageComponentProps & PostFeedLayout & { items: PostLayout[] };
+
+const Component: React.FC<ComponentProps> = (props) => {
+    const { global, ...page } = props;
     const { title, topSections = [], bottomSections = [], items, postFeed, styles = {} } = page;
 
     return (
-        <BaseLayout page={page} site={site}>
+        <BaseLayout {...props}>
             <main id="main" className="layout page-layout">
                 {title && (
                     <div
@@ -39,7 +42,8 @@ export default function PostFeedLayout(props) {
             </main>
         </BaseLayout>
     );
-}
+};
+export default Component;
 
 function Sections({ sections }) {
     if (sections.length === 0) {

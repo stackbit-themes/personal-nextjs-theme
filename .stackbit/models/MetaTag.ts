@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const MetaTag: Model = {
+export const MetaTagModel: Model = {
     type: 'object',
     name: 'MetaTag',
     label: 'MetaTag',

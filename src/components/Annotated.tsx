@@ -1,15 +1,12 @@
 import type { PropsWithChildren } from 'react';
-import { isDev, objectIdAttr, fieldPathAttr } from '@/utils/common';
+import { isDev } from '@/utils/common';
+import { ContentObject, HasAnnotation, fieldPathAttr, objectIdAttr } from '@/types';
 
-export type HasAnnotation =
-    | {
-          [objectIdAttr]?: string;
-      }
-    | {
-          [fieldPathAttr]?: string;
-      };
+type AnnotatedProps = PropsWithChildren & {
+    content: ContentObject;
+};
 
-export const Annotated: React.FC<PropsWithChildren<any> & { content: object }> = (props) => {
+export const Annotated: React.FC<AnnotatedProps> = (props) => {
     const { children } = props;
     const baseResult = <>{children}</>;
     if (!isDev) {
@@ -22,13 +19,9 @@ export const Annotated: React.FC<PropsWithChildren<any> & { content: object }> =
         return baseResult;
     }
 
-    const annotation = annotationFromProps(props.content as HasAnnotation);
+    const annotation = annotationFromProps(props.content);
     if (annotation) {
-        return (
-            <AnnotatedWrapperTag annotation={annotation} wrapperName="Annotated">
-                {props.children}
-            </AnnotatedWrapperTag>
-        );
+        return <AnnotatedWrapperTag annotation={annotation}>{props.children}</AnnotatedWrapperTag>;
     } else {
         console.warn('Annotated: no annotation in content. Props:', props);
         return baseResult;
@@ -39,7 +32,8 @@ export function annotationFromProps(props: HasAnnotation) {
     return props?.[objectIdAttr] ? { [objectIdAttr]: props[objectIdAttr] } : props?.[fieldPathAttr] ? { [fieldPathAttr]: props[fieldPathAttr] } : undefined;
 }
 
-const AnnotatedWrapperTag: React.FC<PropsWithChildren<any> & { annotation: HasAnnotation }> = ({ annotation, children }) => {
-    if (annotation[fieldPathAttr]) annotation[fieldPathAttr] += '#*[1]';
+const AnnotatedWrapperTag: React.FC<PropsWithChildren & { annotation: HasAnnotation }> = ({ annotation, children }) => {
+    const fieldPath = annotation[fieldPathAttr];
+    if (fieldPath) annotation = { [fieldPathAttr]: fieldPath + '#*[1]' };
     return <data {...annotation}>{children}</data>;
 };

@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const ThemeStyleLink: Model = {
+export const ThemeStyleLinkModel: Model = {
     type: 'object',
     name: 'ThemeStyleLink',
     label: 'Link',

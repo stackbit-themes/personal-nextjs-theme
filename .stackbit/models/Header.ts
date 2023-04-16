@@ -1,6 +1,6 @@
 import { Model } from '@stackbit/types';
 
-export const Header: Model = {
+export const HeaderModel: Model = {
     type: 'object',
     name: 'Header',
     label: 'Header',
