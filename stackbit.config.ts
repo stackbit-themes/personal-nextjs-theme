@@ -2,7 +2,6 @@ import { defineStackbitConfig } from '@stackbit/types';
 import { GitContentSource } from '@stackbit/cms-git';
 import { allModels } from './.stackbit/models';
 
-// TODO siteMap function!
 const config = defineStackbitConfig({
     stackbitVersion: '~0.6.0',
     ssgName: 'nextjs',

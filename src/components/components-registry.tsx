@@ -4,18 +4,21 @@ import { Annotated } from './Annotated';
 import { ContentObject, GlobalProps } from '@/types';
 
 /**
- * Dynamic components can be selected at run-time based on the type of their content (props). This is because
- * components are mapped by models that describe their content, and content's type always matches the model name.
- * For example, a page component can call `getComponent(section)` function, passing it the type of section
- * data it needs to render, and get back the component that can render that type of data:
+ * Since the layout of pages is dynamic (e.g. a page can have sections of different types, sections can have blocks of various types, etc.),
+ * many of the components to render are resolved run-time based on the content type.
+ * The <DynamicComponent> component accepts and ContentObject instance and returns an initialized component for that type.
  *
- *     const Section = getComponent(section);
- *     return <Section {...section} />;
+ * For example, when a page component iterates the section objects in its 'sections' content field,
+ * it can create the actual component for each section using:
  *
- * The getComponent() function loads a component using dynamic import,
- * so the code for a component is only loaded when actually used in a page.
+ *     const component = <DynamicComponent {...section} />
+ *
+ * Another feature of DynamicComponent is automatically wrapping the actual component with a Stackbit annotation,
+ * if such is found in the content object (see annotateContentObject() in src/utils/content.ts).
+ * This replaces the need for manually typing in annotation throught the codebase.
+ *
+ * Note: component code is loaded via Next.js dynamic import, so that it's only fetched if actually used in a page.
  */
-// TODO update docs, use types
 
 type DynamicComponentProps = ContentObject & {
     global?: GlobalProps;

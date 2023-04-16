@@ -1,27 +1,37 @@
 import * as React from 'react';
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 import { Annotated } from '@/components/Annotated';
+import { ContentObject, PageModelType } from '@/types';
 
-type LinkProps = React.PropsWithChildren &
-    NextLinkProps &
-    React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-        content?: any; // TODO
-    };
+type RegularLinkProps = React.PropsWithChildren & NextLinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-const Link: React.FC<LinkProps> = ({ children, content, href, ...other }) => {
+type LinkProps = RegularLinkProps | (Omit<RegularLinkProps, 'href'> & { href: PageModelType });
+
+const Link: React.FC<LinkProps> = (props) => {
+    const { children, href: hrefArgument, ...other } = props;
+    let hrefString: string = null;
+    let hrefContent: ContentObject = null;
+
+    if (typeof hrefArgument === 'string') {
+        hrefString = hrefArgument;
+    } else {
+        hrefContent = hrefArgument;
+        hrefString = hrefArgument.__metadata.urlPath;
+    }
+
     // Pass Any internal link to Next.js Link, for anything else, use <a> tag
-    const internal = /^\/(?!\/)/.test(href);
+    const internal = /^\/(?!\/)/.test(hrefString);
     const linkTag = internal ? (
-        <NextLink href={href} {...other}>
+        <NextLink href={hrefString} {...other}>
             {children}
         </NextLink>
     ) : (
-        <a href={href} {...other}>
+        <a href={hrefString} {...other}>
             {children}
         </a>
     );
 
-    return content ? <Annotated content={content}>{linkTag}</Annotated> : linkTag;
+    return hrefContent ? <Annotated content={hrefContent}>{linkTag}</Annotated> : linkTag;
 };
 
 export default Link;

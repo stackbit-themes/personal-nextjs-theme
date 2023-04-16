@@ -90,7 +90,7 @@ function ProjectsVariantABC(props) {
             })}
         >
             {projects.map((project, index) => (
-                <Link key={index} content={project} href={project.__metadata?.urlPath} className="sb-project-feed-item block group">
+                <Link key={index} href={project} className="sb-project-feed-item block group">
                     <article className="border-b border-current pb-10 max-w-3xl">
                         {showFeaturedImage && project.featuredImage && (
                             <div className="h-0 w-full mb-6 pt-2/3 relative overflow-hidden">
@@ -134,7 +134,7 @@ function ProjectsVariantD(props) {
             })}
         >
             {projects.map((project, index) => (
-                <Link key={index} content={project} href={project.__metadata?.urlPath} className="sb-project-feed-item block group">
+                <Link key={index} href={project} className="sb-project-feed-item block group">
                     <article className="border-b border-current pb-10 md:pb-12 md:px-4">
                         <div className="md:flex md:items-center">
                             {showFeaturedImage && project.featuredImage && (
